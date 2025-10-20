@@ -82,7 +82,7 @@ export default function RussiaPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/russia/background.png"
+      imageSrc="/images/russia/background.webp"
       title="Russia Team"
     />
     <div
@@ -98,7 +98,7 @@ export default function RussiaPage() {
         title='CIS'
       />
     </section>
-   <section className="relative overflow-visible">
+   <section className="relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10 mb-20">
         <h2 className="text-5xl font-bold text-center mb-10">Meet Our CIS Team</h2>
         <p
@@ -144,7 +144,7 @@ export default function RussiaPage() {
       <ProcessStep/>
       </section>
     </div>
-    <LoanDetailSection backgroundImage="/images/russia/loan_detail_bg.png"/>
+    <LoanDetailSection backgroundImage="/images/russia/loan_detail_bg.webp"/>
       <div style={{ background: 'linear-gradient(to bottom,#DFE8FF, #FFFFFF, #DFE8FF)' }}>
         <div className="absolute bg-no-repeat top-475 bg-right w-full h-full" style={{ backgroundImage: "url('/images/russia/snow_bg.svg')"}} />
         <section className="bg-no-repeat relative overflow-hidden">

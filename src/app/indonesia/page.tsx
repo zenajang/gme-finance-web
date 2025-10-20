@@ -81,7 +81,7 @@ export default function IndonesiaPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/indonesia/background.jpg"
+      imageSrc="/images/indonesia/background.webp"
       title="Indonesia Team"
     />
      <div
@@ -118,7 +118,7 @@ export default function IndonesiaPage() {
       <div className="absolute bg-repeat bg-bottom bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/indonesia/garland_d.svg')" }} />
       </section>
     </div>
-    <LoanDetailSection backgroundImage="/images/indonesia/loan_detail_bg.jpg"/>
+    <LoanDetailSection backgroundImage="/images/indonesia/loan_detail_bg.webp"/>
       <div style={{ background: 'linear-gradient(to bottom,  #FFECEC, #FFFFFF, #FFECEC)' }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat -bottom-80 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/indonesia/garland_l.svg')",zIndex:2 }} />

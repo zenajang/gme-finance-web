@@ -81,11 +81,11 @@ export default function IndiaPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/india/background.png"
+      imageSrc="/images/india/background.webp"
       title="India Team"
     />
     <div
-      className="bg-cover bg-center bg-no-repeat"
+      className="bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ background: 'linear-gradient(to bottom, #FFD5B1, #FFFFFF, #D8EDB7)'}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
@@ -98,7 +98,7 @@ export default function IndiaPage() {
         title='India'
       />
     </section>
-         <section className="relative overflow-visible">
+         <section className="relative overflow-hidden">
              <div className="mx-auto relative z-10 mb-20">
                <h2 className="text-5xl font-bold text-center mb-10">Meet Our India Team</h2>
                <p
@@ -128,7 +128,7 @@ export default function IndiaPage() {
         <ProcessStep/>
       </section>
     </div>
-    <LoanDetailSection backgroundImage="/images/india/loan_detail_bg.png"/>
+    <LoanDetailSection backgroundImage="/images/india/loan_detail_bg.webp"/>
     <div className="bg-cover bg-center bg-no-repeat" style={{ background: 'linear-gradient(to bottom, #FFD5B1, #FFFFFF, #D8EDB7)'}}>
       <div className="bg-cover bg-no-repeat" style={{ backgroundImage: "url('/images/india/bg.svg')", backgroundPosition: 'center 50px' }}>
         <section className="bg-no-repeat relative overflow-hidden">

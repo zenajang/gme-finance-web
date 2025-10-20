@@ -82,7 +82,7 @@ export default function BangladeshPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/bangladesh/background.png"
+      imageSrc="/images/bangladesh/background.webp"
       title="Bangladesh Team"
       buttonHoverBgColor="#d1f1ccff"
       buttonTextColor="text-green-700"
@@ -148,7 +148,7 @@ export default function BangladeshPage() {
         <LoanTypesSection/>
         <ProcessStep/>
     </div>
-    <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.png"/>
+    <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp"/>
       <div style={{ background: 'linear-gradient(to bottom, #F7FDDF, #FFFFEE)' }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat -bottom-30 bg-left -left-40 w-full h-250" style={{ backgroundImage: "url('/images/bangladesh/tree.svg')", zIndex:1, transform: 'scaleX(-1)' }} />

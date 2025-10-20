@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import '@radix-ui/themes/styles.css';
-import { Theme } from "@radix-ui/themes"; 
+import { Theme } from "@radix-ui/themes";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
+import PageLoadingSpinner from "./components/common/PageLoadingSpinner";
 
 
 const inter = Inter({
@@ -36,6 +37,7 @@ export default async function RootLayout({
         suppressHydrationWarning={true}
       >
         <Theme appearance="light" accentColor="indigo" radius="large">
+          <PageLoadingSpinner />
           <Header />
             <main className="flex-1">{children}</main>
           <Footer/>

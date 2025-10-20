@@ -30,6 +30,9 @@ export default function CountryIntroductionSection({
             fill
             className="object-cover"
             priority
+            quality={85}
+            sizes="100vw"
+            loading="eager"
           />
         </div>
         <div className="absolute inset-0 bg-black/40"></div>

@@ -81,7 +81,7 @@ export default function MongoliaPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/mongolia/background.jpg"
+      imageSrc="/images/mongolia/background.webp"
       title="Mongolia Team"
     />
     <div
@@ -123,7 +123,7 @@ export default function MongoliaPage() {
          <ProcessStep/>
       </section>
     </div>
-    <LoanDetailSection backgroundImage="/images/mongolia/loan_detail_bg.png"/>
+    <LoanDetailSection backgroundImage="/images/mongolia/loan_detail_bg.webp"/>
       <div style={{ background: 'linear-gradient(to bottom, #FFF1C3, #F8F4E7)' }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-125 left-0 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/garland_l.svg')" }} />

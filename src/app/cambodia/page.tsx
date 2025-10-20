@@ -81,7 +81,7 @@ export default function CambodiaPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/cambodia/background.jpg"
+      imageSrc="/images/cambodia/background.webp"
       title="Cambodia Team"
     />
     <div
@@ -122,7 +122,7 @@ export default function CambodiaPage() {
         <ProcessStep/>
       </section>
     </div>
-    <LoanDetailSection backgroundImage="/images/cambodia/loan_detail_bg.jpg"/>
+    <LoanDetailSection backgroundImage="/images/cambodia/loan_detail_bg.webp"/>
       <div style={{ background: 'linear-gradient(to bottom, #FFF0F0, #F3F9FF)' }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/cambodia/garland_r.svg')",zIndex:2 }} />

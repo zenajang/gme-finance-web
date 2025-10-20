@@ -81,11 +81,11 @@ export default function ChinaPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/china/background.png"
+      imageSrc="/images/china/background.webp"
       title="China Team"
     />
     <div
-      className="bg-cover bg-center bg-no-repeat"
+      className="bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ background: 'linear-gradient(to bottom, #FFF4DF, #FFFCF5)'}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
@@ -101,7 +101,7 @@ export default function ChinaPage() {
         title='China'
       />
     </section>
-         <section className="relative overflow-visible">
+         <section className="relative overflow-hidden">
              <div className="mx-auto relative z-10 mb-20">
                <h2 className="text-5xl font-bold text-center mb-10">Meet Our China Team</h2>
                <p
@@ -131,7 +131,7 @@ export default function ChinaPage() {
         <ProcessStep/>
       </section>
     </div>
-    <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.jpg"/>
+    <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.webp"/>
       <div style={{ background: 'linear-gradient(to bottom, #FFFCE9, #FFF4F0)' }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/china/pattern.svg')", zIndex:1,backgroundSize: '18% auto' }} />

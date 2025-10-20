@@ -82,14 +82,14 @@ export default function MyanmarPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/myanmar/background.jpg"
+      imageSrc="/images/myanmar/background.webp"
       title="Myanmar Team"
       buttonBgColor="#FF8000"
       buttonHoverBgColor="#f5b372ff"
       buttonTextColor="white"
     />
     <div
-      className="bg-cover bg-center bg-no-repeat"
+      className="bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ backgroundImage: "url('/images/myanmar/section_bg.svg')" }}
     >
     <section className="bg-no-repeat bg-cover bg-center relative overflow-hidden">
@@ -106,7 +106,7 @@ export default function MyanmarPage() {
       />
     </section>
     <div style={{ background: 'linear-gradient(to bottom, #FFFFFF, #FFF0DB)' }}>
-      <section className="relative overflow-visible">
+      <section className="relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 mb-20">
           <h2 className="text-5xl font-bold text-center mb-10">Meet Our Myanmar Team</h2>
           <p
@@ -151,7 +151,7 @@ export default function MyanmarPage() {
       <ProcessStep subtitleColor="#FF8000"/>
     </div>
     </div>
-    <LoanDetailSection backgroundImage="/images/myanmar/loan_detail_bg.jpg" />
+    <LoanDetailSection backgroundImage="/images/myanmar/loan_detail_bg.webp" />
       <section className="bg-no-repeat bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: "url('/images/myanmar/light.svg')" }}>
         <div className="absolute bg-no-repeat bottom-0 right-0 w-full h-100 -mr-285 -mb-20" style={{ backgroundImage: "url('/images/myanmar/garland_r.svg')" }} />
         <EMICalculatorSection buttonBgColor="#FF8000" buttonHoverBgColor="#e9b47eff"/>

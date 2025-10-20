@@ -81,7 +81,7 @@ export default function PhilippinesPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/philippines/background.png"
+      imageSrc="/images/philippines/background.webp"
       title="Philippines Team"
     />
     <div
@@ -129,7 +129,7 @@ export default function PhilippinesPage() {
         <ProcessStep/>
       </section>
     </div>
-    <LoanDetailSection backgroundImage="/images/philippines/loan_detail_bg.png"/>
+    <LoanDetailSection backgroundImage="/images/philippines/loan_detail_bg.webp"/>
       <div style={{ background: 'linear-gradient(to bottom, #FEF7DB, #FAE5EB, #FCFEFE, #DBECF4)' }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-125 left-0 w-full h-full" style={{ backgroundImage: "url('/images/philippines/garland_l.svg')" }} />

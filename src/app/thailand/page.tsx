@@ -81,11 +81,11 @@ export default function ThailandPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/thailand/background.jpg"
+      imageSrc="/images/thailand/background.webp"
       title="Thailand Team"
     />
     <div
-      className="bg-cover bg-center bg-no-repeat"
+      className="bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ background: 'linear-gradient(to bottom, #003983, #030947)'}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
@@ -101,7 +101,7 @@ export default function ThailandPage() {
         titleColor="#FFFFFF"
       />
     </section>
-       <section className="relative overflow-visible">
+       <section className="relative overflow-hidden">
              <div className="mx-auto relative z-10 mb-20">
                <h2 className="text-5xl font-bold text-center mb-10 text-white">Meet Our Thailand Team</h2>
                <p
@@ -127,7 +127,7 @@ export default function ThailandPage() {
         <LoanTypesSection titleColor="#FFFFFF"/>
         <ProcessStep titleColor="#FFFFFF" subtitleColor="#DF2121"/>
     </div>
-    <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.png"/>
+    <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp"/>
       <div style={{ background: '#030947' }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-250" style={{ backgroundImage: "url('/images/thailand/cloud_l.svg')", zIndex:1, }} />

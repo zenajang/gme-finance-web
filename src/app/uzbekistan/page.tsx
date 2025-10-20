@@ -81,14 +81,14 @@ export default function UzbekistanPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/uzbekistan/background.jpg"
+      imageSrc="/images/uzbekistan/background.webp"
       title="Uzbekistan Team"
       buttonTextColor="text-teal-600"
       buttonBgColor="#FFFFFF"
       buttonHoverBgColor="#bacfd3ff"
     />
     <div
-      className="bg-cover bg-center bg-no-repeat"
+      className="bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ background: '#F3FCFF'}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
@@ -105,7 +105,7 @@ export default function UzbekistanPage() {
         nameBgColor="#0094AE"
       />
     </section>
-       <section className="relative overflow-visible">
+       <section className="relative overflow-hidden">
              <div className="mx-auto relative z-10 mb-20">
                <h2 className="text-5xl font-bold text-center mb-10">Meet Our Uzbekistan Team</h2>
                <p
@@ -131,7 +131,7 @@ export default function UzbekistanPage() {
         <LoanTypesSection/>
         <ProcessStep subtitleColor="#0094AE"/>
     </div>
-    <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.png"/>
+    <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp"/>
       <div style={{ background: '#F3FCFF' }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-200" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')", zIndex:1, }} />

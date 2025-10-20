@@ -82,7 +82,7 @@ export default function NepalPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/nepal/background.jpg"
+      imageSrc="/images/nepal/background.webp"
       title="Nepal Team"
     />
     <div
@@ -146,7 +146,7 @@ export default function NepalPage() {
         <ProcessStep/>
       </section>
     </div>
-    <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.jpg"/>
+    <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.webp"/>
       <div style={{ background: 'linear-gradient(to bottom, #FFF4C7, #FFFFFF)' }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/nepal/garland_r.svg')",zIndex:2 }} />

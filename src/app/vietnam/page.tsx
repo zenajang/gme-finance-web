@@ -82,7 +82,7 @@ export default function VietnamPage() {
   return (
     <div>
      <CountryIntroductionSection
-      imageSrc="/images/vietnam/background.jpg"
+      imageSrc="/images/vietnam/background.webp"
       title="Vietnam Team"
     />
     <div
@@ -143,7 +143,7 @@ export default function VietnamPage() {
         <div className="absolute bg-no-repeat bg-right -bottom-100 -right-10 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')",backgroundSize: '40% auto' }} />        <ProcessStep/>
       </section>
     </div>
-    <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.jpg"/>
+    <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.webp"/>
       <div style={{ background: 'linear-gradient(to bottom, #FFFCE9, #FFF4F0)' }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-250" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')", zIndex:1,backgroundSize: '20% auto' }} />
