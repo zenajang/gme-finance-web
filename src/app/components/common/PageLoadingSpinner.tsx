@@ -15,20 +15,38 @@ function LoadingSpinnerLogic() {
   }, [pathname, searchParams]);
 
   useEffect(() => {
-    const handleStart = () => setLoading(true);
+    const handleStart = () => {
+      setLoading(true);
+      // Auto-hide after 5 seconds as fallback
+      setTimeout(() => setLoading(false), 5000);
+    };
 
+    // Handle both regular links and Next.js Link components
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+
+      // Check if click is within a Link component or regular anchor
       const link = target.closest('a');
 
-      if (link && link.href && !link.href.startsWith('#') && link.target !== '_blank') {
-        const url = new URL(link.href);
-        if (url.origin === window.location.origin && url.pathname !== pathname) {
-          handleStart();
+      if (link) {
+        const href = link.getAttribute('href');
+
+        if (href &&
+            !href.startsWith('#') &&
+            !href.startsWith('http') &&
+            !href.startsWith('mailto:') &&
+            !href.startsWith('tel:') &&
+            link.target !== '_blank') {
+
+          // Check if it's a different page
+          if (href !== pathname) {
+            handleStart();
+          }
         }
       }
     };
 
+    // Use capture phase to catch events before React handles them
     document.addEventListener('click', handleClick, true);
 
     return () => {
