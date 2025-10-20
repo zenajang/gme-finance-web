@@ -1,9 +1,11 @@
+// app/components/PageLoadingSpinner.tsx
 'use client';
 
+import { Suspense } from 'react';
 import { useEffect, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-export default function PageLoadingSpinner() {
+function LoadingSpinnerLogic() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
@@ -14,9 +16,7 @@ export default function PageLoadingSpinner() {
 
   useEffect(() => {
     const handleStart = () => setLoading(true);
-    const handleComplete = () => setLoading(false);
 
-    // Listen to link clicks
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const link = target.closest('a');
@@ -47,5 +47,13 @@ export default function PageLoadingSpinner() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function PageLoadingSpinner() {
+  return (
+    <Suspense fallback={null}>
+      <LoadingSpinnerLogic />
+    </Suspense>
   );
 }
