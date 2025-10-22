@@ -1,4 +1,5 @@
 
+import { getColorScheme, getGradient } from "@/constants/colors";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -77,7 +78,8 @@ const THAILAND_TEAMS: Teams[] = [
 ];
 
 export default function ThailandPage() {
-
+  const colors = getColorScheme('thailand')
+  
   return (
     <div>
      <CountryIntroductionSection
@@ -86,27 +88,26 @@ export default function ThailandPage() {
     />
     <div
       className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ background: 'linear-gradient(to bottom, #003983, #030947)'}}
+      style={{ background: getGradient('thailand')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
       <div className="absolute bg-no-repeat bg-right top-0 -right-25 w-full h-65" style={{ backgroundImage: "url('/images/thailand/cloud_l.svg')" }} />
       <LatestSocials
         socials={THAILAND_SOCIALS}
-        titleColor="#FFFFFF"
+        titleColor={colors.title}
         />
       <div className="absolute bg-no-repeat top-180 bg-left -left-40 w-full h-65" style={{ backgroundImage: "url('/images/thailand/e_r.svg')" }} />
       <TeamSection
         teams={THAILAND_TEAMS}
         title='Thailand'
-        titleColor="#FFFFFF"
+        titleColor={colors.title}
       />
     </section>
        <section className="relative overflow-hidden">
              <div className="mx-auto relative z-10 mb-20">
                <h2 className="text-5xl font-bold text-center mb-10 text-white">Meet Our Thailand Team</h2>
                <p
-                 className="text-xl text-center mb-10 font-medium"
-                 style={{ color: "#DF2121" }}
+                 className="text-xl text-center mb-10 font-medium text-red-600"
                >
                  The People Behind GME Finance
                </p>
@@ -124,17 +125,17 @@ export default function ThailandPage() {
                </div>
              </div>
            </section>
-        <LoanTypesSection titleColor="#FFFFFF"/>
-        <ProcessStep titleColor="#FFFFFF" subtitleColor="#DF2121"/>
+        <LoanTypesSection titleColor={colors.title}/>
+        <ProcessStep titleColor={colors.title} subtitleColor={colors.subtitle}/>
     </div>
     <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp"/>
-      <div style={{ background: '#030947' }}>
+      <div style={{ background: colors.gradient2 }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-250" style={{ backgroundImage: "url('/images/thailand/cloud_l.svg')", zIndex:1, }} />
           <div className="absolute bg-no-repeat top-20 bg-left -left-40 w-full h-80" style={{ backgroundImage: "url('/images/thailand/cloud_r.svg')", zIndex:1 }} />
           <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/thailand/garland_r.svg')", zIndex:2 }} />
           <div className="absolute bg-no-repeat top-115 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/thailand/garland_l.svg')", zIndex:2 }} />
-          <EMICalculatorSection titleColor="#FFFFFF"/>
+          <EMICalculatorSection titleColor={colors.title}/>
           <LoanApplicationForm/>
         </section>
       </div>

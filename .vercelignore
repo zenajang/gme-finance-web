@@ -1,4 +1,0 @@
-# Exclude large PNG files that have webp versions
-public/images/**/background.png
-public/images/**/loan_detail_bg.png
-public/images/latestNew_bg.png

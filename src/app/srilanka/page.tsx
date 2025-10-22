@@ -1,4 +1,5 @@
 
+import { getGradient } from "@/constants/colors";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -86,7 +87,7 @@ export default function SrilankaPage() {
     />
     <div
       className="bg-cover bg-center bg-no-repeat"
-      style={{ background: 'linear-gradient(to bottom, #FFFAE9, #FFCB21)'}}
+      style={{ background:getGradient('srilanka')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
       <div className="absolute bg-no-repeat bg-left -top-30 left-0 w-full h-220 " style={{ backgroundImage: "url('/images/srilanka/garland_u.svg')" }} />
@@ -117,7 +118,7 @@ export default function SrilankaPage() {
       </section>
     </div>
     <LoanDetailSection backgroundImage="/images/srilanka/loan_detail_bg.webp"/>
-      <div style={{background: 'linear-gradient(to bottom, #FFFAE9, #FFCB21)' }}>
+      <div style={{background: getGradient('srilanka') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat -bottom-80 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/srilanka/garland_l.svg')",zIndex:2 }} />
           <div className="absolute bg-no-repeat top-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/srilanka/garland_r.svg')",zIndex:2 }} />

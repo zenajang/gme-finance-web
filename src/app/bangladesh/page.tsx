@@ -8,6 +8,7 @@ import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
+import { getColorScheme, getGradient } from "@/constants/colors";
 
 const BANGLADESH_SOCIALS: SocialsItem[] = [
   {
@@ -78,31 +79,32 @@ const BANGLADESH_TEAMS: Teams[] = [
 ];
 
 export default function BangladeshPage() {
+  const colors = getColorScheme('bangladesh');
 
   return (
     <div>
      <CountryIntroductionSection
       imageSrc="/images/bangladesh/background.webp"
       title="Bangladesh Team"
-      buttonHoverBgColor="#d1f1ccff"
+      buttonHoverBgColor={colors.introHover}
       buttonTextColor="text-green-700"
     />
     <div
       className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ background: 'linear-gradient(to bottom, #FFFFFF, #F7FDDF)'}}
+      style={{ background: getGradient('bangladesh')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
       <div className="absolute bg-no-repeat bg-left top-0 -left-14 w-full h-65" style={{ backgroundImage: "url('/images/bangladesh/fireflake.svg')" }} />
       <LatestSocials 
         socials={BANGLADESH_SOCIALS}
-        buttonBgColor="#0E7700"
-        buttonHoverBgColor="#abc2a8ff"
+        buttonBgColor={colors.primary}
+        buttonHoverBgColor={colors.hover}
         />
       <div className="absolute bg-no-repeat top-210 bg-right -right-10 w-full h-65" style={{ backgroundImage: "url('/images/bangladesh/fireflake.svg')" }} />
       <TeamSection
         teams={BANGLADESH_TEAMS}
         title='Bangladesh'
-        nameBgColor="#0E7700"
+        nameBgColor={colors.primary}
       />
     </section>
        <section className="relative overflow-hidden">
@@ -110,7 +112,7 @@ export default function BangladeshPage() {
                <h2 className="text-5xl font-bold text-center mb-10">Meet Our Bangladesh Team</h2>
                <p
                  className="text-xl text-center mb-10 font-medium"
-                 style={{ color: "#0E7700" }}
+                 style={{ color:colors.primary }}
                >
                  The People Behind GME Finance
                </p>
@@ -149,7 +151,7 @@ export default function BangladeshPage() {
         <ProcessStep/>
     </div>
     <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp"/>
-      <div style={{ background: 'linear-gradient(to bottom, #F7FDDF, #FFFFEE)' }}>
+      <div style={{ background: getGradient('bangladesh') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat -bottom-30 bg-left -left-40 w-full h-250" style={{ backgroundImage: "url('/images/bangladesh/tree.svg')", zIndex:1, transform: 'scaleX(-1)' }} />
           <div className="absolute bg-no-repeat top-220 bg-left left-40 w-full h-250" style={{ backgroundImage: "url('/images/bangladesh/tree.svg')", zIndex:1 }} />

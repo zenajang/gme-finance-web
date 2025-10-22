@@ -8,6 +8,7 @@ import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
+import { getGradient } from "@/constants/colors";
 
 const VIETNAM_SOCIALS: SocialsItem[] = [
   {
@@ -87,7 +88,7 @@ export default function VietnamPage() {
     />
     <div
       className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ background: 'linear-gradient(to bottom, #FFFCE9, #FFF4F0)'}}
+      style={{ background: getGradient('vietnam')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
       <div className="absolute bg-no-repeat bg-left top-0 -left-80 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_y.svg')" }} />
@@ -102,8 +103,7 @@ export default function VietnamPage() {
              <div className="container mx-auto px-4 relative z-10 mb-20">
                <h2 className="text-5xl font-bold text-center mb-10">Meet Our Vietnam Team</h2>
                <p
-                 className="text-xl text-center mb-10 font-medium"
-                 style={{ color: "#DF2121" }}
+                 className="text-xl text-center mb-10 font-medium text-red-600"
                >
                  The People Behind GME Finance
                </p>
@@ -144,11 +144,11 @@ export default function VietnamPage() {
       </section>
     </div>
     <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.webp"/>
-      <div style={{ background: 'linear-gradient(to bottom, #FFFCE9, #FFF4F0)' }}>
+      <div style={{ background:getGradient('vietnam') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-250" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')", zIndex:1,backgroundSize: '20% auto' }} />
           <div className="absolute bg-no-repeat -top-200 bg-left -left-50 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')", zIndex:1,backgroundSize: '30% auto' }} />
-                    <div className="absolute bg-no-repeat -bottom-70 bg-bottom -left-150 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_y.svg')", zIndex:1,backgroundSize: '30% auto' }} />
+          <div className="absolute bg-no-repeat -bottom-70 bg-bottom -left-150 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_y.svg')", zIndex:1,backgroundSize: '30% auto' }} />
           <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/vietnam/garland_r.svg')", zIndex:2 }} />
           <div className="absolute bg-no-repeat top-115 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/vietnam/garland_l.svg')", zIndex:2 }} />
          <EMICalculatorSection/>

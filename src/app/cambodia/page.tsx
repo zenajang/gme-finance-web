@@ -1,4 +1,5 @@
 
+import { getGradient } from "@/constants/colors";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -86,7 +87,7 @@ export default function CambodiaPage() {
     />
     <div
       className="bg-cover bg-center bg-no-repeat"
-      style={{ background: 'linear-gradient(to bottom, #FFF0F0, #F3F9FF)'}}
+      style={{ background:getGradient('cambodia')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
       <div className="absolute bg-no-repeat -top-70 bg-right right-10 w-full h-250" style={{ backgroundImage: "url('/images/cambodia/flower_y.svg')",transform: 'scaleX(-1)', zIndex:2 }} />
@@ -101,13 +102,13 @@ export default function CambodiaPage() {
      <section className="bg-no-repeat relative overflow-hidden">
       <div className="absolute bg-no-repeat -top-90 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/cambodia/flower_r.svg')",zIndex:2 }} />
       <div className="container mx-auto px-4 relative z-10 mb-20">
-        <h2 className="text-5xl font-bold text-center mb-10">Meet Our Philippines Team</h2>
+        <h2 className="text-5xl font-bold text-center mb-10">Meet Our Cambodia Team</h2>
         <p className="text-xl text-center mb-10 font-medium text-red-600">The People Behind GME Finance</p>
           <div className="aspect-video w-full max-w-4xl mx-auto">
             <iframe
               className="w-full h-full rounded-xl"
               src="https://www.youtube.com/embed/xYKDgKik2iM"
-              title="Philippines Team Video"
+              title="Cambodia Team Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
@@ -123,7 +124,7 @@ export default function CambodiaPage() {
       </section>
     </div>
     <LoanDetailSection backgroundImage="/images/cambodia/loan_detail_bg.webp"/>
-      <div style={{ background: 'linear-gradient(to bottom, #FFF0F0, #F3F9FF)' }}>
+      <div style={{ background:getGradient('cambodia')}}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/cambodia/garland_r.svg')",zIndex:2 }} />
           <div className="absolute bg-no-repeat top-115 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/cambodia/garland_l.svg')",zIndex:2 }} />

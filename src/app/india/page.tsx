@@ -1,4 +1,5 @@
 
+import { getGradient } from "@/constants/colors";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -86,7 +87,7 @@ export default function IndiaPage() {
     />
     <div
       className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ background: 'linear-gradient(to bottom, #FFD5B1, #FFFFFF, #D8EDB7)'}}
+      style={{ background: getGradient('india')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
       <div className="absolute bg-no-repeat bg-top top-150 left-200 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_o_l.svg')" }} />
@@ -102,8 +103,7 @@ export default function IndiaPage() {
              <div className="mx-auto relative z-10 mb-20">
                <h2 className="text-5xl font-bold text-center mb-10">Meet Our India Team</h2>
                <p
-                 className="text-xl text-center mb-10 font-medium"
-                 style={{ color: "#DF2121"}}
+                 className="text-xl text-center mb-10 font-medium text-red-600"
                >
                  The People Behind GME Finance
                </p>
@@ -129,7 +129,7 @@ export default function IndiaPage() {
       </section>
     </div>
     <LoanDetailSection backgroundImage="/images/india/loan_detail_bg.webp"/>
-    <div className="bg-cover bg-center bg-no-repeat" style={{ background: 'linear-gradient(to bottom, #FFD5B1, #FFFFFF, #D8EDB7)'}}>
+    <div className="bg-cover bg-center bg-no-repeat" style={{ background: getGradient('india')}}>
       <div className="bg-cover bg-no-repeat" style={{ backgroundImage: "url('/images/india/bg.svg')", backgroundPosition: 'center 50px' }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/india/garland_r.svg')", zIndex:2 }} />

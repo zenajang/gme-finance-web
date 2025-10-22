@@ -38,12 +38,13 @@ export default function CountrySection() {
             modules={[Navigation, Autoplay]}
             spaceBetween={30}
             slidesPerView="auto"
+            speed={800}
             navigation={{
               prevEl: '.swiper-button-prev-custom',
               nextEl: '.swiper-button-next-custom',
             }}
             autoplay={{
-              delay: 2000,
+              delay: 3500,
               disableOnInteraction: false,
             }}
             loop={true}

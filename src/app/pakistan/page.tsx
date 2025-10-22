@@ -8,6 +8,7 @@ import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
+import { getColorScheme, getGradient } from "@/constants/colors";
 
 const PAKISTAN_SOCIALS: SocialsItem[] = [
   {
@@ -78,28 +79,29 @@ const PAKISTAN_TEAMS: Teams[] = [
 ];
 
 export default function PakistanPage() {
+  const colors = getColorScheme('paksitan')
 
   return (
     <div>
      <CountryIntroductionSection
       imageSrc="/images/pakistan/background.webp"
       title="Pakistan Team"
-      buttonTextColor="#006E14"
-      buttonHoverBgColor="#eaf3ecff"
-    />
+      buttonTextColor={colors.primary}
+      buttonHoverBgColor={colors.introHover}    
+      />
     <div
       className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ background: 'linear-gradient(to bottom, #F8FFEA)'}}
+      style={{ background: getGradient('pakistan')}}
     >
      <section className="bg-no-repeat relative overflow-hidden">
        
          <div className="absolute bg-no-repeat bg-top top-150 left-200 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/flower.svg')" }} />
          <div className="absolute bg-no-repeat bg-top -top-40 -left-200 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/flower.svg')" }} />  
          <LatestSocials 
-           socials={PAKISTAN_SOCIALS} buttonBgColor="#006E14" buttonHoverBgColor="#8fad95ff"/>
+           socials={PAKISTAN_SOCIALS} buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
          <TeamSection
            teams={PAKISTAN_TEAMS}
-           nameBgColor="#006E14"
+           nameBgColor={colors.primary}
            title='Bharat & Pakistan'
          />
        </section>
@@ -108,7 +110,7 @@ export default function PakistanPage() {
                 <h2 className="text-5xl font-bold text-center mb-10">Meet Our Bharat & Pakistan Team</h2>
                 <p
                   className="text-xl text-center mb-10 font-medium"
-                  style={{ color: "#006E14" }}
+                  style={{ color: colors.primary }}
                 >
                   The People Behind GME Finance
                 </p>
@@ -147,17 +149,17 @@ export default function PakistanPage() {
          <section className="bg-no-repeat relative overflow-hidden">
            <div className="absolute bg-no-repeat bg-left bottom-60 left-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/flower.svg')",backgroundSize: '20% auto' }} />
            <div className="absolute bg-no-repeat bg-bottom -bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/wave.svg')",backgroundSize: '110% auto' }} />
-            <ProcessStep subtitleColor="#006E14"/>
+            <ProcessStep subtitleColor={colors.primary}/>
          </section>
        </div>
     <LoanDetailSection backgroundImage="/images/pakistan/loan_detail_bg.webp"/>
-      <div className="relative" style={{ background: 'linear-gradient(to bottom, #F8FFEA)' }}>
+      <div className="relative" style={{ background: getGradient('pakistan') }}>
         <div className="absolute bg-repeat top-0 left-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/pattern.svg')", backgroundSize: 'auto' }} />
         <section className="bg-no-repeat relative overflow-hidden">          
           <div className="absolute bg-no-repeat top-125 left-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/garland_l.svg')" }} />
           <div className="absolute bg-no-repeat bg-bottom -bottom-50 left-170 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/garland_r.svg')" }} />
-          <EMICalculatorSection buttonBgColor="#006E14" buttonHoverBgColor="#8fad95ff"/>
-          <LoanApplicationForm buttonColor="#006E14" subtitleColor="#006E14"/>
+          <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
+          <LoanApplicationForm buttonColor={colors.primary} subtitleColor={colors.primary}/>
         </section>
       </div>
     </div>

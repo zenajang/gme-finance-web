@@ -1,4 +1,5 @@
 
+import { getColorScheme } from "@/constants/colors";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -77,6 +78,7 @@ const UZBEKISTAN_TEAMS: Teams[] = [
 ];
 
 export default function UzbekistanPage() {
+  const colors = getColorScheme('uzbekistan')
 
   return (
     <div>
@@ -85,24 +87,24 @@ export default function UzbekistanPage() {
       title="Uzbekistan Team"
       buttonTextColor="text-teal-600"
       buttonBgColor="#FFFFFF"
-      buttonHoverBgColor="#bacfd3ff"
+      buttonHoverBgColor={colors.introHover}
     />
     <div
       className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ background: '#F3FCFF'}}
+      style={{ background: colors.gradient1}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
       <div className="absolute bg-no-repeat bg-right top-70 -right-25 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_sm.svg')" }} />
       <LatestSocials 
         socials={UZBEKISTAN_SOCIALS}
-        buttonBgColor="#0094AE"
-        buttonHoverBgColor="#bacfd3ff"
+        buttonBgColor={colors.primary}
+        buttonHoverBgColor={colors.hover}
         />
       <div className="absolute bg-no-repeat top-0 bg-left -left-40 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
       <TeamSection
         teams={UZBEKISTAN_TEAMS}
         title='Uzbekistan'
-        nameBgColor="#0094AE"
+        nameBgColor={colors.primary}
       />
     </section>
        <section className="relative overflow-hidden">
@@ -110,7 +112,7 @@ export default function UzbekistanPage() {
                <h2 className="text-5xl font-bold text-center mb-10">Meet Our Uzbekistan Team</h2>
                <p
                  className="text-xl text-center mb-10 font-medium"
-                 style={{ color: "#0094AE" }}
+                 style={{ color: colors.primary}}
                >
                  The People Behind GME Finance
                </p>
@@ -129,18 +131,18 @@ export default function UzbekistanPage() {
              </div>
            </section>
         <LoanTypesSection/>
-        <ProcessStep subtitleColor="#0094AE"/>
+        <ProcessStep subtitleColor={colors.primary}/>
     </div>
     <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp"/>
-      <div style={{ background: '#F3FCFF' }}>
+      <div style={{ background:colors.gradient1}}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-200" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')", zIndex:1, }} />
           <div className="absolute bg-no-repeat top-20 bg-left -left-20 w-full h-80" style={{ backgroundImage: "url('/images/uzbekistan/flower_sm.svg')", zIndex:1 }} />
           <div className="absolute bg-no-repeat bg-right bottom-0 right-0 w-full h-200" style={{ backgroundImage: "url('/images/uzbekistan/garland_r.svg')", backgroundSize: '100% auto', zIndex:2 }} />
           <div className="absolute bg-no-repeat bg-left top-160 left-0 w-full h-200" style={{ backgroundImage: "url('/images/uzbekistan/garland_l.svg')", backgroundSize: '100% auto', zIndex:2 }} />
-          <EMICalculatorSection buttonBgColor="#0094AE" buttonHoverBgColor="#bacfd3ff"/>
+          <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
           <div className="mb-110">
-          <LoanApplicationForm subtitleColor="#0094AE" buttonColor="#0094AE"/>
+          <LoanApplicationForm subtitleColor={colors.primary} buttonColor={colors.primary}/>
           </div>
         </section>
       </div>

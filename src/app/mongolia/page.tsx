@@ -1,4 +1,5 @@
 
+import { getGradient } from "@/constants/colors";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -86,7 +87,7 @@ export default function MongoliaPage() {
     />
     <div
       className="bg-cover bg-center bg-no-repeat"
-      style={{ background: 'linear-gradient(to bottom, #F8F4E7, #FFF1C3)'}}
+      style={{ background: getGradient('mongolia')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
     
@@ -102,13 +103,13 @@ export default function MongoliaPage() {
       <div className="absolute bg-no-repeat -top-60 bg-left left-50 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/cloud.svg')" }} />
       <div className="absolute bg-no-repeat -bottom-50 bg-right right-70 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/cloud.svg')" }} />
       <div className="container mx-auto px-4 relative z-10 mb-20">
-        <h2 className="text-5xl font-bold text-center mb-10">Meet Our Philippines Team</h2>
+        <h2 className="text-5xl font-bold text-center mb-10">Meet Our Mongolia Team</h2>
         <p className="text-xl text-center mb-10 font-medium text-red-600">The People Behind GME Finance</p>
           <div className="aspect-video w-full max-w-4xl mx-auto">
             <iframe
               className="w-full h-full rounded-xl"
               src="https://www.youtube.com/embed/xYKDgKik2iM"
-              title="Philippines Team Video"
+              title="Mongolia Team Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
@@ -124,7 +125,7 @@ export default function MongoliaPage() {
       </section>
     </div>
     <LoanDetailSection backgroundImage="/images/mongolia/loan_detail_bg.webp"/>
-      <div style={{ background: 'linear-gradient(to bottom, #FFF1C3, #F8F4E7)' }}>
+      <div style={{ background: getGradient('mongolia') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-125 left-0 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/garland_l.svg')" }} />
           <div className="absolute bg-no-repeat bottom-0 right-0 w-full h-100 -mr-285" style={{ backgroundImage: "url('/images/mongolia/garland_r.svg')" }} />

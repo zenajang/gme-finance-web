@@ -1,4 +1,5 @@
 
+import { getGradient } from "@/constants/colors";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -77,7 +78,6 @@ const CHINA_TEAMS: Teams[] = [
 ];
 
 export default function ChinaPage() {
-
   return (
     <div>
      <CountryIntroductionSection
@@ -86,7 +86,7 @@ export default function ChinaPage() {
     />
     <div
       className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ background: 'linear-gradient(to bottom, #FFF4DF, #FFFCF5)'}}
+      style={{ background: getGradient('china')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
       <div className="absolute bg-no-repeat bg-top top-0 -left-190 w-full h-full" style={{ backgroundImage: "url('/images/china/flower.svg')",backgroundSize: '20% auto' }} />
@@ -105,8 +105,7 @@ export default function ChinaPage() {
              <div className="mx-auto relative z-10 mb-20">
                <h2 className="text-5xl font-bold text-center mb-10">Meet Our China Team</h2>
                <p
-                 className="text-xl text-center mb-10 font-medium"
-                 style={{ color: "#DF2121"}}
+                 className="text-xl text-center mb-10 font-medium text-red-600"
                >
                  The People Behind GME Finance
                </p>
@@ -132,7 +131,7 @@ export default function ChinaPage() {
       </section>
     </div>
     <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.webp"/>
-      <div style={{ background: 'linear-gradient(to bottom, #FFFCE9, #FFF4F0)' }}>
+      <div style={{ background: getGradient('china') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/china/pattern.svg')", zIndex:1,backgroundSize: '18% auto' }} />
           <div className="absolute bg-no-repeat -top-200 bg-left -left-50 w-full h-full" style={{ backgroundImage: "url('/images/china/pattern.svg')", zIndex:1,backgroundSize: '30% auto' }} />
