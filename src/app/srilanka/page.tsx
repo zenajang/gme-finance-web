@@ -105,7 +105,7 @@ export default function SrilankaPage() {
           <div className="aspect-video w-full max-w-4xl mx-auto">
             <iframe
               className="w-full h-full rounded-xl"
-              src="https://www.youtube.com/embed/xYKDgKik2iM"
+              src="https://www.youtube.com/embed/Lee7FwKwQLQ"
               title="Philippines Team Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

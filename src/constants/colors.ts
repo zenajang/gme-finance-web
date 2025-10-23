@@ -1,3 +1,14 @@
+// 공통 색상 (전역에서 사용)
+export const COMMON_COLORS = {
+  primary: '#DF2121',           // 주요 빨간색 (버튼, 강조)
+  primaryHover: '#e98c8cff',    // 주요 빨간색 hover
+  primaryText: '#EF4444',       // 빨간색 텍스트
+  primaryLight: '#faeaeaff',    // 연한 빨간색
+  white: '#FFFFFF',             // 흰색
+  black: '#000000',             // 검은색
+  grayDark: '#1F2937',          // 어두운 회색 (제목)
+} as const;
+
 export type ColorScheme = {
   primary: string;
   hover: string;

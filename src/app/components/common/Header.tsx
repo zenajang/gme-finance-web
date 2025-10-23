@@ -48,7 +48,7 @@ export default function Header() {
               className="relative"
               onMouseEnter={() => setIsAboutHovered(true)}
               onMouseLeave={() => setIsAboutHovered(false)}
-            >
+            > 
               <Link
                 href="/about"
                 className="text-white hover:text-gray-300 transition-colors text-lg font-small"

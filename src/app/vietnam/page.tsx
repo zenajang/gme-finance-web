@@ -39,7 +39,7 @@ const VIETNAM_SOCIALS: SocialsItem[] = [
     likes: '2.1K',
     followers: '2.8K',
     tags: ['Photos', 'Stories', 'News'],
-    href: '/news/vietnam/instagram',
+    href: '/news/vietnam/instagram', 
   },
 ];
 
@@ -129,7 +129,7 @@ export default function VietnamPage() {
                  <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
                    <iframe
                      className="w-full h-full rounded-xl"
-                     src="https://www.youtube.com/embed/xYKDgKik2iM"
+                     src="https://www.youtube.com/embed/DYpUQw-IIdM"
                      title="Myanmar Team Video"
                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                      allowFullScreen
@@ -143,7 +143,7 @@ export default function VietnamPage() {
         <div className="absolute bg-no-repeat bg-right -bottom-100 -right-10 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')",backgroundSize: '40% auto' }} />        <ProcessStep/>
       </section>
     </div>
-    <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.webp"/>
+    <LoanDetailSection backgroundImage="/images/vietnam/loan_detail_bg.webp"/>
       <div style={{ background:getGradient('vietnam') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-250" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')", zIndex:1,backgroundSize: '20% auto' }} />

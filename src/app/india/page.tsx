@@ -112,7 +112,7 @@ export default function IndiaPage() {
                  <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
                    <iframe
                      className="w-full h-full rounded-xl"
-                     src="https://www.youtube.com/embed/xYKDgKik2iM"
+                     src="https://www.youtube.com/embed/mX9zCgpqohU"
                      title="India Team Video"
                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                      allowFullScreen

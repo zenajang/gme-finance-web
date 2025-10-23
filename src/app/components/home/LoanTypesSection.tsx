@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 
 interface LoanTypesSectionProps {
   titleColor?: string;
@@ -43,37 +44,33 @@ export default function LoanTypesSection({ titleColor = '#000000' }: LoanTypesSe
             </div>
           </div>
           
-          
-          {/* 각 대출 유형 아이콘들 */}
           {loanTypes.map((loan, index) => (
-            <div
-              key={index}
-              className="absolute z-20"
-              style={loan.position}
-            >
-              <div className="flex flex-col items-center">
-                <Image
-                  src={loan.icon}
-                  alt={loan.name}
-                  width={64}
-                  height={64}
-                  className="object-contain"
-                />
+            <React.Fragment key={index}>
+              <div
+                className="absolute z-20"
+                style={loan.position}
+              >
+                <div className="flex flex-col items-center">
+                  <Image
+                    src={loan.icon}
+                    alt={loan.name}
+                    width={64}
+                    height={64}
+                    className="object-contain"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-           {loanTypes.map((loan, index) => (
-            <div
-              key={index}
-              className="absolute z-20"
-              style={loan.position_name}
-            >
-              <div className="flex flex-col items-center">
-                <p className="text-3xl font-medium text-red-600 mt-4 whitespace-nowrap">
-                  {loan.name}
-                </p>
+              <div
+                className="absolute z-20"
+                style={loan.position_name}
+              >
+                <div className="flex flex-col items-center">
+                  <p className="text-3xl font-medium text-red-600 mt-4 whitespace-nowrap">
+                    {loan.name}
+                  </p>
+                </div>
               </div>
-            </div>
+            </React.Fragment>
           ))}
         </div>
       </div>

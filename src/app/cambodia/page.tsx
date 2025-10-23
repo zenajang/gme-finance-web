@@ -107,7 +107,7 @@ export default function CambodiaPage() {
           <div className="aspect-video w-full max-w-4xl mx-auto">
             <iframe
               className="w-full h-full rounded-xl"
-              src="https://www.youtube.com/embed/xYKDgKik2iM"
+              src="https://www.youtube.com/embed/oItSG4IhIz0"
               title="Cambodia Team Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

@@ -1,6 +1,9 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { COMMON_COLORS } from '@/constants/colors';
 
 export type SocialsItem = {
   id?: string;
@@ -22,10 +25,13 @@ interface LatestSocialsProps {
 
 export default function LatestSocials({
   socials,
-  buttonBgColor = '#DF2121',
-  buttonHoverBgColor = '#e98c8cff',
-  titleColor = '#000000',
+  buttonBgColor = COMMON_COLORS.primary,
+  buttonHoverBgColor = COMMON_COLORS.primaryHover,
+  titleColor = COMMON_COLORS.black,
 }: LatestSocialsProps) {
+  const router = useRouter();
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+
   return (
     <section className="py-16 px-45 ">
       <div className="px-3 relative z-10">
@@ -75,15 +81,18 @@ export default function LatestSocials({
                 </header>
 
                 <div className="mt-auto px-30">
-                  <button onClick={() => {
+                  <button
+                    onClick={() => {
                       if (item.href) {
-                        window.location.href = item.href;
+                        router.push(item.href);
                       }
                     }}
                     className="text-[1.4rem] text-white rounded-full cursor-pointer py-2 font-medium transition-colors w-full"
-                    style={{ backgroundColor: buttonBgColor }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = buttonHoverBgColor}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = buttonBgColor}
+                    style={{
+                      backgroundColor: hoveredId === item.id ? buttonHoverBgColor : buttonBgColor
+                    }}
+                    onMouseEnter={() => setHoveredId(item.id ?? null)}
+                    onMouseLeave={() => setHoveredId(null)}
                   >
                     Visit
                   </button>

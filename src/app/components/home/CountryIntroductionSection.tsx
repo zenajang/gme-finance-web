@@ -1,6 +1,8 @@
 'use client';
 
 import Image from "next/image";
+import { useState } from "react";
+import { COMMON_COLORS } from "@/constants/colors";
 
 interface CountryIntroductionSectionProps {
   imageSrc?: string;
@@ -17,10 +19,11 @@ export default function CountryIntroductionSection({
   title = "GME FINANCE",
   description = "Trusted & Legal Overseas Loans",
   buttonText = "Apply Now",
-  buttonTextColor = "text-red-500",
-  buttonBgColor = "bg-white",
-  buttonHoverBgColor = "hover:bg-red-50",
+  buttonTextColor = COMMON_COLORS.primaryText,
+  buttonBgColor = COMMON_COLORS.white,
+  buttonHoverBgColor = COMMON_COLORS.primaryLight,
 }: CountryIntroductionSectionProps) {
+  const [isHovered, setIsHovered] = useState(false);
   return (
      <section className="relative h-[995px]">
         <div className="absolute inset-0">
@@ -41,27 +44,18 @@ export default function CountryIntroductionSection({
           <p className="text-2xl mb-8">{description}</p>
           <div className="text-left mt-20">
             <button
-              className={`text-[1.6rem] ${buttonTextColor.startsWith('#') ? '' : buttonTextColor} rounded-full cursor-pointer px-30 py-4 font-medium transition-colors ${buttonBgColor.startsWith('#') ? '' : buttonBgColor} ${!buttonHoverBgColor.startsWith('#') ? buttonHoverBgColor : ''}`}
+              className="text-[1.6rem] rounded-full cursor-pointer px-30 py-4 font-medium transition-colors"
               style={{
-                ...(buttonBgColor.startsWith('#') ? { backgroundColor: buttonBgColor } : {}),
-                ...(buttonTextColor.startsWith('#') ? { color: buttonTextColor } : {})
+                backgroundColor: isHovered ? buttonHoverBgColor : buttonBgColor,
+                color: buttonTextColor
               }}
-              onMouseEnter={(e) => {
-                if (buttonHoverBgColor.startsWith('#')) {
-                  e.currentTarget.style.backgroundColor = buttonHoverBgColor;
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (buttonHoverBgColor.startsWith('#')) {
-                  e.currentTarget.style.backgroundColor = buttonBgColor.startsWith('#') ? buttonBgColor : 'white';
-                }
-              }}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
             >
               {buttonText}
             </button>
           </div>
         </div>
-
       </section>
   );
 }

@@ -240,7 +240,7 @@ export default function FindBranchSection() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-5xl font-bold mb-4 text-black-600">{selectedBranch.name}</h2>
-              <p className="text-xl mb-60 font-medium mb-4 text-red-600">{selectedBranch.subtitle}</p>
+              <p className="text-xl font-medium mb-60 text-red-600">{selectedBranch.subtitle}</p>
               <div className="space-y-2 text-sm">
                 <p className="font-medium text-lg">
                 <Image

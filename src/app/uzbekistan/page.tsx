@@ -85,7 +85,7 @@ export default function UzbekistanPage() {
      <CountryIntroductionSection
       imageSrc="/images/uzbekistan/background.webp"
       title="Uzbekistan Team"
-      buttonTextColor="text-teal-600"
+      buttonTextColor={colors.primary}
       buttonBgColor="#FFFFFF"
       buttonHoverBgColor={colors.introHover}
     />
@@ -121,7 +121,7 @@ export default function UzbekistanPage() {
                  <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
                    <iframe
                      className="w-full h-full rounded-xl"
-                     src="https://www.youtube.com/embed/xYKDgKik2iM"
+                     src="https://www.youtube.com/embed/mX9zCgpqohU"
                      title="Uzbekistan Team Video"
                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                      allowFullScreen

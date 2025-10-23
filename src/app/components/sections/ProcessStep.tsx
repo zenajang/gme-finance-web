@@ -5,6 +5,8 @@ type ProcessItem = {
   content: string;
   icon: string;
   name: string;
+  iconWidth?: number;
+  iconHeight?: number;
 };
 
 interface ProcessStepProps {
@@ -18,30 +20,40 @@ const PROCESS: ProcessItem[] = [
     content: "Download GME app on google play and app store Register and apply loan",
     icon: '/images/icons/app.svg',
     name: 'APPLY THROUGH GME APP',
+    iconWidth: 68,
+    iconHeight: 68,
   },
   {
     id: 'requirement submission',
     content: 'Fill up your information and submit required docs',
     icon: '/images/icons/submission.svg',
-    name:'REQUIREMENT SUBMISSION'
+    name:'REQUIREMENT SUBMISSION',
+    iconWidth: 84,
+    iconHeight: 84,
   },
   {
     id: 'verification',
     content: 'Our staff will verify your documents and will check your credit standing',
     icon: '/images/icons/verification.svg',
-    name :'VERIFICATION'
+    name :'VERIFICATION',
+    iconWidth: 130,
+    iconHeight: 130,
   },
   {
     id: 'approval',
     content: 'Once approved, contract signing will be digital',
     icon: '/images/icons/approval.svg',
-    name:'APPROVAL'
+    name:'APPROVAL',
+    iconWidth: 100,
+    iconHeight: 100,
   },
   {
     id: 'disbursements',
     content: 'After contract signing we will deposit the loan amount to your bank account',
     icon: '/images/icons/disbursements.svg',
-    name :'DISBURSEMENTS'
+    name :'DISBURSEMENTS',
+    iconWidth: 100,
+    iconHeight: 100,
   },
 ];
 
@@ -78,8 +90,8 @@ export default function ProcessStep({ subtitleColor = "#EF4444", titleColor = "#
                   <Image
                     src={item.icon}
                     alt={item.name}
-                    width={84}
-                    height={84}
+                    width={item.iconWidth || 84}
+                    height={item.iconHeight || 84}
                     className="object-contain"
                   />
                 </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { COMMON_COLORS } from '@/constants/colors';
 
 interface EMICalculatorSectionProps {
   buttonBgColor?: string;
@@ -9,15 +10,16 @@ interface EMICalculatorSectionProps {
 }
 
 export default function EMICalculatorSection({
-  buttonBgColor = '#DC2626',
-  buttonHoverBgColor = '#B91C1C',
-  titleColor = '#1F2937'
+  buttonBgColor = COMMON_COLORS.primary,
+  buttonHoverBgColor = COMMON_COLORS.primaryHover,
+  titleColor = COMMON_COLORS.grayDark
 }: EMICalculatorSectionProps) {
   const [loanAmount, setLoanAmount] = useState<string>('');
   const [interestRate, setInterestRate] = useState<string>('');
   const [term, setTerm] = useState<string>('');
   const [monthlyPayment, setMonthlyPayment] = useState<string>('');
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const calculateEMI = () => {
     // Input validation
@@ -136,15 +138,13 @@ export default function EMICalculatorSection({
                 onClick={calculateEMI}
                 disabled={!loanAmount || !interestRate || !term || isCalculating}
                 className="px-12 text-white font-semibold py-3 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg"
-                style={{ backgroundColor: buttonBgColor }}
-                onMouseEnter={(e) => {
-                  if (!isCalculating && loanAmount && interestRate && term) {
-                    e.currentTarget.style.backgroundColor = buttonHoverBgColor;
-                  }
+                style={{
+                  backgroundColor: isHovered && !isCalculating && loanAmount && interestRate && term
+                    ? buttonHoverBgColor
+                    : buttonBgColor
                 }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = buttonBgColor;
-                }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
               >
                 {isCalculating ? (
                   <span className="flex items-center justify-center">
