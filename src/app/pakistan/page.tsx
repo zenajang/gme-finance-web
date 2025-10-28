@@ -79,7 +79,7 @@ const PAKISTAN_TEAMS: Teams[] = [
 ];
 
 export default function PakistanPage() {
-  const colors = getColorScheme('paksitan')
+  const colors = getColorScheme('pakistan')
 
   return (
     <div>

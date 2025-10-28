@@ -86,7 +86,6 @@ export default function UzbekistanPage() {
       imageSrc="/images/uzbekistan/background.webp"
       title="Uzbekistan Team"
       buttonTextColor={colors.primary}
-      buttonBgColor="#FFFFFF"
       buttonHoverBgColor={colors.introHover}
     />
     <div

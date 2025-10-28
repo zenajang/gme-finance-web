@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Finance",
-  description: "GME Finance 이벤트 투표 애플리케이션",
+  description: "GME Finance",
 };
 
 export default async function RootLayout({

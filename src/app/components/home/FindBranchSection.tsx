@@ -122,7 +122,7 @@ const BRANCHES: BranchInfo[] = [
     name: 'Itaewon Branch',
     subtitle: 'Itaewon Finance Center',
     address: 'Itaewon-ro, Yongsan-gu, Seoul',
-    phone: '?',
+    phone: '-',
     hours: 'Hours: Daily 10:00AM ~ 7:00PM'
   },
   {
@@ -173,28 +173,45 @@ export default function FindBranchSection() {
     }
   };
 
-  // Helper function to get pin position for each branch on the map
-  const getBranchPinPosition = (branchId: string): { top: string; left: string } => {
-    const positions: Record<string, { top: string; left: string }> = {
-      ansan: { top: '27%', left: '27%' },
-      bupyeong: { top: '20%', left: '23%' },
-      dongdaemun: { top: '20%', left: '29%' },
-      'songu-ri': { top: '12%', left: '33%' },
-      mongolia: { top: '19%', left: '28%' },
-      hwaseong: { top: '30%', left: '27%' },
-      suwon: { top: '28%', left: '30%' },
-      daerim: { top: '21%', left: '27%' },
-      itaewon: { top: '21%', left: '30%' },
-      daegu: { top: '55%', left: '56%' },
-      gimhae: { top: '65%', left: '60.5%' },
-      gwangju: { top: '67%', left: '27%' },
-    };
-    return positions[branchId] || { top: '50%', left: '50%' };
+// Helper function to get pin position for each branch on the map
+const getBranchPinPosition = (branchId: string, isMobile: boolean = false): { top: string; left: string } => {
+  const mobilePositions: Record<string, { top: string; left: string }> = {
+    ansan: { top: '27%', left: '37%' },
+    bupyeong: { top: '20%', left: '32%' },
+    dongdaemun: { top: '20%', left: '40%' },
+    'songu-ri': { top: '11%', left: '45%' },
+    mongolia: { top: '19%', left: '39%' },
+    hwaseong: { top: '30%', left: '38%' },
+    suwon: { top: '28%', left: '40%' },
+    daerim: { top: '21%', left: '38%' },
+    itaewon: { top: '20%', left: '41%' },
+    daegu: { top: '55%', left: '73%' },
+    gimhae: { top: '66%', left: '79%' },
+    gwangju: { top: '67%', left: '37%' },
   };
+
+  const desktopPositions: Record<string, { top: string; left: string }> = {
+    ansan: { top: '27%', left: '27%' },
+    bupyeong: { top: '20%', left: '23%' },
+    dongdaemun: { top: '20%', left: '29%' },
+    'songu-ri': { top: '12%', left: '33%' },
+    mongolia: { top: '19%', left: '28%' },
+    hwaseong: { top: '30%', left: '27%' },
+    suwon: { top: '28%', left: '30%' },
+    daerim: { top: '21%', left: '27%' },
+    itaewon: { top: '21%', left: '30%' },
+    daegu: { top: '55%', left: '56%' },
+    gimhae: { top: '65%', left: '60.5%' },
+    gwangju: { top: '67%', left: '27%' },
+  };
+
+  const positions = isMobile ? mobilePositions : desktopPositions;
+  return positions[branchId] || { top: '50%', left: '50%' };
+};
 
   return (
     <div className="relative">
-      <section className="relative h-70 bg-gray-900">
+      <section className="relative h-45 md:h-70 lg:h-70 bg-gray-900">
         <Image
           src="/images/branch_bg.jpg"
           alt="branch background"
@@ -202,8 +219,8 @@ export default function FindBranchSection() {
           className="object-cover opacity-50"
         />
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-white">
-          <h2 className="text-5xl font-bold text-white text-center mb-2">Find a branch</h2>
-          <p className="text-xl text-center text-white mb-10">Visit a nearby GME Finance branch for a consultation!</p>
+          <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-white text-center mb-2">Find a branch</h2>
+          <p className="text-xs md:text-xl lg:text-xl text-center text-white mb-5 md:mb-10 lg:mb-10">Visit a nearby GME Finance branch for a consultation!</p>
           <div className="relative max-w-2xl w-full">
             <input
               type="text"
@@ -211,13 +228,13 @@ export default function FindBranchSection() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyPress={handleKeyPress}
-              className="w-full px-4 py-3 pr-14 rounded-3xl text-black bg-white border border-gray-300"
+              className="w-full px-3 py-2 md:px-4 md:py-3 lg:px-4 lg:py-3 pr-14 rounded-3xl text-body text-black bg-white border border-gray-300"
             />
             <button
               onClick={handleSearch}
               className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-red-600 rounded-3xl hover:bg-red-700 transition-colors"
             >
-              <img src="/images/icons/search.svg" alt="search" className="w-5 h-5"/>
+              <img src="/images/icons/search.svg" alt="search" className="w-3 h-3 md:w-5 md:h-5 lg:w-5 lg:h-5"/>
             </button>
           </div>
         </div>
@@ -225,8 +242,8 @@ export default function FindBranchSection() {
 
       {/* Branch Info */}
       <section className="relative py-10 overflow-hidden">
-        {/* Earth Background */}
-        <div className="absolute left-0 bottom-0 w-1/2">
+        {/* Earth Background - Desktop only */}
+        <div className="hidden md:block absolute left-0 bottom-0 w-1/2">
           <Image
             src="/images/earth.svg"
             alt="earth background"
@@ -237,10 +254,119 @@ export default function FindBranchSection() {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          {/* Mobile Layout */}
+          <div className="md:hidden">
+            {/* Centered Title and Subtitle */}
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold mb-2 text-black-600">{selectedBranch.name}</h2>
+              <p className="text-base font-medium text-red-600">{selectedBranch.subtitle}</p>
+            </div>
+
+          <div className="relative mb-6 -mx-4">
+            <div className="relative w-full overflow-hidden">
+            <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
+              <Image
+                src="/images/earth.svg"
+                alt="earth background"
+                width={800}
+                height={800}
+                className="object-contain w-full"
+                style={{ 
+                  transform: 'scale(1.4)',
+                  marginLeft:'30px'
+                }}
+              />
+            </div>
+              <div className="relative z-10 flex justify-center px-4">
+                <Image
+                  src="/images/map.svg"
+                  alt="Branch location"
+                  width={280}
+                  height={280}
+                  className="object-cover w-full"
+                />
+              </div>
+                {/* All branch pins */}
+                {BRANCHES.map((branch) => {
+                  const position = getBranchPinPosition(branch.id,true);
+                  const isSelected = selectedBranch.id === branch.id;
+
+                  return (
+                    <div
+                      key={branch.id}
+                      className="absolute cursor-pointer hover:scale-110 transition-transform z-11"
+                      style={{
+                        top: position.top,
+                        left: position.left,
+                        transform: 'translate(-50%, -50%)',
+                      }}
+                      onClick={() => setSelectedBranch(branch)}
+                      title={branch.name}
+                    >
+                      <Image
+                        src={isSelected ? '/images/icons/pin_red.svg' : '/images/icons/pin_black.svg'}
+                        alt={`${branch.name} pin`}
+                        width={18}
+                        height={18}
+                        className={isSelected ? 'animate-pulse' : ''}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Branch Info Cards */}
+            <div className="space-y-3">
+              {/* Address Card */}
+              <div className="bg-white rounded-lg shadow-md p-4 border border-gray-100">
+                <div className="flex items-start">
+                  <Image
+                    src="/images/icons/pin_red.svg"
+                    alt="location"
+                    width={12}
+                    height={16}
+                    className="mt-1 mr-3 flex-shrink-0"
+                  />
+                  <p className="font-medium text-base text-[0.65rem] text-gray-800">{selectedBranch.address}</p>
+                </div>
+              </div>
+
+              {/* Phone Card */}
+              <div className="bg-white rounded-lg shadow-md p-4 border border-gray-100">
+                <div className="flex items-center">
+                  <Image
+                    src="/images/icons/phone.svg"
+                    alt="phone"
+                    width={12}
+                    height={16}
+                    className="mr-3 flex-shrink-0"
+                  />
+                  <p className="font-medium text-base text-[0.65rem] text-gray-800">{selectedBranch.phone}</p>
+                </div>
+              </div>
+
+              {/* Hours Card */}
+              <div className="bg-white rounded-lg shadow-md p-4 border border-gray-100">
+                <div className="flex items-center">
+                  <Image
+                    src="/images/icons/time.svg"
+                    alt="time"
+                    width={12}
+                    height={16}
+                    className="mr-3 flex-shrink-0"
+                  />
+                  <p className="font-medium text-base text-[0.65rem] text-gray-800">{selectedBranch.hours}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Layout - Keep Original */}
+          <div className="hidden md:grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-5xl font-bold mb-4 text-black-600">{selectedBranch.name}</h2>
-              <p className="text-xl font-medium mb-60 text-red-600">{selectedBranch.subtitle}</p>
+              <h2 className="text-xl md:text-5xl lg:text-5xl font-bold mb-4 text-black-600">{selectedBranch.name}</h2>
+              <p className="text-sm md:text-xl lg:text-xl font-medium mb-60 text-red-600">{selectedBranch.subtitle}</p>
               <div className="space-y-2 text-sm">
                 <p className="font-medium text-lg">
                 <Image
@@ -249,7 +375,7 @@ export default function FindBranchSection() {
                 width={20}
                 height={20}
                 className="inline-block mr-2"
-                /> 
+                />
                 {selectedBranch.address}</p>
                 <p className="font-medium text-lg">
                 <Image
@@ -258,7 +384,7 @@ export default function FindBranchSection() {
                 width={20}
                 height={20}
                 className="inline-block mr-2"
-                /> 
+                />
                 {selectedBranch.phone}
                 </p>
                 <p className="font-medium text-lg">
@@ -268,7 +394,7 @@ export default function FindBranchSection() {
                 width={20}
                 height={20}
                 className="inline-block mr-2"
-                /> 
+                />
                  {selectedBranch.hours}</p>
               </div>
             </div>
@@ -283,7 +409,7 @@ export default function FindBranchSection() {
                 />
                 {/* All branch pins */}
                 {BRANCHES.map((branch) => {
-                  const position = getBranchPinPosition(branch.id);
+                  const position = getBranchPinPosition(branch.id,false);
                   const isSelected = selectedBranch.id === branch.id;
 
                   return (

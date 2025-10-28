@@ -53,7 +53,6 @@ const BANGLADESH_TEAMS: Teams[] = [
     id: 'Name2',
     image: '/images/introduction.jpg',
     name: 'Name2',
-
   },
   {
     id: 'Name3',
@@ -87,7 +86,7 @@ export default function BangladeshPage() {
       imageSrc="/images/bangladesh/background.webp"
       title="Bangladesh Team"
       buttonHoverBgColor={colors.introHover}
-      buttonTextColor="text-green-700"
+      buttonTextColor={colors.primary}
     />
     <div
       className="bg-cover bg-center bg-no-repeat overflow-hidden"

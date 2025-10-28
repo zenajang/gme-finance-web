@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { COMMON_COLORS } from "@/constants/colors";
 
 interface LoanDetail {
   label: string;
@@ -57,7 +58,7 @@ export default function LoanDetailSection({ backgroundImage = '/images/default-b
       className="py-16 px-4 md:px-8 lg:px-40 bg-cover bg-center bg-no-repeat relative min-h-screen flex items-center justify-center"
       style={{
         backgroundImage: `url('${backgroundImage}')`,
-        backgroundColor: '#1a1a2e'
+        backgroundColor: COMMON_COLORS.navyDark
       }}
     >
     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"/>

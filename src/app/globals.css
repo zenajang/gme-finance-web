@@ -48,6 +48,27 @@ body {
 @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 .animate-marquee { display:inline-block; padding-left:50%; animation:marquee 18s linear infinite; will-change:transform; }
 
+/* 반응형 텍스트 패턴 */
+.text-heading {
+  @apply text-xl md:text-4xl lg:text-5xl font-bold;
+}
+
+.text-subheading {
+  @apply text-sm md:text-xl lg:text-xl font-medium;
+}
+
+.text-body {
+  @apply text-sm md:text-lg lg:text-lg;
+}
+
+.text-small {
+  @apply text-xs md:text-sm lg:text-sm;
+}
+
+.text-input {
+  @apply text-xs md:text-lg lg:text-lg;
+}
+
 .country-swiper {
   padding: 30px 0px 40px;
   overflow: visible;
@@ -114,5 +135,51 @@ body {
   .outline-text {
     -webkit-text-stroke: 1px #dc2626;
     text-stroke: 1px #dc2626;
+  }
+}
+
+/* Customer Feedback Swiper 스타일 */
+.customer-feedback-swiper {
+  padding-bottom: 40px !important;
+  overflow: visible;
+}
+
+.customer-feedback-swiper .swiper-pagination {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.customer-feedback-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #d1d5db;
+  opacity: 1;
+  margin: 0 4px !important;
+}
+
+.customer-feedback-swiper .swiper-pagination-bullet-active {
+  background: #ef4444; /* red-500 */
+  width: 24px;
+  border-radius: 5px;
+}
+
+/* Country Section Swiper - 모바일에서 국기 크기 효과 */
+@media (max-width: 767px) {
+  .country-swiper .flag-ring {
+    transition: transform 0.35s ease;
+  }
+  .country-swiper .swiper-slide-active .flag-ring {
+    transform: scale(1.2);
+    z-index: 10;
+  }
+  .country-swiper .swiper-slide {
+    transition: transform 0.35s ease;
+  }
+  .country-swiper .swiper-slide-prev .flag-ring,
+  .country-swiper .swiper-slide-next .flag-ring {
+    transform: scale(0.8);
+    opacity: 0.9;
   }
 }

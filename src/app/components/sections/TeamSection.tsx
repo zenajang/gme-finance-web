@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { useState } from 'react';
 import type { Swiper as SwiperType } from 'swiper';
+import { COMMON_COLORS } from "@/constants/colors";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -25,8 +26,8 @@ interface TeamsProps {
 export default function TeamSection({
     teams,
     title='',
-    nameBgColor='#DF2121',
-    titleColor='#000000'
+    nameBgColor=COMMON_COLORS.primary,
+    titleColor=COMMON_COLORS.black
 }:TeamsProps) {
   const showNavigation = teams.length > 4;
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
