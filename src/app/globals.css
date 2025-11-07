@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container { @apply mx-auto max-w-7xl; }
+
+.h2 { @apply text-3xl md:text-4xl font-extrabold; }
+
+.card { @apply bg-white rounded-xl shadow-md border border-gray-100; }
+.btn-primary { @apply inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors; }
+.btn-outline { @apply inline-flex items-center justify-center gap-2 border px-4 py-2 rounded-lg hover:bg-gray-50; }
+.btn-ghost   { @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg; }
+.input { @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500; }
+
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.animate-marquee { display:inline-block; padding-left:50%; animation:marquee 18s linear infinite; will-change:transform; }
+
+/* 반응형 텍스트 패턴 */
+.text-heading {
+  @apply text-xl md:text-4xl lg:text-5xl font-bold;
+}
+
+.text-subheading {
+  @apply text-sm md:text-2xl lg:text-3xl font-medium;
+}
+
+.text-label {
+  @apply text-sm md:text-xl lg:text-xl font-medium;
+}
+
+.text-body {
+  @apply text-sm md:text-lg lg:text-lg;
+}
+
+.text-small {
+  @apply text-xs md:text-sm lg:text-sm;
+}
+
+.text-input {
+  @apply text-xs md:text-sm lg:text-lg;
+}
+
+.text-tag {
+  @apply text-xs md:text-sm lg:text-[1rem] text-gray-500;
+}
+
+.text-button {
+  @apply text-xs md:text-lg lg:text-[1.4rem] font-medium;
+}
+
+.country-swiper {
+  padding: 30px 0px 40px;
+  overflow: visible;
+}
+
+.country-swiper .swiper-wrapper {
+  overflow: visible;
+}
+
+.country-swiper .swiper-slide {
+  overflow: visible;
+}
+
+.country-swiper .swiper-pagination {
+  position: relative;
+  bottom: 0;
+}
+
+.country-swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #d1d5db;
+  opacity: 1;
+}
+
+.country-swiper .swiper-pagination-bullet-active {
+  background: #3b82f6;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+/* 아웃라인 텍스트 스타일 */
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 2px #dc2626; /* red-600 */
+  text-stroke: 2px #dc2626;
+}
+
+@media (max-width: 768px) {
+  .outline-text {
+    -webkit-text-stroke: 1px #dc2626;
+    text-stroke: 1px #dc2626;
+  }
+}
+
+.customer-feedback-swiper .swiper-pagination {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.customer-feedback-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #d1d5db;
+  opacity: 1;
+  margin: 0 4px !important;
+}
+
+.customer-feedback-swiper .swiper-pagination-bullet-active {
+  background: #ef4444; /* red-500 */
+  width: 24px;
+  border-radius: 5px;
+}
+
+/* Country Section Swiper - 모바일에서 국기 크기 효과 */
+@media (max-width: 767px) {
+  .country-swiper .flag-ring {
+    transition: transform 0.35s ease;
+  }
+  .country-swiper .swiper-slide-active .flag-ring {
+    transform: scale(1.2);
+    z-index: 10;
+  }
+  .country-swiper .swiper-slide {
+    transition: transform 0.35s ease;
+  }
+  .country-swiper .swiper-slide-prev .flag-ring,
+  .country-swiper .swiper-slide-next .flag-ring {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+}
