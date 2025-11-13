@@ -45,6 +45,23 @@ body {
 .btn-ghost   { @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg; }
 .input { @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500; }
 
+/* 모든 버튼에 적당히 둥근 사각형 스타일 통일 적용 */
+button {
+  @apply rounded-2xl transition-colors cursor-pointer;
+}
+
+/* Select 화살표 커스터마이징 */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 2em 2em;
+  padding-right: 3rem;
+}
+
 @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 .animate-marquee { display:inline-block; padding-left:50%; animation:marquee 18s linear infinite; will-change:transform; }
 

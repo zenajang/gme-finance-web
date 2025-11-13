@@ -9,6 +9,8 @@ import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getGradient } from "@/constants/colors";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const RUSSIA_SOCIALS: SocialsItem[] = [
   {
@@ -85,74 +87,53 @@ export default function RussiaPage() {
      <CountryIntroductionSection
       imageSrc="/images/russia/background.webp"
       title="Russia Team"
+      buttonTextColor="#3A57B4"
+      buttonHoverBgColor="#e1e6f5ff"
     />
     <div
       className="bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ background: getGradient('russia')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-repeat bg-top top-0 w-full h-300" style={{ backgroundImage: "url('/images/russia/snow_bg.svg')" }} />
+      <div className="absolute bg-repeat bg-top top-0 w-full h-130" style={{ backgroundImage: "url('/images/russia/snow_bg_b.svg')" }} />
       <LatestSocials 
-        socials={RUSSIA_SOCIALS}/>
+        socials={RUSSIA_SOCIALS}
+        buttonBgColor="#3A57B4"
+        buttonHoverBgColor="#ccd7f8ff"
+        />
       <TeamSection
         teams={RUSSIA_TEAMS}
         title='CIS'
+        nameBgColor="#3A57B4"
       />
     </section>
-   <section className="relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10 mb-20">
-        <h2 className="text-5xl font-bold text-center mb-10">Meet Our CIS Team</h2>
-        <p
-          className="text-xl text-center mb-10 font-medium text-red-600"
-        >
-          The People Behind GME Finance
-        </p>
-        <div className="relative">
-          <Image
-            src="/images/russia/castle_2.svg"
-            alt="Left castle"
-            width={500}
-            height={500}
-            className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-            style={{ left: '-200px', marginTop:'-95px'}}
-            priority
-          />
-          <Image
-            src="/images/russia/castle_1.svg"
-            alt="Right castle"
-            width={350}
-            height={350}
-            className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-            style={{ right: '-180px', marginTop:'-65px'}}
-            priority
-          />
-          <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
-            <iframe
-              className="w-full h-full rounded-xl"
-              src="https://www.youtube.com/embed/mX9zCgpqohU"
-              title="Myanmar Team Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </div>
-      </div>
-    </section> 
+      <TeamVideoSection
+        title="Meet Our CIS Team"
+        subtitleColor="#3A57B4"
+        videoUrl="https://www.youtube.com/embed/mX9zCgpqohU"
+        leftImageSrc="/images/russia/castle_l.svg"
+        leftImageAlt="Left castle"
+        leftImageWidth={380}
+        leftImageHeight={380}
+        leftImageStyle={{ left: '-320px', marginTop:'60px', zIndex: 1 }}
+        rightImageSrc="/images/russia/castle_r.svg"
+        rightImageAlt="Right castle"
+        rightImageWidth={350}
+        rightImageHeight={350}
+        rightImageStyle={{ right: '-290px', marginTop:'10px', zIndex: 1 }}
+      />
         <LoanTypesSection/>
       <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat bg-bottom bottom-0 w-full h-full" style={{ backgroundImage: "url('/images/russia/snow_bg.svg')" }} />
-      <ProcessStep/>
+      <div className="absolute bg-no-repeat bg-bottom bottom-0 w-full h-135" style={{ backgroundImage: "url('/images/russia/snow_bg.svg')" }} />
+      <ProcessStep subtitleColor="#3A57B4"/>
       </section>
     </div>
     <LoanDetailSection backgroundImage="/images/russia/loan_detail_bg.webp"/>
-      <div style={{ background: getGradient('russia') }}>
-        <div className="absolute bg-no-repeat top-475 bg-right w-full h-full" style={{ backgroundImage: "url('/images/russia/snow_bg.svg')"}} />
+      <div style={{ background: getGradient('russia', true) }}>
         <section className="bg-no-repeat relative overflow-hidden">
-                    
-          <div className="absolute bg-no-repeat bg-right bottom-0 right-0 w-full h-200" style={{ backgroundImage: "url('/images/russia/garland_r.svg')", backgroundSize: '100% auto', zIndex:2 }} />
-          <div className="absolute bg-no-repeat bg-left top-160 left-0 w-full h-200" style={{ backgroundImage: "url('/images/russia/garland_l.svg')", backgroundSize: '100% auto', zIndex:2 }} />
+          <GarlandDecoration country="russia" variant="compact" />
           <EMICalculatorSection/>
-          <div className="mb-110">
+          <div className="mb-50">
           <LoanApplicationForm/>
           </div>
         </section>

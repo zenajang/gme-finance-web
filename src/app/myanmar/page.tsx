@@ -1,5 +1,4 @@
 
-import Image from "next/image";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -9,6 +8,8 @@ import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const MYANMAR_SOCIALS: SocialsItem[] = [
   {
@@ -95,7 +96,7 @@ export default function MyanmarPage() {
       style={{ backgroundImage: "url('/images/myanmar/section_bg.svg')" }}
     >
     <section className="bg-no-repeat bg-cover bg-center relative overflow-hidden">
-      <div className="absolute bg-no-repeat bg-cover bg-center top-190 w-full h-330" style={{ backgroundImage: "url('/images/myanmar/wave_t.svg')" }} />
+      <div className="absolute bg-no-repeat bg-cover bg-center top-0 w-full h-330" style={{ backgroundImage: "url('/images/myanmar/wave_t.svg')" }} />
       <LatestSocials 
         socials={MYANMAR_SOCIALS}
         buttonBgColor={colors.primary}
@@ -108,57 +109,33 @@ export default function MyanmarPage() {
       />
     </section>
     <div style={{ background:getGradient('myanmar') }}>
-      <section className="relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10 mb-20">
-          <h2 className="text-heading text-center mb-10">Meet Our Myanmar Team</h2>
-          <p
-            className="text-subheading text-center mb-10"
-            style={{ color: colors.primary }}
-          >
-            The People Behind GME Finance
-          </p>
-          <div className="relative">
-            <Image
-              src="/images/myanmar/castle_l.svg"
-              alt="Left castle"
-              width={250}
-              height={250}
-              className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-              style={{ left: '-70px', marginTop:'84px', zIndex: 1 }}
-              priority
-            />
-            <Image
-              src="/images/myanmar/castle_r.svg"
-              alt="Right castle"
-              width={300}
-              height={300}
-              className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-              style={{ right: '-110px', marginTop:'102px', zIndex: 1 }}
-              priority
-            />
-            <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
-              <iframe
-                className="w-full h-full rounded-xl"
-                src="https://www.youtube.com/embed/8GcPTQb2iog"
-                title="Myanmar Team Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <TeamVideoSection
+        title="Meet Our Myanmar Team"
+        subtitleColor={colors.primary}
+        videoUrl="https://www.youtube.com/embed/8GcPTQb2iog"
+        leftImageSrc="/images/myanmar/castle_l.svg"
+        leftImageAlt="Left castle"
+        leftImageWidth={380}
+        leftImageHeight={380}
+        leftImageStyle={{ left: '-320px', marginTop:'80px', zIndex: 1 }}
+        rightImageSrc="/images/myanmar/castle_r.svg"
+        rightImageAlt="Right castle"
+        rightImageWidth={380}
+        rightImageHeight={380}
+        rightImageStyle={{ right: '-320px', marginTop:'146px', zIndex: 1 }}
+      />
       <LoanTypesSection/>
       <div className="bg-no-repeat bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: "url('/images/myanmar/wave_b.svg')" }} />
       <ProcessStep subtitleColor={colors.primary}/>
     </div>
     </div>
     <LoanDetailSection backgroundImage="/images/myanmar/loan_detail_bg.webp" />
-      <section className="bg-no-repeat bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: "url('/images/myanmar/light.svg')" }}>
-        <div className="absolute bg-no-repeat bottom-0 right-0 w-full h-100 -mr-285 -mb-20" style={{ backgroundImage: "url('/images/myanmar/garland_r.svg')" }} />
+      <section className="bg-cover relative overflow-hidden" style={{ background:getGradient('myanmar')  }}>
         <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
-        <div className="absolute bg-no-repeat top-180 left-0 w-full h-100 mt-0" style={{ backgroundImage: "url('/images/myanmar/garland_l.svg')" }} />
+        <GarlandDecoration country="myanmar" />
+        <div className="mb-20 mt-10">
         <LoanApplicationForm buttonBgColor={colors.primary} subtitleColor={colors.primary}/>
+        </div>
       </section>
     </div>
   );

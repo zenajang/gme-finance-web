@@ -8,6 +8,8 @@ import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const INDONESIA_SOCIALS: SocialsItem[] = [
   {
@@ -90,7 +92,7 @@ export default function IndonesiaPage() {
       style={{ background: getGradient('indonesia')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
-    <div className="absolute bg-repeat bg-top top-0 w-full h-300" style={{ backgroundImage: "url('/images/indonesia/garland_u.svg')" }} />
+    <div className="absolute bg-repeat bg-top top-0 w-full h-300" style={{ backgroundImage: "url('/images/indonesia/garland_d.svg')",transform:'rotate(180deg)' }} />
       <LatestSocials 
         socials={INDONESIA_SOCIALS}/>
       <TeamSection
@@ -98,35 +100,22 @@ export default function IndonesiaPage() {
         title='Indonesia'
       />
     </section>
-     <section className="bg-no-repeat relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10 mb-20">
-        <h2 className="text-5xl font-bold text-center mb-10">Meet Our Indonesia Team</h2>
-        <p className="text-xl text-center mb-10 font-medium text-red-600">The People Behind GME Finance</p>
-          <div className="aspect-video w-full max-w-4xl mx-auto">
-            <iframe
-              className="w-full h-full rounded-xl"
-              src="https://www.youtube.com/embed/xYKDgKik2iM"
-              title="Indonesia Team Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-      </div>
-      </section>
+        <TeamVideoSection
+          title="Meet Our Indonesia Team"
+          videoUrl="https://www.youtube.com/embed/xYKDgKik2iM"
+        />
         <LoanTypesSection/>
       <section className="bg-no-repeat relative overflow-hidden">
         <ProcessStep/>
-      <div className="absolute bg-repeat bg-bottom bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/indonesia/garland_d.svg')" }} />
+      <div className="absolute bg-repeat bg-bottom bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/indonesia/garland_u.svg')",transform: 'rotate(180deg)' }} />
       </section>
     </div>
     <LoanDetailSection backgroundImage="/images/indonesia/loan_detail_bg.webp"/>
-      <div style={{ background: getGradient('indonesia') }}>
+      <div style={{ background: getGradient('indonesia',true) }}>
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat -bottom-80 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/indonesia/garland_l.svg')",zIndex:2 }} />
-          <div className="absolute bg-no-repeat top-115 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/indonesia/garland_r.svg')",zIndex:2 }} />
+          <GarlandDecoration country="indonesia" />
           <EMICalculatorSection/>
           <LoanApplicationForm/>
-          <div className="absolute bg-repeat bg-bottom bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/indonesia/garland_d.svg')" }} />
         </section>
       </div>
     </div>

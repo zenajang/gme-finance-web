@@ -8,6 +8,8 @@ import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const INDIA_SOCIALS: SocialsItem[] = [
   {
@@ -90,8 +92,7 @@ export default function IndiaPage() {
       style={{ background: getGradient('india')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat bg-top top-150 left-200 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_o_l.svg')" }} />
-      <div className="absolute bg-no-repeat bg-bottom bottom-0 -left-210 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_o_r.svg')" }} />
+      <div className="absolute bg-no-repeat bg-top -top-20 right-200 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_o_r.svg')" }} />
       <LatestSocials 
         socials={INDIA_SOCIALS}/>
       <TeamSection
@@ -99,32 +100,14 @@ export default function IndiaPage() {
         title='India'
       />
     </section>
-         <section className="relative overflow-hidden">
-             <div className="mx-auto relative z-10 mb-20">
-               <h2 className="text-5xl font-bold text-center mb-10">Meet Our India Team</h2>
-               <p
-                 className="text-xl text-center mb-10 font-medium text-red-600"
-               >
-                 The People Behind GME Finance
-               </p>
-               <div className="relative">
-                <div className="absolute bg-no-repeat bg-right -bottom-50 right-30 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_g_l.svg')" }} />
-                 <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
-                   <iframe
-                     className="w-full h-full rounded-xl"
-                     src="https://www.youtube.com/embed/mX9zCgpqohU"
-                     title="India Team Video"
-                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                     allowFullScreen
-                   />
-                 </div>
-               </div>
-             </div>
-           </section>
-        <LoanTypesSection/>
+     <TeamVideoSection
+      title="Meet Our India Team"
+      subtitleColor="#F94B00"
+      videoUrl="https://www.youtube.com/embed/mX9zCgpqohU"
+    />
+    <LoanTypesSection/>
       <section className="bg-no-repeat relative overflow-hidden">
-        <div className="absolute bg-no-repeat bg-left bottom-40 left-0 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_g_r.svg')" }} />
-        <div className="absolute bg-no-repeat bg-bottom -bottom-80 right-0 w-full h-full" style={{ backgroundImage: "url('/images/india/wave.svg')",backgroundSize: '110% auto' }} />
+        <div className="absolute bg-no-repeat bg-right -bottom-70 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_g_l.svg')" }} />  
         <ProcessStep/>
       </section>
     </div>
@@ -132,10 +115,11 @@ export default function IndiaPage() {
     <div className="bg-cover bg-center bg-no-repeat" style={{ background: getGradient('india')}}>
       <div className="bg-cover bg-no-repeat" style={{ backgroundImage: "url('/images/india/bg.svg')", backgroundPosition: 'center 50px' }}>
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/india/garland_r.svg')", zIndex:2 }} />
-          <div className="absolute bg-no-repeat top-100 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/india/garland_l.svg')", zIndex:2 }} />
+         <GarlandDecoration country="india" />
          <EMICalculatorSection/>
-         <LoanApplicationForm/>
+         <div className="mb-20 mt-10">
+          <LoanApplicationForm/>
+         </div>
         </section>
       </div>
       </div>

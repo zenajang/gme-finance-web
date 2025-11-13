@@ -8,9 +8,6 @@ import dynamicImport from 'next/dynamic';
 import '../components/admin/TiptapEditor.css';
 import type { User } from '@supabase/supabase-js';
 
-// Force dynamic rendering
-export const dynamic = 'force-dynamic';
-
 // Tiptap editor dynamic import (disable SSR)
 const TiptapEditor = dynamicImport(() => import('@/app/components/admin/TiptapEditor'), {
   ssr: false,
@@ -51,32 +48,53 @@ export default function AdminPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Handle browser back/forward button and page navigation
+  // 페이지가 히스토리에서 복원될 때마다 인증 체크
   useEffect(() => {
-    // popstate 이벤트로 뒤로가기/앞으로가기 감지
-    const handlePopState = (event: PopStateEvent) => {
-      event.preventDefault();
-      const shouldLogout = window.confirm('로그아웃 하시겠습니까?');
-
-      if (shouldLogout) {
-        // 로그아웃 후 홈으로 이동
-        const supabase = createClient();
-        supabase.auth.signOut().then(() => {
-          router.replace('/');
-        });
-      } else {
-        // 취소하면 현재 페이지 유지 (히스토리 복구)
-        window.history.pushState(null, '', '/admin');
+    const handlePageShow = (event: PageTransitionEvent) => {
+      // bfcache(Back/Forward Cache)에서 복원된 경우
+      if (event.persisted) {
+        checkUser();
       }
     };
 
-    // beforeunload 이벤트로 탭 닫기/새로고침 시 경고
-    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
-      event.preventDefault();
-      event.returnValue = ''; // Chrome에서 필요
+    const handleVisibilityChange = () => {
+      // 페이지가 다시 보일 때 인증 체크
+      if (document.visibilityState === 'visible') {
+        checkUser();
+      }
     };
 
-    // 히스토리 스택에 현재 상태 추가 (뒤로가기 감지용)
+    window.addEventListener('pageshow', handlePageShow);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener('pageshow', handlePageShow);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Handle browser back/forward button and page navigation
+  useEffect(() => {
+    const handlePopState = async () => {
+      // 즉시 히스토리를 다시 푸시해서 페이지 이동을 막음
+      window.history.pushState(null, '', '/admin');
+
+      const shouldLogout = window.confirm('로그아웃하고 페이지를 나가시겠습니까?');
+
+      if (shouldLogout) {
+        const supabase = createClient();
+        await supabase.auth.signOut();
+        window.location.replace('/');
+      }
+    };
+
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+
+    // 초기 히스토리 스택에 현재 페이지 추가
     window.history.pushState(null, '', '/admin');
 
     window.addEventListener('popstate', handlePopState);
@@ -117,7 +135,6 @@ export default function AdminPage() {
     router.replace('/login');
   }
 
-  // 새 글 작성 또는 수정
   async function handleSave() {
     if (!title || !content) {
       alert('Please enter both title and content.');
@@ -129,7 +146,6 @@ export default function AdminPage() {
     try {
       const supabase = createClient();
       if (isEditMode && editingPostId) {
-        // 수정 모드
         const { error } = await supabase
           .from('blog_posts')
           .update({
@@ -148,7 +164,6 @@ export default function AdminPage() {
           setActiveTab('list');
         }
       } else {
-        // 새 글 작성 모드
         const { error } = await supabase
           .from('blog_posts')
           .insert([
@@ -188,7 +203,6 @@ export default function AdminPage() {
       .eq('id', id);
 
     if (!error) {
-      // 삭제된 글이 현재 수정 중인 글이면 폼 초기화
       if (editingPostId === id) {
         resetForm();
       }
@@ -198,7 +212,6 @@ export default function AdminPage() {
     }
   }
 
-  // 수정 모드로 전환
   function handleEdit(post: BlogPost) {
     setTitle(post.title);
     setContent(post.content);

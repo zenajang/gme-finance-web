@@ -9,6 +9,8 @@ import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getGradient } from "@/constants/colors";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const VIETNAM_SOCIALS: SocialsItem[] = [
   {
@@ -81,7 +83,7 @@ const VIETNAM_TEAMS: Teams[] = [
 export default function VietnamPage() {
 
   return (
-    <div>
+    <div>      
      <CountryIntroductionSection
       imageSrc="/images/vietnam/background.webp"
       title="Vietnam Team"
@@ -91,68 +93,42 @@ export default function VietnamPage() {
       style={{ background: getGradient('vietnam')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat bg-left top-0 -left-80 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_y.svg')" }} />
       <LatestSocials 
         socials={VIETNAM_SOCIALS}/>
+        <div className="absolute bg-no-repeat -top-170 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_y.svg')",backgroundSize: '25% auto' }} />
       <TeamSection
         teams={VIETNAM_TEAMS}
         title='Vietnam'
       />
     </section>
-       <section className="relative overflow-hidden">
-             <div className="container mx-auto px-4 relative z-10 mb-20">
-               <h2 className="text-5xl font-bold text-center mb-10">Meet Our Vietnam Team</h2>
-               <p
-                 className="text-subheading text-center mb-10 font-medium text-red-600"
-               >
-                 The People Behind GME Finance
-               </p>
-               <div className="relative">
-                 <Image
-                   src="/images/vietnam/castle_1.svg"
-                   alt="Left castle"
-                   width={400}
-                   height={400}
-                   className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-                   style={{ left: '-200px', marginTop:'50px', zIndex: 1 }}
-                   priority
-                 />
-                 <Image
-                   src="/images/vietnam/castle_3.svg"
-                   alt="Right castle"
-                   width={730}
-                   height={730}
-                   className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-                   style={{ right: '-320px', marginTop:'65px', zIndex: 1 }}
-                   priority
-                 />
-                 <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
-                   <iframe
-                     className="w-full h-full rounded-xl"
-                     src="https://www.youtube.com/embed/DYpUQw-IIdM"
-                     title="Myanmar Team Video"
-                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                     allowFullScreen
-                   />
-                 </div>
-               </div>
-             </div>
-           </section>
-        <LoanTypesSection/>
+      <TeamVideoSection
+        title="Meet Our Vietnam Team"
+        videoUrl="https://www.youtube.com/embed/DYpUQw-IIdM"
+        leftImageSrc="/images/vietnam/castle_l.svg"
+        leftImageAlt="Left castle"
+        leftImageWidth={530}
+        leftImageHeight={530}
+        leftImageStyle={{ left: '-450px', marginTop:'60px', zIndex: 1 }}
+        rightImageSrc="/images/vietnam/castle_r.svg"
+        rightImageAlt="Right castle"
+        rightImageWidth={1000}
+        rightImageHeight={1000}
+        rightImageStyle={{ right: '-700px', marginTop:'68px', zIndex: 1 }}
+      />
+      <LoanTypesSection/>
       <section className="bg-no-repeat relative overflow-hidden">
-        <div className="absolute bg-no-repeat bg-right -bottom-100 -right-10 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')",backgroundSize: '40% auto' }} />        <ProcessStep/>
+        <div className="absolute bg-no-repeat bg-right -bottom-80 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')",backgroundSize: '20% auto' }} />        
+        <ProcessStep/>
       </section>
     </div>
     <LoanDetailSection backgroundImage="/images/vietnam/loan_detail_bg.webp"/>
       <div style={{ background:getGradient('vietnam') }}>
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-250" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')", zIndex:1,backgroundSize: '20% auto' }} />
-          <div className="absolute bg-no-repeat -top-200 bg-left -left-50 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')", zIndex:1,backgroundSize: '30% auto' }} />
-          <div className="absolute bg-no-repeat -bottom-70 bg-bottom -left-150 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_y.svg')", zIndex:1,backgroundSize: '30% auto' }} />
-          <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/vietnam/garland_r.svg')", zIndex:2 }} />
-          <div className="absolute bg-no-repeat top-115 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/vietnam/garland_l.svg')", zIndex:2 }} />
-         <EMICalculatorSection/>
+          <GarlandDecoration country="vietnam" />
+          <EMICalculatorSection/>
+          <div className="mb-20">
           <LoanApplicationForm/>
+          </div>
         </section>
       </div>
     </div>

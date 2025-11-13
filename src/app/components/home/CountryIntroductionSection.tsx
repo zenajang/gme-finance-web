@@ -44,7 +44,7 @@ export default function CountryIntroductionSection({
           <p className="text-md md:text-2xl lg:text-2xl mb-8">{description}</p>
           <div className="w-full text-center md:text-left mt-0 md:mt-20">
             <button
-              className="text-md md:text-[1.6rem] lg:text-[1.6rem] rounded-full cursor-pointer px-10 md:px-30 py-2 md:py-4 font-medium transition-colors"
+              className="text-md md:text-[1.6rem] lg:text-[1.6rem] px-10 md:px-30 py-2 md:py-4 font-medium transition-colors"
               style={{
                 backgroundColor: isHovered ? buttonHoverBgColor : buttonBgColor,
                 color: buttonTextColor

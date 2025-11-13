@@ -2,12 +2,14 @@
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
 import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getGradient } from "@/constants/colors";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const PHILIPPINES_SOCIALS: SocialsItem[] = [
   {
@@ -87,11 +89,9 @@ export default function PhilippinesPage() {
     />
     <div
       className="bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/philippines/section_bg.svg')" }}
+      style={{ background:getGradient('philippines')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat top-10 left-0 w-full h-100 -mt-20" style={{ backgroundImage: "url('/images/philippines/garland_u.svg')" }} />
-      <div className="absolute bg-no-repeat top-150 right-0 w-full h-100 -mr-215" style={{ backgroundImage: "url('/images/philippines/garland_d.svg')" }} />
       <LatestSocials 
         socials={PHILIPPINES_SOCIALS}/>
       <TeamSection
@@ -99,45 +99,31 @@ export default function PhilippinesPage() {
         title='Philippines'
       />
     </section>
-     <section className="bg-no-repeat relative overflow-hidden">
-      {/* 왼쪽 */}
-      <div className="absolute bg-no-repeat bg-contain top-50 right-0 w-180 h-30 mr-195" style={{ backgroundImage: "url('/images/philippines/star_y.svg')" }} />
-      <div className="absolute bg-no-repeat bg-contain top-90 right-0 w-180 h-16 mr-215" style={{ backgroundImage: "url('/images/philippines/star_b.svg')" }} />
-      <div className="absolute bg-no-repeat bg-contain bottom-50 right-0 w-180 h-15 mr-205" style={{ backgroundImage: "url('/images/philippines/star_r.svg')" }} />
-      <div className="absolute bg-no-repeat bg-contain bottom-20 right-0 w-180 h-20 mr-235" style={{ backgroundImage: "url('/images/philippines/star_y.svg')" }} />
-      {/* 오른쪽 */}
-      <div className="absolute bg-no-repeat bg-contain top-50 left-345 w-180 h-30 mr-195" style={{ backgroundImage: "url('/images/philippines/star_b.svg')" }} />
-      <div className="absolute bg-no-repeat bg-contain top-90 left-380 w-180 h-16 mr-215" style={{ backgroundImage: "url('/images/philippines/star_r.svg')" }} />
-      <div className="absolute bg-no-repeat bg-contain bottom-50 left-370 w-180 h-15 mr-205" style={{ backgroundImage: "url('/images/philippines/star_y.svg')" }} />
-      <div className="absolute bg-no-repeat bg-contain bottom-20 left-390 w-180 h-20 mr-235" style={{ backgroundImage: "url('/images/philippines/star_b.svg')" }} />
-      <div className="container mx-auto px-4 relative z-10 mb-20">
-        <h2 className="text-5xl font-bold text-center mb-10">Meet Our Philippines Team</h2>
-        <p className="text-xl text-center mb-10 font-medium text-red-600">The People Behind GME Finance</p>
-          <div className="aspect-video w-full max-w-4xl mx-auto">
-            <iframe
-              className="w-full h-full rounded-xl"
-              src="https://www.youtube.com/embed/xYKDgKik2iM"
-              title="Philippines Team Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-      </div>
-      </section>
-        <LoanTypesSection/>
+    <TeamVideoSection
+      title="Meet Our Philippines Team"
+      videoUrl="https://www.youtube.com/embed/xYKDgKik2iM"
+      leftImageSrc="/images/philippines/castle_l.svg"
+      leftImageAlt="Left castle"
+      leftImageWidth={600}
+      leftImageHeight={600}
+      leftImageStyle={{ left: '-550px', marginTop:'105px', zIndex: 1 }}
+      rightImageSrc="/images/philippines/castle_r.svg"
+      rightImageAlt="Right castle"
+      rightImageWidth={370}
+      rightImageHeight={370}
+      rightImageStyle={{ right: '-315px', marginTop:'-10px', zIndex: 1 }}
+    />
+      <LoanTypesSection/>
       <section className="bg-no-repeat relative overflow-hidden">
-        <div className="absolute bg-no-repeat top-40 left-0 w-full h-full -mt-20" style={{ backgroundImage: "url('/images/philippines/garland_3d.svg')" }} />
         <ProcessStep/>
       </section>
     </div>
     <LoanDetailSection backgroundImage="/images/philippines/loan_detail_bg.webp"/>
-      <div style={{ background: getGradient('philippines') }}>
+      <div style={{ background: getGradient('philippines', true) }}>
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat top-125 left-0 w-full h-full" style={{ backgroundImage: "url('/images/philippines/garland_l.svg')" }} />
-          <div className="absolute bg-no-repeat bottom-0 right-0 w-full h-100 -mr-285" style={{ backgroundImage: "url('/images/philippines/garland_r.svg')" }} />
-          <div className="absolute bg-no-repeat bg-contain top-190 right-200 w-500 h-370 -mr-275" style={{ backgroundImage: "url('/images/philippines/light.svg')" }} />
+          <GarlandDecoration country="philippines" />
           <EMICalculatorSection/>
-          <div className="mb-70 mt-20">
+          <div className="mb-20">
             <LoanApplicationForm/>
           </div>
         </section>

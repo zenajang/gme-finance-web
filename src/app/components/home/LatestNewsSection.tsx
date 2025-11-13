@@ -134,7 +134,7 @@ export default function LatestNewsSection() {
         </div>
 
         <div className="text-center mt-0 md:mt-15 lg:mt-15">
-          <button className="bg-white border-1 border-red-500 text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 rounded-full cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6  font-medium hover:bg-red-50 transition-colors">
+          <button className="bg-white border-1 border-red-500 text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6  font-medium hover:bg-red-50 transition-colors">
             See More
           </button>
         </div>

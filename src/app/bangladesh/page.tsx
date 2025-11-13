@@ -9,6 +9,8 @@ import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const BANGLADESH_SOCIALS: SocialsItem[] = [
   {
@@ -106,56 +108,28 @@ export default function BangladeshPage() {
         nameBgColor={colors.primary}
       />
     </section>
-       <section className="relative overflow-hidden">
-             <div className="container mx-auto px-4 relative z-10 mb-20">
-               <h2 className="text-5xl font-bold text-center mb-10">Meet Our Bangladesh Team</h2>
-               <p
-                 className="text-subheading text-center mb-10 font-medium"
-                 style={{ color:colors.primary }}
-               >
-                 The People Behind GME Finance
-               </p>
-               <div className="relative">
-                 <Image
-                   src="/images/bangladesh/tent.svg"
-                   alt="Left castle"
-                   width={500}
-                   height={500}
-                   className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-                   style={{ left: '-290px', marginTop:'70px', zIndex: 1 }}
-                   priority
-                 />
-                 <Image
-                   src="/images/bangladesh/castle.svg"
-                   alt="Right castle"
-                   width={500}
-                   height={500}
-                   className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-                   style={{ right: '-320px', marginTop:'110px', zIndex: 1 }}
-                   priority
-                 />
-                 <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
-                   <iframe
-                     className="w-full h-full rounded-xl"
-                     src="https://www.youtube.com/embed/FZ3Ck4bnLXY"
-                     title="Myanmar Team Video"
-                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                     allowFullScreen
-                   />
-                 </div>
-               </div>
-             </div>
-           </section>
-        <LoanTypesSection/>
-        <ProcessStep/>
+    <TeamVideoSection
+      title="Meet Our Bangladesh Team"
+      subtitleColor="green"
+      videoUrl="https://www.youtube.com/embed/FZ3Ck4bnLXY"
+      leftImageSrc="/images/bangladesh/castle_l.svg"
+      leftImageAlt="Left castle"
+      leftImageWidth={500}
+      leftImageHeight={500}
+      leftImageStyle={{ left: '-350px', marginTop:'140px', zIndex: 1 }}
+      rightImageSrc="/images/bangladesh/castle_r.svg"
+      rightImageAlt="Right castle"
+      rightImageWidth={500}
+      rightImageHeight={500}
+      rightImageStyle={{ right: '-390px', marginTop:'180px', zIndex: 1 }}
+    />
+    <LoanTypesSection/>
+    <ProcessStep/>
     </div>
     <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp"/>
       <div style={{ background: getGradient('bangladesh') }}>
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat -bottom-30 bg-left -left-40 w-full h-250" style={{ backgroundImage: "url('/images/bangladesh/tree.svg')", zIndex:1, transform: 'scaleX(-1)' }} />
-          <div className="absolute bg-no-repeat top-220 bg-left left-40 w-full h-250" style={{ backgroundImage: "url('/images/bangladesh/tree.svg')", zIndex:1 }} />
-          <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/bangladesh/garland_r.svg')", zIndex:2 }} />
-          <div className="absolute bg-no-repeat top-115 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/bangladesh/garland_l.svg')", zIndex:2 }} />
+          <GarlandDecoration country="bangladesh" />
           <EMICalculatorSection/>
           <LoanApplicationForm/>
         </section>

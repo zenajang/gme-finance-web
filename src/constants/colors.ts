@@ -44,7 +44,7 @@ export const COUNTRY_COLORS: Record<string, ColorScheme> = {
     primary: '#FF8000',
     hover: '#f5b372ff',
     subtitle: '#FF8000',
-    gradient1: '#FFFFFF',
+    gradient1: '#FFFCF5',
     gradient2: '#FFF0DB',
   },
 
@@ -77,10 +77,8 @@ export const COUNTRY_COLORS: Record<string, ColorScheme> = {
   philippines: {
     primary: '#EA0C1E',
     hover: '#FF6B78',
-    gradient1: '#FEF7DB',
-    gradient2: '#FAE5EB',
-    gradient3: '#FCFEFE',
-    gradient4: '#DBECF4',
+    gradient1: '#FAE5EB',
+    gradient2: '#FEF7DB'
   },
 
   china: {
@@ -117,11 +115,8 @@ export const COUNTRY_COLORS: Record<string, ColorScheme> = {
   indonesia: {
     primary: '#DF2121',
     hover: '#e98c8cff',
-    gradient1: '#FFE6D8',
-    gradient2: '#FFC8C8',
-    gradient3: '#FFF3F3',
-    gradient4: '#FFF8F5',
-    gradient5: '#FFEBEB',
+    gradient1: '#FFFFFF',
+    gradient2: '#FFEBEB'
   },
 
   mongolia: {
@@ -148,12 +143,12 @@ export const COUNTRY_COLORS: Record<string, ColorScheme> = {
   russia: {
     primary: '#DF2121',
     hover: '#e98c8cff',
-    gradient1: '#E3F2FF',
-    gradient2: '#FFFFFF',
+    gradient1: '#FFFFFF',
+    gradient2: '#DFE8FF',
   },
 };
 
-export const getGradient = (countryCode: string): string => {
+export const getGradient = (countryCode: string, reverse: boolean = false): string => {
   const colors = COUNTRY_COLORS[countryCode];
   if (!colors) return 'linear-gradient(to bottom, #FFFFFF, #FFFFFF)';
 
@@ -162,6 +157,7 @@ export const getGradient = (countryCode: string): string => {
   if (colors.gradient3) gradients.push(colors.gradient3);
   if (colors.gradient4) gradients.push(colors.gradient4);
   if (colors.gradient5) gradients.push(colors.gradient5);
+  if (reverse) gradients.reverse();
 
   return `linear-gradient(to bottom, ${gradients.join(', ')})`;
 };

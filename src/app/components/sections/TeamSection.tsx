@@ -101,7 +101,7 @@ export default function TeamSection({
               {/* 왼쪽 화살표 */}
               <button
                 onClick={handlePrev}
-                className="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 md:w-13 md:h-13 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors cursor-pointer z-10"
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 md:w-13 md:h-13 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors z-10"
                 aria-label="Previous"
               >
                 <svg className="w-3 h-3 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,7 +112,7 @@ export default function TeamSection({
               {/* 오른쪽 화살표 */}
               <button
                 onClick={handleNext}
-                className="absolute right-0 top-1/2 -translate-y-1/2 w-7 h-7 md:w-13 md:h-13 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors cursor-pointer z-10"
+                className="absolute right-0 top-1/2 -translate-y-1/2 w-7 h-7 md:w-13 md:h-13 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors z-10"
                 aria-label="Next"
               >
                 <svg className="w-3 h-3 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

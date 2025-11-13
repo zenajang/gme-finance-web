@@ -60,10 +60,10 @@ const PROCESS: ProcessItem[] = [
 
 export default function ProcessStep({ subtitleColor = COMMON_COLORS.primaryText, titleColor = COMMON_COLORS.black }: ProcessStepProps){
   return (
-      <section className="py-0 md:py-14 lg:py-16">
+      <section className="py-0 md:py-14 lg:py-16 z-20">
         <div className="mx-auto px-4 md:px-38 lg:px-38">
-          <h2 className="text-heading text-center mb-2 md:mb-5 lg:mb-5" style={{ color: titleColor }}>Simple Loan Application</h2>
-          <p className="text-subheading md:text-xl lg:text-2xl text-center mb-0 md:mb-10 lg:mb-12" style={{ color: subtitleColor }}>5 Step Applying Process</p>
+          <h2 className="text-heading text-center mb-2 md:mb-5 lg:mb-5" style={{ color: titleColor}}>Simple Loan Application</h2>
+          <p className="text-subheading md:text-xl lg:text-2xl text-center mb-0 md:mb-10 lg:mb-12 " style={{ color: subtitleColor }}>5 Step Applying Process</p>
           <div className="grid md:grid-cols-5 gap-5 md:gap-10 lg:gap-10 mt-0 py-8">
             {PROCESS.map((item) => (
               <article

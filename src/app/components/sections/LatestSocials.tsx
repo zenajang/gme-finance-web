@@ -82,7 +82,7 @@ function SocialCard({ item, buttonBgColor, buttonHoverBgColor, hoveredId, setHov
                 router.push(item.href);
               }
             }}
-            className="text-button text-white rounded-full cursor-pointer py-2 transition-colors w-full"
+            className="text-button text-white py-2 transition-colors w-full"
             style={{
               backgroundColor: hoveredId === item.id ? buttonHoverBgColor : buttonBgColor
             }}

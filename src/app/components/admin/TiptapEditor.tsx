@@ -32,7 +32,7 @@ interface ExtendedEditor extends Editor {
   } & ReturnType<Editor['chain']>;
 }
 
-export default function TiptapEditor({ content, onChange, placeholder = '내용을 입력하세요...' }: TiptapEditorProps) {
+export default function TiptapEditor({ content, onChange, placeholder = 'Please enter the content...' }: TiptapEditorProps) {
   const supabase = createClient();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
@@ -80,25 +80,21 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
   const uploadImage = async (file: File) => {
     setUploading(true);
     try {
-      // 파일 유효성 검사
       const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
       if (!validTypes.includes(file.type)) {
-        alert('이미지 파일만 업로드 가능합니다. (JPG, PNG, GIF, WEBP)');
+        alert('you can only upload image files (jpg, png, gif, webp).');
         return;
       }
 
-      // 파일 크기 제한 (5MB)
       if (file.size > 5 * 1024 * 1024) {
-        alert('파일 크기는 5MB 이하여야 합니다.');
+        alert('The image size should not exceed 5MB.');
         return;
       }
 
-      // 고유한 파일명 생성
       const fileExt = file.name.split('.').pop();
       const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
       const filePath = `blog-images/${fileName}`;
 
-      // Supabase Storage에 업로드
       const { error } = await supabase.storage
         .from('images')
         .upload(filePath, file, {
@@ -108,22 +104,20 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
 
       if (error) {
         console.error('Upload error:', error);
-        alert('이미지 업로드 실패: ' + error.message);
+        alert('Upload error :' + error.message);
         return;
       }
 
-      // 업로드된 이미지의 공개 URL 가져오기
       const { data: { publicUrl } } = supabase.storage
         .from('images')
         .getPublicUrl(filePath);
 
-      // 에디터에 이미지 삽입
       if (publicUrl) {
         editor.chain().focus().setImage({ src: publicUrl }).run();
       }
     } catch (err) {
       console.error('Upload error:', err);
-      alert('이미지 업로드 중 오류가 발생했습니다.');
+      alert('An error occurred during image upload.');
     } finally {
       setUploading(false);
     }
@@ -144,7 +138,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
 
   const setLink = () => {
     const previousUrl = editor.getAttributes('link').href;
-    const url = window.prompt('링크 URL을 입력하세요:', previousUrl);
+    const url = window.prompt("Enter link URL : ", previousUrl);
 
     if (url === null) return;
 
@@ -172,7 +166,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             onClick={() => editor.chain().focus().undo().run()}
             disabled={!editor.can().chain().focus().undo().run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors disabled:opacity-50"
-            title="실행 취소"
+            title="undo"
           >
           ↶
           </button>
@@ -180,7 +174,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             onClick={() => editor.chain().focus().redo().run()}
             disabled={!editor.can().chain().focus().redo().run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors disabled:opacity-50"
-            title="재실행"
+            title="redo"
           >
             ↷
           </button>
@@ -193,7 +187,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-3 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive('bold') ? 'bg-gray-300' : ''
             }`}
-            title="굵게"
+            title="bold"
           >
             <strong>B</strong>
           </button>
@@ -203,7 +197,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-3 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive('italic') ? 'bg-gray-300' : ''
             }`}
-            title="기울임"
+            title="italic"
           >
             <em>I</em>
           </button>
@@ -213,7 +207,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-3 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive('underline') ? 'bg-gray-300' : ''
             }`}
-            title="밑줄"
+            title="underline"
           >
             <u>U</u>
           </button>
@@ -223,7 +217,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-3 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive('strike') ? 'bg-gray-300' : ''
             }`}
-            title="취소선"
+            title="strike"
           >
             <s>S</s>
           </button>
@@ -234,35 +228,35 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
           <button
             onClick={() => (editor as ExtendedEditor).chain().focus().setFontSize('0.875em').run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors text-xs"
-            title="작은 텍스트 (선택한 부분만)"
+            title="small text (choice only)"
           >
             A
           </button>
           <button
             onClick={() => (editor as ExtendedEditor).chain().focus().setFontSize('1em').run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors text-sm"
-            title="보통 텍스트 (선택한 부분만)"
+            title="normal text (choice only)"
           >
             A
           </button>
           <button
             onClick={() => (editor as ExtendedEditor).chain().focus().setFontSize('1.25em').run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors text-base"
-            title="큰 텍스트 (선택한 부분만)"
+            title="large text (choice only)"
           >
             A
           </button>
           <button
             onClick={() => (editor as ExtendedEditor).chain().focus().setFontSize('1.5em').run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors text-lg"
-            title="더 큰 텍스트 (선택한 부분만)"
+            title="larger text (choice only)"
           >
             A
           </button>
           <button
             onClick={() => (editor as ExtendedEditor).chain().focus().setFontSize('2em').run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors text-xl"
-            title="아주 큰 텍스트 (선택한 부분만)"
+            title="largest text (choice only)"
           >
             A
           </button>
@@ -272,48 +266,47 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
           <button
             onClick={() => editor.chain().focus().setColor('#000000').run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors"
-            title="검정색"
+            title="black color"
           >
             <span style={{ color: '#000000' }}>●</span>
           </button>
           <button
             onClick={() => editor.chain().focus().setColor('#dc2626').run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors"
-            title="빨간색"
+            title="red color"
           >
             <span style={{ color: '#dc2626' }}>●</span>
           </button>
           <button
             onClick={() => editor.chain().focus().setColor('#2563eb').run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors"
-            title="파란색"
+            title="blue color"
           >
             <span style={{ color: '#2563eb' }}>●</span>
           </button>
           <button
             onClick={() => editor.chain().focus().setColor('#16a34a').run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors"
-            title="초록색"
+            title="green color"
           >
             <span style={{ color: '#16a34a' }}>●</span>
           </button>
           <button
             onClick={() => editor.chain().focus().toggleHighlight({ color: '#fef08a' }).run()}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors"
-            title="형광펜"
+            title="highlight yellow"
           >
             <span style={{ backgroundColor: '#fef08a', padding: '0 2px' }}>H</span>
           </button>
         </div>
 
-        {/* 제목 (단락 전체) */}
         <div className="flex gap-1 border-r pr-1">
           <button
             onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
             className={`px-2 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive('heading', { level: 1 }) ? 'bg-gray-300' : ''
             }`}
-            title="제목 1 (단락 전체)"
+            title="title 1 (whole paragraph)"
           >
             H1
           </button>
@@ -322,7 +315,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-2 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive('heading', { level: 2 }) ? 'bg-gray-300' : ''
             }`}
-            title="제목 2 (단락 전체)"
+            title="title 2 (whole paragraph)"
           >
             H2
           </button>
@@ -331,7 +324,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-2 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive('heading', { level: 3 }) ? 'bg-gray-300' : ''
             }`}
-            title="제목 3 (단락 전체)"
+            title="title 3 (whole paragraph)"
           >
             H3
           </button>
@@ -340,7 +333,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-2 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive('paragraph') ? 'bg-gray-300' : ''
             }`}
-            title="일반 텍스트"
+            title="paragraph (whole paragraph)"
           >
             P
           </button>
@@ -353,7 +346,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-3 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive('bulletList') ? 'bg-gray-300' : ''
             }`}
-            title="글머리 기호 목록"
+            title="pullet list"
           >
             •
           </button>
@@ -362,7 +355,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-3 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive('orderedList') ? 'bg-gray-300' : ''
             }`}
-            title="번호 목록"
+            title="numbered list"
           >
             1.
           </button>
@@ -375,7 +368,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-2 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive({ textAlign: 'left' }) ? 'bg-gray-300' : ''
             }`}
-            title="왼쪽 정렬"
+            title="left align"
           >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#8d8d8dff" strokeWidth="1.5">
             <line x1="2" y1="6" x2="21" y2="6"/>
@@ -389,7 +382,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-2 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive({ textAlign: 'center' }) ? 'bg-gray-300' : ''
             }`}
-            title="가운데 정렬"
+            title="center align"
           >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#8d8d8dff" strokeWidth="1.5">
             <line x1="6" y1="6" x2="18" y2="6"/>
@@ -403,7 +396,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-2 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive({ textAlign: 'right' }) ? 'bg-gray-300' : ''
             }`}
-            title="오른쪽 정렬"
+            title="right align"
           >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#8d8d8dff" strokeWidth="1.5">
             <line x1="2" y1="6" x2="21" y2="6"/>
@@ -417,7 +410,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-2 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive({ textAlign: 'justify' }) ? 'bg-gray-300' : ''
             }`}
-            title="양쪽 정렬"
+            title="justify align"
           >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#8d8d8dff" strokeWidth="1.5">
             <line x1="3" y1="6" x2="21" y2="6"/>
@@ -434,7 +427,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             className={`px-2 py-1 rounded hover:bg-gray-200 transition-colors ${
               editor.isActive('link') ? 'bg-gray-300' : ''
             }`}
-            title="링크"
+            title="Link"
           >
             🔗
           </button>
@@ -442,7 +435,7 @@ export default function TiptapEditor({ content, onChange, placeholder = '내용�
             onClick={handleImageUpload}
             disabled={uploading}
             className="px-2 py-1 rounded hover:bg-gray-200 transition-colors disabled:opacity-50"
-            title={uploading ? '업로드 중...' : '이미지 업로드'}
+            title={uploading ? 'Uploading...' : 'Upload image'}
           >
             {uploading ? '⏳' : '🖼️'}
           </button>

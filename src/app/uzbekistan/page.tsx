@@ -8,6 +8,8 @@ import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const UZBEKISTAN_SOCIALS: SocialsItem[] = [
   {
@@ -93,52 +95,37 @@ export default function UzbekistanPage() {
       style={{ background: colors.gradient1}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat bg-right top-70 -right-25 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_sm.svg')" }} />
       <LatestSocials 
         socials={UZBEKISTAN_SOCIALS}
         buttonBgColor={colors.primary}
         buttonHoverBgColor={colors.hover}
         />
-      <div className="absolute bg-no-repeat top-0 bg-left -left-40 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
+      <div className="absolute bg-no-repeat -top-170 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
       <TeamSection
         teams={UZBEKISTAN_TEAMS}
         title='Uzbekistan'
         nameBgColor={colors.primary}
       />
-    </section>
-       <section className="relative overflow-hidden">
-             <div className="mx-auto relative z-10 mb-20">
-               <h2 className="text-5xl font-bold text-center mb-10">Meet Our Uzbekistan Team</h2>
-               <p
-                 className="text-subheading text-center mb-10 font-medium"
-                 style={{ color: colors.primary}}
-               >
-                 The People Behind GME Finance
-               </p>
-               <div className="relative">
-                <div className="absolute bg-no-repeat bg-bottom bottom-30 right-0 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/pattern.svg')",backgroundSize:'100% auto' }} />
-                 <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
-                   <iframe
-                     className="w-full h-full rounded-xl"
-                     src="https://www.youtube.com/embed/mX9zCgpqohU"
-                     title="Uzbekistan Team Video"
-                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                     allowFullScreen
-                   />
-                 </div>
-               </div>
-             </div>
-           </section>
-        <LoanTypesSection/>
-        <ProcessStep subtitleColor={colors.primary}/>
+      </section>
+      <TeamVideoSection
+        title="Meet Our Uzbekistan Team"
+        titleColor={colors.title}
+        subtitleColor="#0094AE"
+        videoUrl="https://www.youtube.com/embed/mX9zCgpqohU"
+        centerImageSrc="/images/uzbekistan/pattern.svg"
+        centerImageAlt="Center pattern"
+        centerImageWidth={3000}
+        centerImageHeight={3000}
+        centerImageStyle={{ opacity: 0.8, zIndex: 5, marginTop: '200px' }}
+      />
+    <LoanTypesSection/>
+    <ProcessStep subtitleColor={colors.primary}/>
     </div>
-    <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp"/>
+    <div className="absolute bg-no-repeat bg-right top-130 right-0 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
+    <LoanDetailSection backgroundImage="/images/uzbekistan/loan_detail_bg.webp"/>
       <div style={{ background:colors.gradient1}}>
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-200" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')", zIndex:1, }} />
-          <div className="absolute bg-no-repeat top-20 bg-left -left-20 w-full h-80" style={{ backgroundImage: "url('/images/uzbekistan/flower_sm.svg')", zIndex:1 }} />
-          <div className="absolute bg-no-repeat bg-right bottom-0 right-0 w-full h-200" style={{ backgroundImage: "url('/images/uzbekistan/garland_r.svg')", backgroundSize: '100% auto', zIndex:2 }} />
-          <div className="absolute bg-no-repeat bg-left top-160 left-0 w-full h-200" style={{ backgroundImage: "url('/images/uzbekistan/garland_l.svg')", backgroundSize: '100% auto', zIndex:2 }} />
+          <GarlandDecoration country="uzbekistan" variant="compact" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
           <div className="mb-110">
           <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary}/>

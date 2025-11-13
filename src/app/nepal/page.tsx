@@ -9,6 +9,8 @@ import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getGradient } from "@/constants/colors";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const NEPAL_SOCIALS: SocialsItem[] = [
   {
@@ -91,54 +93,23 @@ export default function NepalPage() {
       style={{ background: getGradient('nepal')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat bg-left top-0 -left-14 w-full h-65" style={{ backgroundImage: "url('/images/nepal/castle_2.svg')" }} />
-      <LatestSocials 
-        socials={NEPAL_SOCIALS}/>
-      <div className="absolute bg-no-repeat top-210 bg-right -right-10 w-full h-65" style={{ backgroundImage: "url('/images/nepal/castle_3.svg')" }} />
-      <TeamSection
-        teams={NEPAL_TEAMS}
-        title='Nepal'
-      />
+      <LatestSocials socials={NEPAL_SOCIALS}/>
+      <TeamSection teams={NEPAL_TEAMS} title='Nepal'/>
     </section>
-       <section className="relative overflow-hidden">
-             <div className="container mx-auto px-4 relative z-10 mb-20">
-               <h2 className="text-5xl font-bold text-center mb-10">Meet Our Nepal Team</h2>
-               <p
-                 className="text-xl text-center mb-10 font-medium text-red-600"
-               >
-                 The People Behind GME Finance
-               </p>
-               <div className="relative">
-                 <Image
-                   src="/images/nepal/castle_.svg"
-                   alt="Left castle"
-                   width={250}
-                   height={250}
-                   className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-                   style={{ left: '-70px', marginTop:'82px', zIndex: 1 }}
-                   priority
-                 />
-                 <Image
-                   src="/images/nepal/buddha.svg"
-                   alt="Right castle"
-                   width={300}
-                   height={300}
-                   className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-                   style={{ right: '-100px', marginTop:'25px', zIndex: 1 }}
-                   priority
-                 />
-                 <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
-                   <iframe
-                     className="w-full h-full rounded-xl"
-                     src="https://www.youtube.com/embed/aePuJafyedg"
-                     title="Myanmar Team Video"
-                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                     allowFullScreen
-                   />
-                 </div>
-               </div>
-             </div>
-           </section>
+    <TeamVideoSection
+          title="Meet Our Nepal Team"
+          videoUrl="https://www.youtube.com/embed/aePuJafyedg"
+          leftImageSrc="/images/nepal/castle_l.svg"
+          leftImageAlt="Left castle"
+          leftImageWidth={300}
+          leftImageHeight={300}
+          leftImageStyle={{ left: '-250px', marginTop:'120px', zIndex: 1 }}
+          rightImageSrc="/images/nepal/castle_r.svg"
+          rightImageAlt="Right castle"
+          rightImageWidth={350}
+          rightImageHeight={350}
+          rightImageStyle={{ right: '-270px', marginTop:'93px', zIndex: 1 }}
+        />
         <LoanTypesSection/>
       <section className="bg-no-repeat relative overflow-hidden">
         <div className="absolute bg-no-repeat bg-right -bottom-6 -right-10 w-full h-65" style={{ backgroundImage: "url('/images/nepal/cow.svg')" }} />
@@ -149,8 +120,7 @@ export default function NepalPage() {
     <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.webp"/>
       <div style={{ background: getGradient('nepal') }}>
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/nepal/garland_r.svg')",zIndex:2 }} />
-          <div className="absolute bg-no-repeat top-115 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/nepal/garland_l.svg')",zIndex:2 }} />
+          <GarlandDecoration country="nepal" />
           <EMICalculatorSection/>
           <LoanApplicationForm/>
         </section>

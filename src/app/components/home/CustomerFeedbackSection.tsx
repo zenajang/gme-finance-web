@@ -113,7 +113,7 @@ export default function CustomerFeedbackSection() {
         </div>
 
         <div className="text-center mt-0 md:mt-15 lg:mt-15">
-          <button className="bg-white border-1 border-red-500 text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 rounded-full cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-medium hover:bg-red-50 transition-colors">
+          <button className="bg-white shadow-[0_0_15px_rgba(0,0,0,0.15)] text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-medium hover:bg-red-50 hover:shadow-[0_0_25px_rgba(0,0,0,0.2)] transition-all">
             See More
           </button>
         </div>

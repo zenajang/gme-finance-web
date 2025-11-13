@@ -8,6 +8,8 @@ import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const MONGOLIA_SOCIALS: SocialsItem[] = [
   {
@@ -91,47 +93,35 @@ export default function MongoliaPage() {
     >
     <section className="bg-no-repeat relative overflow-hidden">
     
-      <div className="absolute bg-no-repeat bg-top top-150 left-240 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern.svg')" }} />
-      <div className="absolute bg-no-repeat bg-top top-150 -left-240 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern.svg')" }} />  <LatestSocials 
+      <div className="absolute bg-no-repeat -top-190 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern_r.svg')", backgroundSize:'20%' }} /> 
+      <LatestSocials 
         socials={MONGOLIA_SOCIALS}/>
       <TeamSection
         teams={MONGOLIA_TEAMS}
         title='Mongolia'
       />
     </section>
-     <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat -top-60 bg-left left-50 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/cloud.svg')" }} />
-      <div className="absolute bg-no-repeat -bottom-50 bg-right right-70 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/cloud.svg')" }} />
-      <div className="container mx-auto px-4 relative z-10 mb-20">
-        <h2 className="text-5xl font-bold text-center mb-10">Meet Our Mongolia Team</h2>
-        <p className="text-xl text-center mb-10 font-medium text-red-600">The People Behind GME Finance</p>
-          <div className="aspect-video w-full max-w-4xl mx-auto">
-            <iframe
-              className="w-full h-full rounded-xl"
-              src="https://www.youtube.com/embed/xYKDgKik2iM"
-              title="Mongolia Team Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-      </div>
-      </section>
-        <LoanTypesSection/>
+    <TeamVideoSection
+      title="Meet Our Mongolia Team"
+      videoUrl="https://www.youtube.com/embed/xYKDgKik2iM"
+      centerImageSrc="/images/mongolia/pattern.svg"
+      centerImageAlt="Center pattern"
+      centerImageWidth={3000}
+      centerImageHeight={3000}
+      centerImageStyle={{ opacity: 0.8, zIndex: 5, marginTop: '200px' }}
+    />
+    <LoanTypesSection/>
       <section className="bg-no-repeat relative overflow-hidden">
-        <div className="absolute bg-no-repeat bg-left bottom-40 left-0 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/cloud_w.svg')",backgroundSize: '10% auto' }} />
-        <div className="absolute bg-no-repeat bg-right bottom-40 -right-20 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/cloud_w.svg')",backgroundSize: '20% auto'  }} />
-        <div className="absolute bg-no-repeat bg-bottom -bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/piece.svg')",backgroundSize: '110% auto' }} />
-         <ProcessStep/>
+          <div className="absolute bg-no-repeat bg-right top-80 -right-30 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern_r.svg')",backgroundSize:'20%' }} />
+          <ProcessStep/>
       </section>
     </div>
-    <LoanDetailSection backgroundImage="/images/mongolia/loan_detail_bg.webp"/>
+      <LoanDetailSection backgroundImage="/images/mongolia/loan_detail_bg.webp"/>
       <div style={{ background: getGradient('mongolia') }}>
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat top-125 left-0 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/garland_l.svg')" }} />
-          <div className="absolute bg-no-repeat bottom-0 right-0 w-full h-100 -mr-285" style={{ backgroundImage: "url('/images/mongolia/garland_r.svg')" }} />
-          <div className="absolute bg-no-repeat bg-top top-220 right-0 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/shutterstock.svg')",backgroundSize: '65% auto' }} />
+          <GarlandDecoration country="mongolia" />
           <EMICalculatorSection/>
-          <div className="mb-70 mt-20">
+          <div className="mb-20">
             <LoanApplicationForm/>
           </div>
         </section>

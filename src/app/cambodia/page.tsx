@@ -8,6 +8,8 @@ import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const CAMBODIA_SOCIALS: SocialsItem[] = [
   {
@@ -90,46 +92,46 @@ export default function CambodiaPage() {
       style={{ background:getGradient('cambodia')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat -top-70 bg-right right-10 w-full h-250" style={{ backgroundImage: "url('/images/cambodia/flower_y.svg')",transform: 'scaleX(-1)', zIndex:2 }} />
-      <div className="absolute bg-no-repeat top-80 bg-right -right-20 w-full h-250" style={{ backgroundImage: "url('/images/cambodia/flower_y.svg')",zIndex:2 }} />
-     <LatestSocials 
-        socials={CAMBODIA_SOCIALS}/>
-      <TeamSection
-        teams={CAMBODIA_TEAMS}
-        title='Cambodia'
-      />
-    </section>
-     <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat -top-90 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/cambodia/flower_r.svg')",zIndex:2 }} />
-      <div className="container mx-auto px-4 relative z-10 mb-20">
-        <h2 className="text-5xl font-bold text-center mb-10">Meet Our Cambodia Team</h2>
-        <p className="text-xl text-center mb-10 font-medium text-red-600">The People Behind GME Finance</p>
-          <div className="aspect-video w-full max-w-4xl mx-auto">
-            <iframe
-              className="w-full h-full rounded-xl"
-              src="https://www.youtube.com/embed/oItSG4IhIz0"
-              title="Cambodia Team Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
+    <div className="absolute bg-no-repeat -top-450 bg-center w-full" style={{ backgroundImage: "url('/images/cambodia/pattern_w.svg')", backgroundSize:'100%', height:'180%', backgroundRepeat: 'no-repeat', zIndex: 0 }} />
+      <div className="relative" style={{ zIndex: 10 }}>
+        <LatestSocials
+          socials={CAMBODIA_SOCIALS}/>
+        <TeamSection
+          teams={CAMBODIA_TEAMS}
+          title='Cambodia'
+        />
       </div>
-      </section>
-      <div className="absolute bg-no-repeat top-700 bg-right w-full h-250" style={{ backgroundImage: "url('/images/cambodia/flower_b.svg')",zIndex:2 }} />
-        <LoanTypesSection/>
-      <section className="bg-no-repeat relative overflow-hidden">
-        <div className="absolute bg-no-repeat top-100 bg-left -left-30 w-full h-full -mt-20" style={{ backgroundImage: "url('/images/cambodia/pattern.svg')" }} />
-        <div className="absolute bg-no-repeat top-0 bg-right -right-60 w-full h-full -mt-20" style={{ backgroundImage: "url('/images/cambodia/pattern.svg')" }} />
+    </section>
+    <TeamVideoSection
+      title="Meet Our Cambodia Team"
+      videoUrl="https://www.youtube.com/embed/oItSG4IhIz0"
+      leftImageSrc="/images/cambodia/flower_l.svg"
+      leftImageAlt="Left flower"
+      leftImageWidth={200}
+      leftImageHeight={200}
+      leftImageStyle={{ left: '-200px', marginTop:'120px', zIndex: 1 }}
+      rightImageSrc="/images/cambodia/flower_r.svg"
+      rightImageAlt="Right flower"
+      rightImageWidth={200}
+      rightImageHeight={200}
+      rightImageStyle={{ right: '-200px', marginTop:'120px', zIndex: 1 }}
+    />
+    <LoanTypesSection/>
+    <section className="bg-no-repeat relative">
+      <div className="absolute bg-no-repeat -top-30 bg-center w-full pointer-events-none" style={{ backgroundImage: "url('/images/cambodia/pattern.svg')", backgroundSize:'90%', height: '240%', backgroundRepeat: 'no-repeat', zIndex: 0 }} />
+      <div className="relative" style={{ zIndex: 10 }}>
         <ProcessStep/>
-      </section>
+      </div>
+    </section>
     </div>
     <LoanDetailSection backgroundImage="/images/cambodia/loan_detail_bg.webp"/>
-      <div style={{ background:getGradient('cambodia')}}>
+      <div style={{ background:getGradient('cambodia',true)}}>
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/cambodia/garland_r.svg')",zIndex:2 }} />
-          <div className="absolute bg-no-repeat top-115 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/cambodia/garland_l.svg')",zIndex:2 }} />
+          <GarlandDecoration country="cambodia" />
           <EMICalculatorSection/>
+          <div className="mb-20 mt-10">
           <LoanApplicationForm/>
+          </div>
         </section>
       </div>
     </div>

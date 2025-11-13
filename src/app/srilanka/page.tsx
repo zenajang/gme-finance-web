@@ -8,6 +8,8 @@ import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const SRILANKA_SOCIALS: SocialsItem[] = [
   {
@@ -97,34 +99,33 @@ export default function SrilankaPage() {
         teams={SRILANKA_TEAMS}
         title='Sri lanka'
       />
-      <div className="absolute bg-no-repeat bg-left -left-50 top-300 w-full h-230" style={{ backgroundImage: "url('/images/srilanka/flower.svg')" }} />
-      <div className="absolute bg-no-repeat bg-right -right-50 top-500 w-full h-230" style={{ backgroundImage: "url('/images/srilanka/flower.svg')" }} />
-      <div className="container mx-auto px-4 relative z-10 mb-20">
-        <h2 className="text-heading text-center mb-2 md:mb-10">Meet Our Sri lanka Team</h2>
-        <p className="text-subheading text-center mb-10 text-red-600">The People Behind GME Finance</p>
-          <div className="aspect-video w-full max-w-4xl mx-auto">
-            <iframe
-              className="w-full h-full rounded-xl"
-              src="https://www.youtube.com/embed/Lee7FwKwQLQ"
-              title="Sri lanka Team Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-      </div>
+      <TeamVideoSection
+        title="Meet Our Sri lanka Team"
+        videoUrl="https://www.youtube.com/embed/Lee7FwKwQLQ"
+        leftImageSrc="/images/srilanka/flower.svg"
+        leftImageAlt="Left flower"
+        leftImageWidth={700}
+        leftImageHeight={700}
+        leftImageStyle={{ left: '-450px', marginTop:'80px', zIndex: 1 }}
+        rightImageSrc="/images/srilanka/flower.svg"
+        rightImageAlt="Right flower"
+        rightImageWidth={700}
+        rightImageHeight={700}
+        rightImageStyle={{ right: '-500px', marginTop:'90px', zIndex: 1 }}
+      />
         <LoanTypesSection/>
         <ProcessStep/>
         <div className="absolute bg-no-repeat bg-right -bottom-10 right-0 w-full h-220" style={{ backgroundImage: "url('/images/srilanka/garland_d.svg')" }} />
       </section>
     </div>
     <LoanDetailSection backgroundImage="/images/srilanka/loan_detail_bg.webp"/>
-      <div style={{background: getGradient('srilanka') }}>
+      <div style={{background: getGradient('srilanka', true) }}>
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat -bottom-80 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/srilanka/garland_l.svg')",zIndex:2 }} />
-          <div className="absolute bg-no-repeat top-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/srilanka/garland_r.svg')",zIndex:2 }} />
-          <div className="absolute bg-no-repeat bg-contain -bottom-90 w-full h-full" style={{ backgroundImage: "url('/images/srilanka/bubble.svg')" }} />
+          <GarlandDecoration country="srilanka" />
           <EMICalculatorSection/>
+          <div className="mb-20 mt-10">
           <LoanApplicationForm/>
+          </div>
         </section>
       </div>
     </div>

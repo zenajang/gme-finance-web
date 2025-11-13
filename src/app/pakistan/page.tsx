@@ -9,6 +9,8 @@ import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const PAKISTAN_SOCIALS: SocialsItem[] = [
   {
@@ -94,8 +96,6 @@ export default function PakistanPage() {
       style={{ background: getGradient('pakistan')}}
     >
      <section className="bg-no-repeat relative overflow-hidden">
-       
-         <div className="absolute bg-no-repeat bg-top top-150 left-200 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/flower.svg')" }} />
          <div className="absolute bg-no-repeat bg-top -top-40 -left-200 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/flower.svg')" }} />  
          <LatestSocials 
            socials={PAKISTAN_SOCIALS} buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
@@ -105,50 +105,23 @@ export default function PakistanPage() {
            title='Bharat & Pakistan'
          />
        </section>
-         <section className="relative overflow-hidden">
-              <div className="container mx-auto px-4 relative z-10 mb-20">
-                <h2 className="text-5xl font-bold text-center mb-10">Meet Our Bharat & Pakistan Team</h2>
-                <p
-                  className="text-xl text-center mb-10 font-medium"
-                  style={{ color: colors.primary }}
-                >
-                  The People Behind GME Finance
-                </p>
-                <div className="relative">
-                  <Image
-                    src="/images/pakistan/castle_1.svg"
-                    alt="Left castle"
-                    width={300}
-                    height={300}
-                    className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-                    style={{ left: '-100px', marginTop:'-80px'}}
-                    priority
-                  />
-                  <Image
-                    src="/images/pakistan/castle_2.svg"
-                    alt="Right castle"
-                    width={600}
-                    height={600}
-                    className="hidden lg:block absolute top-1/2 -translate-y-1/2"
-                    style={{ right: '-300px'}}
-                    priority
-                  />
-                  <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
-                    <iframe
-                      className="w-full h-full rounded-xl"
-                      src="https://www.youtube.com/embed/mX9zCgpqohU"
-                      title="Myanmar Team Video"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                </div>
-              </div>
-            </section> 
-           <LoanTypesSection/>
+       <TeamVideoSection
+          title="Meet Our Bharat & Pakistan Team"
+          videoUrl="https://www.youtube.com/embed/mX9zCgpqohU"
+          leftImageSrc="/images/pakistan/castle_l.svg"
+          leftImageAlt="Left castle"
+          leftImageWidth={320}
+          leftImageHeight={320}
+          leftImageStyle={{ left: '-240px', marginTop:'-30px', zIndex: 1 }}
+          rightImageSrc="/images/pakistan/castle_r.svg"
+          rightImageAlt="Right castle"
+          rightImageWidth={680}
+          rightImageHeight={680}
+          rightImageStyle={{ right: '-280px', marginTop:'40px', zIndex: 1 }}
+        />
+        <LoanTypesSection/>
          <section className="bg-no-repeat relative overflow-hidden">
-           <div className="absolute bg-no-repeat bg-left bottom-60 left-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/flower.svg')",backgroundSize: '20% auto' }} />
-           <div className="absolute bg-no-repeat bg-bottom -bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/wave.svg')",backgroundSize: '110% auto' }} />
+            <div className="absolute bg-no-repeat bg-right -bottom-90 -right-50 w-full h-220" style={{ backgroundImage: "url('/images/pakistan/flower.svg')" }} />
             <ProcessStep subtitleColor={colors.primary}/>
          </section>
        </div>
@@ -156,10 +129,11 @@ export default function PakistanPage() {
       <div className="relative" style={{ background: getGradient('pakistan') }}>
         <div className="absolute bg-repeat top-0 left-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/pattern.svg')", backgroundSize: 'auto' }} />
         <section className="bg-no-repeat relative overflow-hidden">          
-          <div className="absolute bg-no-repeat top-125 left-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/garland_l.svg')" }} />
-          <div className="absolute bg-no-repeat bg-bottom -bottom-50 left-170 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/garland_r.svg')" }} />
+          <GarlandDecoration country="pakistan" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
+          <div className="mb-20">
           <LoanApplicationForm buttonBgColor={colors.primary} subtitleColor={colors.primary}/>
+          </div>
         </section>
       </div>
     </div>

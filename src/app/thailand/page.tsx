@@ -8,6 +8,8 @@ import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
+import GarlandDecoration from "../components/sections/GarlandDecoration";
+import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const THAILAND_SOCIALS: SocialsItem[] = [
   {
@@ -91,50 +93,35 @@ export default function ThailandPage() {
       style={{ background: getGradient('thailand')}}
     >
     <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat bg-right top-0 -right-25 w-full h-65" style={{ backgroundImage: "url('/images/thailand/cloud_l.svg')" }} />
       <LatestSocials
         socials={THAILAND_SOCIALS}
         titleColor={colors.title}
         />
-      <div className="absolute bg-no-repeat top-180 bg-left -left-40 w-full h-65" style={{ backgroundImage: "url('/images/thailand/e_r.svg')" }} />
       <TeamSection
         teams={THAILAND_TEAMS}
         title='Thailand'
         titleColor={colors.title}
       />
     </section>
-       <section className="relative overflow-hidden">
-             <div className="mx-auto relative z-10 mb-20">
-               <h2 className="text-5xl font-bold text-center mb-10 text-white">Meet Our Thailand Team</h2>
-               <p
-                 className="text-xl text-center mb-10 font-medium text-red-600"
-               >
-                 The People Behind GME Finance
-               </p>
-               <div className="relative">
-                <div className="absolute bg-no-repeat bg-bottom bottom-40 right-0 w-full h-full" style={{ backgroundImage: "url('/images/thailand/pattern.svg')",backgroundSize:'110% auto' }} />
-                 <div className="aspect-video w-full max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
-                   <iframe
-                     className="w-full h-full rounded-xl"
-                     src="https://www.youtube.com/embed/QUxBfo6QAgk"
-                     title="Myanmar Team Video"
-                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                     allowFullScreen
-                   />
-                 </div>
-               </div>
-             </div>
-           </section>
-        <LoanTypesSection titleColor={colors.title}/>
-        <ProcessStep titleColor={colors.title} subtitleColor={colors.subtitle}/>
+    <TeamVideoSection
+      title="Meet Our Thailand Team"
+      titleColor={colors.title}
+      videoUrl="https://www.youtube.com/embed/QUxBfo6QAgk"
+      centerImageSrc="/images/thailand/pattern.svg"
+      centerImageAlt="Center pattern"
+      centerImageWidth={2000}
+      centerImageHeight={2000}
+      centerImageStyle={{ opacity: 0.8, zIndex: 5, marginTop: '200px' }}
+    />
+    <LoanTypesSection titleColor={colors.title}/>
+    <ProcessStep titleColor={colors.title} subtitleColor={colors.subtitle}/>
     </div>
     <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp"/>
       <div style={{ background: colors.gradient2 }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-250" style={{ backgroundImage: "url('/images/thailand/cloud_l.svg')", zIndex:1, }} />
           <div className="absolute bg-no-repeat top-20 bg-left -left-40 w-full h-80" style={{ backgroundImage: "url('/images/thailand/cloud_r.svg')", zIndex:1 }} />
-          <div className="absolute bg-no-repeat -bottom-100 bg-right right-0 w-full h-250" style={{ backgroundImage: "url('/images/thailand/garland_r.svg')", zIndex:2 }} />
-          <div className="absolute bg-no-repeat top-115 bg-left left-0 w-full h-250" style={{ backgroundImage: "url('/images/thailand/garland_l.svg')", zIndex:2 }} />
+          <GarlandDecoration country="thailand" />
           <EMICalculatorSection titleColor={colors.title}/>
           <LoanApplicationForm/>
         </section>

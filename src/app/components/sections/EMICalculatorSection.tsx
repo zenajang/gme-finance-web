@@ -83,7 +83,7 @@ export default function EMICalculatorSection({
   };
 
   return (
-    <section className="px-4 md:px-8 lg:px-90 min-h-screen flex items-center justify-center">
+    <section className="px-4 md:px-8 lg:px-90 py-16 md:py-20">
       <div className="relative z-10 w-full mx-auto">
         <h2 className="text-heading text-center mb-8 md:mb-12" style={{ color: titleColor }}>
           EMI Calculator
@@ -137,7 +137,7 @@ export default function EMICalculatorSection({
               <button
                 onClick={calculateEMI}
                 disabled={!loanAmount || !interestRate || !term || isCalculating}
-                className="px-12 text-white font-semibold py-3 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg"
+                className="px-12 text-white font-semibold py-3 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg"
                 style={{
                   backgroundColor: isHovered && !isCalculating && loanAmount && interestRate && term
                     ? buttonHoverBgColor
