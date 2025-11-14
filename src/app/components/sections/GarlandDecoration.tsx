@@ -22,10 +22,10 @@ export default function GarlandDecoration({
         }}
       />
       <div
-        className={`absolute bg-no-repeat bg-left left-0 w-full ${isStandard ? 'top-80 h-230' : 'top-120 h-200'}`}
+        className={`absolute bg-no-repeat bg-left left-0 w-full ${isStandard ? 'top-116 h-194 -ml-14' : 'top-120 h-200'}`}
         style={{
           backgroundImage: `url('/images/${country}/garland_l.svg')`,
-          ...(isStandard ? {} : { backgroundSize: '100% auto' }),
+          ...(isStandard ? {transform:'rotate(10deg)'} : { backgroundSize: '100% auto' }),
           zIndex: 2
         }}
       />

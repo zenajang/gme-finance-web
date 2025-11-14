@@ -119,15 +119,18 @@ export default function UzbekistanPage() {
         centerImageStyle={{ opacity: 0.8, zIndex: 5, marginTop: '200px' }}
       />
     <LoanTypesSection/>
+    <section className="bg-no-repeat relative overflow-hidden">
+    <div className="absolute bg-no-repeat bg-right -bottom-80 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
     <ProcessStep subtitleColor={colors.primary}/>
+    </section>
     </div>
-    <div className="absolute bg-no-repeat bg-right top-130 right-0 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
+
     <LoanDetailSection backgroundImage="/images/uzbekistan/loan_detail_bg.webp"/>
       <div style={{ background:colors.gradient1}}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="uzbekistan" variant="compact" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
-          <div className="mb-110">
+          <div className="mb-69">
           <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary}/>
           </div>
         </section>

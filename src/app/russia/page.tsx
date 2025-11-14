@@ -1,5 +1,4 @@
 
-import Image from "next/image";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -133,7 +132,7 @@ export default function RussiaPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="russia" variant="compact" />
           <EMICalculatorSection/>
-          <div className="mb-50">
+          <div className="mb-69">
           <LoanApplicationForm/>
           </div>
         </section>
