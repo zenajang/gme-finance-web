@@ -126,7 +126,8 @@
   color: #2563eb;
 }
 
-.tiptap-editor .ProseMirror img {
+.tiptap-editor .ProseMirror img,
+.tiptap-editor img {
   max-width: 100%;
   height: auto;
   display: block;

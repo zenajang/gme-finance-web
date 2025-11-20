@@ -7,6 +7,7 @@ import {
   BannerLoadingSkeleton,
   BranchLoadingSkeleton
 } from "./components/common/LoadingSkeletons";
+import NewServiceSection from './components/home/NewServiceSection';
 
 const AnimatedBannerSection = dynamic(
   () => import("./components/home/AnimatedBannerSection"),
@@ -49,6 +50,7 @@ export default function Home() {
       <LatestNewsSection/>
       <CustomerFeedbackSection/>
       <LoanTypesSection/>
+      <NewServiceSection/>
       <SimpleLoanApplySection/>
       <FindBranchSection/>
     </div>

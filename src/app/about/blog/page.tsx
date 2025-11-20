@@ -161,7 +161,7 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mt-20">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">Blog</h1>
@@ -171,7 +171,7 @@ export default function BlogPage() {
       </div>
 
       {/* Blog Posts */}
-      <main className="py-8 md:py-16 px-0 md:px-45 lg:px-45">
+      <main className="py-8 md:py-10 px-0 md:px-45 lg:px-20">
         {posts.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">No blog posts yet.</p>
@@ -199,7 +199,7 @@ export default function BlogPage() {
             </div>
 
             {/* 데스크톱 버전 - Grid 레이아웃 */}
-            <div className="hidden md:grid md:grid-cols-3 gap-8 mt-8 max-w-7xl mx-auto">
+            <div className="hidden md:grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {posts.map((post) => (
                 <BlogCard key={post.id} post={post} />
               ))}

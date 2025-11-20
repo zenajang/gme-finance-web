@@ -62,32 +62,7 @@ export default function BlogDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <Link
-            href="/about/blog"
-            className="inline-flex items-center text-red-600 hover:text-red-700 font-medium mb-4"
-          >
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            Back to Blog
-          </Link>
-        </div>
-      </header>
-
+    <div className="min-h-screen bg-gray-50 mt-20">
       {/* Article */}
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="bg-white rounded-lg shadow-sm p-8 md:p-12">
@@ -95,7 +70,6 @@ export default function BlogDetailPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             {post.title}
           </h1>
-
           {/* Meta Info */}
           <div className="flex items-center text-gray-500 mb-8 pb-8 border-b">
             <div className="flex items-center">
@@ -116,7 +90,7 @@ export default function BlogDetailPage() {
                     <>
                       <span className="mx-2">•</span>
                       <span className="text-blue-600">
-                        Updated {new Date(post.updated_at).toLocaleDateString('en-US', {
+                        Updated : {new Date(post.updated_at).toLocaleDateString('en-US', {
                           year: 'numeric',
                           month: 'long',
                           day: 'numeric',
@@ -128,14 +102,12 @@ export default function BlogDetailPage() {
               </div>
             </div>
           </div>
-
           {/* Content */}
           <div
             className="tiptap-editor prose prose-lg max-w-none"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>
-
         {/* Navigation */}
         <div className="mt-8 text-center">
           <Link
