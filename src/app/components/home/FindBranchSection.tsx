@@ -241,7 +241,7 @@ export default function FindBranchSection() {
                   />
                   {selectedBranch.phone}
                 </p>
-                <p className="font-medium text-lg">
+                <p className="font-medium text-lg mb-15">
                   <Image
                     src="/images/icons/time.svg"
                     alt="time"
