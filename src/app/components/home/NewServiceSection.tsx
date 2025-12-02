@@ -28,7 +28,6 @@ export default function NewServiceSection() {
             Now, you can apply for a foreigner loan in<br />
             just minutes through our GME Application.
           </p>
-
           <ul className="space-y-6 text-gray-700 -ml-6">
             <li className="flex items-start gap-4 bg-white rounded-lg p-6">
               <span className="text-5xl font-medium">1</span>

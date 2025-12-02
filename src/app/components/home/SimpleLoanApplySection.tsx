@@ -1,4 +1,3 @@
-import Image from "next/image";
 import ProcessStep from "../sections/ProcessStep";
 import LoanApplicationForm from "../sections/LoanApplicationForm";
 import { COMMON_COLORS } from "@/constants/colors";

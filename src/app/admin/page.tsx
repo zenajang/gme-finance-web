@@ -231,7 +231,7 @@ export default function AdminPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"/>
       </div>
     );
   }
@@ -332,14 +332,14 @@ export default function AdminPage() {
             <div className="flex justify-end gap-4">
               <button
                 onClick={resetForm}
-                className="px-6 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors cursor-pointer"
+                className="px-6 py-2 text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors cursor-pointer"
               >
                 Reset
               </button>
               <button
                 onClick={handleSave}
                 disabled={saving}
-                className="px-6 py-2 text-white rounded-lg transition-colors disabled:opacity-60 cursor-pointer"
+                className="px-6 py-2 text-white transition-colors disabled:opacity-60 cursor-pointer"
                 style={{
                   backgroundColor: saving ? COMMON_COLORS.grayDark : COMMON_COLORS.primary,
                 }}
