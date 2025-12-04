@@ -51,7 +51,7 @@ export default function Home() {
       <CustomerFeedbackSection />
       <LoanTypesSection />
       <NewServiceSection />
-
+      <SimpleLoanApplySection />
       <FindBranchSection />
     </div>
   );
