@@ -46,82 +46,55 @@ const INDIA_SOCIALS: SocialsItem[] = [
 
 const INDIA_TEAMS: Teams[] = [
   {
-    id: 'Name1',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
-  },
-  {
-    id: 'Name2',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
-
-  },
-  {
-    id: 'Name3',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  },
-  {
-    id: 'Name4',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
-  },
-  {
-    id: 'Name5',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
-
-  },
-  {
-    id: 'Name6',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  }, 
+    id: 'emma',
+    image: '/images/india/team/emma.svg',
+    name: 'Emma',
+  }
 ];
 
 export default function IndiaPage() {
 
   return (
     <div>
-     <CountryIntroductionSection
-      imageSrc="/images/india/background.webp"
-      title="India Team"
-    />
-    <div
-      className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ background: getGradient('india')}}
-    >
-    <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat bg-top -top-20 right-200 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_o_r.svg')" }} />
-      <LatestSocials 
-        socials={INDIA_SOCIALS}/>
-      <TeamSection
-        teams={INDIA_TEAMS}
-        title='India'
+      <CountryIntroductionSection
+        videoSrc="/images/india/background.mp4"
+        title="India Team"
       />
-    </section>
-     <TeamVideoSection
-      title="Meet Our India Team"
-      subtitleColor="#F94B00"
-      videoUrl="https://www.youtube.com/embed/mX9zCgpqohU"
-    />
-    <LoanTypesSection/>
-      <section className="bg-no-repeat relative overflow-hidden">
-        <div className="absolute bg-no-repeat bg-right -bottom-70 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_g_l.svg')" }} />  
-        <ProcessStep/>
-      </section>
-    </div>
-    <LoanDetailSection backgroundImage="/images/india/loan_detail_bg.webp"/>
-    <div className="bg-cover bg-center bg-no-repeat" style={{ background: getGradient('india')}}>
-      <div className="bg-cover bg-no-repeat" style={{ backgroundImage: "url('/images/india/bg.svg')", backgroundPosition: 'center 50px' }}>
+      <div
+        className="bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{ background: getGradient('india') }}
+      >
         <section className="bg-no-repeat relative overflow-hidden">
-         <GarlandDecoration country="india" />
-         <EMICalculatorSection/>
-         <div className="mb-20 mt-10">
-          <LoanApplicationForm/>
-         </div>
+          <div className="absolute bg-no-repeat bg-top -top-20 right-200 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_o_r.svg')" }} />
+          <LatestSocials
+            socials={INDIA_SOCIALS} />
+          <TeamSection
+            teams={INDIA_TEAMS}
+            title='India'
+          />
+        </section>
+        <TeamVideoSection
+          title="Meet Our India Team"
+          subtitleColor="#F94B00"
+          videoUrl="https://www.youtube.com/embed/8LYtzxvDWN4"
+        />
+        <LoanTypesSection />
+        <section className="bg-no-repeat relative overflow-hidden">
+          <div className="absolute bg-no-repeat bg-right -bottom-70 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_g_l.svg')" }} />
+          <ProcessStep />
         </section>
       </div>
+      <LoanDetailSection backgroundImage="/images/india/loan_detail_bg.webp" />
+      <div className="bg-cover bg-center bg-no-repeat" style={{ background: getGradient('india') }}>
+        <div className="bg-cover bg-no-repeat" style={{ backgroundImage: "url('/images/india/bg.svg')", backgroundPosition: 'center 50px' }}>
+          <section className="bg-no-repeat relative overflow-hidden">
+            <GarlandDecoration country="india" />
+            <EMICalculatorSection />
+            <div className="mb-20 mt-10">
+              <LoanApplicationForm />
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );

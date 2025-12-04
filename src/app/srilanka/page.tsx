@@ -46,85 +46,91 @@ const SRILANKA_SOCIALS: SocialsItem[] = [
 
 const SRILANKA_TEAMS: Teams[] = [
   {
-    id: 'Name1',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'malsha',
+    image: '/images/srilanka/team/malsha.svg',
+    name: 'MALSHA',
   },
   {
-    id: 'Name2',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'nova',
+    image: '/images/srilanka/team/nova.svg',
+    name: 'NOVA',
 
   },
   {
-    id: 'Name3',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  },
-    {
-    id: 'Name4',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'udra',
+    image: '/images/srilanka/team/udra.svg',
+    name: 'UDRA',
   },
   {
-    id: 'Name5',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'mallikaa',
+    image: '/images/team.svg',
+    name: 'MALLIKA',
+  },
+  {
+    id: 'thilini',
+    image: '/images/team.svg',
+    name: 'THILINI',
 
   },
   {
-    id: 'Name6',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  }, 
+    id: 'subodani',
+    image: '/images/team.svg',
+    name: 'SUBODANI',
+  },
+  {
+    id: 'amalsha',
+    image: '/images/team.svg',
+    name: 'AMALSHA',
+
+  }
 ];
 
 export default function SrilankaPage() {
 
   return (
     <div>
-     <CountryIntroductionSection
-      imageSrc="/images/srilanka/background.webp"
-      title="Sri lanka Team"
-    />
-    <div
-      className="bg-cover bg-center bg-no-repeat"
-      style={{ background:getGradient('srilanka')}}
-    >
-    <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat bg-left -top-30 left-0 w-full h-220 " style={{ backgroundImage: "url('/images/srilanka/garland_u.svg')" }} />
-      <LatestSocials 
-        socials={SRILANKA_SOCIALS}/>
-      <TeamSection
-        teams={SRILANKA_TEAMS}
-        title='Sri lanka'
+      <CountryIntroductionSection
+        videoSrc="/images/srilanka/background.mp4"
+        title="Sri lanka Team"
       />
-      <TeamVideoSection
-        title="Meet Our Sri lanka Team"
-        videoUrl="https://www.youtube.com/embed/Lee7FwKwQLQ"
-        leftImageSrc="/images/srilanka/flower.svg"
-        leftImageAlt="Left flower"
-        leftImageWidth={700}
-        leftImageHeight={700}
-        leftImageStyle={{ left: '-450px', marginTop:'80px', zIndex: 1 }}
-        rightImageSrc="/images/srilanka/flower.svg"
-        rightImageAlt="Right flower"
-        rightImageWidth={700}
-        rightImageHeight={700}
-        rightImageStyle={{ right: '-500px', marginTop:'90px', zIndex: 1 }}
-      />
-        <LoanTypesSection/>
-        <ProcessStep/>
-        <div className="absolute bg-no-repeat bg-right -bottom-10 right-0 w-full h-220" style={{ backgroundImage: "url('/images/srilanka/garland_d.svg')" }} />
-      </section>
-    </div>
-    <LoanDetailSection backgroundImage="/images/srilanka/loan_detail_bg.webp"/>
-      <div style={{background: getGradient('srilanka', true) }}>
+      <div
+        className="bg-cover bg-center bg-no-repeat"
+        style={{ background: getGradient('srilanka') }}
+      >
+        <section className="bg-no-repeat relative overflow-hidden">
+          <div className="absolute bg-no-repeat bg-left -top-30 left-0 w-full h-220 " style={{ backgroundImage: "url('/images/srilanka/garland_u.svg')" }} />
+          <LatestSocials
+            socials={SRILANKA_SOCIALS} />
+          <TeamSection
+            teams={SRILANKA_TEAMS}
+            title='Sri lanka'
+          />
+          <TeamVideoSection
+            title="Meet Our Sri lanka Team"
+            videoUrl="https://www.youtube.com/embed/FJhRx5fyf64"
+            leftImageSrc="/images/srilanka/flower.svg"
+            leftImageAlt="Left flower"
+            leftImageWidth={700}
+            leftImageHeight={700}
+            leftImageStyle={{ left: '-450px', marginTop: '80px', zIndex: 1 }}
+            rightImageSrc="/images/srilanka/flower.svg"
+            rightImageAlt="Right flower"
+            rightImageWidth={700}
+            rightImageHeight={700}
+            rightImageStyle={{ right: '-500px', marginTop: '90px', zIndex: 1 }}
+          />
+          <LoanTypesSection />
+          <ProcessStep />
+          <div className="absolute bg-no-repeat bg-right -bottom-10 right-0 w-full h-220" style={{ backgroundImage: "url('/images/srilanka/garland_d.svg')" }} />
+        </section>
+      </div>
+      <LoanDetailSection backgroundImage="/images/srilanka/loan_detail_bg.webp" />
+      <div style={{ background: getGradient('srilanka', true) }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="srilanka" />
-          <EMICalculatorSection/>
+          <EMICalculatorSection />
           <div className="mb-20 mt-10">
-          <LoanApplicationForm/>
+            <LoanApplicationForm />
           </div>
         </section>
       </div>

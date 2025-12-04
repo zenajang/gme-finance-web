@@ -177,3 +177,64 @@
 .tiptap-editor .ProseMirror h3[style*="text-align: justify"] {
   text-align: justify !important;
 }
+
+/* Video styles */
+.tiptap-editor .ProseMirror video,
+.tiptap-editor video,
+.tiptap-video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+  border-radius: 0.5em;
+  background-color: #000;
+}
+
+/* YouTube embed styles */
+.tiptap-editor .ProseMirror div[data-youtube-video],
+.tiptap-editor div[data-youtube-video] {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 1em auto;
+}
+
+.tiptap-editor .ProseMirror div[data-youtube-video] iframe,
+.tiptap-editor div[data-youtube-video] iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 0.5em;
+}
+
+/* YouTube responsive container for blog post view */
+.tiptap-editor iframe[src*="youtube"],
+.tiptap-editor iframe[src*="youtu.be"] {
+  max-width: 100%;
+  width: 640px;
+  height: 360px;
+  display: block;
+  margin: 1em auto;
+  border: none;
+  border-radius: 0.5em;
+}
+
+@media (max-width: 768px) {
+  .tiptap-editor .ProseMirror div[data-youtube-video],
+  .tiptap-editor div[data-youtube-video] {
+    max-width: 100%;
+  }
+
+  .tiptap-editor iframe[src*="youtube"],
+  .tiptap-editor iframe[src*="youtu.be"] {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .tiptap-editor .ProseMirror video,
+  .tiptap-editor video,
+  .tiptap-video {
+    width: 100%;
+  }
+}

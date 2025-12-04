@@ -46,85 +46,85 @@ const PHILIPPINES_SOCIALS: SocialsItem[] = [
 
 const PHILIPPINES_TEAMS: Teams[] = [
   {
-    id: 'Name1',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'glen',
+    image: '/images/philippines/team/glen.svg',
+    name: 'GLEN',
   },
   {
-    id: 'Name2',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'eunice',
+    image: '/images/philippines/team/eunice.svg',
+    name: 'EUNICE',
 
   },
   {
-    id: 'Name3',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  },
-    {
-    id: 'Name4',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'cherry',
+    image: '/images/philippines/team/cherry.svg',
+    name: 'CHERRY',
   },
   {
-    id: 'Name5',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'jo',
+    image: '/images/team.svg',
+    name: 'JO',
+  },
+  {
+    id: 'josh',
+    image: '/images/team.svg',
+    name: 'JOSH',
 
   },
   {
-    id: 'Name6',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  }, 
+    id: 'kais',
+    image: '/images/team.svg',
+    name: 'KAIS',
+  },
 ];
 
 export default function PhilippinesPage() {
 
   return (
     <div>
-     <CountryIntroductionSection
-      imageSrc="/images/philippines/background.webp"
-      title="Philippines Team"
-    />
-    <div
-      className="bg-cover bg-center bg-no-repeat"
-      style={{ background:getGradient('philippines')}}
-    >
-    <section className="bg-no-repeat relative overflow-hidden">
-      <LatestSocials 
-        socials={PHILIPPINES_SOCIALS}/>
-      <TeamSection
-        teams={PHILIPPINES_TEAMS}
-        title='Philippines'
+      <CountryIntroductionSection
+        videoSrc="/images/philippines/background.mp4"
+        title="Philippines Team"
       />
-    </section>
-    <TeamVideoSection
-      title="Meet Our Philippines Team"
-      videoUrl="https://www.youtube.com/embed/xYKDgKik2iM"
-      leftImageSrc="/images/philippines/castle_l.svg"
-      leftImageAlt="Left castle"
-      leftImageWidth={600}
-      leftImageHeight={600}
-      leftImageStyle={{ left: '-550px', marginTop:'105px', zIndex: 1 }}
-      rightImageSrc="/images/philippines/castle_r.svg"
-      rightImageAlt="Right castle"
-      rightImageWidth={370}
-      rightImageHeight={370}
-      rightImageStyle={{ right: '-315px', marginTop:'-10px', zIndex: 1 }}
-    />
-      <LoanTypesSection/>
-      <section className="bg-no-repeat relative overflow-hidden">
-        <ProcessStep/>
-      </section>
-    </div>
-    <LoanDetailSection backgroundImage="/images/philippines/loan_detail_bg.webp"/>
+      <div
+        className="bg-cover bg-center bg-no-repeat"
+        style={{ background: getGradient('philippines') }}
+      >
+        <section className="bg-no-repeat relative overflow-hidden">
+          <LatestSocials
+            socials={PHILIPPINES_SOCIALS} />
+          <TeamSection
+            teams={PHILIPPINES_TEAMS}
+            title='Philippines'
+          />
+        </section>
+        <TeamVideoSection
+          title="Meet Our Philippines Team"
+          videoUrl="https://www.youtube.com/embed/xWK8F88Akeo"
+          leftImageSrc="/images/philippines/castle_l.svg"
+          leftImageAlt="Left castle"
+          leftImageWidth={600}
+          leftImageHeight={600}
+          leftImageStyle={{ left: '-550px', marginTop: '105px', zIndex: 1 }}
+          rightImageSrc="/images/philippines/castle_r.svg"
+          rightImageAlt="Right castle"
+          rightImageWidth={370}
+          rightImageHeight={370}
+          rightImageStyle={{ right: '-315px', marginTop: '-10px', zIndex: 1 }}
+        />
+        <LoanTypesSection />
+        <section className="bg-no-repeat relative overflow-hidden">
+          <ProcessStep />
+        </section>
+      </div>
+      <LoanDetailSection backgroundImage="/images/philippines/loan_detail_bg.webp" />
       <div style={{ background: getGradient('philippines', true) }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="philippines" />
-          <EMICalculatorSection/>
+          <EMICalculatorSection />
           <div className="mb-20">
-            <LoanApplicationForm/>
+            <LoanApplicationForm />
           </div>
         </section>
       </div>

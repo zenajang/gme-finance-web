@@ -46,76 +46,76 @@ const INDONESIA_SOCIALS: SocialsItem[] = [
 
 const INDONESIA_TEAMS: Teams[] = [
   {
-    id: 'Name1',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'ferry',
+    image: '/images/indonesia/team/ferry.svg',
+    name: 'FERRY',
   },
   {
-    id: 'Name2',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'livi',
+    image: '/images/indonesia/team/livi.svg',
+    name: 'LIVI',
 
   },
   {
-    id: 'Name3',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  },
-    {
-    id: 'Name4',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'adiba',
+    image: '/images/team.svg',
+    name: 'ADIBA',
   },
   {
-    id: 'Name5',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'winda',
+    image: '/images/team.svg',
+    name: 'WINDA',
+  },
+  {
+    id: 'sandi',
+    image: '/images/team.svg',
+    name: 'SANDI',
 
   },
   {
-    id: 'Name6',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  }, 
+    id: 'widi',
+    image: '/images/team.svg',
+    name: 'WIDI',
+  },
 ];
 
 export default function IndonesiaPage() {
 
   return (
     <div>
-     <CountryIntroductionSection
-      imageSrc="/images/indonesia/background.webp"
-      title="Indonesia Team"
-    />
-     <div
-      className="bg-cover bg-center bg-no-repeat"
-      style={{ background: getGradient('indonesia')}}
-    >
-    <section className="bg-no-repeat relative overflow-hidden">
-    <div className="absolute bg-repeat bg-top top-0 w-full h-300" style={{ backgroundImage: "url('/images/indonesia/garland_d.svg')",transform:'rotate(180deg)' }} />
-      <LatestSocials 
-        socials={INDONESIA_SOCIALS}/>
-      <TeamSection
-        teams={INDONESIA_TEAMS}
-        title='Indonesia'
+      <CountryIntroductionSection
+        videoSrc="/images/indonesia/background.mp4"
+        title="Indonesia Team"
       />
-    </section>
+      <div
+        className="bg-cover bg-center bg-no-repeat"
+        style={{ background: getGradient('indonesia') }}
+      >
+        <section className="bg-no-repeat relative overflow-hidden">
+          <div className="absolute bg-repeat bg-top top-0 w-full h-300" style={{ backgroundImage: "url('/images/indonesia/garland_d.svg')", transform: 'rotate(180deg)' }} />
+          <LatestSocials
+            socials={INDONESIA_SOCIALS} />
+          <TeamSection
+            teams={INDONESIA_TEAMS}
+            title='Indonesia'
+          />
+        </section>
         <TeamVideoSection
           title="Meet Our Indonesia Team"
-          videoUrl="https://www.youtube.com/embed/xYKDgKik2iM"
+          videoUrl="https://www.youtube.com/embed/Q-AGuNjVNMU"
         />
-        <LoanTypesSection/>
-      <section className="bg-no-repeat relative overflow-hidden">
-        <ProcessStep/>
-      <div className="absolute bg-repeat bg-bottom bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/indonesia/garland_u.svg')",transform: 'rotate(180deg)' }} />
-      </section>
-    </div>
-    <LoanDetailSection backgroundImage="/images/indonesia/loan_detail_bg.webp"/>
-      <div style={{ background: getGradient('indonesia',true) }}>
+        <LoanTypesSection />
+        <section className="bg-no-repeat relative overflow-hidden">
+          <ProcessStep />
+          <div className="absolute bg-repeat bg-bottom bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/indonesia/garland_u.svg')", transform: 'rotate(180deg)' }} />
+        </section>
+      </div>
+      <LoanDetailSection backgroundImage="/images/indonesia/loan_detail_bg.webp" />
+      <div style={{ background: getGradient('indonesia', true) }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="indonesia" />
-          <EMICalculatorSection/>
-          <LoanApplicationForm/>
+          <EMICalculatorSection />
+          <LoanApplicationForm />
         </section>
       </div>
     </div>

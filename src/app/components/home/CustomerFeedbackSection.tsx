@@ -31,7 +31,7 @@ const NEWS: NewsItem[] = [
     content: 'Thanks to GME Finance, a huge weight has been lifted off my financial burden. Their loan services were incredibly fast and affordable. Their terms and conditions were also very friendly! I am grateful to GME Finance for providing me with a solution during my time of need.',
     video: '/images/introduction.jpg',
     career: 'Factory Worker',
-    name:'M.Agus'
+    name: 'M.Agus'
   },
   {
     id: 'raffle-draw',
@@ -39,7 +39,7 @@ const NEWS: NewsItem[] = [
     content: 'GME Finance has been a game-changer for my finances. Their loans are not only fast and convenient but also perfectly suited to my needs. I was impressed by their speedy approval and customizable repayment plans. GME Finance truly puts their customers first, and their service is top-notch. I wholeheartedly recommend them to anyone seeking financial support.',
     video: '/images/introduction.jpg',
     career: 'Factory Worker',
-    name :'Lolita Gomonid'
+    name: 'Lolita Gomonid'
   },
 ];
 
@@ -48,7 +48,6 @@ function formatDate(d: string) {
   return `${dt.getFullYear()}.${String(dt.getMonth() + 1).padStart(2, '0')}.${String(dt.getDate()).padStart(2, '0')}`;
 }
 
-// 카드 컴포넌트를 별도로 분리
 function FeedbackCard({ item }: { item: NewsItem }) {
   return (
     <article className="rounded-3xl bg-white flex flex-col min-h-[420px] md:min-h-[600px] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] overflow-hidden">
@@ -98,8 +97,8 @@ export default function CustomerFeedbackSection() {
             {NEWS.map((item, index) => (
               <SwiperSlide key={item.id}>
                 <div className={index === NEWS.length - 1 ? 'pr-5' : ''}>
-                <FeedbackCard item={item} />
-              </div>
+                  <FeedbackCard item={item} />
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -111,9 +110,8 @@ export default function CustomerFeedbackSection() {
             <FeedbackCard key={item.id} item={item} />
           ))}
         </div>
-
         <div className="text-center mt-0 md:mt-15 lg:mt-15">
-          <button className="bg-white shadow-[0_0_15px_rgba(0,0,0,0.15)] text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-medium hover:bg-red-50 hover:shadow-[0_0_25px_rgba(0,0,0,0.2)] transition-all">
+          <button className="bg-white shadow-[0_0_15px_rgba(0,0,0,0.15)] text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-medium hover:bg-red-50 transition-all">
             See More
           </button>
         </div>

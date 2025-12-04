@@ -1,11 +1,10 @@
 'use client';
 
-import Image from "next/image";
 import { useState } from "react";
 import { COMMON_COLORS } from "@/constants/colors";
 
 interface CountryIntroductionSectionProps {
-  imageSrc?: string;
+  videoSrc?: string;
   title?: string;
   description?: string;
   buttonText?: string;
@@ -15,7 +14,7 @@ interface CountryIntroductionSectionProps {
 }
 
 export default function CountryIntroductionSection({
-  imageSrc = "/images/introduction.jpg",
+  videoSrc = "/videos/introduction.mp4",
   title = "GME FINANCE",
   description = "Trusted & Legal Overseas Loans",
   buttonText = "Apply Now",
@@ -27,15 +26,13 @@ export default function CountryIntroductionSection({
   return (
      <section className="relative h-[630px] md:h-[800px] lg:h-[995px]">
         <div className="absolute inset-0">
-          <Image
-            src={imageSrc}
-            alt="Building"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-            loading="eager"
+          <video
+            src={videoSrc}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
           />
         </div>
         <div className="absolute inset-0 bg-black/40"/>

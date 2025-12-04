@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { COMMON_COLORS } from '@/constants/colors';
 
 interface EMICalculatorSectionProps {
@@ -11,175 +11,28 @@ interface EMICalculatorSectionProps {
 
 export default function EMICalculatorSection({
   buttonBgColor = COMMON_COLORS.primary,
-  buttonHoverBgColor = COMMON_COLORS.primaryHover,
-  titleColor = COMMON_COLORS.grayDark
 }: EMICalculatorSectionProps) {
-  const [loanAmount, setLoanAmount] = useState<string>('');
-  const [interestRate, setInterestRate] = useState<string>('');
-  const [term, setTerm] = useState<string>('');
-  const [monthlyPayment, setMonthlyPayment] = useState<string>('');
-  const [isCalculating, setIsCalculating] = useState<boolean>(false);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
-
-  const calculateEMI = () => {
-    // Input validation
-    const principal = parseFloat(loanAmount);
-    const rate = parseFloat(interestRate);
-    const months = parseInt(term);
-
-    if (isNaN(principal) || isNaN(rate) || isNaN(months)) {
-      setMonthlyPayment('Please enter valid numbers');
-      return;
-    }
-
-    if (principal <= 0 || rate < 0 || months <= 0) {
-      setMonthlyPayment('Please enter positive values');
-      return;
-    }
-
-    setIsCalculating(true);
-
-    // EMI Calculation Formula
-    // EMI = P × r × (1 + r)^n / ((1 + r)^n - 1)
-    // where P = Principal, r = monthly interest rate, n = number of months
-    
-    setTimeout(() => {
-      const monthlyRate = rate / 12 / 100;
-      
-      if (rate === 0) {
-        // If interest rate is 0, simply divide principal by months
-        const emi = principal / months;
-        setMonthlyPayment(emi.toFixed(2));
-      } else {
-        const emi = principal * monthlyRate * Math.pow(1 + monthlyRate, months) 
-                    / (Math.pow(1 + monthlyRate, months) - 1);
-        setMonthlyPayment(emi.toFixed(2));
-      }
-      
-      setIsCalculating(false);
-    }, 300); // Small delay for better UX
-  };
-
-  // Auto-calculate when all fields are filled
-  useEffect(() => {
-    if (loanAmount && interestRate && term) {
-      const timer = setTimeout(() => {
-        calculateEMI();
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loanAmount, interestRate, term]);
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    setter: React.Dispatch<React.SetStateAction<string>>
-  ) => {
-    const value = e.target.value;
-    // Allow only numbers and decimal point
-    if (value === '' || /^\d*\.?\d*$/.test(value)) {
-      setter(value);
-    }
+  const openCalculator = () => {
+    window.open('https://finance-emical.vercel.app/', '_blank');
   };
 
   return (
-    <section className="px-4 md:px-8 lg:px-90 py-16 md:py-20">
+    <section className="px-4 md:px-8 lg:px-40 py-16 md:py-20">
       <div className="relative z-10 w-full mx-auto">
-        <h2 className="text-heading text-center mb-8 md:mb-12" style={{ color: titleColor }}>
-          EMI Calculator
-        </h2>
-        <div className="bg-white rounded-2xl shadow-xl p-10 md:p-10 relative overflow-hidden">
-          <div className="relative z-10 space-y-5">
-            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-              <label htmlFor="loanAmount" className="text-label w-full md:w-60 md:flex-shrink-0">
-                Loan Amount
-              </label>
-              <input
-                id="loanAmount"
-                type="text"
-                value={loanAmount}
-                onChange={(e) => handleInputChange(e, setLoanAmount)}
-                placeholder="Enter loan amount"
-                className="flex-1 px-2 py-2 md:px-4 md:py-3 text-input bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
-              />
-            </div>
-
-            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-              <label htmlFor="interestRate" className="text-label w-full md:w-60 md:flex-shrink-0">
-                Interest Rates (%)
-              </label>
-              <input
-                id="interestRate"
-                type="text"
-                value={interestRate}
-                onChange={(e) => handleInputChange(e, setInterestRate)}
-                placeholder="Enter annual interest rate"
-                className="flex-1 px-2 py-2 md:px-4 md:py-3 text-input bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
-              />
-            </div>
-
-            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-              <label htmlFor="term" className="text-label w-full md:w-60 md:flex-shrink-0">
-                Term (Months)
-              </label>
-              <input
-                id="term"
-                type="text"
-                value={term}
-                onChange={(e) => handleInputChange(e, setTerm)}
-                placeholder="Enter loan term in months"
-                className="flex-1 px-2 py-2 md:px-4 md:py-3 text-input bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
-              />
-            </div>
-
-            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-              <div className="hidden md:block md:w-60 md:flex-shrink-0"></div>
-              <button
-                onClick={calculateEMI}
-                disabled={!loanAmount || !interestRate || !term || isCalculating}
-                className="px-12 text-white font-semibold py-3 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg"
-                style={{
-                  backgroundColor: isHovered && !isCalculating && loanAmount && interestRate && term
-                    ? buttonHoverBgColor
-                    : buttonBgColor
-                }}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
-                {isCalculating ? (
-                  <span className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Calculating...
-                  </span>
-                ) : (
-                  'Calculate'
-                )}
-              </button>
-            </div>
-
-            {/* Monthly Payment Result */}
-            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 pt-2">
-              <label htmlFor="monthlyPayment" className="text-label w-full md:w-60 md:flex-shrink-0">
-                Monthly Payment (EMI)
-              </label>
-              <div className="relative flex-1">
-                <input
-                  id="monthlyPayment"
-                  type="text"
-                  value={monthlyPayment}
-                  readOnly
-                  placeholder="Your EMI will appear here"
-                  className={`w-full px-2 py-2 md:px-4 md:py-3 text-input bg-gray-50 border rounded-lg transition-all duration-300 ${
-                    monthlyPayment && !monthlyPayment.includes('Please')
-                      ? 'border-green-500 bg-green-50'
-                      : 'border-gray-200'
-                  }`}
-                />
-              </div>
-            </div>
+        <div className="bg-white rounded-2xl shadow-xl p-10 md:p-10 relative overflow-hidden lg:p-15">
+          <h2 className="text-lg md:text-4xl lg:text-5xl font-bold text-black text-center mb-4 md:mb-5 lg:mb-10">How much support do you need?</h2>
+          <p className={`text-subheading text-center mb-3 md:mb-4 lg:mb-2`} >Check how much your monthly payment </p>
+          <p className={`text-subheading text-center mb-3 md:mb-4 lg:mb-10`}>
+            would be based on your desired loan amount
+          </p>
+          <div className="relative z-10 px-0 md:px-12 lg:px-88">
+            <button
+              onClick={openCalculator}
+              style={{ backgroundColor: buttonBgColor, width: '100%' }}
+              className="rounded-lg text-md md:text-xl lg:text-xl text-white py-2 md:py-6 lg:py-6 font-medium cursor-pointer hover:opacity-90 transition-opacity"
+            >
+              EMI Calculator
+            </button>
           </div>
         </div>
       </div>

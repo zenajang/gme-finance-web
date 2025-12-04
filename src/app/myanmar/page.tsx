@@ -46,37 +46,42 @@ const MYANMAR_SOCIALS: SocialsItem[] = [
 
 const MYANMAR_TEAMS: Teams[] = [
   {
-    id: 'Name1',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'min',
+    image: '/images/myanmar/team/min.svg',
+    name: 'MIN',
   },
   {
-    id: 'Name2',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'suzan',
+    image: '/images/myanmar/team/suzan.svg',
+    name: 'SUZAN',
 
   },
   {
-    id: 'Name3',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  },
-    {
-    id: 'Name4',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'crystal',
+    image: '/images/myanmar/team/crystal.svg',
+    name: 'CRYSTAL',
   },
   {
-    id: 'Name5',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'eaindra',
+    image: '/images/myanmar/team/eaindra.svg',
+    name: 'EAINDRA',
+  },
+  {
+    id: 'hanna',
+    image: '/images/team.svg',
+    name: 'HANNA',
 
   },
   {
-    id: 'Name6',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  }, 
+    id: 'thazin',
+    image: '/images/team.svg',
+    name: 'THAZIN',
+  },
+  {
+    id: 'puhe',
+    image: '/images/team.svg',
+    name: 'PUHE',
+  },
 ];
 
 export default function MyanmarPage() {
@@ -84,57 +89,57 @@ export default function MyanmarPage() {
 
   return (
     <div>
-     <CountryIntroductionSection
-      imageSrc="/images/myanmar/background.webp"
-      title="Myanmar Team"
-      buttonBgColor={colors.primary}
-      buttonHoverBgColor={colors.hover}
-      buttonTextColor={colors.gradient1}
-    />
-    <div
-      className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ backgroundImage: "url('/images/myanmar/section_bg.svg')" }}
-    >
-    <section className="bg-no-repeat bg-cover bg-center relative overflow-hidden">
-      <div className="absolute bg-no-repeat bg-cover bg-center top-0 w-full h-330" style={{ backgroundImage: "url('/images/myanmar/wave_t.svg')" }} />
-      <LatestSocials 
-        socials={MYANMAR_SOCIALS}
+      <CountryIntroductionSection
+        videoSrc="/images/myanmar/background.mp4"
+        title="Myanmar Team"
         buttonBgColor={colors.primary}
         buttonHoverBgColor={colors.hover}
-        />
-      <TeamSection
-        teams={MYANMAR_TEAMS}
-        title='Myanmar'
-        nameBgColor={colors.primary}
+        buttonTextColor={colors.gradient1}
       />
-    </section>
-    <div style={{ background:getGradient('myanmar') }}>
-      <TeamVideoSection
-        title="Meet Our Myanmar Team"
-        subtitleColor={colors.primary}
-        videoUrl="https://www.youtube.com/embed/8GcPTQb2iog"
-        leftImageSrc="/images/myanmar/castle_l.svg"
-        leftImageAlt="Left castle"
-        leftImageWidth={380}
-        leftImageHeight={380}
-        leftImageStyle={{ left: '-320px', marginTop:'80px', zIndex: 1 }}
-        rightImageSrc="/images/myanmar/castle_r.svg"
-        rightImageAlt="Right castle"
-        rightImageWidth={380}
-        rightImageHeight={380}
-        rightImageStyle={{ right: '-320px', marginTop:'146px', zIndex: 1 }}
-      />
-      <LoanTypesSection/>
-      <div className="bg-no-repeat bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: "url('/images/myanmar/wave_b.svg')" }} />
-      <ProcessStep subtitleColor={colors.primary}/>
-    </div>
-    </div>
-    <LoanDetailSection backgroundImage="/images/myanmar/loan_detail_bg.webp" />
-      <section className="bg-cover relative overflow-hidden" style={{ background:getGradient('myanmar')  }}>
-        <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
+      <div
+        className="bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{ backgroundImage: "url('/images/myanmar/section_bg.svg')" }}
+      >
+        <section className="bg-no-repeat bg-cover bg-center relative overflow-hidden">
+          <div className="absolute bg-no-repeat bg-cover bg-center top-0 w-full h-330" style={{ backgroundImage: "url('/images/myanmar/wave_t.svg')" }} />
+          <LatestSocials
+            socials={MYANMAR_SOCIALS}
+            buttonBgColor={colors.primary}
+            buttonHoverBgColor={colors.hover}
+          />
+          <TeamSection
+            teams={MYANMAR_TEAMS}
+            title='Myanmar'
+            nameBgColor={colors.primary}
+          />
+        </section>
+        <div style={{ background: getGradient('myanmar') }}>
+          <TeamVideoSection
+            title="Meet Our Myanmar Team"
+            subtitleColor={colors.primary}
+            videoUrl="https://www.youtube.com/embed/Y7qp3bG9AwA"
+            leftImageSrc="/images/myanmar/castle_l.svg"
+            leftImageAlt="Left castle"
+            leftImageWidth={380}
+            leftImageHeight={380}
+            leftImageStyle={{ left: '-320px', marginTop: '80px', zIndex: 1 }}
+            rightImageSrc="/images/myanmar/castle_r.svg"
+            rightImageAlt="Right castle"
+            rightImageWidth={380}
+            rightImageHeight={380}
+            rightImageStyle={{ right: '-320px', marginTop: '146px', zIndex: 1 }}
+          />
+          <LoanTypesSection />
+          <div className="bg-no-repeat bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: "url('/images/myanmar/wave_b.svg')" }} />
+          <ProcessStep subtitleColor={colors.primary} />
+        </div>
+      </div>
+      <LoanDetailSection backgroundImage="/images/myanmar/loan_detail_bg.webp" />
+      <section className="bg-cover relative overflow-hidden" style={{ background: getGradient('myanmar') }}>
+        <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
         <GarlandDecoration country="myanmar" />
         <div className="mb-20 mt-10">
-        <LoanApplicationForm buttonBgColor={colors.primary} subtitleColor={colors.primary}/>
+          <LoanApplicationForm buttonBgColor={colors.primary} subtitleColor={colors.primary} />
         </div>
       </section>
     </div>

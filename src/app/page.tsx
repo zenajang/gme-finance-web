@@ -45,14 +45,14 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <IntroductionSection />
-      <CountrySection/>
-      <AnimatedBannerSection/>
-      <LatestNewsSection/>
-      <CustomerFeedbackSection/>
-      <LoanTypesSection/>
-      <NewServiceSection/>
-      <SimpleLoanApplySection/>
-      <FindBranchSection/>
+      <CountrySection />
+      <AnimatedBannerSection />
+      <LatestNewsSection />
+      <CustomerFeedbackSection />
+      <LoanTypesSection />
+      <NewServiceSection />
+
+      <FindBranchSection />
     </div>
   );
 }

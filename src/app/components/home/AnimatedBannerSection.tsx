@@ -1,34 +1,38 @@
 'use client';
 
-export default function ScrollingText() {
-  const REPEAT_COUNT = 50;
+import Image from 'next/image';
 
-  const RepeatText = () => (
-    <>
-      <span className="text-5xl md:text-9xl font-black text-red-600 outline-text px-4">
-        GME FINANCE
-      </span>
-      <span className="text-5xl md:text-9xl font-black text-red-600 px-4">
-        FAST EASY AND SAFE
-      </span>
-    </>
+export default function ScrollingText() {
+  const IMAGES_PER_SET = 1;
+
+  const ImageGroup = ({ prefix }: { prefix: string }) => (
+    <div className="flex items-center gap-8 md:gap-10 shrink-0">
+      {Array.from({ length: IMAGES_PER_SET }).map((_, index) => (
+        <Image
+          key={`${prefix}-${index}`}
+          src="/images/animatedLetter.svg"
+          alt="GME Finance Banner"
+          width={900}
+          height={130}
+          className="h-12 md:h-20 lg:h-28 w-auto flex-shrink-0"
+        />
+      ))}
+    </div>
   );
 
   return (
     <section className="py-10 bg-white overflow-hidden">
       <div className="relative mb-1 md:mb-4 lg:mb-4">
-        <div className="flex animate-scroll-left whitespace-nowrap">
-          {Array.from({ length: REPEAT_COUNT }).map((_, index) => (
-            <RepeatText key={`top-${index}`} />
-          ))}
+        <div className="flex items-center gap-8 md:gap-10 animate-marquee-row1">
+          <ImageGroup prefix="top-set1" />
+          <ImageGroup prefix="top-set2" />
         </div>
       </div>
 
-      <div className="relative">
-        <div className="flex animate-scroll-right whitespace-nowrap">
-          {Array.from({ length: REPEAT_COUNT }).map((_, index) => (
-            <RepeatText key={`bottom-${index}`} />
-          ))}
+      <div className="relative mt-10">
+        <div className="flex items-center gap-8 md:gap-10 animate-marquee-row2">
+          <ImageGroup prefix="bottom-set1" />
+          <ImageGroup prefix="bottom-set2" />
         </div>
       </div>
     </section>

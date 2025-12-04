@@ -10,7 +10,9 @@ import Placeholder from '@tiptap/extension-placeholder';
 import { TextStyle } from '@tiptap/extension-text-style';
 import { Color } from '@tiptap/extension-color';
 import { Highlight } from '@tiptap/extension-highlight';
+import Youtube from '@tiptap/extension-youtube';
 import { FontSize } from './FontSizeExtension';
+import { Video } from './VideoExtension';
 import { createClient } from '@/lib/supabase/client';
 import { useRef, useState } from 'react';
 import './TiptapEditor.css';
@@ -35,7 +37,9 @@ interface ExtendedEditor extends Editor {
 export default function TiptapEditor({ content, onChange, placeholder = 'Please enter the content...' }: TiptapEditorProps) {
   const supabase = createClient();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const videoInputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
+  const [uploadingVideo, setUploadingVideo] = useState(false);
 
   const editor = useEditor({
     extensions: [
@@ -56,6 +60,12 @@ export default function TiptapEditor({ content, onChange, placeholder = 'Please 
         multicolor: true,
       }),
       Image,
+      Video,
+      Youtube.configure({
+        controls: true,
+        nocookie: true,
+        modestBranding: true,
+      }),
       Link.configure({
         openOnClick: false,
       }),
@@ -134,6 +144,83 @@ export default function TiptapEditor({ content, onChange, placeholder = 'Please 
     }
     // 같은 파일 재업로드를 위해 input 값 초기화
     e.target.value = '';
+  };
+
+  const uploadVideo = async (file: File) => {
+    setUploadingVideo(true);
+    try {
+      const validTypes = ['video/mp4', 'video/webm', 'video/ogg', 'video/quicktime', 'video/x-msvideo', 'video/x-matroska'];
+      if (!validTypes.includes(file.type)) {
+        alert('지원되는 동영상 형식: MP4, WebM, OGG, MOV, AVI, MKV');
+        return;
+      }
+
+      // 50MB 제한
+      if (file.size > 50 * 1024 * 1024) {
+        alert('동영상 파일 크기는 50MB를 초과할 수 없습니다.');
+        return;
+      }
+
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+      const filePath = `blog-videos/${fileName}`;
+
+      const { error } = await supabase.storage
+        .from('images')
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (error) {
+        console.error('Upload error:', error);
+        alert('업로드 오류: ' + error.message);
+        return;
+      }
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('images')
+        .getPublicUrl(filePath);
+
+      if (publicUrl) {
+        editor.chain().focus().setVideo({ src: publicUrl }).run();
+      }
+    } catch (err) {
+      console.error('Upload error:', err);
+      alert('동영상 업로드 중 오류가 발생했습니다.');
+    } finally {
+      setUploadingVideo(false);
+    }
+  };
+
+  const handleVideoUpload = () => {
+    videoInputRef.current?.click();
+  };
+
+  const handleVideoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      uploadVideo(file);
+    }
+    e.target.value = '';
+  };
+
+  const addYoutubeVideo = () => {
+    const url = window.prompt('YouTube URL을 입력하세요:');
+
+    if (url) {
+      // YouTube URL 검증
+      const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=|embed\/|shorts\/)|youtu\.be\/)/;
+      if (!youtubeRegex.test(url)) {
+        alert('올바른 YouTube URL을 입력해주세요.');
+        return;
+      }
+      editor.commands.setYoutubeVideo({
+        src: url,
+        width: 640,
+        height: 360,
+      });
+    }
   };
 
   const setLink = () => {
@@ -440,6 +527,27 @@ export default function TiptapEditor({ content, onChange, placeholder = 'Please 
             {uploading ? '⏳' : '🖼️'}
           </button>
         </div>
+
+        {/* 동영상 */}
+        <div className="flex gap-1">
+          <button
+            onClick={addYoutubeVideo}
+            className="px-2 py-1 rounded hover:bg-gray-200 transition-colors"
+            title="YouTube 영상 추가"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#FF0000">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </button>
+          <button
+            onClick={handleVideoUpload}
+            disabled={uploadingVideo}
+            className="px-2 py-1 rounded hover:bg-gray-200 transition-colors disabled:opacity-50"
+            title={uploadingVideo ? '업로드 중...' : '동영상 업로드'}
+          >
+            {uploadingVideo ? '⏳' : '🎬'}
+          </button>
+        </div>
       </div>
 
       {/* 에디터 컨텐츠 */}
@@ -473,6 +581,15 @@ export default function TiptapEditor({ content, onChange, placeholder = 'Please 
         ref={fileInputRef}
         onChange={handleFileChange}
         accept="image/jpeg,image/png,image/gif,image/webp"
+        style={{ display: 'none' }}
+      />
+
+      {/* Hidden file input for video upload */}
+      <input
+        type="file"
+        ref={videoInputRef}
+        onChange={handleVideoChange}
+        accept="video/mp4,video/webm,video/ogg,video/quicktime,video/x-msvideo,video/x-matroska"
         style={{ display: 'none' }}
       />
     </div>

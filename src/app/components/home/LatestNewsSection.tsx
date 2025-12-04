@@ -98,10 +98,9 @@ export default function LatestNewsSection() {
       className="py-8 md:py-14 lg:py-16 px-0 md:px-45 lg:px-45 bg-white bg-cover bg-center bg-no-repeat relative overflow-hidden"
     >
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0"
         style={{
-          backgroundImage: 'url(/images/latestNew_bg.png)',
-          transform: 'rotate(180deg)'
+          background: 'linear-gradient(to bottom, #9F0920 0%, #D81313 33%, #E6271E 60%, #F97B3F 100%)'
         }}
       />
       <div className="px-0 md:px-3 lg:px-3 relative z-10">
@@ -134,7 +133,7 @@ export default function LatestNewsSection() {
         </div>
 
         <div className="text-center mt-0 md:mt-15 lg:mt-15">
-          <button className="bg-white border-1 border-red-500 text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6  font-medium hover:bg-red-50 transition-colors">
+          <button className="bg-white border-1 border-red-500 text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-medium hover:bg-red-50 transition-colors">
             See More
           </button>
         </div>

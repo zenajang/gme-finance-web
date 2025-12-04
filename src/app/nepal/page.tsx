@@ -45,82 +45,82 @@ const NEPAL_SOCIALS: SocialsItem[] = [
 
 const NEPAL_TEAMS: Teams[] = [
   {
-    id: 'Name1',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'madhukar',
+    image: '/images/nepal/team/madhukar.svg',
+    name: 'MADHUKAR',
   },
   {
-    id: 'Name2',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'aashmi',
+    image: '/images/nepal/team/aashmi.svg',
+    name: 'AASHMI',
 
   },
   {
-    id: 'Name3',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
+    id: 'asmita',
+    image: '/images/nepal/team/asmita.svg',
+    name: 'ASMITA',
   },
   {
-    id: 'Name4',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'prabha',
+    image: '/images/nepal/team/prabha.svg',
+    name: 'PRABHA',
   },
   {
-    id: 'Name5',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'smriti',
+    image: '/images/team.svg',
+    name: 'SMRITI',
 
   },
   {
-    id: 'Name6',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  }, 
+    id: 'salina',
+    image: '/images/team.svg',
+    name: 'SALINA',
+  },
 ];
 
 export default function NepalPage() {
 
   return (
     <div>
-     <CountryIntroductionSection
-      imageSrc="/images/nepal/background.webp"
-      title="Nepal Team"
-    />
-    <div
-      className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ background: getGradient('nepal')}}
-    >
-    <section className="bg-no-repeat relative overflow-hidden">
-      <LatestSocials socials={NEPAL_SOCIALS}/>
-      <TeamSection teams={NEPAL_TEAMS} title='Nepal'/>
-    </section>
-    <TeamVideoSection
+      <CountryIntroductionSection
+        videoSrc="/images/nepal/background.mp4"
+        title="Nepal Team"
+      />
+      <div
+        className="bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{ background: getGradient('nepal') }}
+      >
+        <section className="bg-no-repeat relative overflow-hidden">
+          <LatestSocials socials={NEPAL_SOCIALS} />
+          <TeamSection teams={NEPAL_TEAMS} title='Nepal' />
+        </section>
+        <TeamVideoSection
           title="Meet Our Nepal Team"
-          videoUrl="https://www.youtube.com/embed/aePuJafyedg"
+          videoUrl="https://www.youtube.com/embed/afbejvZ8a8k"
           leftImageSrc="/images/nepal/castle_l.svg"
           leftImageAlt="Left castle"
           leftImageWidth={300}
           leftImageHeight={300}
-          leftImageStyle={{ left: '-250px', marginTop:'120px', zIndex: 1 }}
+          leftImageStyle={{ left: '-250px', marginTop: '120px', zIndex: 1 }}
           rightImageSrc="/images/nepal/castle_r.svg"
           rightImageAlt="Right castle"
           rightImageWidth={350}
           rightImageHeight={350}
-          rightImageStyle={{ right: '-270px', marginTop:'93px', zIndex: 1 }}
+          rightImageStyle={{ right: '-270px', marginTop: '93px', zIndex: 1 }}
         />
-        <LoanTypesSection/>
-      <section className="bg-no-repeat relative overflow-hidden">
-        <div className="absolute bg-no-repeat bg-right -bottom-6 -right-10 w-full h-65" style={{ backgroundImage: "url('/images/nepal/cow.svg')" }} />
-        <div className="absolute bg-no-repeat bg-left bottom-0 -left-14 w-full h-65" style={{ backgroundImage: "url('/images/nepal/castle.svg')" }} />
-        <ProcessStep/>
-      </section>
-    </div>
-    <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.webp"/>
+        <LoanTypesSection />
+        <section className="bg-no-repeat relative overflow-hidden">
+          <div className="absolute bg-no-repeat bg-right -bottom-6 -right-10 w-full h-65" style={{ backgroundImage: "url('/images/nepal/cow.svg')" }} />
+          <div className="absolute bg-no-repeat bg-left bottom-0 -left-14 w-full h-65" style={{ backgroundImage: "url('/images/nepal/castle.svg')" }} />
+          <ProcessStep />
+        </section>
+      </div>
+      <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.webp" />
       <div style={{ background: getGradient('nepal') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="nepal" />
-          <EMICalculatorSection/>
-          <LoanApplicationForm/>
+          <EMICalculatorSection />
+          <LoanApplicationForm />
         </section>
       </div>
     </div>

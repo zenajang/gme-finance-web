@@ -35,15 +35,33 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.container { @apply mx-auto max-w-7xl; }
+.container {
+  @apply mx-auto max-w-7xl;
+}
 
-.h2 { @apply text-3xl md:text-4xl font-extrabold; }
+.h2 {
+  @apply text-3xl md:text-4xl font-extrabold;
+}
 
-.card { @apply bg-white rounded-xl shadow-md border border-gray-100; }
-.btn-primary { @apply inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors; }
-.btn-outline { @apply inline-flex items-center justify-center gap-2 border px-4 py-2 rounded-lg hover:bg-gray-50; }
-.btn-ghost   { @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg; }
-.input { @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500; }
+.card {
+  @apply bg-white rounded-xl shadow-md border border-gray-100;
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 border px-4 py-2 rounded-lg hover:bg-gray-50;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg;
+}
+
+.input {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500;
+}
 
 /* 모든 버튼에 적당히 둥근 사각형 스타일 통일 적용 */
 button {
@@ -62,8 +80,22 @@ select {
   padding-right: 3rem;
 }
 
-@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-.animate-marquee { display:inline-block; padding-left:50%; animation:marquee 18s linear infinite; will-change:transform; }
+@keyframes marquee {
+  0% {
+    transform: translateX(0)
+  }
+
+  100% {
+    transform: translateX(-50%)
+  }
+}
+
+.animate-marquee {
+  display: inline-block;
+  padding-left: 50%;
+  animation: marquee 18s linear infinite;
+  will-change: transform;
+}
 
 /* 반응형 텍스트 패턴 */
 .text-heading {
@@ -105,6 +137,11 @@ select {
 
 .country-swiper .swiper-wrapper {
   overflow: visible;
+  transition-timing-function: linear !important;
+}
+
+.swiper-centered .swiper-wrapper {
+  justify-content: center;
 }
 
 .country-swiper .swiper-slide {
@@ -131,6 +168,7 @@ select {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -140,6 +178,7 @@ select {
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -153,10 +192,62 @@ select {
   animation: scroll-right 30s linear infinite;
 }
 
+/* 무한 마퀴 애니메이션 */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 30s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 30s linear infinite;
+}
+
+/* Row 1: 왼쪽 → 오른쪽, 15초 */
+.animate-marquee-row1 {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 15s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Row 2: 오른쪽 → 왼쪽, 15초 (기본값, 필요시 수정) */
+.animate-marquee-row2 {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 15s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
 /* 아웃라인 텍스트 스타일 */
 .outline-text {
   color: transparent;
-  -webkit-text-stroke: 2px #dc2626; /* red-600 */
+  -webkit-text-stroke: 2px #dc2626;
+  /* red-600 */
   text-stroke: 2px #dc2626;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -186,7 +277,8 @@ select {
 }
 
 .customer-feedback-swiper .swiper-pagination-bullet-active {
-  background: #ef4444; /* red-500 */
+  background: #ef4444;
+  /* red-500 */
   width: 24px;
   border-radius: 5px;
 }
@@ -196,13 +288,16 @@ select {
   .country-swiper .flag-ring {
     transition: transform 0.35s ease;
   }
+
   .country-swiper .swiper-slide-active .flag-ring {
     transform: scale(1.2);
     z-index: 10;
   }
+
   .country-swiper .swiper-slide {
     transition: transform 0.35s ease;
   }
+
   .country-swiper .swiper-slide-prev .flag-ring,
   .country-swiper .swiper-slide-next .flag-ring {
     transform: scale(0.8);

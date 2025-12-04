@@ -46,83 +46,78 @@ const MONGOLIA_SOCIALS: SocialsItem[] = [
 
 const MONGOLIA_TEAMS: Teams[] = [
   {
-    id: 'Name1',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'uuree',
+    image: '/images/mongolia/team/uuree.svg',
+    name: 'UUREE',
   },
   {
-    id: 'Name2',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'eba',
+    image: '/images/mongolia/team/eba.svg',
+    name: 'EBA',
 
   },
   {
-    id: 'Name3',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  },
-    {
-    id: 'Name4',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'migga',
+    image: '/images/mongolia/team/migga.svg',
+    name: 'MIGGA',
   },
   {
-    id: 'Name5',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'zulaa',
+    image: '/images/team.svg',
+    name: 'ZULAA',
+  },
+  {
+    id: 'khanda',
+    image: '/images/team.svg',
+    name: 'KHANDAA',
 
   },
-  {
-    id: 'Name6',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  }, 
 ];
 
 export default function MongoliaPage() {
 
   return (
     <div>
-     <CountryIntroductionSection
-      imageSrc="/images/mongolia/background.webp"
-      title="Mongolia Team"
-    />
-    <div
-      className="bg-cover bg-center bg-no-repeat"
-      style={{ background: getGradient('mongolia')}}
-    >
-    <section className="bg-no-repeat relative overflow-hidden">
-    
-      <div className="absolute bg-no-repeat -top-190 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern_r.svg')", backgroundSize:'20%' }} /> 
-      <LatestSocials 
-        socials={MONGOLIA_SOCIALS}/>
-      <TeamSection
-        teams={MONGOLIA_TEAMS}
-        title='Mongolia'
+      <CountryIntroductionSection
+        videoSrc="/images/mongolia/background.mp4"
+        title="Mongolia Team"
       />
-    </section>
-    <TeamVideoSection
-      title="Meet Our Mongolia Team"
-      videoUrl="https://www.youtube.com/embed/xYKDgKik2iM"
-      centerImageSrc="/images/mongolia/pattern.svg"
-      centerImageAlt="Center pattern"
-      centerImageWidth={3000}
-      centerImageHeight={3000}
-      centerImageStyle={{ opacity: 0.8, zIndex: 5, marginTop: '200px' }}
-    />
-    <LoanTypesSection/>
-      <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat bg-right top-80 -right-30 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern_r.svg')",backgroundSize:'20%' }} />
-          <ProcessStep/>
-      </section>
-    </div>
-      <LoanDetailSection backgroundImage="/images/mongolia/loan_detail_bg.webp"/>
+      <div
+        className="bg-cover bg-center bg-no-repeat"
+        style={{ background: getGradient('mongolia') }}
+      >
+        <section className="bg-no-repeat relative overflow-hidden">
+
+          <div className="absolute bg-no-repeat -top-190 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern_r.svg')", backgroundSize: '20%' }} />
+          <LatestSocials
+            socials={MONGOLIA_SOCIALS} />
+          <TeamSection
+            teams={MONGOLIA_TEAMS}
+            title='Mongolia'
+          />
+        </section>
+        <TeamVideoSection
+          title="Meet Our Mongolia Team"
+          videoUrl="https://www.youtube.com/embed/tYjvAdzknLE"
+          centerImageSrc="/images/mongolia/pattern.svg"
+          centerImageAlt="Center pattern"
+          centerImageWidth={3000}
+          centerImageHeight={3000}
+          centerImageStyle={{ opacity: 0.8, zIndex: 5, marginTop: '200px' }}
+        />
+        <LoanTypesSection />
+        <section className="bg-no-repeat relative overflow-hidden">
+          <div className="absolute bg-no-repeat bg-right top-80 -right-30 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern_r.svg')", backgroundSize: '20%' }} />
+          <ProcessStep />
+        </section>
+      </div>
+      <LoanDetailSection backgroundImage="/images/mongolia/loan_detail_bg.webp" />
       <div style={{ background: getGradient('mongolia') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="mongolia" />
-          <EMICalculatorSection/>
+          <EMICalculatorSection />
           <div className="mb-20">
-            <LoanApplicationForm/>
+            <LoanApplicationForm />
           </div>
         </section>
       </div>

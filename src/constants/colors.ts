@@ -41,7 +41,7 @@ export const COUNTRY_COLORS: Record<string, ColorScheme> = {
   },
 
   myanmar: {
-    primary: '#FF8000',
+    primary: '#FF6200',
     hover: '#f5b372ff',
     subtitle: '#FF8000',
     gradient1: '#FFFCF5',
@@ -79,15 +79,6 @@ export const COUNTRY_COLORS: Record<string, ColorScheme> = {
     hover: '#FF6B78',
     gradient1: '#FAE5EB',
     gradient2: '#FEF7DB'
-  },
-
-  china: {
-    primary: '#DF2121',
-    hover: '#e98c8cff',
-    gradient1: '#FFF4DF',
-    gradient2: '#FFFCF5',
-    gradient3: '#FFFCE9',
-    gradient4: '#FFF4F0',
   },
 
   cambodia: {
@@ -141,8 +132,8 @@ export const COUNTRY_COLORS: Record<string, ColorScheme> = {
   },
 
   russia: {
-    primary: '#DF2121',
-    hover: '#e98c8cff',
+    primary: '#3A57B4',
+    hover: '#ccd7f8ff',
     gradient1: '#FFFFFF',
     gradient2: '#DFE8FF',
   },

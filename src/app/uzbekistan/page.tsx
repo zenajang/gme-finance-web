@@ -46,37 +46,48 @@ const UZBEKISTAN_SOCIALS: SocialsItem[] = [
 
 const UZBEKISTAN_TEAMS: Teams[] = [
   {
-    id: 'Name1',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'hamid',
+    image: '/images/uzbekistan/team/hamid.svg',
+    name: 'HAMID',
   },
   {
-    id: 'Name2',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'zed',
+    image: '/images/uzbekistan/team/zed.svg',
+    name: 'ZED',
 
   },
   {
-    id: 'Name3',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
+    id: 'mark',
+    image: '/images/uzbekistan/team/mark.svg',
+    name: 'MARK',
   },
   {
-    id: 'Name4',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'mikhail',
+    image: '/images/uzbekistan/team/mikhail.svg',
+    name: 'MIKHAIL',
   },
   {
-    id: 'Name5',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'ruby',
+    image: '/images/uzbekistan/team/ruby.svg',
+    name: 'RUBY',
 
   },
   {
-    id: 'Name6',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  }, 
+    id: 'ziyoda',
+    image: '/images/uzbekistan/team/ziyoda.svg',
+    name: 'ZIYODA',
+  },
+  {
+    id: 'zoda',
+    image: '/images/uzbekistan/team/zoda.svg',
+    name: 'ZODA',
+
+  },
+  {
+    id: 'abror',
+    image: '/images/team.svg',
+    name: 'ABROR',
+  },
 ];
 
 export default function UzbekistanPage() {
@@ -84,54 +95,54 @@ export default function UzbekistanPage() {
 
   return (
     <div>
-     <CountryIntroductionSection
-      imageSrc="/images/uzbekistan/background.webp"
-      title="Uzbekistan Team"
-      buttonTextColor={colors.primary}
-      buttonHoverBgColor={colors.introHover}
-    />
-    <div
-      className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ background: colors.gradient1}}
-    >
-    <section className="bg-no-repeat relative overflow-hidden">
-      <LatestSocials 
-        socials={UZBEKISTAN_SOCIALS}
-        buttonBgColor={colors.primary}
-        buttonHoverBgColor={colors.hover}
+      <CountryIntroductionSection
+        videoSrc="/images/uzbekistan/background.mp4"
+        title="Uzbekistan Team"
+        buttonTextColor={colors.primary}
+        buttonHoverBgColor={colors.introHover}
+      />
+      <div
+        className="bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{ background: colors.gradient1 }}
+      >
+        <section className="bg-no-repeat relative overflow-hidden">
+          <LatestSocials
+            socials={UZBEKISTAN_SOCIALS}
+            buttonBgColor={colors.primary}
+            buttonHoverBgColor={colors.hover}
+          />
+          <div className="absolute bg-no-repeat -top-170 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
+          <TeamSection
+            teams={UZBEKISTAN_TEAMS}
+            title='Uzbekistan'
+            nameBgColor={colors.primary}
+          />
+        </section>
+        <TeamVideoSection
+          title="Meet Our Uzbekistan Team"
+          titleColor={colors.title}
+          subtitleColor="#0094AE"
+          videoUrl="https://www.youtube.com/embed/7P2VEM70KgA"
+          centerImageSrc="/images/uzbekistan/pattern.svg"
+          centerImageAlt="Center pattern"
+          centerImageWidth={3000}
+          centerImageHeight={3000}
+          centerImageStyle={{ opacity: 0.8, zIndex: 5, marginTop: '200px' }}
         />
-      <div className="absolute bg-no-repeat -top-170 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
-      <TeamSection
-        teams={UZBEKISTAN_TEAMS}
-        title='Uzbekistan'
-        nameBgColor={colors.primary}
-      />
-      </section>
-      <TeamVideoSection
-        title="Meet Our Uzbekistan Team"
-        titleColor={colors.title}
-        subtitleColor="#0094AE"
-        videoUrl="https://www.youtube.com/embed/mX9zCgpqohU"
-        centerImageSrc="/images/uzbekistan/pattern.svg"
-        centerImageAlt="Center pattern"
-        centerImageWidth={3000}
-        centerImageHeight={3000}
-        centerImageStyle={{ opacity: 0.8, zIndex: 5, marginTop: '200px' }}
-      />
-    <LoanTypesSection/>
-    <section className="bg-no-repeat relative overflow-hidden">
-    <div className="absolute bg-no-repeat bg-right -bottom-80 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
-    <ProcessStep subtitleColor={colors.primary}/>
-    </section>
-    </div>
+        <LoanTypesSection />
+        <section className="bg-no-repeat relative overflow-hidden">
+          <div className="absolute bg-no-repeat bg-right -bottom-80 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
+          <ProcessStep subtitleColor={colors.primary} />
+        </section>
+      </div>
 
-    <LoanDetailSection backgroundImage="/images/uzbekistan/loan_detail_bg.webp"/>
-      <div style={{ background:colors.gradient1}}>
+      <LoanDetailSection backgroundImage="/images/uzbekistan/loan_detail_bg.webp" />
+      <div style={{ background: colors.gradient1 }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="uzbekistan" variant="compact" />
-          <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
+          <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
           <div className="mb-69">
-          <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary}/>
+            <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary} />
           </div>
         </section>
       </div>

@@ -45,36 +45,40 @@ const BANGLADESH_SOCIALS: SocialsItem[] = [
 
 const BANGLADESH_TEAMS: Teams[] = [
   {
-    id: 'Name1',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'taizul',
+    image: '/images/bangladesh/team/taizul.svg',
+    name: 'TAIZUL',
   },
   {
-    id: 'Name2',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'parag',
+    image: '/images/bangladesh/team/parag.svg',
+    name: 'PARAG',
   },
   {
-    id: 'Name3',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
+    id: 'ripon',
+    image: '/images/bangladesh/team/ripon.svg',
+    name: 'RIPON',
   },
   {
-    id: 'Name4',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'saiful',
+    image: '/images/bangladesh/team/saiful.svg',
+    name: 'SAIFUL',
   },
   {
-    id: 'Name5',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
-
+    id: 'smita',
+    image: '/images/team.svg',
+    name: 'SMITA',
   },
   {
-    id: 'Name6',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
-  }, 
+    id: 'ritu',
+    image: '/images/team.svg',
+    name: 'RITU',
+  },
+  {
+    id: 'rokan',
+    image: '/images/team.svg',
+    name: 'ROKAN',
+  },
 ];
 
 export default function BangladeshPage() {
@@ -82,54 +86,54 @@ export default function BangladeshPage() {
 
   return (
     <div>
-     <CountryIntroductionSection
-      imageSrc="/images/bangladesh/background.webp"
-      title="Bangladesh Team"
-      buttonHoverBgColor={colors.introHover}
-      buttonTextColor={colors.primary}
-    />
-    <div
-      className="bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ background: getGradient('bangladesh')}}
-    >
-    <section className="bg-no-repeat relative overflow-hidden">
-      <div className="absolute bg-no-repeat bg-left top-0 -left-14 w-full h-65" style={{ backgroundImage: "url('/images/bangladesh/fireflake.svg')" }} />
-      <LatestSocials 
-        socials={BANGLADESH_SOCIALS}
-        buttonBgColor={colors.primary}
-        buttonHoverBgColor={colors.hover}
-        />
-      <div className="absolute bg-no-repeat top-210 bg-right -right-10 w-full h-65" style={{ backgroundImage: "url('/images/bangladesh/fireflake.svg')" }} />
-      <TeamSection
-        teams={BANGLADESH_TEAMS}
-        title='Bangladesh'
-        nameBgColor={colors.primary}
+      <CountryIntroductionSection
+        videoSrc="/images/bangladesh/background.mp4"
+        title="Bangladesh Team"
+        buttonHoverBgColor={colors.introHover}
+        buttonTextColor={colors.primary}
       />
-    </section>
-    <TeamVideoSection
-      title="Meet Our Bangladesh Team"
-      subtitleColor="green"
-      videoUrl="https://www.youtube.com/embed/FZ3Ck4bnLXY"
-      leftImageSrc="/images/bangladesh/castle_l.svg"
-      leftImageAlt="Left castle"
-      leftImageWidth={500}
-      leftImageHeight={500}
-      leftImageStyle={{ left: '-350px', marginTop:'140px', zIndex: 1 }}
-      rightImageSrc="/images/bangladesh/castle_r.svg"
-      rightImageAlt="Right castle"
-      rightImageWidth={500}
-      rightImageHeight={500}
-      rightImageStyle={{ right: '-390px', marginTop:'180px', zIndex: 1 }}
-    />
-    <LoanTypesSection/>
-    <ProcessStep/>
-    </div>
-    <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp"/>
+      <div
+        className="bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{ background: getGradient('bangladesh') }}
+      >
+        <section className="bg-no-repeat relative overflow-hidden">
+          <div className="absolute bg-no-repeat bg-left top-0 -left-14 w-full h-65" style={{ backgroundImage: "url('/images/bangladesh/fireflake.svg')" }} />
+          <LatestSocials
+            socials={BANGLADESH_SOCIALS}
+            buttonBgColor={colors.primary}
+            buttonHoverBgColor={colors.hover}
+          />
+          <div className="absolute bg-no-repeat top-210 bg-right -right-10 w-full h-65" style={{ backgroundImage: "url('/images/bangladesh/fireflake.svg')" }} />
+          <TeamSection
+            teams={BANGLADESH_TEAMS}
+            title='Bangladesh'
+            nameBgColor={colors.primary}
+          />
+        </section>
+        <TeamVideoSection
+          title="Meet Our Bangladesh Team"
+          subtitleColor="green"
+          videoUrl="https://www.youtube.com/embed/5qTiEUKbjLY"
+          leftImageSrc="/images/bangladesh/castle_l.svg"
+          leftImageAlt="Left castle"
+          leftImageWidth={500}
+          leftImageHeight={500}
+          leftImageStyle={{ left: '-350px', marginTop: '140px', zIndex: 1 }}
+          rightImageSrc="/images/bangladesh/castle_r.svg"
+          rightImageAlt="Right castle"
+          rightImageWidth={500}
+          rightImageHeight={500}
+          rightImageStyle={{ right: '-390px', marginTop: '180px', zIndex: 1 }}
+        />
+        <LoanTypesSection />
+        <ProcessStep />
+      </div>
+      <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp" />
       <div style={{ background: getGradient('bangladesh') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="bangladesh" />
-          <EMICalculatorSection/>
-          <LoanApplicationForm/>
+          <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
+          <LoanApplicationForm buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} subtitleColor={colors.primary} />
         </section>
       </div>
     </div>

@@ -1,8 +1,7 @@
-
 "use client";
 
 import Image from "next/image";
-import { useState, ChangeEvent } from "react";
+import { useState, useRef, useEffect } from "react";
 
 type BranchInfo = {
   id: string;
@@ -115,41 +114,82 @@ const BRANCHES: BranchInfo[] = [
 ];
 
 export default function FindBranchSection() {
-  const [selectedBranch, setSelectedBranch] = useState<BranchInfo>(BRANCHES[2]); // Default: Dongdaemun
+  const [selectedBranch, setSelectedBranch] = useState<BranchInfo>(BRANCHES[2]);
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const id = e.target.value;
-    const found = BRANCHES.find((b) => b.id === id);
-    if (found) {
-      setSelectedBranch(found);
-    }
+  const handleSelect = (branch: BranchInfo) => {
+    setSelectedBranch(branch);
+    setIsOpen(false);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="relative">
-      <section className="relative h-50 md:h-70 lg:h-70">
+      <section className="relative h-50 md:h-70 lg:h-100">
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center">
-          <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-2">
+          <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-5 mt-15">
             Find a branch
           </h2>
-          <p className="text-xs md:text-xl lg:text-xl text-center mb-5 md:mb-10 lg:mb-10">
+          <p className="text-xs md:text-xl lg:text-xl text-center mb-5 md:mb-10 lg:mb-15 text-red-500 font-medium">
             Visit a nearby GME Finance branch for a consultation!
           </p>
-
-          {/* 🔽 여기 검색 인풋 → 셀렉트 박스로 변경 */}
-          <div className="relative max-w-2xl w-full">
+          <div className="relative max-w-7xl w-full" ref={dropdownRef}>
             <div className="relative">
-              <select
-                value={selectedBranch.id}
-                onChange={handleSelectChange}
-                className="w-full px-4 py-3 pr-10 rounded-3xl text-body text-black bg-white border border-gray-300 appearance-none"
+              <button
+                type="button"
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full px-6 py-6 pr-12 rounded-md text-left text-black bg-white shadow-[0_0_20px_rgba(0,0,0,0.15)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
               >
-                {BRANCHES.map((branch) => (
-                  <option key={branch.id} value={branch.id}>
-                    {branch.name}
-                  </option>
-                ))}
-              </select>
+                <div className="text-3xl font-semibold">{selectedBranch.name}</div>
+                <div className="text-lg text-gray-500 mt-1">Global Money Express</div>
+                <div className="absolute right-6 top-1/2 -translate-y-1/2">
+                  <svg
+                    className={`w-6 h-6 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </button>
+              {isOpen && (
+                <div className="absolute z-150 w-full mt-2 rounded-md shadow-[0_0_20px_rgba(0,0,0,0.15)] max-h-80 overflow-y-auto"
+                  style={{ backgroundColor: "#ffffff" }}
+                >
+                  {BRANCHES.map((branch) => {
+                    const isSelected = selectedBranch.id === branch.id;
+                    return (
+                      <button
+                        key={branch.id}
+                        type="button"
+                        onClick={() => handleSelect(branch)}
+                        className={`w-full px-6 py-4 text-left transition-colors ${isSelected
+                          ? "bg-red-50"
+                          : "bg-white hover:bg-gray-100"
+                          }`}
+                      >
+                        <div className={`text-xl font-semibold ${isSelected ? "text-red-600" : "text-black"}`}>
+                          {branch.name}
+                        </div>
+                        <div className={`text-sm ${isSelected ? "text-red-400" : "text-gray-500"}`}>
+                          Global Money Express
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -157,7 +197,7 @@ export default function FindBranchSection() {
 
       {/* Branch Info */}
       <section className="relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-0">
           {/* Mobile Layout */}
           <div className="md:hidden">
             <div className="space-y-3">
@@ -207,51 +247,49 @@ export default function FindBranchSection() {
               </div>
             </div>
             <div className="absolute left-0 bottom-0">
-            <Image
-              src="/images/earth.svg"
-              alt="earth background"
-              width={500}
-              height={500}
-              className="object-contain h-full ml-auto"
-            />
-          </div>
+              <Image
+                src="/images/earth.svg"
+                alt="earth background"
+                width={500}
+                height={500}
+                className="object-contain h-full ml-auto"
+              />
+            </div>
           </div>
 
           {/* Desktop Layout */}
-          <div className="hidden md:grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <div className="space-y-15 text-sm">
-                <p className="font-medium text-lg">
-                  <Image
-                    src="/images/icons/pin_red.svg"
-                    alt="location"
-                    width={20}
-                    height={20}
-                    className="inline-block mr-2"
-                  />
-                  {selectedBranch.address}
-                </p>
-                <p className="font-medium text-lg">
-                  <Image
-                    src="/images/icons/phone.svg"
-                    alt="phone"
-                    width={20}
-                    height={20}
-                    className="inline-block mr-2"
-                  />
-                  {selectedBranch.phone}
-                </p>
-                <p className="font-medium text-lg mb-15">
-                  <Image
-                    src="/images/icons/time.svg"
-                    alt="time"
-                    width={20}
-                    height={20}
-                    className="inline-block mr-2"
-                  />
-                  {selectedBranch.hours}
-                </p>
-              </div>
+          <div className="hidden md:grid gap-8 items-center mt-13 mb-8 ml-5">
+            <div className="space-y-15 text-sm">
+              <p className="font-medium text-xl">
+                <Image
+                  src="/images/icons/pin_red.svg"
+                  alt="location"
+                  width={26}
+                  height={26}
+                  className="inline-block mr-10"
+                />
+                {selectedBranch.address}
+              </p>
+              <p className="font-medium text-xl">
+                <Image
+                  src="/images/icons/phone.svg"
+                  alt="phone"
+                  width={26}
+                  height={26}
+                  className="inline-block mr-10"
+                />
+                {selectedBranch.phone}
+              </p>
+              <p className="font-medium text-xl mb-15">
+                <Image
+                  src="/images/icons/time.svg"
+                  alt="time"
+                  width={26}
+                  height={26}
+                  className="inline-block mr-10"
+                />
+                {selectedBranch.hours}
+              </p>
             </div>
           </div>
         </div>
