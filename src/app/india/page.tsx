@@ -58,7 +58,7 @@ export default function IndiaPage() {
     <div>
       <CountryIntroductionSection
         videoSrc="/images/india/background.mp4"
-        title="India Team"
+        title="India"
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"

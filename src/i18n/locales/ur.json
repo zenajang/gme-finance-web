@@ -38,7 +38,7 @@
     "applyLoanAppSubTitle1": "GME Finance لون کے لیے درخواست دینا آسان اور سہل بناتا ہے۔ ابھی درخواست دیں!"
   },
   "countryPage": {
-    "team": "ٹیم",
+    "teamTitle": "{{country}} ٹیم ",
     "mainTitle": "جنوبی کوریا میں آپ کا قابل اعتماد قانونی قرض فراہم کنندہ",
     "latestSocialTitle": "تازہ ترین خبریں اور اپ ڈیٹس",
     "introductionTitlepk": "ہماری پاکستان ٹیم سے ملیں",

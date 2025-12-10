@@ -1,3 +1,4 @@
+'use client'
 
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
@@ -10,6 +11,7 @@ import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getGradient } from "@/constants/colors";
 import GarlandDecoration from "../components/sections/GarlandDecoration";
 import TeamVideoSection from "../components/sections/TeamVideoSection";
+import { useTranslation } from "react-i18next";
 
 const VIETNAM_SOCIALS: SocialsItem[] = [
   {
@@ -59,12 +61,15 @@ const VIETNAM_TEAMS: Teams[] = [
 ];
 
 export default function VietnamPage() {
+  const { t } = useTranslation()
 
   return (
     <div>
       <CountryIntroductionSection
         videoSrc="/images/vietnam/background.mp4"
-        title="Vietnam Team"
+        title={t('country.vietnam')}
+        description={t('countryPage.mainTitle')}
+        buttonText={t('button.applyNow')}
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"
@@ -76,7 +81,7 @@ export default function VietnamPage() {
           <div className="absolute bg-no-repeat -top-170 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_y.svg')", backgroundSize: '25% auto' }} />
           <TeamSection
             teams={VIETNAM_TEAMS}
-            title='Vietnam'
+            title='vietnam'
           />
         </section>
         <TeamVideoSection

@@ -38,7 +38,7 @@
     "applyLoanAppSubTitle1": "GME Finance sizga kreditga ariza berish jarayonini oson va qulay qiladi."
   },
   "countryPage": {
-    "team": "jamoa",
+    "teamTitle": "{{country}} jamoa",
     "mainTitle": "Janubiy Koreyadagi Ishonchli hamda litsenziyaga ega Kredit kompaniya",
     "latestSocialTitle": "So‘nggi Yangiliklar va E’lonlar",
     "introductionTitleuz": "Bizning jamoamiz bilan tanishing",

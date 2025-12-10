@@ -38,7 +38,7 @@
     "applyLoanAppSubTitle1": "GME Finance ले GME ऋण आवेदन गर्न सजिलो र सुविधाजनक बनाउँछ। अहिले नै आवेदन दिनुहोस्!"
   },
   "countryPage": {
-    "team": "टिम",
+    "teamTitle": "{{country}} टिम",
     "mainTitle": "दक्षिण कोरियामा तपाईंको विश्वसनीय कानूनी ऋण प्रदायक",
     "latestSocialTitle": "हालकाे समाचार र अपडेटहरू",
     "introductionTitlenp": "हाम्रो नेपाल टिमलाई चिन्नुहोस्",

@@ -38,7 +38,7 @@
     "applyLoanAppSubTitle1": "Хялбар, уян хатан нөлцлөөр ЯГ ОДОО 100% онлайнаар 5 минутанд багтаан зээлийн хүсэлтээ  гаргаарай."
   },
   "countryPage": {
-    "team": "баг",
+    "teamTitle": "{{country}} баг",
     "mainTitle": "Таны БНСУ дахь санхүүгийн итгэлт түнш GME",
     "latestSocialTitle": "Шинэ мэдээ & Мэдээлэл",
     "introductionTitlemn": "Багийн танилцуулга",

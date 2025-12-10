@@ -38,7 +38,7 @@
     "applyLoanAppSubTitle1": "GME Finance မှ လွယ်ကူလျင်မြန်သော ချေးငွေလျှောက်ထားမှု အခုပဲ လျှောက်ထားလိုက်ပါ!"
   },
   "countryPage": {
-    "team": "တာဝန်ခံများ",
+    "teamTitle": "{{country}} တာဝန်ခံများ",
     "mainTitle": "တောင်ကိုရီးယားရဲ့ ယုံကြည် စိတ်ချရဆုံး ချေးငွေဝန်ဆောင်မှု",
     "latestSocialTitle": "နောက်ဆုံးရ သတင်းနှင့် အပ်ဒိတ်များ",
     "introductionTitlemm": "အဖွဲ့အကြောင်း",

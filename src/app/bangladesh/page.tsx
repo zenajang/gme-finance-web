@@ -92,7 +92,7 @@ export default function BangladeshPage() {
     <div>
       <CountryIntroductionSection
         videoSrc="/images/bangladesh/background.mp4"
-        title={`${t('country.bangladesh')} ${t('countryPage.team')}`}
+        title={t('country.bangladesh')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}
         buttonHoverBgColor={colors.introHover}

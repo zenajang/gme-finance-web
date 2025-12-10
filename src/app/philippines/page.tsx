@@ -85,7 +85,7 @@ export default function PhilippinesPage() {
     <div>
       <CountryIntroductionSection
         videoSrc="/images/philippines/background.mp4"
-        title="Philippines Team"
+        title="Philippines"
       />
       <div
         className="bg-cover bg-center bg-no-repeat"

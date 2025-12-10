@@ -37,7 +37,7 @@
     "applyLoanAppSubTitle1": "GME Finance ණය අයදුම් කිරීම පහසු සහ වේගවත් කරයි. දැන්ම අයදුම් කරන්න!"
   },
   "countryPage": {
-    "team": "කණ්ඩායම",
+    "teamTitle": "{{country}} කණ්ඩායම",
     "mainTitle": "දකුණු කොරියාවේ ඔබේ විශ්වාසවන්තම මූල්‍ය සහකරු",
     "latestSocialTitle": "Latest News & Updates",
     "introductionTitlelk": "Meet Our Sri lanka Team",

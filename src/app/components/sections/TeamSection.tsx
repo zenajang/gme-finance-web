@@ -39,7 +39,7 @@ export default function TeamSection({
   const handleNext = () => {
     swiperInstance?.slideNext();
   };
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const countryKey = `country.${title.toLowerCase()}`;
   const countryName = t(countryKey);
   const headingText = t('countryPage.teamTitle', { country: countryName });

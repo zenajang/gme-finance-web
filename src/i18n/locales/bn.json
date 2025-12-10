@@ -39,6 +39,7 @@
   },
   "countryPage": {
     "team": "টিম",
+    "teamTitle": "{{country}} টিম",
     "mainTitle": "দক্ষিণ কোরিয়ায় আপনার বিশ্বস্ত এবং বৈধ লোন সেবা প্রদানকারী প্রতিষ্ঠান",
     "latestSocialTitle": "সর্বশেষ খবর ও আপডেট",
     "introductionTitlebd": "আমাদের বাংলাদেশ টিম সম্পর্কে জানুন",

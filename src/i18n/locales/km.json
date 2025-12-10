@@ -10,7 +10,8 @@
     "visit": "ចូលមើល"
   },
   "country": {
-    "cambodia": "កម្ពុជា"
+    "cambodia": "កម្ពុជា",
+    "cambodian": "ការងារខ្មែរ"
   },
   "home": {
     "typesOfLoansTitle": "ប្រភេទកម្ចី",
@@ -38,8 +39,7 @@
     "applyLoanAppSubTitle1": "GME Finance កាន់តែស្រួល និង ងាយស្រួលក្នុងការស្នើកម្ចី GME ។   ដាក់ពាក្យឥឡូវនេះ!"
   },
   "countryPage": {
-    "team": "ក្រុម",
-    "cambodiaTeam": "ក្រុមការងារខ្មែរ",
+    "teamTitle": "ក្រុម{{country}}",
     "mainTitle": "ជាក្រុមហ៊ុនផ្តល់កម្ចីដែលផ្តល់ទំនុកចិត្ត និងស្របច្បាប់ក្នុងប្រទេសកូរ៉េ",
     "latestSocialTitle": "ពត៏មានថ្មីៗ",
     "introductionTitlekm": "ជួបជាមួយហ្នឹងក្រុមការងារខ្មែរ",

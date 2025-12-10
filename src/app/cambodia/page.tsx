@@ -76,12 +76,12 @@ const CAMBODIA_TEAMS: Teams[] = [
 ];
 
 export default function CambodiaPage() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div>
       <CountryIntroductionSection
         videoSrc="/images/cambodia/background.mp4"
-        title={i18n.language === 'en' ? `${t('country.cambodia')} ${t('countryPage.team')}` : `${t('countryPage.team')} ${t('country.cambodia')}`}
+        title={t('country.cambodia')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}
       />
