@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 type BranchInfo = {
   id: string;
@@ -12,114 +13,119 @@ type BranchInfo = {
   hours: string;
 };
 
-const BRANCHES: BranchInfo[] = [
-  {
-    id: "ansan",
-    name: "Ansan Branch",
-    subtitle: "Ansan Finance Center",
-    address: "1st floor, 6, Damunhwa-gil, Danwon-gu, Ansan-si, Gyeonggi-do",
-    phone: "031-492-1247",
-    hours: "Hours: Daily 10:00AM ~ 7:00PM",
-  },
-  {
-    id: "bupyeong",
-    name: "Bupyeong Branch",
-    subtitle: "Bupyeong Finance Center",
-    address: "Bupyeong History Shooping Mall, 16 Gwangjang-ro, Bupyeong-gu, Incheon",
-    phone: "032-361-0875",
-    hours: "Hours: Sat - Wed, 10:00AM ~ 7:00PM",
-  },
-  {
-    id: "dongdaemun",
-    name: "Dongdaemun Branch",
-    subtitle: "Seoul Postal Express",
-    address: "315, Jong-ro Jongno-gu, Seoul (Dongdaemun Station – Exit 3)",
-    phone: "02-763-5559",
-    hours: "Hours: Daily 10:00AM ~ 7:00PM",
-  },
-  {
-    id: "songu-ri",
-    name: "Songu-ri Branch",
-    subtitle: "Songu-ri Finance Center",
-    address:
-      "91, Solmoru-ro, Soheul-eup, Pocheon-si, Gyeonggi-do, Korea (Next to Nonghyub Bank)",
-    phone: "031-541-1856",
-    hours: "Hours: Sat - Wed, 10:00AM ~ 7:00PM",
-  },
-  {
-    id: "mongolia",
-    name: "Mongolia Town Branch",
-    subtitle: "Mongolia Town Finance Center",
-    address:
-      "Mongol Town 3th floor, 12, Eulji-ro 44-gil, Jung-gu, Seoul, Seoul, South Korea",
-    phone: "02-2261-5540",
-    hours: "Hours: Daily 10:00AM ~ 7:00PM",
-  },
-  {
-    id: "hwaseong",
-    name: "Hwaseong Branch",
-    subtitle: "Hwaseong Finance Center",
-    address: "1st floor, 1109-3 3.1manse-ro, Hyangnam-eup, Hwaseong-si, Gyeonggi-do",
-    phone: "031-354-0450​",
-    hours: "Hours: Fri - Tue, 10:00AM ~ 7:00PM",
-  },
-  {
-    id: "suwon",
-    name: "Suwon Branch",
-    subtitle: "Suwon Finance Center",
-    address: "2-10, Maesan-ro, Paldal-gu, Suwon-si, Gyeonggi-do",
-    phone: "031-207-5559",
-    hours: "Hours: Daily 10:00AM ~ 7:00PM",
-  },
-  {
-    id: "daerim",
-    name: "Daerim Branch",
-    subtitle: "Daerim Finance Center",
-    address: "1st floor, 134 Dorim-ro, Yeongdeungpo-gu, Seoul",
-    phone: "02-841-8884",
-    hours: "Hours: Daily 10:00AM ~ 7:00PM",
-  },
-  {
-    id: "itaewon",
-    name: "Itaewon Branch",
-    subtitle: "Itaewon Finance Center",
-    address: "Itaewon-ro, Yongsan-gu, Seoul",
-    phone: "-",
-    hours: "Hours: Daily 10:00AM ~ 7:00PM",
-  },
-  {
-    id: "daegu",
-    name: "Daegu Branch",
-    subtitle: "Daegu Finance Center",
-    address: "1st floor, 64, Seongseo-ro 69-gil, Dalseo-gu, Daegu",
-    phone: "053-591-2603",
-    hours: "Hours: Mon - Fri (10:00AM ~ 6:00PM), Sat-Sun (10:00AM ~ 7:00PM)",
-  },
-  {
-    id: "gimhae",
-    name: "Gimhae Branch",
-    subtitle: "Gimhae Finance Center",
-    address: "84, Garak-ro, Gimhae-si, Gyeongsangnam-do, (Opposite to Top Mart)",
-    phone: "055-329-5559​",
-    hours: "Hours: Daily 10:00AM ~ 7:00PM",
-  },
-  {
-    id: "gwangju",
-    name: "Gwangju Branch",
-    subtitle: "Gwangju Finance Center",
-    address: "7-2, Gwangsan-ro, Gwangsan-gu, Gwangju",
-    phone: "062-942-5598",
-    hours: "Hours: Sat - Wed, 10:00AM ~ 7:00PM",
-  },
-];
-
 export default function FindBranchSection() {
-  const [selectedBranch, setSelectedBranch] = useState<BranchInfo>(BRANCHES[2]);
+  const { t } = useTranslation();
+
+  const BRANCHES: BranchInfo[] = useMemo(() => [
+    {
+      id: "ansan",
+      name: t("ansanBranch"),
+      subtitle: "Ansan Finance Center",
+      address: t("branch.ansanAddress"),
+      phone: "031-492-1247",
+      hours: `${t("daily")} 10:00AM ~ 7:00PM`,
+    },
+    {
+      id: "bupyeong",
+      name: t("bupyeongBranch"),
+      subtitle: "Bupyeong Finance Center",
+      address: t("branch.bupyeongAddress"),
+      phone: "032-361-0875",
+      hours: "Sat - Wed, 10:00AM ~ 7:00PM",
+    },
+    {
+      id: "dongdaemun",
+      name: t("dongdaemunBranch"),
+      subtitle: "Seoul Postal Express",
+      address: t("branch.dongdaemunAddress"),
+      phone: "02-763-5559",
+      hours: `${t("daily")} 10:00AM ~ 7:00PM`,
+    },
+    {
+      id: "songu-ri",
+      name: t("songuriBranch"),
+      subtitle: "Songu-ri Finance Center",
+      address: t("branch.songuriAddress"),
+      phone: "031-541-1856",
+      hours: "Sat - Wed, 10:00AM ~ 7:00PM",
+    },
+    {
+      id: "mongolia",
+      name: t("mongoliaBranch"),
+      subtitle: "Mongolia Town Finance Center",
+      address: t("branch.mongoliaAddress"),
+      phone: "02-2261-5540",
+      hours: `${t("daily")} 10:00AM ~ 7:00PM`,
+    },
+    {
+      id: "hwaseong",
+      name: t("hwaseongBranch"),
+      subtitle: "Hwaseong Finance Center",
+      address: t("branch.hwaseongAddress"),
+      phone: "031-354-0450​",
+      hours: "Fri - Tue, 10:00AM ~ 7:00PM",
+    },
+    {
+      id: "suwon",
+      name: t("suwonBranch"),
+      subtitle: "Suwon Finance Center",
+      address: t("branch.suwonAddress"),
+      phone: "031-207-5559",
+      hours: `${t("daily")} 10:00AM ~ 7:00PM`,
+    },
+    {
+      id: "daerim",
+      name: t("daerimBranch"),
+      subtitle: "Daerim Finance Center",
+      address: t("branch.daerimAddress"),
+      phone: "02-841-8884",
+      hours: `${t("daily")} 10:00AM ~ 7:00PM`,
+    },
+    {
+      id: "itaewon",
+      name: t("itaewonBranch"),
+      subtitle: "Itaewon Finance Center",
+      address: t("branch.itaewonAddress"),
+      phone: "-",
+      hours: `${t("daily")} 10:00AM ~ 7:00PM`,
+    },
+    {
+      id: "daegu",
+      name: t("daeguBranch"),
+      subtitle: "Daegu Finance Center",
+      address: t("branch.daeguAddress"),
+      phone: "053-591-2603",
+      hours: "Mon - Fri (10:00AM ~ 6:00PM), Sat-Sun (10:00AM ~ 7:00PM)",
+    },
+    {
+      id: "gimhae",
+      name: t("gimhaeBranch"),
+      subtitle: "Gimhae Finance Center",
+      address: t("branch.gimhaeAddress"),
+      phone: "055-329-5559​",
+      hours: `${t("daily")} 10:00AM ~ 7:00PM`,
+    },
+    {
+      id: "gwangju",
+      name: t("gwangjuBranch"),
+      subtitle: "Gwangju Finance Center",
+      address: t("branch.gwangjuAddress"),
+      phone: "062-942-5598",
+      hours: "Sat - Wed, 10:00AM ~ 7:00PM",
+    },
+  ], [t]);
+
+  const [selectedBranchId, setSelectedBranchId] = useState<string>("dongdaemun");
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  // 현재 선택된 branch 정보 (언어 변경 시 자동으로 번역된 이름 사용)
+  const selectedBranch = useMemo(() => {
+    return BRANCHES.find(branch => branch.id === selectedBranchId) || BRANCHES[2];
+  }, [BRANCHES, selectedBranchId]);
+
   const handleSelect = (branch: BranchInfo) => {
-    setSelectedBranch(branch);
+    setSelectedBranchId(branch.id);
     setIsOpen(false);
   };
 
@@ -137,21 +143,21 @@ export default function FindBranchSection() {
     <div className="relative">
       <section className="relative h-50 md:h-70 lg:h-100">
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center">
-          <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-5 mt-15">
+          <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-10 mt-15">
             Find a branch
           </h2>
-          <p className="text-xs md:text-xl lg:text-xl text-center mb-5 md:mb-10 lg:mb-15 text-red-500 font-medium">
-            Visit a nearby GME Finance branch for a consultation!
+          <p className="text-subheading text-center mb-5 md:mb-10 lg:mb-15 text-red-500 font-medium">
+            {t('home.findBranchSubtitle')}
           </p>
           <div className="relative max-w-7xl w-full" ref={dropdownRef}>
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full px-6 py-6 pr-12 rounded-md text-left text-black bg-white shadow-[0_0_20px_rgba(0,0,0,0.15)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 md:px-6 py-4 md:py-6 pr-10 md:pr-12 rounded-md text-left text-black bg-white shadow-[0_0_20px_rgba(0,0,0,0.15)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
               >
-                <div className="text-3xl font-semibold">{selectedBranch.name}</div>
-                <div className="text-lg text-gray-500 mt-1">Global Money Express</div>
+                <div className="text-lg md:text-3xl font-semibold">{selectedBranch.name}</div>
+                <div className="text-sm md:text-lg text-gray-500 mt-1">Global Money Express</div>
                 <div className="absolute right-6 top-1/2 -translate-y-1/2">
                   <svg
                     className={`w-6 h-6 transition-transform ${isOpen ? "rotate-180" : ""}`}
@@ -241,7 +247,7 @@ export default function FindBranchSection() {
                     className="mr-3 flex-shrink-0"
                   />
                   <p className="font-medium text-[0.65rem] text-gray-800">
-                    {selectedBranch.hours}
+                    {t('hours')}: {selectedBranch.hours}
                   </p>
                 </div>
               </div>
@@ -260,7 +266,7 @@ export default function FindBranchSection() {
           {/* Desktop Layout */}
           <div className="hidden md:grid gap-8 items-center mt-13 mb-8 ml-5">
             <div className="space-y-15 text-sm">
-              <p className="font-medium text-xl">
+              <p className="font-semibold text-xl">
                 <Image
                   src="/images/icons/pin_red.svg"
                   alt="location"
@@ -270,7 +276,7 @@ export default function FindBranchSection() {
                 />
                 {selectedBranch.address}
               </p>
-              <p className="font-medium text-xl">
+              <p className="font-semibold text-xl">
                 <Image
                   src="/images/icons/phone.svg"
                   alt="phone"
@@ -280,15 +286,15 @@ export default function FindBranchSection() {
                 />
                 {selectedBranch.phone}
               </p>
-              <p className="font-medium text-xl mb-15">
+              <p className="font-semibold text-xl mb-15">
                 <Image
                   src="/images/icons/time.svg"
                   alt="time"
                   width={26}
                   height={26}
-                  className="inline-block mr-10"
+                  className="inline-block mr-10 mb-1"
                 />
-                {selectedBranch.hours}
+                {t('hours')}: {selectedBranch.hours}
               </p>
             </div>
           </div>

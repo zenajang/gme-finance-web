@@ -1,3 +1,6 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -82,13 +85,16 @@ const BANGLADESH_TEAMS: Teams[] = [
 ];
 
 export default function BangladeshPage() {
+  const { t } = useTranslation();
   const colors = getColorScheme('bangladesh');
 
   return (
     <div>
       <CountryIntroductionSection
         videoSrc="/images/bangladesh/background.mp4"
-        title="Bangladesh Team"
+        title={`${t('country.bangladesh')} ${t('countryPage.team')}`}
+        description={t('countryPage.mainTitle')}
+        buttonText={t('button.applyNow')}
         buttonHoverBgColor={colors.introHover}
         buttonTextColor={colors.primary}
       />
@@ -111,7 +117,7 @@ export default function BangladeshPage() {
           />
         </section>
         <TeamVideoSection
-          title="Meet Our Bangladesh Team"
+          title={t('countryPage.introductionTitlebd')}
           subtitleColor="green"
           videoUrl="https://www.youtube.com/embed/5qTiEUKbjLY"
           leftImageSrc="/images/bangladesh/castle_l.svg"

@@ -1,3 +1,5 @@
+'use client'
+
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -9,6 +11,7 @@ import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getGradient } from "@/constants/colors";
 import GarlandDecoration from "../components/sections/GarlandDecoration";
 import TeamVideoSection from "../components/sections/TeamVideoSection";
+import { useTranslation } from "react-i18next";
 
 const NEPAL_SOCIALS: SocialsItem[] = [
   {
@@ -79,12 +82,15 @@ const NEPAL_TEAMS: Teams[] = [
 ];
 
 export default function NepalPage() {
+  const { t } = useTranslation()
 
   return (
     <div>
       <CountryIntroductionSection
         videoSrc="/images/nepal/background.mp4"
-        title="Nepal Team"
+        title={t('country.nepal')}
+        description={t('countryPage.mainTitle')}
+        buttonText={t('button.applyNow')}
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"
@@ -95,7 +101,7 @@ export default function NepalPage() {
           <TeamSection teams={NEPAL_TEAMS} title='Nepal' />
         </section>
         <TeamVideoSection
-          title="Meet Our Nepal Team"
+          title={t('countryPage.introductionTitlenp')}
           videoUrl="https://www.youtube.com/embed/afbejvZ8a8k"
           leftImageSrc="/images/nepal/castle_l.svg"
           leftImageAlt="Left castle"

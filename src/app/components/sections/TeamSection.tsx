@@ -6,7 +6,7 @@ import { Navigation } from 'swiper/modules';
 import { useState } from 'react';
 import type { Swiper as SwiperType } from 'swiper';
 import { COMMON_COLORS } from "@/constants/colors";
-
+import { useTranslation } from 'react-i18next';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -39,10 +39,14 @@ export default function TeamSection({
   const handleNext = () => {
     swiperInstance?.slideNext();
   };
+  const { t, i18n } = useTranslation();
+  const countryKey = `country.${title.toLowerCase()}`;
+  const countryName = t(countryKey);
+  const headingText = t('countryPage.teamTitle', { country: countryName });
 
   const TeamCard = ({ team }: { team: Teams }) => (
-    <div className="w-[140px] md:w-[200px] lg:w-[280px] flex-shrink-0">
-      <div className="rounded-3xl relative h-[180px] md:h-[260px] lg:h-[360px] shadow-[0_0_20px_rgba(0,0,0,0.2)]" style={{ overflow: 'hidden' }}>
+    <div className="w-[160px] md:w-[260px] lg:w-[320px] flex-shrink-0">
+      <div className="rounded-3xl relative h-[200px] md:h-[320px] lg:h-[420px] shadow-[0_0_20px_rgba(0,0,0,0.2)]" style={{ overflow: 'hidden' }}>
         <Image
           src={team.image}
           alt={team.name}
@@ -64,7 +68,7 @@ export default function TeamSection({
   return (
     <section className="px-0 md:py-20 lg:py-20 md:px-20 lg:px-30">
       <div className="px-3 relative z-20">
-        <h2 className="text-heading text-center mb-0 md:mb-10" style={{ color: titleColor }}>{title} Team</h2>
+        <h2 className="text-heading text-center mb-0 md:mb-10" style={{ color: titleColor }}>{headingText}</h2>
         <div className="max-w-8xl mx-auto relative">
           {teams.length <= 4 ? (
             <div className="flex justify-center gap-3 md:gap-5 lg:gap-6 py-10 flex-wrap">

@@ -1,22 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import '@radix-ui/themes/styles.css';
 import { Theme } from "@radix-ui/themes";
 import PageLoadingSpinner from "./components/common/PageLoadingSpinner";
 import LayoutWrapper from "./components/common/LayoutWrapper";
-
-
-const inter = Inter({
- variable: "--font-inter",
- subsets: ["latin"],
- display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import I18nProvider from "./components/common/I18nProvider";
 
 export const metadata: Metadata = {
   title: "Finance",
@@ -31,13 +19,21 @@ export default async function RootLayout({
   
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
+        />
+      </head>
       <body
-        className={`${inter.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground`}
+        className="antialiased min-h-screen bg-background text-foreground"
         suppressHydrationWarning={true}
       >
         <Theme appearance="light" accentColor="indigo" radius="large">
-          <PageLoadingSpinner />
-          <LayoutWrapper>{children}</LayoutWrapper>
+          <I18nProvider>
+            <PageLoadingSpinner />
+            <LayoutWrapper>{children}</LayoutWrapper>
+          </I18nProvider>
         </Theme>
       </body>
     </html>

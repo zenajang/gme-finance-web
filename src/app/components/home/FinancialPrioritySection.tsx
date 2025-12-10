@@ -2,8 +2,10 @@
 
 import { COMMON_COLORS } from "@/constants/colors";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 export default function FinancialPrioritySection() {
+  const { t } = useTranslation()
   return (
     <section className="bg-white py-16 md:py-20 relative overflow-hidden">
       <div className="max-w-screen-xl mx-auto px-6">
@@ -14,29 +16,26 @@ export default function FinancialPrioritySection() {
             Your Financial Ease is Our Priority
           </h2>
           <p
-            className="text-subheading font-semibold mb-5"
+            className="text-subheading font-semibold mb-2"
             style={{ color: COMMON_COLORS.primary }}
           >
-            Skip the paperwork!
+            {t('home.finacialPrioritySubTitle1')}
           </p>
           <p className="text-subheading text-gray-700 mb-20">
-            Apply for your foreigner loan online in minutes with GME
+            {t('home.finacialPrioritySubTitle2')}
           </p>
         </div>
 
-        {/* ICON GROUP IMAGE + CENTRAL LOGO */}
-        <div className="relative flex justify-center items-center mt-10">
-          
-          {/* 아이콘 4개 + 반원 구조가 포함된 하나의 이미지 */}
+        <div className="relative flex justify-center items-center mt-6 md:mt-10">
+
           <Image
-            src="/images/priority.svg"   // 아이콘 통합 이미지 경로
+            src="/images/priority.svg"
             alt="financial benefits icons"
             width={900}
             height={600}
-            className="object-contain"
+            className="object-contain w-full max-w-[300px] md:max-w-[900px]"
           />
 
-          {/* 중앙 GME LOGO */}
           <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
             <div className="relative flex items-center justify-center">
               <Image
@@ -44,38 +43,52 @@ export default function FinancialPrioritySection() {
                 alt="GME Loan"
                 width={270}
                 height={270}
-                className="object-contain w-20 h-20 md:w-[270px] md:h-[270px]"
+                className="object-contain w-16 h-16 md:w-[270px] md:h-[270px]"
               />
-              <p className="absolute text-sm md:text-5xl font-bold text-red-600 whitespace-nowrap">
+              <p className="absolute text-xs md:text-5xl font-bold text-red-600 whitespace-nowrap">
                 GME LOAN
               </p>
             </div>
           </div>
 
-          {/* 텍스트 4개 (Absolute position 위 아래 좌우 정렬) */}
-          <p className="absolute top-[20%] right-[88%] text-center text-md md:text-lg font-medium">
-            No paperwork, no hassle.
+          <p className="hidden md:block absolute top-[22%] right-[88%] text-center text-lg font-medium">
+            {t("home.finacialPriority1")}<br />
+            {t("home.finacialPriority1br")}
           </p>
 
-          <p className="absolute top-[20%] left-[88%] text-center text-md md:text-lg font-medium w-80">
-            Get the cash you need,<br/> 24 hours a day, 7 days a week.
+          <p className="hidden md:block absolute top-[22%] left-[83%] text-center text-lg font-medium w-80">
+            {t("home.finacialPriority5")}<br /> {t("home.finacialPriority5br")}
           </p>
 
-
-          <p className="absolute bottom-[30%] right-[78%] text-center text-md md:text-lg font-medium">
-            Skip the long waits, get your loan instantly.
+          <p className="hidden md:block absolute bottom-[26%] right-[80%] text-center text-lg font-medium">
+            {t("home.finacialPriority2")}<br /> {t("home.finacialPriority2br")}
           </p>
 
-          <p className="absolute bottom-[30%] left-[80%] text-center text-md md:text-lg font-medium">
-            Stress-Free Borrowing.
+          <p className="hidden md:block absolute bottom-[30%] left-[80%] text-center text-lg font-medium">
+            {t("home.finacialPriority4")}
           </p>
         </div>
 
-        {/* Bottom center text */}
-        <div className="flex justify-center mt-10">
-          <p className= "text-center text-sm md:text-lg font-medium">
-            Peace of mind, guaranteed:<br/>
-            We prioritize data privacy so you can focus on your goals.
+        <div className="grid grid-cols-2 gap-4 mt-6 md:hidden px-2">
+          <p className="text-center text-xs font-medium">
+            {t("home.finacialPriority1")}<br />
+            {t("home.finacialPriority1br")}
+          </p>
+          <p className="text-center text-xs font-medium">
+            {t("home.finacialPriority5")}<br /> {t("home.finacialPriority5br")}
+          </p>
+          <p className="text-center text-xs font-medium">
+            {t("home.finacialPriority2")}<br /> {t("home.finacialPriority2br")}
+          </p>
+          <p className="text-center text-xs font-medium">
+            {t("home.finacialPriority4")}
+          </p>
+        </div>
+
+        <div className="flex justify-center mt-6">
+          <p className="text-center text-xs md:text-lg font-medium px-4">
+            {t("home.finacialPriority3")}<br />
+            {t("home.finacialPriority3br")}
           </p>
         </div>
 

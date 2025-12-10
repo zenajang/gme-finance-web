@@ -1,3 +1,4 @@
+'use client'
 
 import { getColorScheme, getGradient } from "@/constants/colors";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
@@ -10,6 +11,7 @@ import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
 import GarlandDecoration from "../components/sections/GarlandDecoration";
 import TeamVideoSection from "../components/sections/TeamVideoSection";
+import { useTranslation } from "react-i18next";
 
 const THAILAND_SOCIALS: SocialsItem[] = [
   {
@@ -54,12 +56,15 @@ const THAILAND_TEAMS: Teams[] = [
 
 export default function ThailandPage() {
   const colors = getColorScheme('thailand')
+  const { t } = useTranslation()
 
   return (
     <div>
       <CountryIntroductionSection
         videoSrc="/images/thailand/background.mp4"
-        title="Thailand Team"
+        title={t('country.thailand')}
+        description={t('countryPage.mainTitle')}
+        buttonText={t('button.applyNow')}
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"
@@ -72,12 +77,12 @@ export default function ThailandPage() {
           />
           <TeamSection
             teams={THAILAND_TEAMS}
-            title='Thailand'
+            title='thailand'
             titleColor={colors.title}
           />
         </section>
         <TeamVideoSection
-          title="Meet Our Thailand Team"
+          title={t('countryPage.introductionTitleth')}
           titleColor={colors.title}
           videoUrl="https://www.youtube.com/embed/bi37MciUwP8"
           centerImageSrc="/images/thailand/pattern.svg"
@@ -89,7 +94,7 @@ export default function ThailandPage() {
         <LoanTypesSection titleColor={colors.title} />
         <ProcessStep titleColor={colors.title} subtitleColor={colors.subtitle} />
       </div>
-      <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/thailand/loan_detail_bg.webp" />
       <div style={{ background: colors.gradient2 }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-250" style={{ backgroundImage: "url('/images/thailand/cloud_l.svg')", zIndex: 1, }} />

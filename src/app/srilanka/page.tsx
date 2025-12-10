@@ -1,3 +1,4 @@
+'use client'
 
 import { getGradient } from "@/constants/colors";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
@@ -10,6 +11,7 @@ import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
 import GarlandDecoration from "../components/sections/GarlandDecoration";
 import TeamVideoSection from "../components/sections/TeamVideoSection";
+import { useTranslation } from "react-i18next";
 
 const SRILANKA_SOCIALS: SocialsItem[] = [
   {
@@ -86,12 +88,15 @@ const SRILANKA_TEAMS: Teams[] = [
 ];
 
 export default function SrilankaPage() {
+  const { t } = useTranslation()
 
   return (
     <div>
       <CountryIntroductionSection
         videoSrc="/images/srilanka/background.mp4"
-        title="Sri lanka Team"
+        title={t('country.sri lanka')}
+        description={t('countryPage.mainTitle')}
+        buttonText={t('button.applyNow')}
       />
       <div
         className="bg-cover bg-center bg-no-repeat"
@@ -106,7 +111,7 @@ export default function SrilankaPage() {
             title='Sri lanka'
           />
           <TeamVideoSection
-            title="Meet Our Sri lanka Team"
+            title={t('countryPage.introductionTitlelk')}
             videoUrl="https://www.youtube.com/embed/FJhRx5fyf64"
             leftImageSrc="/images/srilanka/flower.svg"
             leftImageAlt="Left flower"

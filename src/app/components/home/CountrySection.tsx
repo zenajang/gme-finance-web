@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { COUNTRIES } from '@/constants/countries';
 
 export default function CountrySection() {
@@ -14,6 +14,12 @@ export default function CountrySection() {
 
   const duplicatedCountries = [...COUNTRIES, ...COUNTRIES, ...COUNTRIES];
   const singleSetWidth = COUNTRIES.length * 180;
+
+  // 현재 스크롤 위치에 따른 구간 계산 (0, 1, 2)
+  const currentSection = useMemo(() => {
+    const sectionWidth = singleSetWidth / 3; // 각 구간의 너비 (4개 국가)
+    return Math.floor((scrollPosition % singleSetWidth) / sectionWidth);
+  }, [scrollPosition, singleSetWidth]);
 
   useEffect(() => {
     const animate = (currentTime: number) => {
@@ -59,6 +65,12 @@ export default function CountrySection() {
       const newPos = prev + 180;
       return newPos >= singleSetWidth ? newPos - singleSetWidth : newPos;
     });
+  };
+
+  // 특정 구간으로 이동
+  const goToSection = (section: number) => {
+    const sectionWidth = singleSetWidth / 3;
+    setScrollPosition(section * sectionWidth);
   };
 
   return (
@@ -115,23 +127,57 @@ export default function CountrySection() {
           </button>
           <button
             onClick={toggleAutoplay}
-            className="flex items-center gap-3 justify-center cursor-pointer transition-colors"
+            className="flex items-center justify-center cursor-pointer transition-colors"
             aria-label={isPlaying ? 'Pause' : 'Play'}
           >
             {isPlaying ? (
-              <>
-                <Image src="/images/pause.png" alt="Pause" width={12} height={12} />
-                <Image src="/images/round.png" alt="round" width={11} height={11} />
-                <Image src="/images/rectangle.png" alt="rectangle" width={40} height={40} />
-              </>
+              <Image src="/images/pause.png" alt="Pause" width={12} height={12} />
             ) : (
-              <>
-                <Image src="/images/start.png" alt="Play" width={12} height={12} />
-                <Image src="/images/round.png" alt="round" width={11} height={11} />
-                <Image src="/images/rectangle.png" alt="rectangle" width={40} height={40} />
-              </>
+              <Image src="/images/start.png" alt="Play" width={12} height={12} />
             )}
           </button>
+
+          <div className="flex items-center gap-3">
+            {/* 첫 번째 indicator */}
+            <button
+              onClick={() => goToSection(0)}
+              className="cursor-pointer hover:opacity-70 transition-opacity"
+              aria-label="Go to section 1"
+            >
+              <Image
+                src={currentSection === 0 ? "/images/rectangle.png" : "/images/round.png"}
+                alt="indicator"
+                width={currentSection === 0 ? 40 : 11}
+                height={currentSection === 0 ? 11 : 11}
+              />
+            </button>
+            {/* 두 번째 indicator */}
+            <button
+              onClick={() => goToSection(1)}
+              className="cursor-pointer hover:opacity-70 transition-opacity"
+              aria-label="Go to section 2"
+            >
+              <Image
+                src={currentSection === 1 ? "/images/rectangle.png" : "/images/round.png"}
+                alt="indicator"
+                width={currentSection === 1 ? 40 : 11}
+                height={currentSection === 1 ? 11 : 11}
+              />
+            </button>
+            {/* 세 번째 indicator */}
+            <button
+              onClick={() => goToSection(2)}
+              className="cursor-pointer hover:opacity-70 transition-opacity"
+              aria-label="Go to section 3"
+            >
+              <Image
+                src={currentSection === 2 ? "/images/rectangle.png" : "/images/round.png"}
+                alt="indicator"
+                width={currentSection === 2 ? 40 : 11}
+                height={currentSection === 2 ? 11 : 11}
+              />
+            </button>
+          </div>
 
           <button
             onClick={handleNext}

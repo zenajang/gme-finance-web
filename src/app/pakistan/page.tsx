@@ -1,3 +1,5 @@
+'use client'
+
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -9,6 +11,7 @@ import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
 import GarlandDecoration from "../components/sections/GarlandDecoration";
 import TeamVideoSection from "../components/sections/TeamVideoSection";
+import { useTranslation } from "react-i18next";
 
 const PAKISTAN_SOCIALS: SocialsItem[] = [
   {
@@ -53,12 +56,15 @@ const PAKISTAN_TEAMS: Teams[] = [
 
 export default function PakistanPage() {
   const colors = getColorScheme('pakistan')
+  const { t } = useTranslation()
 
   return (
     <div>
       <CountryIntroductionSection
         videoSrc="/images/pakistan/background.mp4"
-        title="Pakistan Team"
+        title={t('country.pakistan')}
+        description={t('countryPage.mainTitle')}
+        buttonText={t('button.applyNow')}
         buttonTextColor={colors.primary}
         buttonHoverBgColor={colors.introHover}
       />
@@ -73,11 +79,11 @@ export default function PakistanPage() {
           <TeamSection
             teams={PAKISTAN_TEAMS}
             nameBgColor={colors.primary}
-            title='Bharat & Pakistan'
+            title='pakistan'
           />
         </section>
         <TeamVideoSection
-          title="Meet Our Bharat & Pakistan Team"
+          title={t('countryPage.introductionTitlepk')}
           videoUrl="https://www.youtube.com/embed/8LYtzxvDWN4"
           leftImageSrc="/images/pakistan/castle_l.svg"
           leftImageAlt="Left castle"

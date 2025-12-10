@@ -1,3 +1,4 @@
+'use client'
 
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
@@ -10,6 +11,7 @@ import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
 import GarlandDecoration from "../components/sections/GarlandDecoration";
 import TeamVideoSection from "../components/sections/TeamVideoSection";
+import { useTranslation } from "react-i18next";
 
 const RUSSIA_SOCIALS: SocialsItem[] = [
   {
@@ -46,47 +48,61 @@ const RUSSIA_SOCIALS: SocialsItem[] = [
 
 const RUSSIA_TEAMS: Teams[] = [
   {
-    id: 'Name1',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'hamid',
+    image: '/images/uzbekistan/team/hamid.svg',
+    name: 'HAMID',
   },
   {
-    id: 'Name2',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'zed',
+    image: '/images/uzbekistan/team/zed.svg',
+    name: 'ZED',
 
   },
   {
-    id: 'Name3',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
+    id: 'mark',
+    image: '/images/uzbekistan/team/mark.svg',
+    name: 'MARK',
   },
   {
-    id: 'Name4',
-    image: '/images/introduction.jpg',
-    name: 'Name1',
+    id: 'mikhail',
+    image: '/images/uzbekistan/team/mikhail.svg',
+    name: 'MIKHAIL',
   },
   {
-    id: 'Name5',
-    image: '/images/introduction.jpg',
-    name: 'Name2',
+    id: 'ruby',
+    image: '/images/uzbekistan/team/ruby.svg',
+    name: 'RUBY',
 
   },
   {
-    id: 'Name6',
-    image: '/images/introduction.jpg',
-    name: 'Name3',
+    id: 'ziyoda',
+    image: '/images/uzbekistan/team/ziyoda.svg',
+    name: 'ZIYODA',
+  },
+  {
+    id: 'zoda',
+    image: '/images/uzbekistan/team/zoda.svg',
+    name: 'ZODA',
+
+  },
+  {
+    id: 'abror',
+    image: '/images/team.svg',
+    name: 'ABROR',
   },
 ];
 
 export default function RussiaPage() {
   const colors = getColorScheme('russia')
+  const { t } = useTranslation()
 
   return (
     <div>
       <CountryIntroductionSection
         videoSrc="/images/russia/background.mp4"
-        title="Russia Team"
+        title={t('country.russia')}
+        description={t('countryPage.mainTitle')}
+        buttonText={t('button.applyNow')}
         buttonTextColor={colors.primary}
         buttonHoverBgColor={colors.hover}
       />
@@ -103,12 +119,12 @@ export default function RussiaPage() {
           />
           <TeamSection
             teams={RUSSIA_TEAMS}
-            title='CIS'
+            title={'cis'}
             nameBgColor={colors.primary}
           />
         </section>
         <TeamVideoSection
-          title="Meet Our CIS Team"
+          title={t('countryPage.intrductionTitleru')}
           subtitleColor={colors.primary}
           videoUrl="https://www.youtube.com/embed/7P2VEM70KgA"
           leftImageSrc="/images/russia/castle_l.svg"

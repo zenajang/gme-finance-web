@@ -1,5 +1,8 @@
+'use client';
+
 import Image from "next/image";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { COMMON_COLORS } from "@/constants/colors";
 
 interface LoanTypesSectionProps {
@@ -7,9 +10,12 @@ interface LoanTypesSectionProps {
 }
 
 export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: LoanTypesSectionProps = {}) {
+
+  const { t } = useTranslation()
+
   const loanTypes = [
     {
-      name: "Housing Loan",
+      name: 'home.housingLoan',
       icon: "/images/icons/housing.svg",
       position: { top: "16%", left: "29%" },
       position_name: { top: "3%", right: "84%" },
@@ -17,7 +23,7 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
       mobilePosition_name: { top: "0%", right: "82%" },
     },
     {
-      name: "Vacation Loan",
+      name: "home.vacationLoan",
       icon: "/images/icons/vacation.svg",
       position: { top: "16%", right: "27%" },
       position_name: { top: "3%", left: "85%" },
@@ -25,34 +31,34 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
       mobilePosition_name: { top: "0%", left: "85%" },
     },
     {
-      name: "Student Loan",
+      name: "home.studentLoan",
       icon: "/images/icons/student.svg",
       position: { top: "45%", left: "12%" },
-      position_name: { top: "45%", left: "-33%" },
+      position_name: { top: "45%", right: "105%" },
       mobilePosition: { top: "44%", left: "14%" },
       mobilePosition_name: { top: "42%", left: "-20%" },
     },
     {
-      name: "Car Loan",
+      name: "home.carLoan",
       icon: "/images/icons/car.svg",
       position: { top: "45%", right: "11%" },
-      position_name: { top: "45%", right: "-25%" },
+      position_name: { top: "45%", left: "108%" },
       mobilePosition: { top: "44%", right: "9%" },
       mobilePosition_name: { top: "42%", right: "-19%" },
     },
     {
-      name: "Property Loan",
+      name: "home.propertyLoan",
       icon: "/images/icons/property.svg",
       position: { bottom: "16%", left: "29%" },
-      position_name: { bottom: "3%", left: "-14%" },
+      position_name: { bottom: "3%", right: "85%" },
       mobilePosition: { bottom: "15%", left: "30%" },
       mobilePosition_name: { bottom: "0%", left: "-7%" },
     },
     {
-      name: "Business Loan",
+      name: "home.businessLoan",
       icon: "/images/icons/business.svg",
       position: { bottom: "16%", right: "28%" },
-      position_name: { bottom: "3%", right: "-15%" },
+      position_name: { bottom: "3%", left: "85%" },
       mobilePosition: { bottom: "15%", right: "26%" },
       mobilePosition_name: { bottom: "0%", right: "-10%" },
     },
@@ -61,7 +67,7 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
   return (
     <section className="py-0 md:py-16 lg:py-20 mb-15 md:mb-16 lg:mb-20">
       <div className="container mx-auto px-15 md:px-4 lg:px-4">
-        <h2 className="text-heading text-center mb-8 md:mb-10 lg:mb-10" style={{ color: titleColor }}>Types of Loans</h2>
+        <h2 className="text-heading text-center mb-8 md:mb-10 lg:mb-10" style={{ color: titleColor }}>{t('home.typesOfLoansTitle')}</h2>
         <div className="relative max-w-xs md:max-w-2xl mx-auto aspect-square">
           {/* 배경 템플릿 이미지 */}
           <Image
@@ -71,8 +77,8 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
             className="object-contain"
             style={{ transform: 'translateX(6px)' }}
           />
-          
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
             <div className="relative ml-2">
               <Image
                 src="/images/gme-logo.svg"
@@ -83,11 +89,11 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
               />
               {/* 이미지 위에 텍스트 */}
               <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sm md:text-4xl font-bold text-red-600 whitespace-nowrap">
-                GME LOAN
+                {t('home.GMELoan')}
               </p>
             </div>
           </div>
-          
+
           {loanTypes.map((loan, index) => (
             <React.Fragment key={index}>
               {/* Mobile version */}
@@ -141,8 +147,8 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
                 style={loan.position_name}
               >
                 <div className="flex flex-col items-center">
-                  <p className="text-3xl font-medium text-red-600 mt-4 text-center whitespace-nowrap">
-                    {loan.name}
+                  <p className="text-2xl font-semibold text-red-600 mt-4 text-center whitespace-nowrap">
+                    {t(loan.name)}
                   </p>
                 </div>
               </div>

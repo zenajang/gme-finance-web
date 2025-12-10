@@ -1,9 +1,11 @@
+'use client'
+
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 type TeamVideoSectionProps = {
   title: string;
   titleColor?: string;
-  subtitle?: string;
   subtitleColor?: string;
   videoUrl: string;
   leftImageSrc?: string;
@@ -26,7 +28,6 @@ type TeamVideoSectionProps = {
 export default function TeamVideoSection({
   title,
   titleColor,
-  subtitle = "The People Behind GME Finance",
   subtitleColor = "red",
   videoUrl,
   leftImageSrc,
@@ -45,6 +46,7 @@ export default function TeamVideoSection({
   centerImageHeight = 800,
   centerImageStyle,
 }: TeamVideoSectionProps) {
+  const { t } = useTranslation();
   return (
     <section className="relative overflow-visible">
       {centerImageSrc && (
@@ -67,14 +69,12 @@ export default function TeamVideoSection({
         >
           {title}
         </h2>
-        {subtitle && (
-          <p
-            className="text-subheading text-center mb-10"
-            style={subtitleColor ? { color: subtitleColor } : undefined}
-          >
-            {subtitle}
-          </p>
-        )}
+        <p
+          className="text-subheading text-center mb-10"
+          style={subtitleColor ? { color: subtitleColor } : undefined}
+        >
+          {t('countryPage.introductionSubTitle')}
+        </p>
         <div className="relative">
           {leftImageSrc && (
             <Image

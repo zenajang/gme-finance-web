@@ -1,3 +1,4 @@
+'use client'
 
 import { getGradient } from "@/constants/colors";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
@@ -10,6 +11,7 @@ import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
 import GarlandDecoration from "../components/sections/GarlandDecoration";
 import TeamVideoSection from "../components/sections/TeamVideoSection";
+import { useTranslation } from "react-i18next";
 
 const CAMBODIA_SOCIALS: SocialsItem[] = [
   {
@@ -74,12 +76,14 @@ const CAMBODIA_TEAMS: Teams[] = [
 ];
 
 export default function CambodiaPage() {
-
+  const { t, i18n } = useTranslation();
   return (
     <div>
       <CountryIntroductionSection
         videoSrc="/images/cambodia/background.mp4"
-        title="Cambodia Team"
+        title={i18n.language === 'en' ? `${t('country.cambodia')} ${t('countryPage.team')}` : `${t('countryPage.team')} ${t('country.cambodia')}`}
+        description={t('countryPage.mainTitle')}
+        buttonText={t('button.applyNow')}
       />
       <div
         className="bg-cover bg-center bg-no-repeat"
@@ -97,7 +101,7 @@ export default function CambodiaPage() {
           </div>
         </section>
         <TeamVideoSection
-          title="Meet Our Cambodia Team"
+          title={t('countryPage.introductionTitlekm')}
           videoUrl="https://www.youtube.com/embed/6Vv3F8utqbk"
           leftImageSrc="/images/cambodia/flower_l.svg"
           leftImageAlt="Left flower"

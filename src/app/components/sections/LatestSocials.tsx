@@ -7,6 +7,7 @@ import { COMMON_COLORS } from '@/constants/colors';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import 'swiper/css';
+import { useTranslation } from 'react-i18next';
 
 export type SocialsItem = {
   id?: string;
@@ -34,6 +35,7 @@ function SocialCard({ item, buttonBgColor, buttonHoverBgColor, hoveredId, setHov
   setHoveredId: (id: string | null) => void;
   router: AppRouterInstance;
 }) {
+  const { t } = useTranslation();
   return (
     <article
       className="
@@ -56,7 +58,7 @@ function SocialCard({ item, buttonBgColor, buttonHoverBgColor, hoveredId, setHov
       </div>
       <div className="p-8 flex flex-col flex-1">
         <header className="mb-3 flex items-start gap-4">
-          <Image src={item.snsLogo} alt="snsLogo" width={60} height={60} className='w-[40px] h-[40px] md:w-[60px] md:h-[60px]'/>
+          <Image src={item.snsLogo} alt="snsLogo" width={60} height={60} className='w-[40px] h-[40px] md:w-[60px] md:h-[60px]' />
           <div className="flex-1 mt-2">
             <div className="flex items-center gap-2">
               <h3 className="text-label leading-snug line-clamp-3 mb-3 font-medium">
@@ -89,7 +91,7 @@ function SocialCard({ item, buttonBgColor, buttonHoverBgColor, hoveredId, setHov
             onMouseEnter={() => setHoveredId(item.id ?? null)}
             onMouseLeave={() => setHoveredId(null)}
           >
-            Visit
+            {t('button.visit')}
           </button>
         </div>
       </div>
@@ -105,12 +107,12 @@ export default function LatestSocials({
 }: LatestSocialsProps) {
   const router = useRouter();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   return (
     <section className="py-8 md:py-16 px-0 md:px-45 lg:px-45">
       <div className="px-0 md:px-3 lg:px-3 relative z-10">
-        <h2 className="text-heading text-center mb-0 md:mb-20" style={{ color: titleColor }}>Latest Socials</h2>
-
+        <h2 className="text-heading text-center mb-0 md:mb-20" style={{ color: titleColor }}>{t('countryPage.latestSocialTitle')}</h2>
         {/* 모바일 버전 - Swiper 사용 */}
         <div className="block md:hidden mt-3 md:mt-8 lg:mt-8 py-4">
           <Swiper

@@ -1,3 +1,4 @@
+'use client'
 
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
@@ -10,6 +11,7 @@ import TeamSection, { Teams } from "../components/sections/TeamSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
 import GarlandDecoration from "../components/sections/GarlandDecoration";
 import TeamVideoSection from "../components/sections/TeamVideoSection";
+import { useTranslation } from "react-i18next";
 
 const MYANMAR_SOCIALS: SocialsItem[] = [
   {
@@ -86,12 +88,14 @@ const MYANMAR_TEAMS: Teams[] = [
 
 export default function MyanmarPage() {
   const colors = getColorScheme('myanmar')
-
+  const { t } = useTranslation()
   return (
     <div>
       <CountryIntroductionSection
         videoSrc="/images/myanmar/background.mp4"
-        title="Myanmar Team"
+        title={t('country.myanmar')}
+        description={t('countryPage.mainTitle')}
+        buttonText={t('button.applyNow')}
         buttonBgColor={colors.primary}
         buttonHoverBgColor={colors.hover}
         buttonTextColor={colors.gradient1}
@@ -115,7 +119,7 @@ export default function MyanmarPage() {
         </section>
         <div style={{ background: getGradient('myanmar') }}>
           <TeamVideoSection
-            title="Meet Our Myanmar Team"
+            title={t('countryPage.introductionTitlemm')}
             subtitleColor={colors.primary}
             videoUrl="https://www.youtube.com/embed/Y7qp3bG9AwA"
             leftImageSrc="/images/myanmar/castle_l.svg"

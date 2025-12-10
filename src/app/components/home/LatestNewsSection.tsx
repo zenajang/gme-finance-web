@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Swiper 스타일 import
 import 'swiper/css';
+import { useTranslation } from 'react-i18next';
 
 type NewsItem = {
   id: string;
@@ -93,6 +94,7 @@ function NewsCard({ item }: { item: NewsItem }) {
 }
 
 export default function LatestNewsSection() {
+  const { t } = useTranslation();
   return (
     <section
       className="py-8 md:py-14 lg:py-16 px-0 md:px-45 lg:px-45 bg-white bg-cover bg-center bg-no-repeat relative overflow-hidden"
@@ -133,8 +135,8 @@ export default function LatestNewsSection() {
         </div>
 
         <div className="text-center mt-0 md:mt-15 lg:mt-15">
-          <button className="bg-white border-1 border-red-500 text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-medium hover:bg-red-50 transition-colors">
-            See More
+          <button className="bg-white border-1 border-red-500 text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-colors">
+            {t('button.seeMore')}
           </button>
         </div>
       </div>

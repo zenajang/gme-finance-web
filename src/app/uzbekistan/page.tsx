@@ -1,3 +1,4 @@
+'use client'
 
 import { getColorScheme } from "@/constants/colors";
 import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
@@ -10,6 +11,7 @@ import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
 import GarlandDecoration from "../components/sections/GarlandDecoration";
 import TeamVideoSection from "../components/sections/TeamVideoSection";
+import { useTranslation } from "react-i18next";
 
 const UZBEKISTAN_SOCIALS: SocialsItem[] = [
   {
@@ -92,12 +94,15 @@ const UZBEKISTAN_TEAMS: Teams[] = [
 
 export default function UzbekistanPage() {
   const colors = getColorScheme('uzbekistan')
+  const { t } = useTranslation()
 
   return (
     <div>
       <CountryIntroductionSection
         videoSrc="/images/uzbekistan/background.mp4"
-        title="Uzbekistan Team"
+        title={t('country.uzbekistan')}
+        description={t('countryPage.mainTitle')}
+        buttonText={t('button.applyNow')}
         buttonTextColor={colors.primary}
         buttonHoverBgColor={colors.introHover}
       />

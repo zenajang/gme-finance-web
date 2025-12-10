@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { COMMON_COLORS } from "@/constants/colors";
+import { useTranslation } from 'react-i18next';
 
 interface LoanDetail {
   label: string;
@@ -13,43 +14,44 @@ interface LoanDetailSectionProps {
 }
 
 export default function LoanDetailSection({ backgroundImage = '/images/default-background.jpg' }: LoanDetailSectionProps) {
+  const { t } = useTranslation()
   const loanDetails: LoanDetail[] = [
     {
-      label: "Maximum Loan Amount",
-      value: "Up to 30 mil"
+      label: t('countryPage.LoanDetailsLabel1'),
+      value: t('countryPage.LoanDetailsValue1')
     },
     {
-      label: "Loan Duration",
-      value: "3 - 45 months"
+      label: t('countryPage.LoanDetailsLabel2'),
+      value: t('countryPage.LoanDetailsValue2')
     },
     {
-      label: "Possible remaining visa period",
-      value: "6 - 48 months"
+      label: t('countryPage.LoanDetailsLabel3'),
+      value: t('countryPage.LoanDetailsValue3')
     },
     {
-      label: "Loan Products",
-      value: "ONE Loan, ONE Home Loan, Business Loan",
+      label: t('countryPage.LoanDetailsLabel4'),
+      value: t('countryPage.LoanDetailsValue4'),
       highlight: true
     },
     {
-      label: "Contract signing method",
-      value: "Digital contract or Physical contracts"
+      label: t('countryPage.LoanDetailsLabel5'),
+      value: t('countryPage.LoanDetailsValue5')
     },
     {
-      label: "Loanable Amount",
-      value: "2 mil - 20mil"
+      label: t('countryPage.LoanDetailsLabel6'),
+      value: t('countryPage.LoanDetailsValue6')
     },
     {
-      label: "Possible visa types",
-      value: "E5, E7, F2, F5, F6, D8 and any other visa holders with legal work contract"
+      label: t('countryPage.LoanDetailsLabel7'),
+      value: t('countryPage.LoanDetailsValue7')
     },
     {
-      label: "Repayment method",
-      value: "Installments"
+      label: t('countryPage.LoanDetailsLabel8'),
+      value: t('countryPage.LoanDetailsValue8')
     },
     {
-      label: "Early Settlement Charges",
-      value: "Free"
+      label: t('countryPage.LoanDetailsLabel9'),
+      value: t('countryPage.LoanDetailsValue9')
     }
   ];
 
@@ -61,10 +63,10 @@ export default function LoanDetailSection({ backgroundImage = '/images/default-b
         backgroundColor: COMMON_COLORS.navyDark
       }}
     >
-    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"/>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
       <div className="relative z-10 w-full mx-auto">
         <h2 className="text-heading text-center mb-8 md:mb-12 lg:mb-20 text-white drop-shadow-lg">
-          Loan Details
+          {t('countryPage.LoanDetailsTitle')}
         </h2>
 
         <div className="bg-white/60 rounded-2xl shadow-2xl border border-white/20">
@@ -72,7 +74,7 @@ export default function LoanDetailSection({ backgroundImage = '/images/default-b
             <table className="w-full">
               <tbody>
                 {loanDetails.map((detail, index) => (
-                  <tr 
+                  <tr
                     key={index}
                     className='border-b border-black/30 last:border-b-0 '
                   >
@@ -80,15 +82,9 @@ export default function LoanDetailSection({ backgroundImage = '/images/default-b
                       {detail.label}
                     </td>
                     <td className="py-5 px-2 md:px-6 text-black font-semibold text-input md:text-base text-center">
-                      {detail.label === "Possible visa types" ? (
-                        <div className="text-input md:text-base leading-relaxed">
-                          E5, E7, F2, F5, F6, D8 and any other visa
-                          <br />
-                          holders with legal work contract
-                        </div>
-                      ) : (
-                        detail.value
-                      )}
+
+                      {detail.value}
+
                     </td>
                   </tr>
                 ))}
