@@ -138,7 +138,7 @@ export default function MyanmarPage() {
           <ProcessStep subtitleColor={colors.primary} />
         </div>
       </div>
-      <LoanDetailSection backgroundImage="/images/myanmar/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/myanmar/loan_detail_bg.webp" country="myanmar" />
       <section className="bg-cover relative overflow-hidden" style={{ background: getGradient('myanmar') }}>
         <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
         <GarlandDecoration country="myanmar" />

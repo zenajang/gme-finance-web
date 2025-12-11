@@ -118,13 +118,13 @@ export default function PhilippinesPage() {
           <ProcessStep />
         </section>
       </div>
-      <LoanDetailSection backgroundImage="/images/philippines/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/philippines/loan_detail_bg.webp" country="philippines" />
       <div style={{ background: getGradient('philippines', true) }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="philippines" />
           <EMICalculatorSection />
           <div className="mb-20">
-            <LoanApplicationForm />
+            <LoanApplicationForm country="philippines" />
           </div>
         </section>
       </div>

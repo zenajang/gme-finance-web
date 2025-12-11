@@ -134,12 +134,12 @@ export default function BangladeshPage() {
         <LoanTypesSection />
         <ProcessStep />
       </div>
-      <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp" country="bangladesh" />
       <div style={{ background: getGradient('bangladesh') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="bangladesh" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
-          <LoanApplicationForm buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} subtitleColor={colors.primary} />
+          <LoanApplicationForm country='bangladesh' buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} subtitleColor={colors.primary} />
         </section>
       </div>
     </div>

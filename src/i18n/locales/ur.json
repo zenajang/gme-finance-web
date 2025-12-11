@@ -34,8 +34,10 @@
     "simpleLoanStep5": "تقسیمات",
     "simpleLoanStep5Des": "معاہدے پر دستخط کرنے کے بعد، قرض کی رقم آپ کے بینک اکاؤنٹ میں جمع کر دی جائے گی۔",
     "applyLoanAppTitle": "GME ایپ کے ذریعے قرض کا اطلاق کریں۔",
-    "applyLoanAppSubTitle": "25 ملین KRW تک کا قرض",
-    "applyLoanAppSubTitle1": "GME Finance لون کے لیے درخواست دینا آسان اور سہل بناتا ہے۔ ابھی درخواست دیں!"
+    "applyLoanAppSubTitle1": "GME Finance لون کے لیے درخواست دینا آسان اور سہل بناتا ہے۔ ابھی درخواست دیں!",
+    "applyLoanAppSubTitleByCountry": {
+      "pakistan": "25 ملین KRW تک کا قرض"
+    }
   },
   "countryPage": {
     "teamTitle": "{{country}} ٹیم ",
@@ -45,24 +47,28 @@
     "introductionSubTitle": "جی ایم ای فنانس کے پیچھے موجود لوگ",
     "LoanDetailsTitle": "قرض کی تفصیلات",
     "LoanDetailsLabel1": "زیادہ سے زیادہ قرض کی رقم",
-    "LoanDetailsValue1": "25 ملین تک",
     "LoanDetailsLabel2": "قرض کی مدت",
-    "LoanDetailsValue2": "ماہ 4 - 45",
     "LoanDetailsLabel3": "اہل ویزہ کی باقی مدت",
-    "LoanDetailsValue3": "7-48 ماہ",
     "LoanDetailsLabel4": "Loan Products",
-    "LoanDetailsValue4": "GME Loan, Housing Loan, Student Loan, Property Loan, Vacation Loan, Car Loan, Business Loan",
     "LoanDetailsLabel5": "معاہدے پر دستخط کرنے کا طریقہ",
     "LoanDetailsValue5": "ڈیجیٹل معاہدہ",
     "LoanDetailsLabel6": "قابل قرضہ رقم",
-    "LoanDetailsValue6": "2 ملین - 25 ملین",
     "LoanDetailsLabel7": "اہل ویزا کی اقسام",
-    "LoanDetailsValue7": "E9, E7, F2, F5, F6, D8, D2 اور قانونی کام کے معاہدے کے ساتھ کوئی دوسرا ویزا ہولڈر",
     "LoanDetailsLabel8": "ادائیگی کا طریقہ",
     "LoanDetailsValue8": "ماہانہ قسط",
     "LoanDetailsLabel9": "ابتدائی سیٹلمنٹ چارجز",
-    "LoanDetailsValue9": "مفت",
     "SupportTitle": "آپ کو کتنی مدد کی ضرورت ہے؟",
-    "SupportSubTitle": "چیک کریں کہ آپ کی مطلوبہ قرض کی رقم کی بنیاد پر آپ کی ماہانہ ادائیگی کتنی ہوگی"
+    "SupportSubTitle": "چیک کریں کہ آپ کی مطلوبہ قرض کی رقم کی بنیاد پر آپ کی ماہانہ ادائیگی کتنی ہوگی",
+    "loanDetails": {
+      "pakistan": {
+        "value1": "ملین تک 25",
+        "value2": "4 - 45 ماہ",
+        "value3": "7-48 ماہ",
+        "value4": "GME Loan, Housing Loan, Student Loan, Property Loan, Vacation Loan, Car Loan, Business Loan",
+        "value6": "2 ملین - 25 ملین",
+        "value7": "E9, E7, F2, F5, F6, D8, D2 اور قانونی کام کے معاہدے کے ساتھ کوئی دوسرا ویزا ہولڈر",
+        "value9": "مفت"
+      }
+    }
   }
 }

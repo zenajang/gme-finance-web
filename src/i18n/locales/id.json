@@ -34,8 +34,10 @@
     "simpleLoanStep5": "PENCAIRAN DANA",
     "simpleLoanStep5Des": "Setelah penandatanganan kontrak, dana pinjaman akan ditransfer ke rekening bank Anda",
     "applyLoanAppTitle": "Ajukan Pinjaman melalui Aplikasi GME",
-    "applyLoanAppSubTitle": "Pinjaman hingga 25 Juta KRW",
-    "applyLoanAppSubTitle1": "Pengajuan pinjaman mudah dan nyaman dengan GME Finance. Ajukan Sekarang!"
+    "applyLoanAppSubTitle1": "Pengajuan pinjaman mudah dan nyaman dengan GME Finance. Ajukan Sekarang!",
+    "applyLoanAppSubTitleByCountry": {
+      "indonesia": "Pinjaman hingga 25 Juta KRW"
+    }
   },
   "countryPage": {
     "team": "Tim",
@@ -45,24 +47,28 @@
     "introductionSubTitle": "Tim di Balik GME Finance",
     "LoanDetailsTitle": "Rincian Pinjaman",
     "LoanDetailsLabel1": "Jumlah Pinjaman Maksimum",
-    "LoanDetailsValue1": "Hingga 25 Juta KRW",
     "LoanDetailsLabel2": "Jangka Waktu Pinjaman",
-    "LoanDetailsValue2": "3 - 45 bulan",
     "LoanDetailsLabel3": "Syarat Sisa Masa Berlaku Visa",
-    "LoanDetailsValue3": "6 - 48 bulan",
     "LoanDetailsLabel4": "Produk Pinjaman",
-    "LoanDetailsValue4": "Pinjaman GME, Pinjaman Perumahan, Pinjaman Pelajar, Pinjaman Properti, Pinjaman Liburan, Pinjaman Kendaraan, Pinjaman Usaha",
     "LoanDetailsLabel5": "Metode Penandatanganan Kontrak",
     "LoanDetailsValue5": "Kontrak Digital",
     "LoanDetailsLabel6": "Plafon Pinjaman",
-    "LoanDetailsValue6": "2 Juta – 25 Juta KRW",
     "LoanDetailsLabel7": "Jenis Visa yang Berlaku",
-    "LoanDetailsValue7": "D2, E7-1, E7-3, E7-4, E9, E10, dan Visa F",
     "LoanDetailsLabel8": "Metode Pembayaran",
     "LoanDetailsValue8": "Angsuran Bulanan",
     "LoanDetailsLabel9": "Biaya Pelunasan Dimuka",
-    "LoanDetailsValue9": "Gratis",
     "SupportTitle": "Berapa besar bantuan yang Anda butuhkan?",
-    "SupportSubTitle": "Periksa berapa besar angsuran bulanan Anda berdasarkan jumlah pinjaman yang diinginkan"
+    "SupportSubTitle": "Periksa berapa besar angsuran bulanan Anda berdasarkan jumlah pinjaman yang diinginkan",
+    "loanDetails": {
+      "indonesia": {
+        "value1": "Hingga 25 Juta KRW",
+        "value2": "3 - 45 bulan",
+        "value3": "6 - 48 bulan",
+        "value4": "Pinjaman GME, Pinjaman Perumahan, Pinjaman Pelajar, Pinjaman Properti, Pinjaman Liburan, Pinjaman Kendaraan, Pinjaman Usaha",
+        "value6": "2 Juta – 25 Juta KRW",
+        "value7": "D2, E7-1, E7-3, E7-4, E9, E10, dan Visa F",
+        "value9": "Gratis"
+      }
+    }
   }
 }

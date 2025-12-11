@@ -84,14 +84,14 @@ export default function IndiaPage() {
           <ProcessStep />
         </section>
       </div>
-      <LoanDetailSection backgroundImage="/images/india/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/india/loan_detail_bg.webp" country="india" />
       <div className="bg-cover bg-center bg-no-repeat" style={{ background: getGradient('india') }}>
         <div className="bg-cover bg-no-repeat" style={{ backgroundImage: "url('/images/india/bg.svg')", backgroundPosition: 'center 50px' }}>
           <section className="bg-no-repeat relative overflow-hidden">
             <GarlandDecoration country="india" />
             <EMICalculatorSection />
             <div className="mb-20 mt-10">
-              <LoanApplicationForm />
+              <LoanApplicationForm country="india" />
             </div>
           </section>
         </div>

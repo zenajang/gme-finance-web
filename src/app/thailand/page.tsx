@@ -94,14 +94,14 @@ export default function ThailandPage() {
         <LoanTypesSection titleColor={colors.title} />
         <ProcessStep titleColor={colors.title} subtitleColor={colors.subtitle} />
       </div>
-      <LoanDetailSection backgroundImage="/images/thailand/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/thailand/loan_detail_bg.webp" country="thailand" />
       <div style={{ background: colors.gradient2 }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat top-90 bg-right -right-30 w-full h-250" style={{ backgroundImage: "url('/images/thailand/cloud_l.svg')", zIndex: 1, }} />
           <div className="absolute bg-no-repeat top-20 bg-left -left-40 w-full h-80" style={{ backgroundImage: "url('/images/thailand/cloud_r.svg')", zIndex: 1 }} />
           <GarlandDecoration country="thailand" />
           <EMICalculatorSection titleColor={colors.title} />
-          <LoanApplicationForm />
+          <LoanApplicationForm country="thailand" />
         </section>
       </div>
     </div>

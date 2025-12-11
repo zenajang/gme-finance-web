@@ -35,8 +35,10 @@
     "simpleLoanStep5": "ВЫДАЧА СРЕДСТВ",
     "simpleLoanStep5Des": "После подписания контракта сумма кредита будет зачислена на ваш банковский счёт",
     "applyLoanAppTitle": "Подайте заявку на кредит через приложение GME",
-    "applyLoanAppSubTitle": "Кредит до 25 млн KRW",
-    "applyLoanAppSubTitle1": "GME Finance делает процесс подачи заявки простым и удобным. Оформите кредит прямо сейчас!"
+    "applyLoanAppSubTitle1": "GME Finance делает процесс подачи заявки простым и удобным. Оформите кредит прямо сейчас!",
+    "applyLoanAppSubTitleByCountry": {
+      "russia": "Кредит до 25 млн KRW"
+    }
   },
   "countryPage": {
     "teamTitle": "{{country}} команда",
@@ -46,24 +48,28 @@
     "introductionSubTitle": "Люди, стоящие за GME Finance",
     "LoanDetailsTitle": "Детали кредита",
     "LoanDetailsLabel1": "Максимальная сумма кредита",
-    "LoanDetailsValue1": "До 25 млн",
     "LoanDetailsLabel2": "Срок кредита",
-    "LoanDetailsValue2": "3 - 45 месяцев",
     "LoanDetailsLabel3": "Допустимый остаточный срок действия визы",
-    "LoanDetailsValue3": "6 - 48 месяцев",
     "LoanDetailsLabel4": "Виды кредитования",
-    "LoanDetailsValue4": "GME Кредит, GME Ипотечный кредит, Студенческий кредит, Кредит на недвижимость, Кредит на путешествие, Автокредит, Бизнес-кредит",
     "LoanDetailsLabel5": "Метод подписания контракта",
     "LoanDetailsValue5": "Цифровой контракт",
     "LoanDetailsLabel6": "Сумма кредита",
-    "LoanDetailsValue6": "2 млн - 25 млн",
     "LoanDetailsLabel7": "Допустимые типы виз",
-    "LoanDetailsValue7": "D2, E9, E7, F2, F4, F5, F6, H2 и любые другие визы при наличии официального трудоустройства",
     "LoanDetailsLabel8": "Способ погашения",
     "LoanDetailsValue8": "Ежемесячными платежами",
     "LoanDetailsLabel9": "Комиссия за досрочное погашение",
-    "LoanDetailsValue9": "Нет дополнительных оплат",
     "SupportTitle": "Какая поддержка вам нужна?",
-    "SupportSubTitle": "Узнайте, какой будет ваш ежемесячный платёж исходя из желаемой суммы кредита"
+    "SupportSubTitle": "Узнайте, какой будет ваш ежемесячный платёж исходя из желаемой суммы кредита",
+    "loanDetails": {
+      "russia": {
+        "value1": "До 25 млн",
+        "value2": "3 - 45 месяцев",
+        "value3": "6 - 48 месяцев",
+        "value4": "GME Кредит, GME Ипотечный кредит, Студенческий кредит, Кредит на недвижимость, Кредит на путешествие, Автокредит, Бизнес-кредит",
+        "value6": "2 млн - 25 млн",
+        "value7": "D2, E9, E7, F2, F4, F5, F6, H2 и любые другие визы при наличии официального трудоустройства",
+        "value9": "Нет дополнительных оплат"
+      }
+    }
   }
 }

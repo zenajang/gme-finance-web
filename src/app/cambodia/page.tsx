@@ -122,7 +122,7 @@ export default function CambodiaPage() {
           </div>
         </section>
       </div>
-      <LoanDetailSection backgroundImage="/images/cambodia/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/cambodia/loan_detail_bg.webp" country="cambodia" />
       <div style={{ background: getGradient('cambodia', true) }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="cambodia" />

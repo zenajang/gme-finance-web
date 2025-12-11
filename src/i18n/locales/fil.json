@@ -19,7 +19,10 @@
     "simpleLoanStep5Des": "Pagkatapos ng Contract Signing, ang loan amount ay ide-deposit sa iyong bank account",
     "applyLoanAppTitle": "Mag-apply ng Loan sa GME App",
     "applyLoanAppSubTitle": "Loan up to 35 Million KRW",
-    "applyLoanAppSubTitle1": "Ginawang madali at convenient ng GME Finance ang pag-apply ng GME Loan. Mag-apply na!"
+    "applyLoanAppSubTitle1": "Ginawang madali at convenient ng GME Finance ang pag-apply ng GME Loan. Mag-apply na!",
+    "applyLoanAppSubTitleByCountry": {
+      "philippines": "Loan up to 35 Million KRW"
+    }
   },
   "countryPage": {
     "team": "Team",
@@ -28,11 +31,16 @@
     "introductionTitleph": "Kilalanin ang Aming Philippines Team",
     "introductionSubTitle": "Ang Mga Taong Nasa Likod ng GME Finance",
     "LoanDetailsTitle": "Detalye ng Loan",
-    "LoanDetailsValue1": "Hanggang 35 million KRW",
     "LoanDetailsValue4": "GME Loan, Housing Loan, Student Loan, Property Loan, Vacation Loan, Car Loan, Business Loan",
     "LoanDetailsValue6": "2 million – 35 million KRW",
     "LoanDetailsValue7": "E9, E7, E3, F2, F5, F6, D2, G1 at iba pang visa holders na may Legal Work Contract",
     "SupportTitle": "Magkano ang kailangan mo?",
-    "SupportSubTitle": "I-check kung magkano ang magiging monthly payment mo base sa loan amount na gusto mo."
+    "SupportSubTitle": "I-check kung magkano ang magiging monthly payment mo base sa loan amount na gusto mo.",
+    "loanDetails": {
+      "philippines": {
+        "value1": "Hanggang 35 million KRW",
+        "value6": "2 million – 35 million KRW"
+      }
+    }
   }
 }

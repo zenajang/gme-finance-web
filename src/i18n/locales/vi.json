@@ -34,8 +34,10 @@
     "simpleLoanStep5": "GIẢI NGÂN",
     "simpleLoanStep5Des": "Sau khi ký hợp đồng, số tiền vay sẽ được chuyển vào tài khoản ngân hàng của bạn",
     "applyLoanAppTitle": "Nộp đơn đăng kí vay qua ứng dụng GME REMIT",
-    "applyLoanAppSubTitle": "Khoản vay lên đến 25  triệu KRW",
-    "applyLoanAppSubTitle1": "Nhanh chóng, Đơn giản, An toàn với khoản vay tại GME.  Đăng ký ngay!"
+    "applyLoanAppSubTitle1": "Nhanh chóng, Đơn giản, An toàn với khoản vay tại GME.  Đăng ký ngay!",
+    "applyLoanAppSubTitleByCountry": {
+      "vietnam": "Khoản vay lên đến 25 triệu KRW"
+    }
   },
   "countryPage": {
     "teamTitle": "Đội ngũ {{country}}",
@@ -45,24 +47,28 @@
     "introductionSubTitle": "Những con người phía sau GME Finance",
     "LoanDetailsTitle": "Chi tiết khoản vay",
     "LoanDetailsLabel1": "Số tiền vay tối đa",
-    "LoanDetailsValue1": "Lên đến 25 triệu won",
     "LoanDetailsLabel2": "Thời hạn vay",
-    "LoanDetailsValue2": "3 - 45 tháng",
     "LoanDetailsLabel3": "Thời hạn visa còn lại hợp lệ",
-    "LoanDetailsValue3": "7 - 48 tháng",
     "LoanDetailsLabel4": "Sản phẩm vay",
-    "LoanDetailsValue4": "Tài chính GME, Khoản vay mua nhà, Khoản vay mua xe, Khoản vay bất động sản, Khoản vay du lịch, Khoản vay mua ô tô, Khoản vay kinh doanh",
     "LoanDetailsLabel5": "Phương pháp ký hợp đồng",
     "LoanDetailsValue5": "Hợp đồng điện tử",
     "LoanDetailsLabel6": "Số tiền có thể vay",
-    "LoanDetailsValue6": "2 triệu - 25 triệu",
     "LoanDetailsLabel7": "Các loại thị thực visa đủ điều kiện",
-    "LoanDetailsValue7": "E10, E9, E7, F2, F5, F6, D2  và bất kỳ người sở hữu thị thực nào khác có Hợp đồng Lao động Hợp pháp",
     "LoanDetailsLabel8": "Phương thức trả nợ",
     "LoanDetailsValue8": "Trả góp hàng tháng",
     "LoanDetailsLabel9": "Phí thanh toán sớm",
-    "LoanDetailsValue9": "Miễn phí",
     "SupportTitle": "Số tiền bạn cần hỗ trợ?",
-    "SupportSubTitle": "Kiểm tra số tiền thanh toán hàng tháng của bạn sẽ là bao nhiêu dựa trên số tiền vay mong muốn của bạn"
+    "SupportSubTitle": "Kiểm tra số tiền thanh toán hàng tháng của bạn sẽ là bao nhiêu dựa trên số tiền vay mong muốn của bạn",
+    "loanDetails": {
+      "vietnam": {
+        "value1": "Lên đến 25 triệu won",
+        "value2": "3 - 45 tháng",
+        "value3": "7 - 48 tháng",
+        "value4": "Tài chính GME, Khoản vay mua nhà, Khoản vay mua xe, Khoản vay bất động sản, Khoản vay du lịch, Khoản vay mua ô tô, Khoản vay kinh doanh",
+        "value6": "2 triệu - 25 triệu",
+        "value7": "E10, E9, E7, F2, F5, F6, D2  và bất kỳ người sở hữu thị thực nào khác có Hợp đồng Lao động Hợp pháp",
+        "value9": "Miễn phí"
+      }
+    }
   }
 }

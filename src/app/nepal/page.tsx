@@ -121,12 +121,12 @@ export default function NepalPage() {
           <ProcessStep />
         </section>
       </div>
-      <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/nepal/loan_detail_bg.webp" country="nepal" />
       <div style={{ background: getGradient('nepal') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="nepal" />
           <EMICalculatorSection />
-          <LoanApplicationForm />
+          <LoanApplicationForm country="nepal" />
         </section>
       </div>
     </div>

@@ -144,13 +144,13 @@ export default function RussiaPage() {
           <ProcessStep subtitleColor="#3A57B4" />
         </section>
       </div>
-      <LoanDetailSection backgroundImage="/images/russia/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/russia/loan_detail_bg.webp" country="russia" />
       <div style={{ background: getGradient('russia', true) }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="russia" variant="compact" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
           <div className="mb-69">
-            <LoanApplicationForm buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
+            <LoanApplicationForm country="russia" buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
           </div>
         </section>
       </div>

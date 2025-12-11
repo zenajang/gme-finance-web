@@ -115,12 +115,12 @@ export default function IndonesiaPage() {
           <div className="absolute bg-repeat bg-bottom bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/indonesia/garland_u.svg')", transform: 'rotate(180deg)' }} />
         </section>
       </div>
-      <LoanDetailSection backgroundImage="/images/indonesia/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/indonesia/loan_detail_bg.webp" country="indonesia" />
       <div style={{ background: getGradient('indonesia', true) }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="indonesia" />
           <EMICalculatorSection />
-          <LoanApplicationForm />
+          <LoanApplicationForm country="indonesia" />
         </section>
       </div>
     </div>

@@ -34,8 +34,10 @@
     "simpleLoanStep5": "লোন বিতরণ",
     "simpleLoanStep5Des": "চুক্তি স্বাক্ষরের পর, লোনের অর্থ আপনার ব্যাংক অ্যাকাউন্টে জমা হবে",
     "applyLoanAppTitle": "GME অ্যাপের মাধ্যমে লোন আবেদন করুন",
-    "applyLoanAppSubTitle": "২ কোটি ৫০ লক্ষ KRW পর্যন্ত লোন",
-    "applyLoanAppSubTitle1": "GME ফাইন্যান্স লোন আবেদনকে আরও সহজ এবং সুবিধাজনক করেছে। এখনই আবেদন করুন!"
+    "applyLoanAppSubTitle1": "GME ফাইন্যান্স লোন আবেদনকে আরও সহজ এবং সুবিধাজনক করেছে। এখনই আবেদন করুন!",
+    "applyLoanAppSubTitleByCountry": {
+      "bangladesh": "২ কোটি ৫০ লক্ষ KRW পর্যন্ত লোন"
+    }
   },
   "countryPage": {
     "team": "টিম",
@@ -46,24 +48,28 @@
     "introductionSubTitle": "GME Finance এর সেবার পেছনের নিবেদিত মানুষগুলো",
     "LoanDetailsTitle": "লোনের বিস্তারিত",
     "LoanDetailsLabel1": "সর্বোচ্চ লোনের পরিমাণ",
-    "LoanDetailsValue1": "২ কোটি ৫০ লক্ষ KRW পর্যন্ত",
     "LoanDetailsLabel2": "লোনের চুক্তির সময়কাল",
-    "LoanDetailsValue2": "৪ থেকে ৪৫ মাস পর্যন্ত ( যেকোনো সময় পরিশোধযোগ্য )",
     "LoanDetailsLabel3": "লোনের জন্য ভিসার সময়কাল",
-    "LoanDetailsValue3": "৭ থেকে ৪৮ মাস পর্যন্ত (E7, F2, F6 ভিসাধারীদের কার্ডে ভিসা না থাকলেও লোন আবেদন করা যাবে।)",
     "LoanDetailsLabel4": "লোনের ধরন",
-    "LoanDetailsValue4": "GME লোন, Housing লোন, Student লোন, Property লোন, Vacation লোন, Car লোন, Business লোন",
     "LoanDetailsLabel5": "চুক্তি স্বাক্ষরের পদ্ধতি",
     "LoanDetailsValue5": "ডিজিটাল চুক্তি",
     "LoanDetailsLabel6": "লোনের পরিমাণ",
-    "LoanDetailsValue6": "২০ থেকে - ২ কোটি ৫০ লক্ষ KRW পর্যন্ত",
     "LoanDetailsLabel7": "যোগ্য ভিসার ধরন",
-    "LoanDetailsValue7": "E9, E7, F2, F5, F6, D2 এবং যেকোনো অন্যান্য ভিসায় যারা বৈধ কর্মচুক্তিতে আছেন",
     "LoanDetailsLabel8": "কিস্তি পদ্ধতি",
     "LoanDetailsValue8": "মাসিক কিস্তি",
     "LoanDetailsLabel9": "অগ্রিম নিষ্পত্তির চার্জ",
-    "LoanDetailsValue9": "বিনামূল্যে",
     "SupportTitle": "আপনার কত লোন দরকার?",
-    "SupportSubTitle": "লোনের পরিমাণ অনুযায়ী মাসিক কিস্তি যাচাই করুন"
+    "SupportSubTitle": "লোনের পরিমাণ অনুযায়ী মাসিক কিস্তি যাচাই করুন",
+    "loanDetails": {
+      "bangladesh": {
+        "value1": "২ কোটি ৫০ লক্ষ KRW পর্যন্ত",
+        "value2": "৪ থেকে ৪৫ মাস পর্যন্ত ( যেকোনো সময় পরিশোধযোগ্য )",
+        "value3": "৭ থেকে ৪৮ মাস পর্যন্ত (E7, F2, F6 ভিসাধারীদের কার্ডে ভিসা না থাকলেও লোন আবেদন করা যাবে।)",
+        "value4": "GME লোন, Housing লোন, Student লোন, Property লোন, Vacation লোন, Car লোন, Business লোন",
+        "value6": "২০ থেকে - ২ কোটি ৫০ লক্ষ KRW পর্যন্ত",
+        "value7": "E9, E7, F2, F5, F6, D2 এবং যেকোনো অন্যান্য ভিসায় যারা বৈধ কর্মচুক্তিতে আছেন",
+        "value9": "বিনামূল্যে"
+      }
+    }
   }
 }

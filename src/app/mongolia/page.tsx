@@ -116,13 +116,13 @@ export default function MongoliaPage() {
           <ProcessStep />
         </section>
       </div>
-      <LoanDetailSection backgroundImage="/images/mongolia/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/mongolia/loan_detail_bg.webp" country="mongolia" />
       <div style={{ background: getGradient('mongolia') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="mongolia" />
           <EMICalculatorSection />
           <div className="mb-20">
-            <LoanApplicationForm />
+            <LoanApplicationForm country="mongolia" />
           </div>
         </section>
       </div>

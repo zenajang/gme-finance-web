@@ -51,20 +51,20 @@ export default function FinancialPrioritySection() {
             </div>
           </div>
 
-          <p className="hidden md:block absolute top-[22%] right-[88%] text-center text-lg font-medium">
+          <p className="hidden md:block absolute top-[22%] left-[0%] text-center text-lg font-medium">
             {t("home.finacialPriority1")}<br />
             {t("home.finacialPriority1br")}
           </p>
 
-          <p className="hidden md:block absolute top-[22%] left-[83%] text-center text-lg font-medium w-80">
+          <p className="hidden md:block absolute top-[22%] right-[-12%] text-center text-lg font-medium w-80">
             {t("home.finacialPriority5")}<br /> {t("home.finacialPriority5br")}
           </p>
 
-          <p className="hidden md:block absolute bottom-[26%] right-[80%] text-center text-lg font-medium">
+          <p className="hidden md:block absolute bottom-[26%] left-[4%] text-center text-lg font-medium">
             {t("home.finacialPriority2")}<br /> {t("home.finacialPriority2br")}
           </p>
 
-          <p className="hidden md:block absolute bottom-[30%] left-[80%] text-center text-lg font-medium">
+          <p className="hidden md:block absolute bottom-[30%] right-[5%] text-center text-lg font-medium">
             {t("home.finacialPriority4")}
           </p>
         </div>

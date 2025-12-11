@@ -11,26 +11,27 @@ interface LoanDetail {
 
 interface LoanDetailSectionProps {
   backgroundImage?: string;
+  country: string;
 }
 
-export default function LoanDetailSection({ backgroundImage = '/images/default-background.jpg' }: LoanDetailSectionProps) {
+export default function LoanDetailSection({ backgroundImage = '/images/default-background.jpg', country }: LoanDetailSectionProps) {
   const { t } = useTranslation()
   const loanDetails: LoanDetail[] = [
     {
       label: t('countryPage.LoanDetailsLabel1'),
-      value: t('countryPage.LoanDetailsValue1')
+      value: t(`countryPage.loanDetails.${country}.value1`)
     },
     {
       label: t('countryPage.LoanDetailsLabel2'),
-      value: t('countryPage.LoanDetailsValue2')
+      value: t(`countryPage.loanDetails.${country}.value2`)
     },
     {
       label: t('countryPage.LoanDetailsLabel3'),
-      value: t('countryPage.LoanDetailsValue3')
+      value: t(`countryPage.loanDetails.${country}.value3`)
     },
     {
       label: t('countryPage.LoanDetailsLabel4'),
-      value: t('countryPage.LoanDetailsValue4'),
+      value: t(`countryPage.loanDetails.${country}.value4`),
       highlight: true
     },
     {
@@ -39,11 +40,11 @@ export default function LoanDetailSection({ backgroundImage = '/images/default-b
     },
     {
       label: t('countryPage.LoanDetailsLabel6'),
-      value: t('countryPage.LoanDetailsValue6')
+      value: t(`countryPage.loanDetails.${country}.value6`)
     },
     {
       label: t('countryPage.LoanDetailsLabel7'),
-      value: t('countryPage.LoanDetailsValue7')
+      value: t(`countryPage.loanDetails.${country}.value7`)
     },
     {
       label: t('countryPage.LoanDetailsLabel8'),
@@ -51,7 +52,7 @@ export default function LoanDetailSection({ backgroundImage = '/images/default-b
     },
     {
       label: t('countryPage.LoanDetailsLabel9'),
-      value: t('countryPage.LoanDetailsValue9')
+      value: t(`countryPage.loanDetails.${country}.value9`)
     }
   ];
 

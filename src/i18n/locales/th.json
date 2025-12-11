@@ -34,8 +34,10 @@
     "simpleLoanStep5": "ได้รับยอด",
     "simpleLoanStep5Des": "หลังจากเซ็นสัญญากู้ จำนวนเงินกู้จะถูกโอนเข้าบัญชีธนาคารของคุณ",
     "applyLoanAppTitle": "สมัครสินเชื่อผ่านแอป GME",
-    "applyLoanAppSubTitle": "สูงสุดที่ 25 ล้านวอน",
-    "applyLoanAppSubTitle1": "GME Finance ทำให้การสมัครสินเชื่อ GME ของคุณ ง่ายและสะดวก สมัครเลย!"
+    "applyLoanAppSubTitle1": "GME Finance ทำให้การสมัครสินเชื่อ GME ของคุณ ง่ายและสะดวก สมัครเลย!",
+    "applyLoanAppSubTitleByCountry": {
+      "thailand": "สูงสุดที่ 25 ล้านวอน"
+    }
   },
   "countryPage": {
     "teamTitle": "ทีม{{country}}",
@@ -45,24 +47,28 @@
     "introductionSubTitle": "ผู้อยู่เบื้องหลัง GME Finance",
     "LoanDetailsTitle": "รายละเอียดสินเชื่อ",
     "LoanDetailsLabel1": "จำนวนวงเงิน",
-    "LoanDetailsValue1": "สูงสุด 25 ล้านวอน",
     "LoanDetailsLabel2": "ระยะเวลากู้เงิน",
-    "LoanDetailsValue2": "3 - 45 เดือน",
     "LoanDetailsLabel3": "ระยะเวลาวีซ่าที่เหลือที่มีสิทธิ์ยื่นสินเชื่อ",
-    "LoanDetailsValue3": "6 – 48 เดือน",
     "LoanDetailsLabel4": "ผลิตภัณฑ์สินเชื่อ",
-    "LoanDetailsValue4": "สินเชื่อ GME, สินเชื่อที่อยู่อาศัย, สินเชื่อนักเรียน, สินเชื่อเพื่อซื้อทรัพย์สิน, สินเชื่อท่องเที่ยว / พักผ่อน, สินเชื่อรถยนต์, สินเชื่อธุรกิจ",
     "LoanDetailsLabel5": "วิธีการเซ็นสัญญากู้",
     "LoanDetailsValue5": "สัญญาดิจิทัล",
     "LoanDetailsLabel6": "วงเงินสินเชื่อ",
-    "LoanDetailsValue6": "เริ่มต้นที่ 2-25 ล้านวอน",
     "LoanDetailsLabel7": "ประเภทวีซ่าที่มียื่นสินเชื่อได้",
-    "LoanDetailsValue7": "E9, E7, F2, F5, F6",
     "LoanDetailsLabel8": "วิธีการชำระคืน",
     "LoanDetailsValue8": "ผ่อนชำระรายเดือน",
     "LoanDetailsLabel9": "ค่าธรรมเนียมปิดบัญชีก่อนกำหนด",
-    "LoanDetailsValue9": "ฟรี",
     "SupportTitle": "คุณต้องการมากแค่ไหน?",
-    "SupportSubTitle": "ตรวจสอบว่าคุณจะต้องชำระเงินรายเดือนเท่าไหร่ ตามจำนวนเงินกู้ที่คุณต้องการ"
+    "SupportSubTitle": "ตรวจสอบว่าคุณจะต้องชำระเงินรายเดือนเท่าไหร่ ตามจำนวนเงินกู้ที่คุณต้องการ",
+    "loanDetails": {
+      "thailand": {
+        "value1": "สูงสุด 25 ล้านวอน",
+        "value2": "3 – 45 เดือน",
+        "value3": "6 - 48 เดือน",
+        "value4": "สินเชื่อ GME, สินเชื่อที่อยู่อาศัย, สินเชื่อนักเรียน, สินเชื่อเพื่อซื้อทรัพย์สิน, สินเชื่อท่องเที่ยว / พักผ่อน, สินเชื่อรถยนต์, สินเชื่อธุรกิจ",
+        "value6": "เริ่มต้นที่ 2-25 ล้านวอน",
+        "value7": "E9, E7, F2, F5, F6",
+        "value9": "ฟรี"
+      }
+    }
   }
 }

@@ -104,13 +104,13 @@ export default function VietnamPage() {
           <ProcessStep />
         </section>
       </div>
-      <LoanDetailSection backgroundImage="/images/vietnam/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/vietnam/loan_detail_bg.webp" country="vietnam" />
       <div style={{ background: getGradient('vietnam') }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="vietnam" />
           <EMICalculatorSection />
           <div className="mb-20">
-            <LoanApplicationForm />
+            <LoanApplicationForm country="vietnam" />
           </div>
         </section>
       </div>

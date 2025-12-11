@@ -34,8 +34,10 @@
     "simpleLoanStep5": "वितरण",
     "simpleLoanStep5Des": "सम्झौता हस्ताक्षर पछि, ऋण रकम तपाईंको बैंक खातामा जम्मा गरिनेछ",
     "applyLoanAppTitle": "GME App मार्फत ऋण आवेदन दिनुहोस्",
-    "applyLoanAppSubTitle": "25 मिलियन सम्म",
-    "applyLoanAppSubTitle1": "GME Finance ले GME ऋण आवेदन गर्न सजिलो र सुविधाजनक बनाउँछ। अहिले नै आवेदन दिनुहोस्!"
+    "applyLoanAppSubTitle1": "GME Finance ले GME ऋण आवेदन गर्न सजिलो र सुविधाजनक बनाउँछ। अहिले नै आवेदन दिनुहोस्!",
+    "applyLoanAppSubTitleByCountry": {
+      "nepal": "25 मिलियन सम्म"
+    }
   },
   "countryPage": {
     "teamTitle": "{{country}} टिम",
@@ -45,24 +47,28 @@
     "introductionSubTitle": "GME Finance पछाडिका व्यक्तिहरू",
     "LoanDetailsTitle": "ऋण विवरण",
     "LoanDetailsLabel1": "अधिकतम ऋण रकम",
-    "LoanDetailsValue1": "25 मिलियन सम्म",
     "LoanDetailsLabel2": "ऋण अवधि",
-    "LoanDetailsValue2": "३ - ४५ महिना",
     "LoanDetailsLabel3": "योग्य बाँकी भिसा अवधि",
-    "LoanDetailsValue3": "७ - ४८ महिना",
     "LoanDetailsLabel4": "ऋण उत्पादनहरू",
-    "LoanDetailsValue4": "GME ऋण, आवास ऋण, विद्यार्थी ऋण, सम्पत्ति ऋण, छुट्टी ऋण, कार ऋण, व्यापार ऋण",
     "LoanDetailsLabel5": "सम्झौता हस्ताक्षर विधि",
     "LoanDetailsValue5": "डिजिटल सम्झौता",
     "LoanDetailsLabel6": "ऋणयोग्य रकम",
-    "LoanDetailsValue6": "२ मिलियन - २५ मिलियन",
     "LoanDetailsLabel7": "योग्य भिसा प्रकारहरू",
-    "LoanDetailsValue7": "E9, E7, F2,D2, F5, F6, D8 र कानूनी कार्य सम्झौता भएका अन्य कुनै पनि भिसा धारकहरू",
     "LoanDetailsLabel8": "भुक्तानी विधि",
     "LoanDetailsValue8": "मासिक किस्ता",
     "LoanDetailsLabel9": "प्रारम्भिक भुक्तानी शुल्क",
-    "LoanDetailsValue9": "नि:शुल्क",
     "SupportTitle": "तपाईंलाई कति सहयोग चाहिन्छ?",
-    "SupportSubTitle": "तपाईंको इच्छित ऋण रकमको आधारमा तपाईंको मासिक भुक्तानी कति हुनेछ भनेर जाँच गर्नुहोस्।"
+    "SupportSubTitle": "तपाईंको इच्छित ऋण रकमको आधारमा तपाईंको मासिक भुक्तानी कति हुनेछ भनेर जाँच गर्नुहोस्।",
+    "loanDetails": {
+      "nepal": {
+        "value1": "25 मिलियन सम्म",
+        "value2": "३ - ४५ महिना",
+        "value3": "७ - ४८ महिना",
+        "value4": "GME ऋण, आवास ऋण, विद्यार्थी ऋण, सम्पत्ति ऋण, छुट्टी ऋण, कार ऋण, व्यापार ऋण",
+        "value6": "२ मिलियन - २५ मिलियन",
+        "value7": "E9, E7, F2,D2, F5, F6, D8 र कानूनी कार्य सम्झौता भएका अन्य कुनै पनि भिसा धारकहरू",
+        "value9": "नि:शुल्क"
+      }
+    }
   }
 }

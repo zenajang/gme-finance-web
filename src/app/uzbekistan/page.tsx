@@ -141,7 +141,7 @@ export default function UzbekistanPage() {
         </section>
       </div>
 
-      <LoanDetailSection backgroundImage="/images/uzbekistan/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/uzbekistan/loan_detail_bg.webp" country="uzbekistan" />
       <div style={{ background: colors.gradient1 }}>
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="uzbekistan" variant="compact" />

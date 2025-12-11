@@ -102,14 +102,14 @@ export default function PakistanPage() {
           <ProcessStep subtitleColor={colors.primary} />
         </section>
       </div>
-      <LoanDetailSection backgroundImage="/images/pakistan/loan_detail_bg.webp" />
+      <LoanDetailSection backgroundImage="/images/pakistan/loan_detail_bg.webp" country="pakistan" />
       <div className="relative" style={{ background: getGradient('pakistan') }}>
         <div className="absolute bg-repeat top-0 left-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/pattern.svg')", backgroundSize: 'auto' }} />
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="pakistan" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
           <div className="mb-20">
-            <LoanApplicationForm buttonBgColor={colors.primary} subtitleColor={colors.primary} />
+            <LoanApplicationForm country="pakistan" buttonBgColor={colors.primary} subtitleColor={colors.primary} />
           </div>
         </section>
       </div>
