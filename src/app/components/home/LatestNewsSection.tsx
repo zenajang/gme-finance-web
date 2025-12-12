@@ -50,7 +50,7 @@ function formatDate(d: string) {
 
 function NewsCard({ item }: { item: NewsItem }) {
   return (
-    <article className="rounded-3xl bg-white flex flex-col min-h-[420px] md:min-h-[600px] shadow-sm overflow-hidden">
+    <article className="rounded-2xl bg-white flex flex-col min-h-[380px] md:min-h-[560px] shadow-sm overflow-hidden">
       <div className="p-6 md:p-8 flex flex-col flex-1">
         <header className="flex items-start justify-between mb-3">
           <div className="flex items-start gap-2">
@@ -70,7 +70,7 @@ function NewsCard({ item }: { item: NewsItem }) {
         </header>
 
         {/* 제목 */}
-        <h3 className="text-lg md:text-[1.85rem] leading-snug line-clamp-3 mb-3 font-medium">
+        <h3 className="text-md md:text-[1.85rem] leading-snug line-clamp-3 mb-3 font-medium">
           {item.title}
         </h3>
       </div>
@@ -109,7 +109,7 @@ export default function LatestNewsSection() {
         <h2 className="text-heading text-white text-center md:px-0 md:mb-15">Latest News</h2>
 
         {/* 모바일 버전 - Swiper 사용 */}
-        <div className="block md:hidden mt-3 py-6">
+        <div className="block md:hidden mt-0 py-6">
           <Swiper
             spaceBetween={20}
             slidesPerView={1.15}
@@ -135,7 +135,7 @@ export default function LatestNewsSection() {
         </div>
 
         <div className="text-center mt-0 md:mt-15 lg:mt-15">
-          <button className="bg-white border-1 border-red-500 text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-colors">
+          <button className="bg-white text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-colors">
             {t('button.seeMore')}
           </button>
         </div>

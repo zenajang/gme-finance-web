@@ -21,7 +21,7 @@ export default function ScrollingText() {
   );
 
   return (
-    <section className="py-10 bg-white overflow-hidden">
+    <section className="py-5 md:py-10 lg:py-12 bg-white overflow-hidden">
       <div className="relative mb-1 md:mb-4 lg:mb-4">
         <div className="flex items-center gap-8 md:gap-10 animate-marquee-row1">
           <ImageGroup prefix="top-set1" />
@@ -29,7 +29,7 @@ export default function ScrollingText() {
         </div>
       </div>
 
-      <div className="relative mt-10">
+      <div className="relative mt-5 lg:mt-10">
         <div className="flex items-center gap-8 md:gap-10 animate-marquee-row2">
           <ImageGroup prefix="bottom-set1" />
           <ImageGroup prefix="bottom-set2" />

@@ -3,12 +3,28 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
+
+// Header가 항상 보여야 하는 페이지들
+const FORCE_VISIBLE_PATHS = [
+  '/usage',
+  '/privacy',
+  '/marketing',
+  '/personal-info',
+  '/credit-info',
+  '/guidelines',
+  '/restrictions',
+  '/manual',
+];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isAboutHovered, setIsAboutHovered] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const forceVisible = FORCE_VISIBLE_PATHS.includes(pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,10 +50,12 @@ export default function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
-          bg-white 
-          ${isScrolled
-            ? 'md:bg-black/80 md:backdrop-blur-sm md:shadow-lg lg:bg-black/80 lg:backdrop-blur-sm lg:shadow-lg'
-            : 'md:bg-transparent lg:bg-transparent'
+          bg-white
+          ${forceVisible
+            ? 'md:bg-white md:shadow-lg lg:bg-white lg:shadow-lg'
+            : isScrolled
+              ? 'md:bg-black/80 md:backdrop-blur-sm md:shadow-lg lg:bg-black/80 lg:backdrop-blur-sm lg:shadow-lg'
+              : 'md:bg-transparent lg:bg-transparent'
           }
         `}
       >
@@ -51,7 +69,7 @@ export default function Header() {
                 height={30}
                 className="object-contain md:w-[140px] md:h-[140px] lg:w-[140px] lg:h-[140px]"
               />
-              <span className="hidden md:block lg:block text-white/80 text-xs leading-tight">
+              <span className={`hidden md:block lg:block text-xs leading-tight ${forceVisible ? 'text-gray-600' : 'text-white/80'}`}>
                 (주) 지엠이대부 2019-금감원-1801 (대표자)
               </span>
             </Link>
@@ -69,7 +87,7 @@ export default function Header() {
             <nav className="hidden md:flex lg:flex items-center gap-12 md:gap-12 lg:gap-20">
               <Link
                 href="/"
-                className="text-white hover:text-gray-300 transition-colors text-lg font-medium"
+                className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
               >
                 Home
               </Link>
@@ -80,7 +98,7 @@ export default function Header() {
               >
                 <Link
                   href="/about"
-                  className="text-white hover:text-gray-300 transition-colors text-lg font-medium"
+                  className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
                 >
                   About Us
                 </Link>
@@ -116,39 +134,39 @@ export default function Header() {
 
               <Link
                 href="/products"
-                className="text-white hover:text-gray-300 transition-colors text-lg font-medium"
+                className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
               >
                 Products
               </Link>
 
               <Link
                 href="/careers"
-                className="text-white hover:text-gray-300 transition-colors text-lg font-medium"
+                className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
               >
                 Careers
               </Link>
 
               <Link
                 href="/countries"
-                className="text-white hover:text-gray-300 transition-colors text-lg font-medium"
+                className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
               >
                 Countries
               </Link>
 
               <Link
                 href="/notices"
-                className="text-white hover:text-gray-300 transition-colors text-lg font-medium"
+                className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
               >
                 Notices
               </Link>
 
               <Link
                 href="/login"
-                className="text-white hover:text-gray-300 transition-colors text-lg font-medium"
+                className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
               >
                 Login
               </Link>
-              <LanguageSwitcher variant="desktop" />
+              <LanguageSwitcher variant="desktop" forceVisible={forceVisible} />
             </nav>
           </div>
         </div>
@@ -160,7 +178,7 @@ export default function Header() {
       ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}
       md:hidden lg:hidden
     `}>
-        <nav className="flex flex-col py-4">
+        <nav className="flex flex-col">
           <Link
             href="/"
             onClick={() => setIsMobileMenuOpen(false)}

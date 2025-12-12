@@ -117,10 +117,10 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
               >
                 <div className="flex flex-col items-center">
                   <p className="text-xs font-medium text-red-600 mt-1 text-center">
-                    {loan.name.split(' ').map((word, idx) => (
+                    {t(loan.name).split(' ').map((word, idx) => (
                       <span key={idx}>
                         {word}
-                        {idx === 0 && loan.name.includes('Loan') && <br />}
+                        {idx === 0 && t(loan.name).includes('Loan') && <br />}
                       </span>
                     ))}
                   </p>

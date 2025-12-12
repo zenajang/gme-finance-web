@@ -141,23 +141,23 @@ export default function FindBranchSection() {
 
   return (
     <div className="relative">
-      <section className="relative h-50 md:h-70 lg:h-100">
+      <section className="relative h-60 md:h-70 lg:h-100">
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center">
-          <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-10 mt-15">
+          <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-4 lg:mb-10 mt-15">
             Find a branch
           </h2>
           <p className="text-subheading text-center mb-5 md:mb-10 lg:mb-15 text-red-500 font-medium">
             {t('home.findBranchSubtitle')}
           </p>
-          <div className="relative max-w-7xl w-full" ref={dropdownRef}>
+          <div className="relative z-[200] max-w-7xl w-full mb-10" ref={dropdownRef}>
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full px-4 md:px-6 py-4 md:py-6 pr-10 md:pr-12 rounded-md text-left text-black bg-white shadow-[0_0_20px_rgba(0,0,0,0.15)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
               >
-                <div className="text-lg md:text-3xl font-semibold">{selectedBranch.name}</div>
-                <div className="text-sm md:text-lg text-gray-500 mt-1">Global Money Express</div>
+                <div className="text-md md:text-3xl font-semibold">{selectedBranch.name}</div>
+                <div className="text-xs md:text-lg text-gray-500 mt-1">Global Money Express</div>
                 <div className="absolute right-6 top-1/2 -translate-y-1/2">
                   <svg
                     className={`w-6 h-6 transition-transform ${isOpen ? "rotate-180" : ""}`}
@@ -170,9 +170,7 @@ export default function FindBranchSection() {
                 </div>
               </button>
               {isOpen && (
-                <div className="absolute z-150 w-full mt-2 rounded-md shadow-[0_0_20px_rgba(0,0,0,0.15)] max-h-80 overflow-y-auto"
-                  style={{ backgroundColor: "#ffffff" }}
-                >
+                <div className="absolute z-[200] w-full mt-2 rounded-md shadow-[0_0_20px_rgba(0,0,0,0.15)] max-h-80 overflow-y-auto bg-white">
                   {BRANCHES.map((branch) => {
                     const isSelected = selectedBranch.id === branch.id;
                     return (
@@ -185,10 +183,10 @@ export default function FindBranchSection() {
                           : "bg-white hover:bg-gray-100"
                           }`}
                       >
-                        <div className={`text-xl font-semibold ${isSelected ? "text-red-600" : "text-black"}`}>
+                        <div className={`text-md lg:text-xl font-semibold ${isSelected ? "text-red-600" : "text-black"}`}>
                           {branch.name}
                         </div>
-                        <div className={`text-sm ${isSelected ? "text-red-400" : "text-gray-500"}`}>
+                        <div className={`text-xs lg:text-sm ${isSelected ? "text-red-400" : "text-gray-500"}`}>
                           Global Money Express
                         </div>
                       </button>
@@ -203,11 +201,11 @@ export default function FindBranchSection() {
 
       {/* Branch Info */}
       <section className="relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-0">
+        <div className="container mx-auto px-4 relative">
           {/* Mobile Layout */}
           <div className="md:hidden">
             <div className="space-y-3">
-              <div className="p-4">
+              <div className="p-3">
                 <div className="flex items-start">
                   <Image
                     src="/images/icons/pin_red.svg"
@@ -222,7 +220,7 @@ export default function FindBranchSection() {
                 </div>
               </div>
 
-              <div className="p-4">
+              <div className="p-3">
                 <div className="flex items-center">
                   <Image
                     src="/images/icons/phone.svg"
@@ -237,7 +235,7 @@ export default function FindBranchSection() {
                 </div>
               </div>
 
-              <div className="p-4">
+              <div className="p-3">
                 <div className="flex items-center">
                   <Image
                     src="/images/icons/time.svg"
@@ -252,7 +250,7 @@ export default function FindBranchSection() {
                 </div>
               </div>
             </div>
-            <div className="absolute left-0 bottom-0">
+            <div className="absolute left-0 bottom-0 -z-10">
               <Image
                 src="/images/earth.svg"
                 alt="earth background"

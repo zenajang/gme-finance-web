@@ -11,7 +11,7 @@ export default function ApplyLoanOnline() {
   const READ_MORE_URL = "https://gmefinance.com/onlineloan/";
 
   return (
-    <section className="relative bg-[#f9f9f9] m-4 md:m-20 rounded-2xl pt-10 md:pt-20 pb-10 md:pb-20 px-4 md:px-70 overflow-hidden">
+    <section className="relative bg-[#f9f9f9] m-4 md:m-20 rounded-2xl pt-8 md:pt-20 pb-10 md:pb-20 px-4 md:px-70 overflow-hidden">
       <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-6 md:mb-20">How to Apply Loan Online?</h2>
       <div className="max-w-screen-xl mx-auto px-2 md:px-6 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-20">
         {/* Left: App Preview Image */}
@@ -29,7 +29,7 @@ export default function ApplyLoanOnline() {
               alt="Google Play"
               width={230}
               height={200}
-              className="object-contain w-[120px] md:w-[230px] cursor-pointer hover:opacity-80 transition-opacity mb-2 md:mb-4"
+              className="object-contain w-[120px] md:w-[230px] cursor-pointer hover:opacity-80 transition-opacity"
             />
           </Link>
           <Link href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
@@ -48,9 +48,9 @@ export default function ApplyLoanOnline() {
           <p className="text-base md:text-md lg:text-4xl leading-relaxed mb-2 md:mb-4 text-center md:text-left font-bold">
             Step1
           </p>
-          <p className="text-xs md:text-md lg:text-2xl leading-relaxed mb-4 md:mb-8 text-center md:text-left font-medium">
+          <p className="text-xs md:text-md lg:text-2xl leading-relaxed mb-2 md:mb-8 text-center md:text-left font-medium">
             {t('home.applyLoanOnlineStep1')}<br />
-            {t('home.applyLoanOnlineStep2')} <br />
+            {t('home.applyLoanOnlineStep2')}<br />
             {t('home.applyLoanOnlineStep3')}<br />
             {t('home.applyLoanOnlineStep4')}<br />
           </p>

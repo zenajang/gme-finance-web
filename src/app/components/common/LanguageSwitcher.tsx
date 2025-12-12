@@ -8,6 +8,7 @@ import { getCountryFromPath, getAvailableLanguages, LanguageCode } from '@/i18n/
 interface LanguageSwitcherProps {
   className?: string;
   variant?: 'desktop' | 'mobile';
+  forceVisible?: boolean;
 }
 
 // 언어별 짧은 코드
@@ -30,7 +31,7 @@ const LANG_SHORT: Record<LanguageCode, string> = {
   ru: 'RU',
 };
 
-export default function LanguageSwitcher({ className = '', variant = 'desktop' }: LanguageSwitcherProps) {
+export default function LanguageSwitcher({ className = '', variant = 'desktop', forceVisible = false }: LanguageSwitcherProps) {
   const { i18n } = useTranslation();
   const pathname = usePathname();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -84,12 +85,12 @@ export default function LanguageSwitcher({ className = '', variant = 'desktop' }
     );
   }
 
-  // 데스크톱 버전 
+  // 데스크톱 버전
   return (
-    <div className={`relative flex items-center bg-white/10 backdrop-blur-sm rounded-full p-1 ${className}`}>
+    <div className={`relative flex items-center rounded-full p-1 ${forceVisible ? 'bg-white border border-gray-300 shadow-sm' : 'bg-white/10 backdrop-blur-sm'} ${className}`}>
       {/* 슬라이딩 배경 */}
       <div
-        className="absolute h-[calc(100%-8px)] bg-white rounded-full shadow-sm transition-all duration-300 ease-out"
+        className={`absolute h-[calc(100%-8px)] rounded-full shadow-sm transition-all duration-300 ease-out ${forceVisible ? 'bg-gray-900' : 'bg-white'}`}
         style={{
           width: `calc(${100 / availableLanguages.length}% - 4px)`,
           left: `calc(${(100 / availableLanguages.length) * activeIndex}% + 2px)`,
@@ -99,10 +100,11 @@ export default function LanguageSwitcher({ className = '', variant = 'desktop' }
         <button
           key={lang.code}
           onClick={() => handleLanguageChange(lang.code, index)}
-          className={`relative z-10 text-center px-4 py-1 text-sm font-medium transition-colors duration-300 ${i18n.language === lang.code
-              ? 'text-gray-800'
-              : 'text-white/80 hover:text-white'
-            }`}
+          className={`relative z-10 text-center px-4 py-1 text-sm font-medium transition-colors duration-300 ${
+            forceVisible
+              ? i18n.language === lang.code ? 'text-white' : 'text-gray-600 hover:text-gray-900'
+              : i18n.language === lang.code ? 'text-gray-800' : 'text-white/80 hover:text-white'
+          }`}
         >
           {lang.code === 'en' ? <>{LANG_SHORT[lang.code]}&nbsp;</> : <>&nbsp;{LANG_SHORT[lang.code]}</>}
         </button>

@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { COMMON_COLORS } from "@/constants/colors";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Swiper 스타일 import
 import 'swiper/css';
 import { useTranslation } from 'react-i18next';
 
@@ -51,7 +50,7 @@ function formatDate(d: string) {
 
 function FeedbackCard({ item }: { item: NewsItem }) {
   return (
-    <article className="rounded-3xl bg-white flex flex-col min-h-[420px] md:min-h-[600px] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] overflow-hidden">
+    <article className="rounded-3xl bg-white flex flex-col min-h-[380px] md:min-h-[550px] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] overflow-hidden">
       <div className="p-6 md:p-8 flex flex-col flex-1">
         <header className="flex items-end justify-between mb-3">
           <div className="flex items-end gap-2">
@@ -78,16 +77,16 @@ function FeedbackCard({ item }: { item: NewsItem }) {
 export default function CustomerFeedbackSection() {
   const { t } = useTranslation()
   return (
-    <section className="py-8 md:py-14 lg:py-16 px-0 md:px-45 lg:px-45 bg-white bg-cover bg-center bg-no-repeat relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-24 md:w-140 h-12 md:h-55 rounded-full -mr-12 md:-mr-52 -mt-0 rotate-45" style={{ background: `radial-gradient(circle, ${COMMON_COLORS.accentRed1} 0%, ${COMMON_COLORS.accentRed3} 100%)` }} />
-      <div className="absolute top-12 md:top-55 right-0 w-32 md:w-180 h-12 md:h-55 rounded-full -mr-16 md:-mr-75 -mt-0 rotate-45" style={{ backgroundColor: COMMON_COLORS.accentRed2 }} />
-      <div className="absolute bottom-20 md:bottom-40 left-10 w-32 md:w-[500px] h-12 md:h-55 rounded-full -ml-24 md:-ml-38 mb-3 md:-mb-20 -rotate-145" style={{ background: `radial-gradient(circle, ${COMMON_COLORS.accentRed1} 0%, ${COMMON_COLORS.accentRed3} 100%)` }} />
-      <div className="absolute bottom-32 md:bottom-90 left-0 w-40 md:w-[700px] h-12 md:h-55 rounded-full -ml-20 md:-ml-68 -mb-0 md:-mb-16 -rotate-145" style={{ backgroundColor: COMMON_COLORS.accentRed2 }} />
+    <section className="pt-8 md:pt-14 lg:pt-16 pb-12 md:pb-20 lg:pb-20 px-0 md:px-45 lg:px-45 bg-white bg-cover bg-center bg-no-repeat relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-24 md:w-140 h-12 md:h-55 rounded-full -mr-12 md:-mr-52 -mt-0 rotate-45 animate-oscillate" style={{ background: `radial-gradient(circle, ${COMMON_COLORS.accentRed1} 0%, ${COMMON_COLORS.accentRed3} 100%)` }} />
+      <div className="absolute top-12 md:top-55 right-0 w-32 md:w-180 h-12 md:h-55 rounded-full -mr-16 md:-mr-75 -mt-0 rotate-45 animate-oscillate" style={{ backgroundColor: COMMON_COLORS.accentRed2 }} />
+      <div className="absolute bottom-20 md:bottom-40 left-10 w-32 md:w-[500px] h-12 md:h-55 rounded-full -ml-24 md:-ml-38 mb-3 md:-mb-18 -rotate-145 animate-oscillate" style={{ background: `radial-gradient(circle, ${COMMON_COLORS.accentRed1} 0%, ${COMMON_COLORS.accentRed3} 100%)` }} />
+      <div className="absolute bottom-32 md:bottom-90 left-0 w-40 md:w-[700px] h-12 md:h-55 rounded-full -ml-20 md:-ml-68 -mb-0 md:-mb-16 -rotate-145 animate-oscillate" style={{ backgroundColor: COMMON_COLORS.accentRed2 }} />
       <div className="px-0 md:px-3 lg:px-3 relative z-10">
         <h2 className="text-heading text-black text-center md:px-0 md:mb-15">Customer Feedback</h2>
 
         {/* 모바일 버전 - Swiper 사용 */}
-        <div className="block md:hidden mt-3 py-6">
+        <div className="block md:hidden py-5">
           <Swiper
             spaceBetween={20}
             slidesPerView={1.15}

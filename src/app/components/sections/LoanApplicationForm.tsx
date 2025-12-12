@@ -43,7 +43,7 @@ export default function LoanApplicationForm({
           <p className={`text-subheading text-center mb-3 md:mb-4 lg:mb-4`} style={{ color: subtitleColor }}>
             {country ? t(`home.applyLoanAppSubTitleByCountry.${country}`) : t('home.applyLoanAppSubTitle')}
           </p>
-          <p className="text-center text-base text-[0.65rem] md:text-lg lg:text-lg text-gray-600 mx-65">
+          <p className="text-center text-base text-[0.65rem] md:text-lg lg:text-lg text-gray-600 lg:mx-65">
             {t('home.applyLoanAppSubTitle1')}
           </p>
           <form className="space-y-4 px-0 md:px-12 lg:px-15 pt-5 md:pt-16 lg:pt-20 pb-6 md:pb-8 lg:pb-10" onSubmit={handleSubmit}>

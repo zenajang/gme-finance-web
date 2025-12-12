@@ -229,16 +229,16 @@ select {
 .animate-marquee-row1 {
   display: flex;
   width: max-content;
-  animation: marquee-right 15s linear infinite;
+  animation: marquee-right 20s linear infinite;
   will-change: transform;
   backface-visibility: hidden;
 }
 
-/* Row 2: 오른쪽 → 왼쪽, 15초 (기본값, 필요시 수정) */
+/* Row 2: 오른쪽 → 왼쪽, 15초 */
 .animate-marquee-row2 {
   display: flex;
   width: max-content;
-  animation: marquee-left 15s linear infinite;
+  animation: marquee-left 20s linear infinite;
   will-change: transform;
   backface-visibility: hidden;
 }
@@ -303,4 +303,22 @@ select {
     transform: scale(0.8);
     opacity: 0.9;
   }
+}
+
+/* Circle 좌우 흔들림 애니메이션 */
+@keyframes oscillate {
+
+  0%,
+  100% {
+    transform: translateX(-4px);
+  }
+
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+.animate-oscillate {
+  animation: oscillate 1s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite alternate;
+  animation-delay: 0.4s;
 }

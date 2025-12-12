@@ -110,7 +110,7 @@ export default function LatestSocials({
   const { t } = useTranslation();
 
   return (
-    <section className="py-8 md:py-16 px-0 md:px-45 lg:px-45">
+    <section className="mt-10 py-0 md:py-10 px-0 md:px-45 lg:px-45">
       <div className="px-0 md:px-3 lg:px-3 relative z-10">
         <h2 className="text-heading text-center mb-0 md:mb-20" style={{ color: titleColor }}>{t('countryPage.latestSocialTitle')}</h2>
         {/* 모바일 버전 - Swiper 사용 */}
