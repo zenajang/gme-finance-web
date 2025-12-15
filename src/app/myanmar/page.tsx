@@ -92,7 +92,7 @@ export default function MyanmarPage() {
   return (
     <div>
       <CountryIntroductionSection
-        videoSrc="/images/myanmar/background.mp4"
+        videoSrc="/images/myanmar/background.webm"
         title={t('country.myanmar')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}

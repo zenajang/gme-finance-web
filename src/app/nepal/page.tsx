@@ -87,7 +87,7 @@ export default function NepalPage() {
   return (
     <div>
       <CountryIntroductionSection
-        videoSrc="/images/nepal/background.mp4"
+        videoSrc="/images/nepal/background.webm"
         title={t('country.nepal')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}

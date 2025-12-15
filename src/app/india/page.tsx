@@ -57,7 +57,7 @@ export default function IndiaPage() {
   return (
     <div>
       <CountryIntroductionSection
-        videoSrc="/images/india/background.mp4"
+        videoSrc="/images/india/background.webm"
         title="India"
       />
       <div

@@ -66,7 +66,7 @@ export default function VietnamPage() {
   return (
     <div>
       <CountryIntroductionSection
-        videoSrc="/images/vietnam/background.mp4"
+        videoSrc="/images/vietnam/background.webm"
         title={t('country.vietnam')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}

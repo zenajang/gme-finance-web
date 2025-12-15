@@ -87,7 +87,7 @@ export default function IndonesiaPage() {
   return (
     <div>
       <CountryIntroductionSection
-        videoSrc="/images/indonesia/background.mp4"
+        videoSrc="/images/indonesia/background.webm"
         title={t('country.indonesia')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}

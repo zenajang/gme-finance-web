@@ -61,7 +61,7 @@ export default function PakistanPage() {
   return (
     <div>
       <CountryIntroductionSection
-        videoSrc="/images/pakistan/background.mp4"
+        videoSrc="/images/pakistan/background.webm"
         title={t('country.pakistan')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}

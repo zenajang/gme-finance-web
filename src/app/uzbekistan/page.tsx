@@ -99,7 +99,7 @@ export default function UzbekistanPage() {
   return (
     <div>
       <CountryIntroductionSection
-        videoSrc="/images/uzbekistan/background.mp4"
+        videoSrc="/images/uzbekistan/background.webm"
         title={t('country.uzbekistan')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}

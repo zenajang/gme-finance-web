@@ -84,7 +84,7 @@ export default function PhilippinesPage() {
   return (
     <div>
       <CountryIntroductionSection
-        videoSrc="/images/philippines/background.mp4"
+        videoSrc="/images/philippines/background.webm"
         title="Philippines"
       />
       <div

@@ -99,7 +99,7 @@ export default function RussiaPage() {
   return (
     <div>
       <CountryIntroductionSection
-        videoSrc="/images/russia/background.mp4"
+        videoSrc="/images/russia/background.webm"
         title={t('country.russia')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}

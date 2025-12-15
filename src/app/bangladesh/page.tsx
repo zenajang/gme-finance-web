@@ -91,7 +91,7 @@ export default function BangladeshPage() {
   return (
     <div>
       <CountryIntroductionSection
-        videoSrc="/images/bangladesh/background.mp4"
+        videoSrc="/images/bangladesh/background.webm"
         title={t('country.bangladesh')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}

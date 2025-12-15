@@ -9,7 +9,7 @@ export default function IntroductionSection() {
     <section className="relative h-[630px] md:h-[800px] lg:h-[995px] w-full overflow-hidden">
       <div className="absolute inset-0">
         <video
-          src="/images/main_image_autumn.mp4"
+          src="/images/main_image_autumn.webm"
           autoPlay
           loop
           muted
