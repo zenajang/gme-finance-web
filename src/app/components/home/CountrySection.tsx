@@ -9,15 +9,17 @@ export default function CountrySection() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [windowWidth, setWindowWidth] = useState(0);
+  const [isTouching, setIsTouching] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number>(0);
+  const touchStartRef = useRef<number>(0);
+  const touchStartPosRef = useRef<number>(0);
 
   const duplicatedCountries = [...COUNTRIES, ...COUNTRIES, ...COUNTRIES];
   const singleSetWidth = COUNTRIES.length * 180;
   const mobileItemWidth = 140;
 
-  // 윈도우 너비 감지
   useEffect(() => {
     setWindowWidth(window.innerWidth);
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -25,23 +27,23 @@ export default function CountrySection() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // 모바일에서 각 아이템의 scale 계산
   const getItemScale = useCallback((index: number) => {
-    if (windowWidth >= 768) return 1; // 데스크톱은 scale 안 함
+    if (windowWidth >= 768) return 1;
 
     const centerX = windowWidth / 2;
     const itemCenterX = (index * mobileItemWidth) + (mobileItemWidth / 2) - scrollPosition;
     const distance = Math.abs(centerX - itemCenterX);
-    const maxDistance = windowWidth / 2;
+    const maxDistance = windowWidth * 0.6;
 
-    // 거리에 따라 1.0 ~ 1.3 사이의 scale 계산
-    const scale = 1 + (0.3 * Math.max(0, 1 - distance / maxDistance));
-    return Math.min(1.3, Math.max(1, scale));
+    const progress = Math.max(0, 1 - distance / maxDistance);
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+    const scale = 1 + (0.5 * easedProgress);
+    return Math.min(1.5, Math.max(1, scale));
   }, [windowWidth, scrollPosition, mobileItemWidth]);
 
-  // 현재 스크롤 위치에 따른 구간 계산 (0, 1, 2)
   const currentSection = useMemo(() => {
-    const sectionWidth = singleSetWidth / 3; // 각 구간의 너비 (4개 국가)
+    const sectionWidth = singleSetWidth / 3;
     return Math.floor((scrollPosition % singleSetWidth) / sectionWidth);
   }, [scrollPosition, singleSetWidth]);
 
@@ -51,7 +53,7 @@ export default function CountrySection() {
       const deltaTime = currentTime - lastTimeRef.current;
       lastTimeRef.current = currentTime;
 
-      if (isPlaying) {
+      if (isPlaying && !isTouching) {
         setScrollPosition((prev) => {
           const newPos = prev + (deltaTime * 0.03);
           if (newPos >= singleSetWidth) {
@@ -71,7 +73,7 @@ export default function CountrySection() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isPlaying, singleSetWidth]);
+  }, [isPlaying, isTouching, singleSetWidth]);
 
   const toggleAutoplay = () => {
     setIsPlaying(!isPlaying);
@@ -91,10 +93,34 @@ export default function CountrySection() {
     });
   };
 
-  // 특정 구간으로 이동
   const goToSection = (section: number) => {
     const sectionWidth = singleSetWidth / 3;
     setScrollPosition(section * sectionWidth);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (windowWidth >= 768) return;
+    setIsTouching(true);
+    touchStartRef.current = e.touches[0].clientX;
+    touchStartPosRef.current = scrollPosition;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (windowWidth >= 768 || !isTouching) return;
+    const touchX = e.touches[0].clientX;
+    const diff = touchStartRef.current - touchX;
+    let newPos = touchStartPosRef.current + diff;
+
+    if (newPos < 0) {
+      newPos = singleSetWidth + newPos;
+    } else if (newPos >= singleSetWidth) {
+      newPos = newPos - singleSetWidth;
+    }
+    setScrollPosition(newPos);
+  };
+
+  const handleTouchEnd = () => {
+    setIsTouching(false);
   };
 
   return (
@@ -104,7 +130,12 @@ export default function CountrySection() {
           Please select your country
         </h2>
 
-        <div className="max-w-8xl mx-auto overflow-hidden pt-1 pb-6 md:pb-0">
+        <div
+          className="max-w-8xl mx-auto overflow-hidden pt-1 pb-6 md:pb-0 touch-pan-y"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div
             ref={containerRef}
             className="flex transition-none"
@@ -121,7 +152,7 @@ export default function CountrySection() {
                   className="flex-shrink-0 w-[140px] md:w-[160px] lg:w-[180px]"
                   style={{
                     transform: windowWidth < 768 ? `scale(${scale})` : undefined,
-                    transition: 'transform 0.15s ease-out',
+                    transition: 'transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
                   }}
                 >
                   <Link
