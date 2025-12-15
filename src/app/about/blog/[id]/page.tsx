@@ -112,7 +112,7 @@ export default function BlogDetailPage() {
         <div className="mt-8 text-center">
           <Link
             href="/about/blog"
-            className="inline-block px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+            className="inline-block px-6 py-3 bg-red-600 text-white rounded-lg md:rounded-xl hover:bg-red-700 transition-colors"
           >
             View All Posts
           </Link>

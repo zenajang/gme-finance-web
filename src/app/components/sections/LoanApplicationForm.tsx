@@ -84,7 +84,7 @@ export default function LoanApplicationForm({
                 width: '100%',
                 display: 'block',
                 backgroundColor: buttonBgColor,
-              }} className="rounded-lg text-md md:text-xl lg:text-xl text-white px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold">
+              }} className="rounded-lg md:rounded-xl text-md md:text-xl lg:text-xl text-white px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold">
                 {t("button.continue")}
               </button>
             </div>

@@ -144,7 +144,7 @@ export default function BlogPage() {
           <div className="mt-auto">
             <Link href={`/about/blog/${post.id}`}>
               <button
-                className="text-sm md:text-base text-white py-2 md:py-3 transition-colors w-full rounded-lg font-medium"
+                className="text-sm md:text-base text-white py-2 md:py-3 transition-colors w-full rounded-lg md:rounded-xl font-medium"
                 style={{
                   backgroundColor: hoveredId === post.id ? COMMON_COLORS.primaryHover : COMMON_COLORS.primary
                 }}

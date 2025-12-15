@@ -11,7 +11,17 @@ import type { User } from '@supabase/supabase-js';
 // Tiptap editor dynamic import (disable SSR)
 const TiptapEditor = dynamicImport(() => import('@/app/components/admin/TiptapEditor'), {
   ssr: false,
-  loading: () => <p className="text-gray-500">Loading editor...</p>
+  loading: () => (
+    <div className="h-64 bg-gray-50 rounded-xl flex items-center justify-center">
+      <div className="flex items-center gap-3 text-gray-500">
+        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+        </svg>
+        <span>Loading editor...</span>
+      </div>
+    </div>
+  )
 });
 
 interface BlogPost {
@@ -36,7 +46,7 @@ export default function AdminPage() {
   const [content, setContent] = useState('');
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [saving, setSaving] = useState(false);
-  
+
   // Edit mode state
   const [editingPostId, setEditingPostId] = useState<string | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -45,7 +55,7 @@ export default function AdminPage() {
   useEffect(() => {
     checkUser();
     fetchPosts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 페이지가 히스토리에서 복원될 때마다 인증 체크
@@ -71,7 +81,7 @@ export default function AdminPage() {
       window.removeEventListener('pageshow', handlePageShow);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Handle browser back/forward button and page navigation
@@ -230,96 +240,177 @@ export default function AdminPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"/>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="relative">
+            <div className="w-16 h-16 border-4 border-red-500/30 rounded-full" />
+            <div className="absolute top-0 left-0 w-16 h-16 border-4 border-transparent border-t-red-500 rounded-full animate-spin" />
+          </div>
+          <p className="text-gray-500 text-sm">Loading admin panel...</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <h1 className="text-xl font-bold text-gray-900">GME Finance Admin</h1>
-              <span className="ml-4 text-sm text-gray-500">Admin: {user?.email}</span>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg shadow-red-500/25">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h1 className="text-lg font-bold text-gray-900">GME Admin</h1>
+                  <p className="text-xs text-gray-500">Content Management</p>
+                </div>
+              </div>
             </div>
-            <button
-              onClick={handleLogout}
-              className="px-4 py-2 text-sm text-red-600 hover:text-red-800 transition-colors cursor-pointer"
-            >
-              Logout
-            </button>
+
+            <div className="flex items-center gap-4">
+              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full border border-gray-200">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-sm text-gray-600">{user?.email}</span>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-lg md:rounded-xl transition-all duration-200 border border-gray-200 cursor-pointer"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                <span>Logout</span>
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Tab Navigation */}
-        <div className="bg-white rounded-lg shadow-sm mb-6">
-          <div className="border-b">
-            <nav className="flex -mb-px">
-              <button
-                onClick={() => setActiveTab('write')}
-                className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors cursor-pointer ${
-                  activeTab === 'write'
-                    ? 'text-red-600 border-red-600'
-                    : 'text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300'
-                }`}
-              >
-                {isEditMode ? 'Edit Post' : 'Write New Post'}
-              </button>
-              <button
-                onClick={() => setActiveTab('list')}
-                className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors cursor-pointer ${
-                  activeTab === 'list'
-                    ? 'text-red-600 border-red-600'
-                    : 'text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300'
-                }`}
-              >
-                Posts ({posts.length})
-              </button>
-            </nav>
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-gray-500 text-sm">Total Posts</p>
+                <p className="text-2xl font-medium text-gray-900">{posts.length}</p>
+              </div>
+            </div>
           </div>
+
+          <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-gray-500 text-sm">Published</p>
+                <p className="text-2xl font-medium text-gray-900">{posts.filter(p => p.published).length}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-gray-500 text-sm">Latest Post</p>
+                <p className="text-sm font-medium text-gray-900 truncate max-w-[150px]">
+                  {posts[0]?.title || 'No posts yet'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Tab Navigation */}
+        <div className="flex gap-2 mb-6">
+          <button
+            onClick={() => setActiveTab('write')}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg md:rounded-xl font-medium transition-all duration-200 cursor-pointer ${activeTab === 'write'
+              ? 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg shadow-red-500/25'
+              : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+              }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+            {isEditMode ? 'Edit Post' : 'Write New'}
+          </button>
+          <button
+            onClick={() => setActiveTab('list')}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg md:rounded-xl font-medium transition-all duration-200 cursor-pointer ${activeTab === 'list'
+              ? 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg shadow-red-500/25'
+              : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+              }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+            </svg>
+            All Posts
+            <span className={`ml-1 px-2 py-0.5 text-xs rounded-full ${activeTab === 'list' ? 'bg-white/20' : 'bg-gray-100'}`}>{posts.length}</span>
+          </button>
         </div>
 
         {/* Write Tab */}
         {activeTab === 'write' && (
-          <div className="bg-white rounded-lg shadow-sm p-6">
+          <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8">
             {/* Edit Mode Indicator */}
             {isEditMode && (
-              <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg flex justify-between items-center">
-                <span className="text-sm text-blue-700 font-medium">
-                  📝 Editing existing post
-                </span>
+              <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl flex justify-between items-center">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-blue-900">Editing Mode</p>
+                    <p className="text-sm text-blue-600">You are editing an existing post</p>
+                  </div>
+                </div>
                 <button
                   onClick={resetForm}
-                  className="text-sm text-blue-600 hover:text-blue-800 underline"
+                  className="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800 hover:bg-blue-100 rounded-lg md:rounded-xl transition-colors cursor-pointer"
                 >
-                  Cancel & Create New Post
+                  Cancel
                 </button>
               </div>
             )}
 
             <div className="mb-6">
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
-                Title
+              <label htmlFor="title" className="block text-sm font-semibold text-gray-700 mb-2">
+                Post Title
               </label>
               <input
                 id="title"
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                placeholder="Enter blog post title"
+                className="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-xl focus:outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10 transition-all"
+                placeholder="Enter an engaging title for your post..."
               />
             </div>
 
             <div className="mb-6">
-              <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="content" className="block text-sm font-semibold text-gray-700 mb-2">
                 Content
               </label>
               <TiptapEditor
@@ -329,19 +420,20 @@ export default function AdminPage() {
               />
             </div>
 
-            <div className="flex justify-end gap-4">
+            <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
               <button
                 onClick={resetForm}
-                className="px-6 py-2 text-gray-700 bg-gray-200 hover:bg-gray-300 transition-colors cursor-pointer"
+                className="px-6 py-2.5 text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg md:rounded-xl font-medium transition-colors cursor-pointer"
               >
-                Reset
+                Clear
               </button>
               <button
                 onClick={handleSave}
                 disabled={saving}
-                className="px-6 py-2 text-white transition-colors disabled:opacity-60 cursor-pointer"
+                className="flex items-center gap-2 px-6 py-2.5 text-white rounded-lg md:rounded-xl font-medium transition-all disabled:opacity-60 cursor-pointer shadow-lg"
                 style={{
                   backgroundColor: saving ? COMMON_COLORS.grayDark : COMMON_COLORS.primary,
+                  boxShadow: saving ? 'none' : `0 10px 25px -5px ${COMMON_COLORS.primary}40`,
                 }}
                 onMouseEnter={(e) => {
                   if (!saving) e.currentTarget.style.backgroundColor = COMMON_COLORS.primaryHover;
@@ -350,7 +442,22 @@ export default function AdminPage() {
                   if (!saving) e.currentTarget.style.backgroundColor = COMMON_COLORS.primary;
                 }}
               >
-                {saving ? 'Saving...' : isEditMode ? 'Update Post' : 'Save Post'}
+                {saving ? (
+                  <>
+                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                    <span>Saving...</span>
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{isEditMode ? 'Update Post' : 'Publish Post'}</span>
+                  </>
+                )}
               </button>
             </div>
           </div>
@@ -358,52 +465,103 @@ export default function AdminPage() {
 
         {/* List Tab */}
         {activeTab === 'list' && (
-          <div className="bg-white rounded-lg shadow-sm p-6">
+          <div className="space-y-4">
             {posts.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-gray-500">No posts yet.</p>
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-12 text-center">
+                <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gray-100 flex items-center justify-center">
+                  <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">No posts yet</h3>
+                <p className="text-gray-500 mb-6">Create your first blog post to get started</p>
+                <button
+                  onClick={() => setActiveTab('write')}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg md:rounded-xl font-medium shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all cursor-pointer"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  </svg>
+                  Create First Post
+                </button>
               </div>
             ) : (
-              <div className="space-y-4">
-                {posts.map((post) => (
-                  <div key={post.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{post.title}</h3>
+              posts.map((post, index) => (
+                <div
+                  key={post.id}
+                  className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <div className="p-6">
+                    <div className="flex justify-between items-start gap-4">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-3 mb-3">
+                          <span className={`px-2.5 py-1 text-xs font-medium rounded-full ${post.published
+                            ? 'bg-green-100 text-green-700'
+                            : 'bg-yellow-100 text-yellow-700'
+                            }`}>
+                            {post.published ? 'Published' : 'Draft'}
+                          </span>
+                          <span className="text-sm text-gray-400">
+                            {new Date(post.created_at).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric'
+                            })}
+                          </span>
+                        </div>
+
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-1">
+                          {post.title}
+                        </h3>
+
                         <div
-                          className="text-gray-600 line-clamp-2 mb-2 prose prose-sm max-w-none tiptap-editor"
+                          className="text-gray-500 line-clamp-2 text-sm mb-4 prose prose-sm max-w-none tiptap-editor"
                           dangerouslySetInnerHTML={{ __html: post.content }}
                         />
-                        <div className="flex items-center text-sm text-gray-500 space-x-4">
-                          <span>Author: {post.author_email}</span>
-                          <span>
-                            Created: {new Date(post.created_at).toLocaleDateString('en-US')}
-                          </span>
+
+                        <div className="flex items-center gap-4 text-sm text-gray-400">
+                          <div className="flex items-center gap-1.5">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                            <span className="truncate max-w-[150px]">{post.author_email}</span>
+                          </div>
                           {post.updated_at && post.updated_at !== post.created_at && (
-                            <span className="text-blue-600">
-                              Updated: {new Date(post.updated_at).toLocaleDateString('en-US')}
-                            </span>
+                            <div className="flex items-center gap-1.5 text-blue-500">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                              </svg>
+                              <span>Updated {new Date(post.updated_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                            </div>
                           )}
                         </div>
                       </div>
-                      <div className="flex gap-2 ml-4">
+
+                      <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <button
                           onClick={() => handleEdit(post)}
-                          className="px-3 py-1 text-sm text-blue-600 hover:text-blue-800 cursor-pointer"
+                          className="p-2.5 text-blue-600 hover:bg-blue-50 rounded-lg md:rounded-xl transition-colors cursor-pointer"
+                          title="Edit post"
                         >
-                          Edit
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                          </svg>
                         </button>
                         <button
                           onClick={() => handleDelete(post.id)}
-                          className="px-3 py-1 text-sm text-red-600 hover:text-red-800 cursor-pointer"
+                          className="p-2.5 text-red-600 hover:bg-red-50 rounded-lg md:rounded-xl transition-colors cursor-pointer"
+                          title="Delete post"
                         >
-                          Delete
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                          </svg>
                         </button>
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))
             )}
           </div>
         )}

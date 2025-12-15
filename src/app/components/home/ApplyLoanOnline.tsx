@@ -19,27 +19,31 @@ export default function ApplyLoanOnline() {
           <Image
             src="/images/gme-logo-square.svg"
             alt="GME App"
-            width={230}
+            width={300}
             height={200}
-            className="object-contain w-[120px] md:w-[230px]"
+            className="object-contain w-[150px] md:w-[240px]"
           />
-          <Link href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/images/google.svg"
-              alt="Google Play"
-              width={230}
-              height={200}
-              className="object-contain w-[120px] md:w-[230px] cursor-pointer hover:opacity-80 transition-opacity"
-            />
+          <Link href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className="block">
+            <div className="relative rounded-xl overflow-hidden transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95 cursor-pointer">
+              <Image
+                src="/images/google.svg"
+                alt="Google Play"
+                width={300}
+                height={300}
+                className="object-contain w-[190px] md:w-[280px]"
+              />
+            </div>
           </Link>
-          <Link href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/images/apple.svg"
-              alt="App Store"
-              width={230}
-              height={200}
-              className="object-contain w-[120px] md:w-[230px] cursor-pointer hover:opacity-80 transition-opacity"
-            />
+          <Link href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="block">
+            <div className="relative rounded-xl overflow-hidden transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95 cursor-pointer">
+              <Image
+                src="/images/apple.svg"
+                alt="App Store"
+                width={300}
+                height={300}
+                className="object-contain w-[190px] md:w-[280px]"
+              />
+            </div>
           </Link>
         </div>
 

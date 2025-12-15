@@ -31,11 +31,11 @@ export default function Footer() {
             <p>{t('footer.phone')}</p>
           </div>
         </div>
-        <hr className="border-t border-gray-300 mb-6 md:mb-8 lg:mb-8"/>
-        <div className="space-y-4 text-[10px] md:text-xs lg:text-xs text-gray-500 mb-6">
+        <hr className="border-t border-gray-300 mb-6 md:mb-8 lg:mb-8" />
+        <div className="space-y-4 text-[10px] md:text-xs lg:text-sm text-gray-500 mb-6">
           <p>
-            <span>{t('footer.loanRate')}</span> {t('footer.loanRateValue')}<br/>
-            <span>{t('footer.overdueRate')}</span> {t('footer.overdueRateValue')}<br/>
+            <span>{t('footer.loanRate')}</span> {t('footer.loanRateValue')}<br />
+            <span>{t('footer.overdueRate')}</span> {t('footer.overdueRateValue')}<br />
             <span>{t('footer.loanPeriod')}</span> {t('footer.loanPeriodValue')}
           </p>
 
@@ -56,7 +56,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="pt-6 text-[10px] md:text-xs lg:text-xs text-gray-600">
+        <div className="pt-0 lg:pt-5 text-[10px] md:text-xs lg:text-xs text-gray-600">
           {/* 모바일: 카피라이트와 링크 분리, 태블릿/데스크톱: 한 줄 */}
           <div className="mb-2 md:mb-2 lg:mb-2">
             <span className="font-semibold block md:inline lg:inline mb-3 md:mb-0 lg:mb-0">© 2025 GME Finance.</span>

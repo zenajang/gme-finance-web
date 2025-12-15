@@ -76,7 +76,7 @@ export default function GuidelinesPage() {
               <a
                 href="/documents/위법계약해지요구서.pdf"
                 download="위법계약해지요구서.pdf"
-                className="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-700 transition-colors text-sm"
+                className="bg-gray-800 text-white px-6 py-2 rounded-lg md:rounded-xl hover:bg-gray-700 transition-colors text-sm"
               >
                 Download
               </a>

@@ -21,7 +21,7 @@ export default function ManualPage() {
           <a
             href={pdfFile}
             download="대출상품설명서.pdf"
-            className="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-700 transition-colors"
+            className="bg-gray-800 text-white px-6 py-2 rounded-lg md:rounded-xl hover:bg-gray-700 transition-colors"
           >
             Download
           </a>

@@ -8,10 +8,10 @@ export default function SimpleLoanApplySection() {
 
   return (
     <div className="relative" style={{ background: `linear-gradient(to bottom, ${COMMON_COLORS.white} 0%, ${COMMON_COLORS.white} 75%, ${COMMON_COLORS.gradientOrange} 92%, ${COMMON_COLORS.gradientRedDeep} 100%)` }}>
-      <ProcessStep/>
-      <FinancialPrioritySection/>
-      <ApplyLoanOnline/>
-      <LoanApplicationForm/>
+      <ProcessStep />
+      <FinancialPrioritySection />
+      <ApplyLoanOnline />
+      <LoanApplicationForm />
     </div>
   );
 }

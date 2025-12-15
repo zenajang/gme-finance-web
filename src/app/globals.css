@@ -48,24 +48,24 @@ body {
 }
 
 .btn-primary {
-  @apply inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors;
+  @apply inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg md:rounded-xl font-semibold hover:bg-gray-800 transition-colors;
 }
 
 .btn-outline {
-  @apply inline-flex items-center justify-center gap-2 border px-4 py-2 rounded-lg hover:bg-gray-50;
+  @apply inline-flex items-center justify-center gap-2 border px-4 py-2 rounded-lg md:rounded-xl hover:bg-gray-50;
 }
 
 .btn-ghost {
-  @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg;
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg md:rounded-xl;
 }
 
 .input {
-  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500;
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg md:rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500;
 }
 
 /* 모든 버튼에 적당히 둥근 사각형 스타일 통일 적용 */
 button {
-  @apply rounded-2xl transition-colors cursor-pointer;
+  @apply rounded-lg md:rounded-xl transition-colors cursor-pointer;
 }
 
 /* Select 화살표 커스터마이징 */

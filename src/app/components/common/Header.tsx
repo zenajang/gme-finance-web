@@ -16,6 +16,7 @@ const FORCE_VISIBLE_PATHS = [
   '/guidelines',
   '/restrictions',
   '/manual',
+  '/about/blog',
 ];
 
 export default function Header() {
@@ -24,7 +25,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const forceVisible = FORCE_VISIBLE_PATHS.includes(pathname);
+  const forceVisible = FORCE_VISIBLE_PATHS.some(path => pathname === path || pathname.startsWith(path + '/'));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,31 +104,33 @@ export default function Header() {
                   About Us
                 </Link>
                 {isAboutHovered && (
-                  <div className="absolute top-full left-[-15px] mt-1 w-40 bg-black/80 rounded-lg shadow-xl py-3">
-                    <Link
-                      href="/about/company"
-                      className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black transition-colors"
-                    >
-                      Introduction
-                    </Link>
-                    <Link
-                      href="/about/history"
-                      className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black transition-colors"
-                    >
-                      Why choose us
-                    </Link>
-                    <Link
-                      href="/about/blog"
-                      className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black transition-colors"
-                    >
-                      Blog
-                    </Link>
-                    <Link
-                      href="/about/ceo"
-                      className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black transition-colors"
-                    >
-                      Contact Us
-                    </Link>
+                  <div className="absolute top-full left-[-15px] pt-2 w-40">
+                    <div className="bg-black/80 rounded-lg shadow-xl py-3">
+                      <Link
+                        href="/about/company"
+                        className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black transition-colors"
+                      >
+                        Introduction
+                      </Link>
+                      <Link
+                        href="/about/history"
+                        className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black transition-colors"
+                      >
+                        Why choose us
+                      </Link>
+                      <Link
+                        href="/about/blog"
+                        className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black transition-colors"
+                      >
+                        Blog
+                      </Link>
+                      <Link
+                        href="/about/ceo"
+                        className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black transition-colors"
+                      >
+                        Contact Us
+                      </Link>
+                    </div>
                   </div>
                 )}
               </div>

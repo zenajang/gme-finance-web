@@ -204,7 +204,7 @@ function LoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full py-3 px-4 border border-transparent rounded-lg md:rounded-xl shadow-sm text-base font-medium text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               style={{
                 backgroundColor: loading ? COMMON_COLORS.grayDark : COMMON_COLORS.primary,
               }}

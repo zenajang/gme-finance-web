@@ -14,7 +14,7 @@ import Youtube from '@tiptap/extension-youtube';
 import { FontSize } from './FontSizeExtension';
 import { Video } from './VideoExtension';
 import { createClient } from '@/lib/supabase/client';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import './TiptapEditor.css';
 
 interface TiptapEditorProps {
@@ -84,6 +84,13 @@ export default function TiptapEditor({ content, onChange, placeholder = 'Please 
       onChange(editor.getHTML());
     },
   });
+
+  // content prop이 외부에서 변경될 때 에디터 내용 업데이트
+  useEffect(() => {
+    if (editor && content !== editor.getHTML()) {
+      editor.commands.setContent(content);
+    }
+  }, [content, editor]);
 
   if (!editor) return null;
 

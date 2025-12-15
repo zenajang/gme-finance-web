@@ -28,7 +28,7 @@ export default function EMICalculatorSection({
             <button
               onClick={openCalculator}
               style={{ backgroundColor: buttonBgColor, width: '100%' }}
-              className="rounded-lg text-md md:text-xl lg:text-xl text-white py-2 md:py-6 lg:py-6 font-medium cursor-pointer hover:opacity-90 transition-opacity"
+              className="rounded-lg md:rounded-xl text-md md:text-xl lg:text-xl text-white py-2 md:py-6 lg:py-6 font-medium cursor-pointer hover:opacity-90 transition-opacity"
             >
               {t('button.EMICalculator')}
             </button>
