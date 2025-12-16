@@ -80,6 +80,7 @@ export default function TeamSection({
                   slidesOffsetBefore={10}
                   slidesOffsetAfter={10}
                   centeredSlides={false}
+                  cssMode={true}
                   className="team-swiper"
                 >
                   {teams.map((team, index) => (
@@ -106,6 +107,7 @@ export default function TeamSection({
                   slidesOffsetBefore={10}
                   slidesOffsetAfter={10}
                   centeredSlides={false}
+                  cssMode={true}
                   className="team-swiper"
                 >
                   {teams.map((team, index) => (

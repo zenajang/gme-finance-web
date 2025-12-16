@@ -496,12 +496,6 @@ export default function AdminPage() {
                     <div className="flex justify-between items-start gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-3 mb-3">
-                          <span className={`px-2.5 py-1 text-xs font-medium rounded-full ${post.published
-                            ? 'bg-green-100 text-green-700'
-                            : 'bg-yellow-100 text-yellow-700'
-                            }`}>
-                            {post.published ? 'Published' : 'Draft'}
-                          </span>
                           <span className="text-sm text-gray-400">
                             {new Date(post.created_at).toLocaleDateString('en-US', {
                               year: 'numeric',

@@ -121,6 +121,7 @@ export default function LatestSocials({
             slidesOffsetBefore={20}
             slidesOffsetAfter={-10}
             centeredSlides={false}
+            cssMode={true}
             className="latest-socials-swiper"
           >
             {socials.map((item, index) => (

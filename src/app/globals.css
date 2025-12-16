@@ -137,7 +137,6 @@ select {
 
 .country-swiper .swiper-wrapper {
   overflow: visible;
-  transition-timing-function: linear !important;
 }
 
 .swiper-centered .swiper-wrapper {
@@ -195,21 +194,21 @@ select {
 /* 무한 마퀴 애니메이션 */
 @keyframes marquee-left {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @keyframes marquee-right {
   0% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 
   100% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -283,7 +282,6 @@ select {
   border-radius: 5px;
 }
 
-/* Country Section Swiper - 모바일에서 국기 크기 효과 */
 @media (max-width: 767px) {
   .country-swiper .flag-ring {
     transition: transform 0.35s ease;
@@ -305,20 +303,27 @@ select {
   }
 }
 
-/* Circle 좌우 흔들림 애니메이션 */
 @keyframes oscillate {
 
   0%,
   100% {
-    transform: translateX(-4px);
+    transform: translateX(-4px) translateZ(0);
   }
 
   50% {
-    transform: translateX(4px);
+    transform: translateX(4px) translateZ(0);
   }
 }
 
 .animate-oscillate {
   animation: oscillate 1s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite alternate;
   animation-delay: 0.4s;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@media (max-width: 767px) {
+  .animate-oscillate {
+    animation: none;
+  }
 }

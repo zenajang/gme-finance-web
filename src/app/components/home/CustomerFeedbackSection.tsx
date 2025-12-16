@@ -67,7 +67,12 @@ function FeedbackCard({ item }: { item: NewsItem }) {
           {item.content}
         </p>
       </div>
-      <video className="relative w-full h-[200px] md:h-1/2 lg:h-1/2" controls>
+      <video
+        className="relative w-full h-[200px] md:h-1/2 lg:h-1/2"
+        controls
+        preload="none"
+        playsInline
+      >
         <source src="/testimonial.mp4" type="video/mp4" />
       </video>
     </article>
@@ -93,6 +98,7 @@ export default function CustomerFeedbackSection() {
             slidesOffsetBefore={20}
             slidesOffsetAfter={-10}
             centeredSlides={false}
+            cssMode={true}
             className="customer-feedback-swiper"
           >
             {NEWS.map((item, index) => (

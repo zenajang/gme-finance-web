@@ -3,7 +3,7 @@
 import Image from 'next/image';
 
 export default function ScrollingText() {
-  const IMAGES_PER_SET = 1;
+  const IMAGES_PER_SET = 3;
 
   const ImageGroup = ({ prefix }: { prefix: string }) => (
     <div className="flex items-center gap-8 md:gap-10 shrink-0">
@@ -15,6 +15,7 @@ export default function ScrollingText() {
           width={900}
           height={130}
           className="h-12 md:h-20 lg:h-28 w-auto flex-shrink-0"
+          priority
         />
       ))}
     </div>

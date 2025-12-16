@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { COUNTRIES } from '@/constants/countries';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,13 +12,16 @@ import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 
 export default function CountrySection() {
+  const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isSwiping, setIsSwiping] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number>(0);
   const swiperRef = useRef<SwiperType | null>(null);
+  const touchStartX = useRef<number>(0);
 
   const duplicatedCountries = [...COUNTRIES, ...COUNTRIES, ...COUNTRIES];
   const singleSetWidth = COUNTRIES.length * 180;
@@ -119,10 +123,20 @@ export default function CountrySection() {
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
+              onTouchStart={() => {
+                setIsSwiping(false);
+                touchStartX.current = Date.now();
+              }}
+              onTouchMove={() => {
+                setIsSwiping(true);
+              }}
+              onTouchEnd={() => {
+                setTimeout(() => setIsSwiping(false), 100);
+              }}
               slidesPerView={3}
               centeredSlides={true}
               loop={true}
-              speed={400}
+              speed={300}
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
@@ -138,9 +152,13 @@ export default function CountrySection() {
                         transform: `scale(${isActive ? 1.25 : isPrev || isNext ? 1 : 0.85})`,
                       }}
                     >
-                      <Link
-                        href={`/${country.name.toLowerCase()}`}
-                        className="flex flex-col items-center p-2 rounded-lg transition-colors w-full"
+                      <div
+                        onClick={() => {
+                          if (!isSwiping) {
+                            router.push(`/${country.name.toLowerCase()}`);
+                          }
+                        }}
+                        className="flex flex-col items-center p-2 rounded-lg transition-colors w-full cursor-pointer"
                       >
                         <div className="w-28 h-28 overflow-visible relative flex items-center justify-center flag-ring">
                           <div className={`relative w-full h-full ${country.scale}`}>
@@ -155,7 +173,7 @@ export default function CountrySection() {
                         <span className="text-sm font-medium whitespace-nowrap mt-2">
                           {country.name}
                         </span>
-                      </Link>
+                      </div>
                     </div>
                   )}
                 </SwiperSlide>

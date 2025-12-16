@@ -92,7 +92,7 @@ export default function Header() {
               >
                 Home
               </Link>
-              <div
+              {/*   <div
                 className="relative"
                 onMouseEnter={() => setIsAboutHovered(true)}
                 onMouseLeave={() => setIsAboutHovered(false)}
@@ -133,15 +133,21 @@ export default function Header() {
                     </div>
                   </div>
                 )}
-              </div>
+              </div> */}
 
-              <Link
+              {/*   <Link
                 href="/products"
                 className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
               >
                 Products
               </Link>
-
+            */}
+              <Link
+                href="/about/blog"
+                className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
+              >
+                Blog
+              </Link>
               <Link
                 href="/careers"
                 className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
@@ -156,12 +162,12 @@ export default function Header() {
                 Countries
               </Link>
 
-              <Link
+              {/*     <Link
                 href="/notices"
                 className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
               >
                 Notices
-              </Link>
+              </Link> */}
 
               <Link
                 href="/login"
@@ -190,7 +196,7 @@ export default function Header() {
             Home
           </Link>
           {/* About Us with submenu */}
-          <div className="border-b border-gray-200">
+          {/*  <div className="border-b border-gray-200">
             <Link
               href="/about"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -228,16 +234,22 @@ export default function Header() {
                 Contact Us
               </Link>
             </div>
-          </div>
+          </div> */}
 
-          <Link
+          {/*   <Link
             href="/products"
             onClick={() => setIsMobileMenuOpen(false)}
             className="px-6 py-3 text-gray-800 hover:bg-gray-100 transition-colors text-base border-b border-gray-200"
           >
             Products
+          </Link> */}
+          <Link
+            href="/about/blog"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="px-6 py-3 text-gray-800 hover:bg-gray-100 transition-colors text-base border-b border-gray-200"
+          >
+            Blog
           </Link>
-
           <Link
             href="/careers"
             onClick={() => setIsMobileMenuOpen(false)}
@@ -254,13 +266,13 @@ export default function Header() {
             Countries
           </Link>
 
-          <Link
+          {/*<Link
             href="/notices"
             onClick={() => setIsMobileMenuOpen(false)}
             className="px-6 py-3 text-gray-800 hover:bg-gray-100 transition-colors text-base border-b border-gray-200"
           >
             Notices
-          </Link>
+          </Link> */}
 
           <Link
             href="/login"
