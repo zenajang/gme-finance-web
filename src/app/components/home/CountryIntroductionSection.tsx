@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { COMMON_COLORS } from "@/constants/colors";
 
 interface CountryIntroductionSectionProps {
   videoSrc?: string;
+  posterSrc?: string;
   title?: string;
   description?: string;
   buttonText?: string;
@@ -15,6 +17,7 @@ interface CountryIntroductionSectionProps {
 
 export default function CountryIntroductionSection({
   videoSrc = "/videos/introduction.mp4",
+  posterSrc = "/images/introduction.jpg",
   title = "GME FINANCE",
   description = "Trusted & Legal Overseas Loans",
   buttonText = "Apply Now",
@@ -23,17 +26,40 @@ export default function CountryIntroductionSection({
   buttonHoverBgColor = COMMON_COLORS.primaryLight,
 }: CountryIntroductionSectionProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
      <section className="relative h-[630px] md:h-[800px] lg:h-[995px]">
         <div className="absolute inset-0">
-          <video
-            src={videoSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          />
+          {isMobile ? (
+            <Image
+              src={posterSrc}
+              alt={title}
+              fill
+              className="object-cover"
+              priority
+            />
+          ) : (
+            <video
+              src={videoSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              poster={posterSrc}
+              className="w-full h-full object-cover"
+            />
+          )}
         </div>
         <div className="absolute inset-0 bg-black/40"/>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-start justify-center text-white pt-60 md:pt-30">
