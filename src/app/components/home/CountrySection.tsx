@@ -2,45 +2,34 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { COUNTRIES } from '@/constants/countries';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
+
+import 'swiper/css';
 
 export default function CountrySection() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(0);
-  const [isTouching, setIsTouching] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number>(0);
-  const touchStartRef = useRef<number>(0);
-  const touchStartPosRef = useRef<number>(0);
+  const swiperRef = useRef<SwiperType | null>(null);
 
   const duplicatedCountries = [...COUNTRIES, ...COUNTRIES, ...COUNTRIES];
   const singleSetWidth = COUNTRIES.length * 180;
-  const mobileItemWidth = 140;
 
   useEffect(() => {
-    setWindowWidth(window.innerWidth);
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  const getItemScale = useCallback((index: number) => {
-    if (windowWidth >= 768) return 1;
-
-    const centerX = windowWidth / 2;
-    const itemCenterX = (index * mobileItemWidth) + (mobileItemWidth / 2) - scrollPosition;
-    const distance = Math.abs(centerX - itemCenterX);
-    const maxDistance = windowWidth * 0.6;
-
-    const progress = Math.max(0, 1 - distance / maxDistance);
-    const easedProgress = 1 - Math.pow(1 - progress, 3);
-
-    const scale = 1 + (0.5 * easedProgress);
-    return Math.min(1.5, Math.max(1, scale));
-  }, [windowWidth, scrollPosition, mobileItemWidth]);
 
   const currentSection = useMemo(() => {
     const sectionWidth = singleSetWidth / 3;
@@ -48,12 +37,14 @@ export default function CountrySection() {
   }, [scrollPosition, singleSetWidth]);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const animate = (currentTime: number) => {
       if (!lastTimeRef.current) lastTimeRef.current = currentTime;
       const deltaTime = currentTime - lastTimeRef.current;
       lastTimeRef.current = currentTime;
 
-      if (isPlaying && !isTouching) {
+      if (isPlaying) {
         setScrollPosition((prev) => {
           const newPos = prev + (deltaTime * 0.03);
           if (newPos >= singleSetWidth) {
@@ -73,24 +64,39 @@ export default function CountrySection() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isPlaying, isTouching, singleSetWidth]);
+  }, [isPlaying, singleSetWidth, isMobile]);
 
   const toggleAutoplay = () => {
     setIsPlaying(!isPlaying);
+    if (swiperRef.current) {
+      if (isPlaying) {
+        swiperRef.current.autoplay.stop();
+      } else {
+        swiperRef.current.autoplay.start();
+      }
+    }
   };
 
   const handlePrev = () => {
-    setScrollPosition((prev) => {
-      const newPos = prev - 180;
-      return newPos < 0 ? singleSetWidth + newPos : newPos;
-    });
+    if (isMobile && swiperRef.current) {
+      swiperRef.current.slidePrev();
+    } else {
+      setScrollPosition((prev) => {
+        const newPos = prev - 180;
+        return newPos < 0 ? singleSetWidth + newPos : newPos;
+      });
+    }
   };
 
   const handleNext = () => {
-    setScrollPosition((prev) => {
-      const newPos = prev + 180;
-      return newPos >= singleSetWidth ? newPos - singleSetWidth : newPos;
-    });
+    if (isMobile && swiperRef.current) {
+      swiperRef.current.slideNext();
+    } else {
+      setScrollPosition((prev) => {
+        const newPos = prev + 180;
+        return newPos >= singleSetWidth ? newPos - singleSetWidth : newPos;
+      });
+    }
   };
 
   const goToSection = (section: number) => {
@@ -98,68 +104,85 @@ export default function CountrySection() {
     setScrollPosition(section * sectionWidth);
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (windowWidth >= 768) return;
-    setIsTouching(true);
-    touchStartRef.current = e.touches[0].clientX;
-    touchStartPosRef.current = scrollPosition;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (windowWidth >= 768 || !isTouching) return;
-    const touchX = e.touches[0].clientX;
-    const diff = touchStartRef.current - touchX;
-    let newPos = touchStartPosRef.current + diff;
-
-    if (newPos < 0) {
-      newPos = singleSetWidth + newPos;
-    } else if (newPos >= singleSetWidth) {
-      newPos = newPos - singleSetWidth;
-    }
-    setScrollPosition(newPos);
-  };
-
-  const handleTouchEnd = () => {
-    setIsTouching(false);
-  };
-
   return (
-    <section className="pt-10 md:py-15 lg:py-15 bg-white">
+    <section className="pt-10 md:py-15 lg:py-15 bg-white overflow-x-hidden">
       <div className="px-0 md:px-3 lg:px-3">
         <h2 className="text-heading text-center mb-8 md:mb-10 lg:mb-10">
           Please select your country
         </h2>
 
-        <div
-          className="max-w-8xl mx-auto overflow-hidden pt-1 pb-6 md:pb-0 touch-pan-y"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div
-            ref={containerRef}
-            className="flex transition-none"
-            style={{
-              transform: `translateX(-${scrollPosition}px)`,
-              willChange: 'transform',
-            }}
-          >
-            {duplicatedCountries.map((country, index) => {
-              const scale = getItemScale(index);
-              return (
+        {/* 모바일: Swiper 사용 */}
+        {isMobile ? (
+          <div className="country-swiper pb-6">
+            <Swiper
+              modules={[Autoplay]}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              slidesPerView={3}
+              centeredSlides={true}
+              loop={true}
+              speed={400}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              className="!overflow-visible"
+            >
+              {COUNTRIES.map((country, index) => (
+                <SwiperSlide key={`${country.code}-${index}`}>
+                  {({ isActive, isPrev, isNext }) => (
+                    <div
+                      className="flex flex-col items-center transition-transform duration-300"
+                      style={{
+                        transform: `scale(${isActive ? 1.25 : isPrev || isNext ? 1 : 0.85})`,
+                      }}
+                    >
+                      <Link
+                        href={`/${country.name.toLowerCase()}`}
+                        className="flex flex-col items-center p-2 rounded-lg transition-colors w-full"
+                      >
+                        <div className="w-28 h-28 overflow-visible relative flex items-center justify-center flag-ring">
+                          <div className={`relative w-full h-full ${country.scale}`}>
+                            <Image
+                              src={country.flag}
+                              alt={country.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        </div>
+                        <span className="text-sm font-medium whitespace-nowrap mt-2">
+                          {country.name}
+                        </span>
+                      </Link>
+                    </div>
+                  )}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        ) : (
+          /* 데스크탑: 기존 무한 스크롤 */
+          <div className="max-w-8xl mx-auto overflow-hidden pt-1 pb-0">
+            <div
+              ref={containerRef}
+              className="flex transition-none"
+              style={{
+                transform: `translateX(-${scrollPosition}px)`,
+                willChange: 'transform',
+              }}
+            >
+              {duplicatedCountries.map((country, index) => (
                 <div
                   key={`${country.code}-${index}`}
-                  className="flex-shrink-0 w-[140px] md:w-[160px] lg:w-[180px]"
-                  style={{
-                    transform: windowWidth < 768 ? `scale(${scale})` : undefined,
-                    transition: 'transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
-                  }}
+                  className="flex-shrink-0 w-[180px]"
                 >
                   <Link
                     href={`/${country.name.toLowerCase()}`}
-                    className="flex flex-col items-center p-2 md:hover:bg-gray-50 rounded-lg transition-colors w-full"
+                    className="flex flex-col items-center p-2 hover:bg-gray-50 rounded-lg transition-colors w-full"
                   >
-                    <div className="w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 overflow-visible relative flex items-center justify-center flag-ring">
+                    <div className="w-40 h-40 overflow-visible relative flex items-center justify-center flag-ring">
                       <div className={`relative w-full h-full ${country.scale}`}>
                         <Image
                           src={country.flag}
@@ -169,13 +192,15 @@ export default function CountrySection() {
                         />
                       </div>
                     </div>
-                    <span className="text-sm md:text-base font-medium whitespace-nowrap">{country.name}</span>
+                    <span className="text-base font-medium whitespace-nowrap">
+                      {country.name}
+                    </span>
                   </Link>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="hidden md:flex items-center justify-center gap-4 mt-10">
           <button
