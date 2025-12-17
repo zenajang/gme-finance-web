@@ -53,32 +53,30 @@ export default function CountryIntroductionSection({
   return (
      <section className="relative h-[630px] md:h-[800px] lg:h-[995px]">
         <div className="absolute inset-0">
-          {/* 모바일: 이미지만 표시 / 데스크톱: 동영상 로딩 전 이미지 표시 */}
+          {/* 동영상 로딩 전 이미지 표시 */}
           {defaultPoster && (
             <img
               src={defaultPoster}
               alt=""
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                isVideoLoaded && !isMobile ? 'opacity-0' : 'opacity-100'
+                isVideoLoaded ? 'opacity-0' : 'opacity-100'
               }`}
             />
           )}
-          {/* 데스크톱에서만 동영상 로드 */}
-          {!isMobile && (
-            <video
-              ref={videoRef}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              className={`w-full h-full object-cover transition-opacity duration-500 ${
-                isVideoLoaded ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <source src={videoSrc} type="video/webm" />
-            </video>
-          )}
+          {/* 동영상 - 로드 완료 후 표시 */}
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload={isMobile ? "metadata" : "auto"}
+            className={`w-full h-full object-cover transition-opacity duration-500 ${
+              isVideoLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <source src={videoSrc} type="video/webm" />
+          </video>
         </div>
         <div className="absolute inset-0 bg-black/40"/>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-start justify-center text-white pt-60 md:pt-30">
