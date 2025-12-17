@@ -186,7 +186,6 @@ export default function BlogPage() {
                 slidesOffsetBefore={20}
                 slidesOffsetAfter={-10}
                 centeredSlides={false}
-                cssMode={true}
                 className="blog-posts-swiper"
               >
                 {posts.map((post, index) => (

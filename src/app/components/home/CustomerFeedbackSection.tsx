@@ -98,7 +98,6 @@ export default function CustomerFeedbackSection() {
             slidesOffsetBefore={20}
             slidesOffsetAfter={-10}
             centeredSlides={false}
-            cssMode={true}
             className="customer-feedback-swiper"
           >
             {NEWS.map((item, index) => (

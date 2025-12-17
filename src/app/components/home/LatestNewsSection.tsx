@@ -116,7 +116,6 @@ export default function LatestNewsSection() {
             slidesOffsetBefore={20}
             slidesOffsetAfter={-10}
             centeredSlides={false}
-            cssMode={true}
           >
             {NEWS.map((item, index) => (
               <SwiperSlide key={item.id}>
