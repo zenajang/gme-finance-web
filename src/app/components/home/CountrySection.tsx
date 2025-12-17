@@ -167,6 +167,8 @@ export default function CountrySection() {
                               alt={country.name}
                               fill
                               className="object-cover"
+                              loading="eager"
+                              unoptimized
                             />
                           </div>
                         </div>
@@ -207,6 +209,8 @@ export default function CountrySection() {
                           alt={country.name}
                           fill
                           className="object-cover"
+                          loading="eager"
+                          unoptimized
                         />
                       </div>
                     </div>

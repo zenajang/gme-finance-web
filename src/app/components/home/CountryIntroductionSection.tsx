@@ -25,25 +25,22 @@ export default function CountryIntroductionSection({
   buttonHoverBgColor = COMMON_COLORS.primaryLight,
 }: CountryIntroductionSectionProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
-      const handleCanPlay = () => setIsVideoLoaded(true);
-      video.addEventListener('canplay', handleCanPlay);
-      return () => video.removeEventListener('canplay', handleCanPlay);
+      // canplaythrough: 끊김 없이 끝까지 재생 가능할 때 발생
+      const handleReady = () => setIsVideoReady(true);
+      video.addEventListener('canplaythrough', handleReady);
+
+      // 이미 로드된 경우 처리
+      if (video.readyState >= 4) {
+        setIsVideoReady(true);
+      }
+
+      return () => video.removeEventListener('canplaythrough', handleReady);
     }
   }, []);
 
@@ -53,30 +50,27 @@ export default function CountryIntroductionSection({
   return (
      <section className="relative h-[630px] md:h-[800px] lg:h-[995px]">
         <div className="absolute inset-0">
-          {/* 동영상 로딩 전 이미지 표시 */}
-          {defaultPoster && (
-            <img
-              src={defaultPoster}
-              alt=""
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                isVideoLoaded ? 'opacity-0' : 'opacity-100'
-              }`}
-            />
-          )}
-          {/* 동영상 - 로드 완료 후 표시 */}
+          {/* 동영상 로딩 전 포스터 이미지 표시 */}
+          <img
+            src={defaultPoster}
+            alt=""
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+              isVideoReady ? 'opacity-0' : 'opacity-100'
+            }`}
+          />
+          {/* 동영상 - 충분히 로드된 후 표시 */}
           <video
             ref={videoRef}
+            src={videoSrc}
             autoPlay
             loop
             muted
             playsInline
-            preload={isMobile ? "metadata" : "auto"}
-            className={`w-full h-full object-cover transition-opacity duration-500 ${
-              isVideoLoaded ? 'opacity-100' : 'opacity-0'
+            preload="auto"
+            className={`w-full h-full object-cover transition-opacity duration-700 ${
+              isVideoReady ? 'opacity-100' : 'opacity-0'
             }`}
-          >
-            <source src={videoSrc} type="video/webm" />
-          </video>
+          />
         </div>
         <div className="absolute inset-0 bg-black/40"/>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-start justify-center text-white pt-60 md:pt-30">
