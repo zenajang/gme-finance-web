@@ -149,7 +149,7 @@ export default function RussiaPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="russia" variant="compact" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
-          <div className="mb-69">
+          <div className="mb-15 md:mb-69">
             <LoanApplicationForm country="russia" buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
           </div>
         </section>

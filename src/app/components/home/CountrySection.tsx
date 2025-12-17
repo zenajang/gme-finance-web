@@ -21,7 +21,7 @@ export default function CountrySection() {
   const animationRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number>(0);
   const swiperRef = useRef<SwiperType | null>(null);
-  const touchStartX = useRef<number>(0);
+  const touchStartPos = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
   const duplicatedCountries = [...COUNTRIES, ...COUNTRIES, ...COUNTRIES];
   const singleSetWidth = COUNTRIES.length * 180;
@@ -123,15 +123,21 @@ export default function CountrySection() {
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
-              onTouchStart={() => {
+              onTouchStart={(swiper, event) => {
+                const touch = (event as TouchEvent).touches[0];
+                touchStartPos.current = { x: touch.clientX, y: touch.clientY };
                 setIsSwiping(false);
-                touchStartX.current = Date.now();
               }}
-              onTouchMove={() => {
-                setIsSwiping(true);
-              }}
-              onTouchEnd={() => {
-                setTimeout(() => setIsSwiping(false), 100);
+              onTouchEnd={(swiper, event) => {
+                const touch = (event as TouchEvent).changedTouches[0];
+                const deltaX = Math.abs(touch.clientX - touchStartPos.current.x);
+                const deltaY = Math.abs(touch.clientY - touchStartPos.current.y);
+
+                // 10px 이상 움직였으면 스와이프로 판단
+                if (deltaX > 10 || deltaY > 10) {
+                  setIsSwiping(true);
+                  setTimeout(() => setIsSwiping(false), 150);
+                }
               }}
               slidesPerView={3}
               centeredSlides={true}

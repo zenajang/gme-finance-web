@@ -72,22 +72,30 @@ export default function TeamSection({
         <div className="max-w-8xl mx-auto relative">
           {teams.length <= 4 ? (
             <>
-              {/* 모바일 - Swiper */}
+              {/* 모바일 */}
               <div className="block md:hidden py-4">
-                <Swiper
-                  spaceBetween={10}
-                  slidesPerView={2.5}
-                  slidesOffsetBefore={10}
-                  slidesOffsetAfter={10}
-                  centeredSlides={false}
-                  className="team-swiper"
-                >
-                  {teams.map((team, index) => (
-                    <SwiperSlide key={team.id || index}>
-                      <TeamCard team={team} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+                {teams.length === 1 ? (
+                  // 1명일 때 중앙 정렬
+                  <div className="flex justify-center">
+                    <TeamCard team={teams[0]} />
+                  </div>
+                ) : (
+                  // 2명 이상일 때 Swiper
+                  <Swiper
+                    spaceBetween={10}
+                    slidesPerView={2.5}
+                    slidesOffsetBefore={10}
+                    slidesOffsetAfter={10}
+                    centeredSlides={false}
+                    className="team-swiper"
+                  >
+                    {teams.map((team, index) => (
+                      <SwiperSlide key={team.id || index}>
+                        <TeamCard team={team} />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                )}
               </div>
               {/* 데스크톱 - Grid */}
               <div className="hidden md:flex justify-center gap-3 md:gap-5 lg:gap-6 py-10 flex-wrap">
@@ -110,7 +118,7 @@ export default function TeamSection({
                 >
                   {teams.map((team, index) => (
                     <SwiperSlide key={team.id || index}>
-                      <div className="rounded-xl relative h-[150px] shadow-[0_0_20px_rgba(0,0,0,0.2)]" style={{ overflow: 'hidden', marginTop: '15px' }}>
+                      <div className="flex rounded-xl relative h-[150px] shadow-[0_0_20px_rgba(0,0,0,0.2)]" style={{ overflow: 'hidden', marginTop: '15px' }}>
                         <Image
                           src={team.image}
                           alt={team.name}

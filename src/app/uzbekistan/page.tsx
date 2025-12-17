@@ -146,7 +146,7 @@ export default function UzbekistanPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="uzbekistan" variant="compact" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
-          <div className="mb-69">
+          <div className="md:mb-69 mb-15">
             <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary} />
           </div>
         </section>
