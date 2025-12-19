@@ -31,21 +31,6 @@ interface LatestSocialsProps {
   buttonHoverBgColor?: string;
   titleColor?: string;
 }
-
-/** =========================
- * Helpers (script loader)
- * ========================= */
-function loadScriptOnce(id: string, src: string) {
-  if (typeof document === "undefined") return;
-  if (document.getElementById(id)) return;
-
-  const s = document.createElement("script");
-  s.id = id;
-  s.async = true;
-  s.src = src;
-  document.body.appendChild(s);
-}
-
 /** =========================
  * Embeds
  * ========================= */
