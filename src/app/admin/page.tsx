@@ -31,8 +31,60 @@ interface BlogPost {
   author_id: string;
   author_email: string;
   published: boolean;
+  category: 'blog' | 'customer_feedback';
   created_at: string;
   updated_at: string;
+}
+
+// HTML에서 자체 업로드 비디오 URL 추출
+function extractVideoSrc(html: string): string | null {
+  const videoTagMatch = html.match(/<video[^>]*>/);
+  if (videoTagMatch) {
+    const srcMatch = videoTagMatch[0].match(/src=["']([^"']+)["']/);
+    if (srcMatch) return srcMatch[1];
+  }
+  const sourceMatch = html.match(/<source[^>]*src=["']([^"']+)["']/);
+  return sourceMatch ? sourceMatch[1] : null;
+}
+
+// YouTube 비디오 ID 추출
+function extractYoutubeId(html: string): string | null {
+  const embedMatch = html.match(/youtube\.com\/embed\/([^?&"'\s>]+)/);
+  if (embedMatch) return embedMatch[1];
+  return null;
+}
+
+// YouTube 썸네일 URL 생성
+function getYoutubeThumbnail(videoId: string): string {
+  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+}
+
+// 비디오 타입 및 정보 추출
+function getVideoInfo(html: string): { type: 'video' | 'youtube' | null; src: string | null; thumbnail: string | null } {
+  // 자체 업로드 비디오 체크
+  const videoSrc = extractVideoSrc(html);
+  if (videoSrc) {
+    return { type: 'video', src: videoSrc, thumbnail: null };
+  }
+
+  // YouTube 체크
+  const youtubeId = extractYoutubeId(html);
+  if (youtubeId) {
+    return { type: 'youtube', src: null, thumbnail: getYoutubeThumbnail(youtubeId) };
+  }
+
+  return { type: null, src: null, thumbnail: null };
+}
+
+// HTML에서 첫 번째 이미지 URL 추출
+function extractFirstImage(html: string): string | null {
+  const imgMatch = html.match(/<img[^>]*src="([^">]+)"/);
+  return imgMatch ? imgMatch[1] : null;
+}
+
+// HTML 태그 제거하고 텍스트만 추출
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '').trim();
 }
 
 export default function AdminPage() {
@@ -44,12 +96,17 @@ export default function AdminPage() {
   // Blog post state
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [category, setCategory] = useState<'blog' | 'customer_feedback'>('blog');
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [saving, setSaving] = useState(false);
 
   // Edit mode state
   const [editingPostId, setEditingPostId] = useState<string | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+
+  // Filter state for posts list
+  const [filterCategory, setFilterCategory] = useState<'all' | 'blog' | 'customer_feedback'>('all');
 
   // Check user authentication
   useEffect(() => {
@@ -161,6 +218,7 @@ export default function AdminPage() {
           .update({
             title,
             content,
+            category,
             updated_at: new Date().toISOString(),
           })
           .eq('id', editingPostId);
@@ -180,6 +238,7 @@ export default function AdminPage() {
             {
               title,
               content,
+              category,
               author_id: user?.id,
               author_email: user?.email,
               published: true,
@@ -225,6 +284,7 @@ export default function AdminPage() {
   function handleEdit(post: BlogPost) {
     setTitle(post.title);
     setContent(post.content);
+    setCategory(post.category || 'blog');
     setEditingPostId(post.id);
     setIsEditMode(true);
     setActiveTab('write');
@@ -234,6 +294,7 @@ export default function AdminPage() {
   function resetForm() {
     setTitle('');
     setContent('');
+    setCategory('blog');
     setEditingPostId(null);
     setIsEditMode(false);
   }
@@ -395,6 +456,46 @@ export default function AdminPage() {
               </div>
             )}
 
+            <div className="mb-6 relative">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Category
+              </label>
+              <button
+                type="button"
+                onClick={() => setIsCategoryOpen(!isCategoryOpen)}
+                onBlur={() => setTimeout(() => setIsCategoryOpen(false), 150)}
+                className="w-48 px-3 py-2 text-sm text-left border-2 border-gray-200 rounded-lg focus:outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10 transition-all bg-white cursor-pointer flex items-center justify-between"
+              >
+                <span>{category === 'blog' ? 'Blog' : 'Customer Feedback'}</span>
+                <svg
+                  className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${isCategoryOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {isCategoryOpen && (
+                <div className="absolute top-full left-0 mt-1 w-48 bg-white border-2 border-gray-200 rounded-lg shadow-lg z-10 overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => { setCategory('blog'); setIsCategoryOpen(false); }}
+                    className={`w-full px-3 py-2 text-sm text-left hover:bg-gray-100 transition-colors ${category === 'blog' ? 'bg-red-50 text-red-600' : ''}`}
+                  >
+                    Blog
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setCategory('customer_feedback'); setIsCategoryOpen(false); }}
+                    className={`w-full px-3 py-2 text-sm text-left hover:bg-gray-100 transition-colors ${category === 'customer_feedback' ? 'bg-red-50 text-red-600' : ''}`}
+                  >
+                    Customer Feedback
+                  </button>
+                </div>
+              )}
+            </div>
+
             <div className="mb-6">
               <label htmlFor="title" className="block text-sm font-semibold text-gray-700 mb-2">
                 Post Title
@@ -466,7 +567,56 @@ export default function AdminPage() {
         {/* List Tab */}
         {activeTab === 'list' && (
           <div className="space-y-4">
-            {posts.length === 0 ? (
+            {/* Filter Buttons */}
+            <div className="flex gap-2 mb-4">
+              <button
+                onClick={() => setFilterCategory('all')}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all cursor-pointer ${
+                  filterCategory === 'all'
+                    ? 'bg-gray-900 text-white'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                All
+                <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${
+                  filterCategory === 'all' ? 'bg-white/20' : 'bg-gray-200'
+                }`}>
+                  {posts.length}
+                </span>
+              </button>
+              <button
+                onClick={() => setFilterCategory('blog')}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all cursor-pointer ${
+                  filterCategory === 'blog'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
+                }`}
+              >
+                Blog
+                <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${
+                  filterCategory === 'blog' ? 'bg-white/20' : 'bg-blue-100'
+                }`}>
+                  {posts.filter(p => p.category === 'blog').length}
+                </span>
+              </button>
+              <button
+                onClick={() => setFilterCategory('customer_feedback')}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all cursor-pointer ${
+                  filterCategory === 'customer_feedback'
+                    ? 'bg-purple-600 text-white'
+                    : 'bg-purple-50 text-purple-600 hover:bg-purple-100'
+                }`}
+              >
+                Customer Feedback
+                <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${
+                  filterCategory === 'customer_feedback' ? 'bg-white/20' : 'bg-purple-100'
+                }`}>
+                  {posts.filter(p => p.category === 'customer_feedback').length}
+                </span>
+              </button>
+            </div>
+
+            {posts.filter(p => filterCategory === 'all' || p.category === filterCategory).length === 0 ? (
               <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-12 text-center">
                 <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gray-100 flex items-center justify-center">
                   <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -486,76 +636,140 @@ export default function AdminPage() {
                 </button>
               </div>
             ) : (
-              posts.map((post, index) => (
-                <div
-                  key={post.id}
-                  className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  <div className="p-6">
-                    <div className="flex justify-between items-start gap-4">
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-3 mb-3">
-                          <span className="text-sm text-gray-400">
-                            {new Date(post.created_at).toLocaleDateString('en-US', {
-                              year: 'numeric',
-                              month: 'short',
-                              day: 'numeric'
-                            })}
-                          </span>
-                        </div>
+              posts.filter(p => filterCategory === 'all' || p.category === filterCategory).map((post, index) => {
+                const videoInfo = getVideoInfo(post.content);
+                const imageSrc = extractFirstImage(post.content);
+                const hasThumbnail = videoInfo.type || imageSrc;
 
-                        <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-1">
-                          {post.title}
-                        </h3>
-
-                        <div
-                          className="text-gray-500 line-clamp-2 text-sm mb-4 prose prose-sm max-w-none tiptap-editor"
-                          dangerouslySetInnerHTML={{ __html: post.content }}
-                        />
-
-                        <div className="flex items-center gap-4 text-sm text-gray-400">
-                          <div className="flex items-center gap-1.5">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                            <span className="truncate max-w-[150px]">{post.author_email}</span>
-                          </div>
-                          {post.updated_at && post.updated_at !== post.created_at && (
-                            <div className="flex items-center gap-1.5 text-blue-500">
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                              </svg>
-                              <span>Updated {new Date(post.updated_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                return (
+                  <div
+                    key={post.id}
+                    className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    <div className="flex">
+                      {/* 썸네일 영역 */}
+                      {hasThumbnail && (
+                        <div className="w-40 h-40 flex-shrink-0 relative overflow-hidden">
+                          {videoInfo.type === 'video' ? (
+                            // 자체 업로드 비디오 - 아이콘 플레이스홀더
+                            <div className="w-full h-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                              <div className="text-center">
+                                <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-2">
+                                  <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                  </svg>
+                                </div>
+                                <span className="text-white text-xs font-medium">VIDEO</span>
+                              </div>
                             </div>
-                          )}
+                          ) : videoInfo.type === 'youtube' && videoInfo.thumbnail ? (
+                            // YouTube - 썸네일 이미지
+                            <>
+                              <img
+                                src={videoInfo.thumbnail}
+                                alt="YouTube thumbnail"
+                                className="w-full h-full object-cover"
+                              />
+                              <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                                <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center">
+                                  <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </>
+                          ) : imageSrc ? (
+                            <img
+                              src={imageSrc}
+                              alt="Thumbnail"
+                              className="w-full h-full object-cover"
+                            />
+                          ) : null}
                         </div>
-                      </div>
+                      )}
 
-                      <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button
-                          onClick={() => handleEdit(post)}
-                          className="p-2.5 text-blue-600 hover:bg-blue-50 rounded-lg md:rounded-xl transition-colors cursor-pointer"
-                          title="Edit post"
-                        >
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                          </svg>
-                        </button>
-                        <button
-                          onClick={() => handleDelete(post.id)}
-                          className="p-2.5 text-red-600 hover:bg-red-50 rounded-lg md:rounded-xl transition-colors cursor-pointer"
-                          title="Delete post"
-                        >
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                          </svg>
-                        </button>
+                      {/* 컨텐츠 영역 */}
+                      <div className="flex-1 p-6">
+                        <div className="flex justify-between items-start gap-4">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-3 mb-3">
+                              <span className={`px-2.5 py-1 text-xs font-medium rounded-full ${post.category === 'customer_feedback'
+                                ? 'bg-purple-100 text-purple-700'
+                                : 'bg-blue-100 text-blue-700'
+                                }`}>
+                                {post.category === 'customer_feedback' ? 'Customer Feedback' : 'Blog'}
+                              </span>
+                              {videoInfo.type && (
+                                <span className={`px-2.5 py-1 text-xs font-medium rounded-full ${
+                                  videoInfo.type === 'youtube'
+                                    ? 'bg-red-100 text-red-700'
+                                    : 'bg-orange-100 text-orange-700'
+                                }`}>
+                                  {videoInfo.type === 'youtube' ? 'YouTube' : 'Video'}
+                                </span>
+                              )}
+                              <span className="text-sm text-gray-400">
+                                {new Date(post.created_at).toLocaleDateString('en-US', {
+                                  year: 'numeric',
+                                  month: 'short',
+                                  day: 'numeric'
+                                })}
+                              </span>
+                            </div>
+
+                            <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-1">
+                              {post.title}
+                            </h3>
+
+                            <p className="text-gray-500 line-clamp-2 text-sm mb-4">
+                              {stripHtml(post.content)}
+                            </p>
+
+                            <div className="flex items-center gap-4 text-sm text-gray-400">
+                              <div className="flex items-center gap-1.5">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                                <span className="truncate max-w-[150px]">{post.author_email}</span>
+                              </div>
+                              {post.updated_at && post.updated_at !== post.created_at && (
+                                <div className="flex items-center gap-1.5 text-blue-500">
+                                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                  </svg>
+                                  <span>Updated {new Date(post.updated_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button
+                              onClick={() => handleEdit(post)}
+                              className="p-2.5 text-blue-600 hover:bg-blue-50 rounded-lg md:rounded-xl transition-colors cursor-pointer"
+                              title="Edit post"
+                            >
+                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                              </svg>
+                            </button>
+                            <button
+                              onClick={() => handleDelete(post.id)}
+                              className="p-2.5 text-red-600 hover:bg-red-50 rounded-lg md:rounded-xl transition-colors cursor-pointer"
+                              title="Delete post"
+                            >
+                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             )}
           </div>
         )}

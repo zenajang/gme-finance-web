@@ -54,7 +54,7 @@ export default function GarlandDecoration({
       {/* 왼쪽 상단 garland - 모바일 */}
       <div
         className={`absolute bg-no-repeat -left-5 block md:hidden ${isStandard
-          ? 'top-68 h-90 w-70 bg-left-top -ml-3'
+          ? 'top-68 h-90 w-70 bg-left-t op -ml-3'
           : 'top-75 h-50 w-full bg-left-top ml-5'
           }`}
         style={{

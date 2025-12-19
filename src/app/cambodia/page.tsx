@@ -15,35 +15,23 @@ import { useTranslation } from "react-i18next";
 
 const CAMBODIA_SOCIALS: SocialsItem[] = [
   {
-    id: 'facebook',
-    image: '/images/cambodia/social1.jpg',
-    snsLogo: '/images/icons/facebook.svg',
-    title: 'GME Finance Cambodia',
-    likes: '2.5K',
-    followers: '3.1K',
-    tags: ['Event', 'News', 'Updates'],
-    href: '/news/cambodia/facebook',
+    id: "fb-cb",
+    platform: "facebook",
+    embedUrl: "https://www.facebook.com/profile.php?id=61568524845755&locale=ko_KR",
+    href: "https://www.facebook.com/profile.php?id=61568524845755&locale=ko_KR",
+    image: "/images/dummy.jpg",
+    snsLogo: "/images/icons/facebook.svg",
+    title: "GME Cambodia Finance (Facebook)",
   },
   {
-    id: 'tiktok',
-    image: '/images/cambodia/social2.jpg',
-    snsLogo: '/images/icons/tictok.svg',
-    title: 'GME Finance Cambodia',
-    likes: '1.8K',
-    followers: '2.4K',
-    tags: ['Videos', 'Tips', 'Community'],
-    href: '/news/cambodia/tiktok',
-  },
-  {
-    id: 'instagram',
-    image: '/images/cambodia/social3.jpg',
-    snsLogo: '/images/icons/instagram.svg',
-    title: 'GME Finance Cambodia',
-    likes: '2.1K',
-    followers: '2.8K',
-    tags: ['Photos', 'Stories', 'News'],
-    href: '/news/cambodia/instagram',
-  },
+    id: "tt-cb",
+    platform: "tiktok",
+    embedUrl: "https://www.tiktok.com/@gmefinancecambodia",
+    href: "https://www.tiktok.com/@gmefinancecambodia",
+    image: "/images/dummy.jpg",
+    snsLogo: "/images/icons/tictok.svg",
+    title: "GME Cambodia Finance (TikTok)",
+  }
 ];
 
 const CAMBODIA_TEAMS: Teams[] = [

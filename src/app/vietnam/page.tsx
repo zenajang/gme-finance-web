@@ -15,35 +15,23 @@ import { useTranslation } from "react-i18next";
 
 const VIETNAM_SOCIALS: SocialsItem[] = [
   {
-    id: 'facebook',
-    image: '/images/vietnam/social1.jpg',
-    snsLogo: '/images/icons/facebook.svg',
-    title: 'GME Finance Vietnam',
-    likes: '2.5K',
-    followers: '3.1K',
-    tags: ['Event', 'News', 'Updates'],
-    href: '/news/vietnam/facebook',
+    id: "fb-vn",
+    platform: "facebook",
+    embedUrl: "https://www.facebook.com/gmefinancevn?locale=ko_KR",
+    href: "https://www.facebook.com/gmefinancevn?locale=ko_KR",
+    image: "/images/dummy.jpg",
+    snsLogo: "/images/icons/facebook.svg",
+    title: "GME Vietnam Finance (Facebook)",
   },
   {
-    id: 'tiktok',
-    image: '/images/vietnam/social2.jpg',
-    snsLogo: '/images/icons/tictok.svg',
-    title: 'GME Finance Vietnam',
-    likes: '1.8K',
-    followers: '2.4K',
-    tags: ['Videos', 'Tips', 'Community'],
-    href: '/news/vietnam/tiktok',
-  },
-  {
-    id: 'instagram',
-    image: '/images/vietnam/social3.jpg',
-    snsLogo: '/images/icons/instagram.svg',
-    title: 'GME Finance Vietnam',
-    likes: '2.1K',
-    followers: '2.8K',
-    tags: ['Photos', 'Stories', 'News'],
-    href: '/news/vietnam/instagram',
-  },
+    id: "tt-vn",
+    platform: "tiktok",
+    embedUrl: "https://www.tiktok.com/@gmefinancevietnam",
+    href: "https://www.tiktok.com/@gmefinancevietnam",
+    image: "/images/dummy.jpg",
+    snsLogo: "/images/icons/tictok.svg",
+    title: "GME Vietnam Finance (TikTok)",
+  }
 ];
 
 const VIETNAM_TEAMS: Teams[] = [

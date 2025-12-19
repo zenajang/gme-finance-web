@@ -1,86 +1,135 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { COMMON_COLORS } from "@/constants/colors";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { createClient } from '@/lib/supabase/client';
 
 import 'swiper/css';
 import { useTranslation } from 'react-i18next';
 
-type NewsItem = {
+interface BlogPost {
   id: string;
-  date: string;
+  title: string;
   content: string;
-  video: string;
-  name: string;
-  career: string;
-};
-
-const NEWS: NewsItem[] = [
-  {
-    id: 'gme-cricket-2025',
-    date: '2025-06-27',
-    content: "GME Finance was a lifesaver! Their team provided exceptional support and guidance as I navigated the loan process. The application was easy, the rates were competitive, and they quickly approved my loan. I can't recommend them enough for anyone seeking reliable financial assistance",
-    video: '/images/introduction.jpg',
-    career: 'Factory Worker',
-    name: 'Chanta',
-  },
-  {
-    id: 'anniv-gift',
-    date: '2025-06-27',
-    content: 'Thanks to GME Finance, a huge weight has been lifted off my financial burden. Their loan services were incredibly fast and affordable. Their terms and conditions were also very friendly! I am grateful to GME Finance for providing me with a solution during my time of need.',
-    video: '/images/introduction.jpg',
-    career: 'Factory Worker',
-    name: 'M.Agus'
-  },
-  {
-    id: 'raffle-draw',
-    date: '2025-06-27',
-    content: 'GME Finance has been a game-changer for my finances. Their loans are not only fast and convenient but also perfectly suited to my needs. I was impressed by their speedy approval and customizable repayment plans. GME Finance truly puts their customers first, and their service is top-notch. I wholeheartedly recommend them to anyone seeking financial support.',
-    video: '/images/introduction.jpg',
-    career: 'Factory Worker',
-    name: 'Lolita Gomonid'
-  },
-];
+  author_email: string;
+  created_at: string;
+  updated_at: string;
+}
 
 function formatDate(d: string) {
   const dt = new Date(d);
   return `${dt.getFullYear()}.${String(dt.getMonth() + 1).padStart(2, '0')}.${String(dt.getDate()).padStart(2, '0')}`;
 }
 
-function FeedbackCard({ item }: { item: NewsItem }) {
+// HTML에서 텍스트만 추출 (미리보기용)
+function getTextPreview(html: string, maxLength: number = 200): string {
+  const text = html.replace(/<[^>]*>/g, '');
+  return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+}
+
+// HTML에서 첫 번째 비디오 추출
+function extractFirstVideo(html: string): string | null {
+  const videoMatch = html.match(/<video[^>]*src="([^">]+)"/);
+  if (videoMatch) return videoMatch[1];
+  const sourceMatch = html.match(/<source[^>]*src="([^">]+)"/);
+  return sourceMatch ? sourceMatch[1] : null;
+}
+
+function FeedbackCard({ post }: { post: BlogPost }) {
+  const videoSrc = extractFirstVideo(post.content);
+
   return (
     <article className="rounded-3xl bg-white flex flex-col min-h-[380px] md:min-h-[550px] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] overflow-hidden">
       <div className="p-6 md:p-8 flex flex-col flex-1">
         <header className="flex items-end justify-between mb-3">
           <div className="flex items-end gap-2">
             <Image src="/images/thumb.png" alt="Speaker" width={30} height={30} className="w-5 h-5 md:w-[30px] md:h-[30px]" />
-            <p className="text-sm md:text-[1.1rem] lg:text-[1.1rem] font-medium leading-none">{item.name}</p>
-            <p className="text-small text-gray-500 leading-none">{item.career}</p>
+            <p className="text-sm md:text-[1.1rem] lg:text-[1.1rem] font-medium leading-none">{post.title}</p>
           </div>
           <div className="hidden md:block text-small text-gray-500 leading-none">
-            {formatDate(item.date)}
+            {formatDate(post.created_at)}
           </div>
         </header>
 
         <p className="text-sm md:text-sm lg:text-[1rem] leading-snug line-clamp-6 md:line-clamp-8 mb-3">
-          {item.content}
+          {getTextPreview(post.content)}
         </p>
       </div>
-      <video
-        className="relative w-full h-[200px] md:h-1/2 lg:h-1/2"
-        controls
-        preload="none"
-        playsInline
-      >
-        <source src="/testimonial.mp4" type="video/mp4" />
-      </video>
+      {videoSrc ? (
+        <div className="relative w-full h-[200px] md:h-1/2 lg:h-1/2 group">
+          <video
+            className="w-full h-full object-cover"
+            controls
+            preload="metadata"
+            playsInline
+            crossOrigin="anonymous"
+            src={`${videoSrc}#t=0.5`}
+          />
+          {/* 재생 버튼 오버레이 - 재생 전에만 보임 */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-[:not(:has(video:playing))]:opacity-100">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-black/50 flex items-center justify-center">
+              <svg className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="relative w-full h-[200px] md:h-1/2 lg:h-1/2 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
+          <svg className="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+        </div>
+      )}
     </article>
   );
 }
 
 export default function CustomerFeedbackSection() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('published', true)
+          .eq('category', 'customer_feedback')
+          .order('created_at', { ascending: false })
+          .limit(3);
+
+        if (error) throw error;
+        setPosts(data || []);
+      } catch (error) {
+        console.error('Error fetching feedback posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="pt-8 md:pt-14 lg:pt-16 pb-12 md:pb-20 lg:pb-20 px-0 md:px-45 lg:px-45 bg-white relative overflow-hidden">
+        <div className="relative z-10 flex items-center justify-center min-h-[400px]">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+        </div>
+      </section>
+    );
+  }
+
+  if (posts.length === 0) {
+    return null;
+  }
+
   return (
     <section className="pt-8 md:pt-14 lg:pt-16 pb-12 md:pb-20 lg:pb-20 px-0 md:px-45 lg:px-45 bg-white bg-cover bg-center bg-no-repeat relative overflow-hidden">
       <div className="absolute top-0 right-0 w-24 md:w-140 h-12 md:h-55 rounded-full -mr-12 md:-mr-52 -mt-0 rotate-45 animate-oscillate" style={{ background: `radial-gradient(circle, ${COMMON_COLORS.accentRed1} 0%, ${COMMON_COLORS.accentRed3} 100%)` }} />
@@ -100,10 +149,10 @@ export default function CustomerFeedbackSection() {
             centeredSlides={false}
             className="customer-feedback-swiper"
           >
-            {NEWS.map((item, index) => (
-              <SwiperSlide key={item.id}>
-                <div className={index === NEWS.length - 1 ? 'pr-5' : ''}>
-                  <FeedbackCard item={item} />
+            {posts.map((post, index) => (
+              <SwiperSlide key={post.id}>
+                <div className={index === posts.length - 1 ? 'pr-5' : ''}>
+                  <FeedbackCard post={post} />
                 </div>
               </SwiperSlide>
             ))}
@@ -112,8 +161,8 @@ export default function CustomerFeedbackSection() {
 
         {/* 데스크톱 버전 - Grid 레이아웃 */}
         <div className="hidden md:grid md:grid-cols-3 gap-8 mt-8 ">
-          {NEWS.map((item) => (
-            <FeedbackCard key={item.id} item={item} />
+          {posts.map((post) => (
+            <FeedbackCard key={post.id} post={post} />
           ))}
         </div>
         <div className="text-center mt-0 md:mt-15 lg:mt-15">

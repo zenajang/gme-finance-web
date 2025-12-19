@@ -1,93 +1,97 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
 
 // Swiper 스타일 import
 import 'swiper/css';
 import { useTranslation } from 'react-i18next';
 
-type NewsItem = {
+interface BlogPost {
   id: string;
-  tags: string[];
-  date: string;
   title: string;
-  image: string;
-  href?: string;
-};
-
-const NEWS: NewsItem[] = [
-  {
-    id: 'gme-cricket-2025',
-    tags: ['News', 'Collaboration', 'Restaurant'],
-    date: '2025-06-27',
-    title: 'GME Finance is collaborating with the Warcop restaurant in Ansan',
-    image: '/images/introduction.jpg',
-    href: '/news/gme',
-  },
-  {
-    id: 'anniv-gift',
-    tags: ['Event', 'Anniversary', 'Gift'],
-    date: '2025-06-27',
-    title: 'GME Finance 6th Anniversary Gift Event',
-    image: '/images/introduction.jpg',
-    href: '/news/anniv-gift',
-  },
-  {
-    id: 'raffle-draw',
-    tags: ['Event', 'Anniversary', 'Travel'],
-    date: '2025-06-27',
-    title: 'GME Finance 6th Anniversary Travel Raffle Draw Event',
-    image: '/images/introduction.jpg',
-    href: '/news/raffle-draw',
-  },
-];
+  content: string;
+  author_email: string;
+  created_at: string;
+  updated_at: string;
+}
 
 function formatDate(d: string) {
   const dt = new Date(d);
   return `${dt.getFullYear()}.${String(dt.getMonth() + 1).padStart(2, '0')}.${String(dt.getDate()).padStart(2, '0')}`;
 }
 
-function NewsCard({ item }: { item: NewsItem }) {
+// HTML에서 첫 번째 이미지 추출
+function extractFirstImage(html: string): string | null {
+  const imgMatch = html.match(/<img[^>]+src="([^">]+)"/);
+  return imgMatch ? imgMatch[1] : null;
+}
+
+// HTML에서 텍스트만 추출 (미리보기용)
+function getTextPreview(html: string, maxLength: number = 100): string {
+  const text = html.replace(/<[^>]*>/g, '');
+  return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+}
+
+function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
+  const thumbnail = extractFirstImage(post.content);
+
   return (
-    <article className="rounded-2xl bg-white flex flex-col min-h-[380px] md:min-h-[560px] shadow-sm overflow-hidden">
+    <article
+      onClick={onClick}
+      className="rounded-2xl bg-white flex flex-col min-h-[380px] md:min-h-[560px] shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+    >
       <div className="p-6 md:p-8 flex flex-col flex-1">
         <header className="flex items-start justify-between mb-3">
           <div className="flex items-start gap-2">
             <Image src="/images/speaker.png" alt="Speaker" width={25} height={25} className="w-5 h-5 md:w-[25px] md:h-[25px]" />
             <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2">
-              <p className="text-sm md:text-[1.1em]">{item.tags[0]}</p>
-              <p className="text-xs md:text-sm text-gray-500 md:mt-0.5">{formatDate(item.date)}</p>
+              <p className="text-sm md:text-[1.1em]">News</p>
+              <p className="text-xs md:text-sm text-gray-500 md:mt-0.5">{formatDate(post.created_at)}</p>
             </div>
           </div>
-          <button className="text-gray-500 hover:text-gray-700" aria-label="more">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-              <circle cx="10" cy="4" r="1.5" />
-              <circle cx="10" cy="10" r="1.5" />
-              <circle cx="10" cy="16" r="1.5" />
-            </svg>
-          </button>
         </header>
 
         {/* 제목 */}
         <h3 className="text-md md:text-[1.85rem] leading-snug line-clamp-3 mb-3 font-medium">
-          {item.title}
+          {post.title}
         </h3>
+
+        {/* 미리보기 */}
+        <p className="text-sm text-gray-600 line-clamp-2">
+          {getTextPreview(post.content)}
+        </p>
       </div>
-      <div className="px-6 md:px-8 py-1 flex flex-wrap gap-2 text-tag text-gray-500">
-        {item.tags.map((tag, index) => (
-          <span key={index}>#{tag}</span>
-        ))}
-      </div>
-      <div className="relative w-full h-[180px] h-1/2">
-        <Image
-          src={item.image}
-          alt={item.title}
-          fill
-          className="object-cover"
-          sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
-          priority={false}
-        />
+      <div className="relative w-full h-[180px] md:h-1/2">
+        {thumbnail ? (
+          <Image
+            src={thumbnail}
+            alt={post.title}
+            fill
+            className="object-cover"
+            sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+            priority={false}
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
+            <svg
+              className="w-16 h-16 text-white opacity-50"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+              />
+            </svg>
+          </div>
+        )}
       </div>
     </article>
   );
@@ -95,6 +99,54 @@ function NewsCard({ item }: { item: NewsItem }) {
 
 export default function LatestNewsSection() {
   const { t } = useTranslation();
+  const router = useRouter();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('published', true)
+          .eq('category', 'blog')
+          .order('created_at', { ascending: false })
+          .limit(3);
+
+        if (error) throw error;
+        setPosts(data || []);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-8 md:py-14 lg:py-16 px-0 md:px-45 lg:px-45 relative overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, #9F0920 0%, #D81313 33%, #E6271E 60%, #F97B3F 100%)'
+          }}
+        />
+        <div className="relative z-10 flex items-center justify-center min-h-[400px]">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+        </div>
+      </section>
+    );
+  }
+
+  if (posts.length === 0) {
+    return null;
+  }
+
   return (
     <section
       className="py-8 md:py-14 lg:py-16 px-0 md:px-45 lg:px-45 bg-white bg-cover bg-center bg-no-repeat relative overflow-hidden"
@@ -117,10 +169,10 @@ export default function LatestNewsSection() {
             slidesOffsetAfter={-10}
             centeredSlides={false}
           >
-            {NEWS.map((item, index) => (
-              <SwiperSlide key={item.id}>
-                <div className={index === NEWS.length - 1 ? 'pr-5' : ''}>
-                  <NewsCard item={item} />
+            {posts.map((post, index) => (
+              <SwiperSlide key={post.id}>
+                <div className={index === posts.length - 1 ? 'pr-5' : ''}>
+                  <NewsCard post={post} onClick={() => router.push(`/about/blog/${post.id}`)} />
                 </div>
               </SwiperSlide>
             ))}
@@ -129,13 +181,16 @@ export default function LatestNewsSection() {
 
         {/* 데스크톱 버전 - Grid 레이아웃 */}
         <div className="hidden md:grid md:grid-cols-3 gap-8 mt-8">
-          {NEWS.map((item) => (
-            <NewsCard key={item.id} item={item} />
+          {posts.map((post) => (
+            <NewsCard key={post.id} post={post} onClick={() => router.push(`/about/blog/${post.id}`)} />
           ))}
         </div>
 
         <div className="text-center mt-0 md:mt-15 lg:mt-15">
-          <button className="bg-white text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-colors">
+          <button
+            onClick={() => router.push('/about/blog')}
+            className="bg-white text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-colors"
+          >
             {t('button.seeMore')}
           </button>
         </div>

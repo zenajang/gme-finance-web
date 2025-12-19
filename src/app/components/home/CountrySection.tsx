@@ -24,7 +24,7 @@ export default function CountrySection() {
   const touchStartPos = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
   const duplicatedCountries = [...COUNTRIES, ...COUNTRIES, ...COUNTRIES];
-  const singleSetWidth = COUNTRIES.length * 180;
+  const singleSetWidth = COUNTRIES.length * 170;
 
   useEffect(() => {
     const checkMobile = () => {
@@ -86,7 +86,7 @@ export default function CountrySection() {
       swiperRef.current.slidePrev();
     } else {
       setScrollPosition((prev) => {
-        const newPos = prev - 180;
+        const newPos = prev - 170;
         return newPos < 0 ? singleSetWidth + newPos : newPos;
       });
     }
@@ -97,7 +97,7 @@ export default function CountrySection() {
       swiperRef.current.slideNext();
     } else {
       setScrollPosition((prev) => {
-        const newPos = prev + 180;
+        const newPos = prev + 170;
         return newPos >= singleSetWidth ? newPos - singleSetWidth : newPos;
       });
     }
@@ -141,6 +141,7 @@ export default function CountrySection() {
               }}
               slidesPerView={3}
               centeredSlides={true}
+              spaceBetween={10}
               loop={true}
               speed={300}
               autoplay={{
@@ -155,7 +156,7 @@ export default function CountrySection() {
                     <div
                       className="flex flex-col items-center transition-transform duration-300"
                       style={{
-                        transform: `scale(${isActive ? 1.25 : isPrev || isNext ? 1 : 0.85})`,
+                        transform: `scale(${isActive ? 1.1 : isPrev || isNext ? 0.95 : 0.85})`,
                       }}
                     >
                       <div
@@ -166,17 +167,15 @@ export default function CountrySection() {
                         }}
                         className="flex flex-col items-center p-2 rounded-lg transition-colors w-full cursor-pointer"
                       >
-                        <div className="w-28 h-28 overflow-visible relative flex items-center justify-center flag-ring">
-                          <div className={`relative w-full h-full ${country.scale}`}>
-                            <Image
-                              src={country.flag}
-                              alt={country.name}
-                              fill
-                              className="object-cover"
-                              loading="eager"
-                              unoptimized
-                            />
-                          </div>
+                        <div className="w-24 h-24 overflow-visible relative flex items-center justify-center flag-ring">
+                          <Image
+                            src={country.flag}
+                            alt={country.name}
+                            fill
+                            className="object-cover"
+                            loading="eager"
+                            unoptimized
+                          />
                         </div>
                         <span className="text-sm font-medium whitespace-nowrap mt-2">
                           {country.name}
@@ -202,23 +201,21 @@ export default function CountrySection() {
               {duplicatedCountries.map((country, index) => (
                 <div
                   key={`${country.code}-${index}`}
-                  className="flex-shrink-0 w-[180px]"
+                  className="flex-shrink-0 w-[170px]"
                 >
                   <Link
                     href={`/${country.name.toLowerCase()}`}
                     className="flex flex-col items-center p-2 hover:bg-gray-50 rounded-lg transition-colors w-full"
                   >
-                    <div className="w-40 h-40 overflow-visible relative flex items-center justify-center flag-ring">
-                      <div className={`relative w-full h-full ${country.scale}`}>
-                        <Image
-                          src={country.flag}
-                          alt={country.name}
-                          fill
-                          className="object-cover"
-                          loading="eager"
-                          unoptimized
-                        />
-                      </div>
+                    <div className="w-32 h-32 overflow-visible relative flex items-center justify-center flag-ring">
+                      <Image
+                        src={country.flag}
+                        alt={country.name}
+                        fill
+                        className="object-cover"
+                        loading="eager"
+                        unoptimized
+                      />
                     </div>
                     <span className="text-base font-medium whitespace-nowrap">
                       {country.name}
