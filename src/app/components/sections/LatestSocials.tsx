@@ -146,8 +146,9 @@ function InstagramPostEmbed({ postUrl }: { postUrl: string }) {
     const scriptId = "instagram-embed-js";
 
     const processEmbed = () => {
-      if ((window as any).instgrm?.Embeds) {
-        (window as any).instgrm.Embeds.process();
+      const win = window as Window & { instgrm?: { Embeds?: { process: () => void } } };
+      if (win.instgrm?.Embeds) {
+        win.instgrm.Embeds.process();
       }
     };
 
