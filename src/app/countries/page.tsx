@@ -11,7 +11,7 @@ export default function CountriesPage() {
     name === "SriLanka" ? "Sri Lanka" : name;
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       <div className="relative overflow-hidden">
         <div
           className="absolute inset-0"
@@ -30,7 +30,7 @@ export default function CountriesPage() {
           />
         </div>
         <div className="relative mx-auto max-w-6xl px-6 pb-16">
-          <h1 className="pt-15 pb-10 text-center text-4xl font-semibold text-neutral-800">
+          <h1 className="pt-15 pb-10 text-center text-4xl font-semibold text-neutral-800 mt-10 md:mt-20">
             Countries
           </h1>
 

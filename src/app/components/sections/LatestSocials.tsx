@@ -227,11 +227,13 @@ function SocialCard({
         mb-10
       "
     >
-      {/* ✅ 위젯 영역: 높이 고정 + 내부 스크롤 */}
-      <div className="w-full h-[240px] md:h-[420px] bg-white">
-        <div className="w-full h-full overflow-y-auto overflow-x-hidden">
+      {/* ✅ 위젯 영역: 높이 고정 + 클릭 차단 오버레이 */}
+      <div className="w-full h-[240px] md:h-[420px] bg-white relative">
+        <div className="w-full h-full overflow-y-auto overflow-x-hidden pointer-events-none">
           <SocialEmbed item={item} />
         </div>
+        {/* 클릭 차단 오버레이 */}
+        <div className="absolute inset-0 z-10" />
       </div>
 
       <div className="p-4 md:p-6 flex flex-col flex-1">
