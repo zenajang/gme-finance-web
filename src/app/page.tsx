@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import IntroductionSection from "./components/home/IntroductionSection";
+import MainIntroductionSection from "./components/home/MainIntroductionSection";
 import CountrySection from "./components/home/CountrySection";
 import {
   NewsLoadingSkeleton,
@@ -44,7 +44,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <IntroductionSection />
+      <MainIntroductionSection />
       <CountrySection />
       <AnimatedBannerSection />
       <LatestNewsSection />

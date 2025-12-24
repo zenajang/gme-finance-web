@@ -1,6 +1,6 @@
 'use client'
 
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -95,7 +95,7 @@ export default function RussiaPage() {
 
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/russia/background.webm"
         title={t('country.russia')}
         description={t('countryPage.mainTitle')}

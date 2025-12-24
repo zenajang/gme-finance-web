@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -37,22 +37,22 @@ const BANGLADESH_SOCIALS: SocialsItem[] = [
 const BANGLADESH_TEAMS: Teams[] = [
   {
     id: 'taizul',
-    image: '/images/bangladesh/team/taizul.svg',
+    image: '/images/bangladesh/team/taizul.jpg',
     name: 'TAIZUL',
   },
   {
     id: 'parag',
-    image: '/images/bangladesh/team/parag.svg',
+    image: '/images/bangladesh/team/parag.jpg',
     name: 'PARAG',
   },
   {
     id: 'ripon',
-    image: '/images/bangladesh/team/ripon.svg',
+    image: '/images/bangladesh/team/ripon.jpg',
     name: 'RIPON',
   },
   {
     id: 'saiful',
-    image: '/images/bangladesh/team/saiful.svg',
+    image: '/images/bangladesh/team/saiful.jpg',
     name: 'SAIFUL',
   },
   {
@@ -78,7 +78,7 @@ export default function BangladeshPage() {
 
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/bangladesh/background.webm"
         title={t('country.bangladesh')}
         description={t('countryPage.mainTitle')}

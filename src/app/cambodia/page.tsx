@@ -1,7 +1,7 @@
 'use client'
 
 import { getGradient } from "@/constants/colors";
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -37,12 +37,12 @@ const CAMBODIA_SOCIALS: SocialsItem[] = [
 const CAMBODIA_TEAMS: Teams[] = [
   {
     id: 'tabitha',
-    image: '/images/cambodia/team/tabitha.svg',
+    image: '/images/cambodia/team/tabitha.jpg',
     name: 'TABITHA',
   },
   {
     id: 'viny',
-    image: '/images/cambodia/team/viny.svg',
+    image: '/images/cambodia/team/viny.jpg',
     name: 'VINY',
 
   },
@@ -67,7 +67,7 @@ export default function CambodiaPage() {
   const { t } = useTranslation();
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/cambodia/background.webm"
         title={t('country.cambodia')}
         description={t('countryPage.mainTitle')}

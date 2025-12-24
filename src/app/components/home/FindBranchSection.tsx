@@ -143,7 +143,7 @@ export default function FindBranchSection() {
     <div className="relative">
       <section className="relative h-60 md:h-70 lg:h-100">
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center">
-          <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-4 lg:mb-10 mt-15">
+          <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-4 lg:mb-10 lg:mt-15">
             Find a branch
           </h2>
           <p className="text-subheading text-center mb-5 md:mb-10 lg:mb-15 text-red-500 font-medium">

@@ -213,7 +213,7 @@ export default function AdminPage() {
     try {
       const supabase = createClient();
       if (isEditMode && editingPostId) {
-        const { error } = await supabase
+        const { data, error } = await supabase
           .from('blog_posts')
           .update({
             title,
@@ -221,10 +221,13 @@ export default function AdminPage() {
             category,
             updated_at: new Date().toISOString(),
           })
-          .eq('id', editingPostId);
+          .eq('id', editingPostId)
+          .select();
 
         if (error) {
           alert('Error updating post: ' + error.message);
+        } else if (!data || data.length === 0) {
+          alert('Update failed: No rows were updated. Please check permissions.');
         } else {
           alert('Post updated successfully!');
           resetForm();

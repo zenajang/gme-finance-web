@@ -17,7 +17,7 @@ const FORCE_VISIBLE_PATHS = [
   '/restrictions',
   '/manual',
   '/about/blog',
-  '/countries',
+  '/countries'
 ];
 
 export default function Header() {

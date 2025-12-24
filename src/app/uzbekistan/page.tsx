@@ -1,7 +1,7 @@
 'use client'
 
 import { getColorScheme } from "@/constants/colors";
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -46,39 +46,39 @@ const UZBEKISTAN_SOCIALS: SocialsItem[] = [
 const UZBEKISTAN_TEAMS: Teams[] = [
   {
     id: 'hamid',
-    image: '/images/uzbekistan/team/hamid.svg',
+    image: '/images/uzbekistan/team/hamid.jpg',
     name: 'HAMID',
   },
   {
     id: 'zed',
-    image: '/images/uzbekistan/team/zed.svg',
+    image: '/images/uzbekistan/team/zed.jpg',
     name: 'ZED',
 
   },
   {
     id: 'mark',
-    image: '/images/uzbekistan/team/mark.svg',
+    image: '/images/uzbekistan/team/mark.jpg',
     name: 'MARK',
   },
   {
     id: 'mikhail',
-    image: '/images/uzbekistan/team/mikhail.svg',
+    image: '/images/uzbekistan/team/mikhail.jpg',
     name: 'MIKHAIL',
   },
   {
     id: 'ruby',
-    image: '/images/uzbekistan/team/ruby.svg',
+    image: '/images/uzbekistan/team/ruby.jpg',
     name: 'RUBY',
 
   },
   {
     id: 'ziyoda',
-    image: '/images/uzbekistan/team/ziyoda.svg',
+    image: '/images/uzbekistan/team/ziyoda.jpg',
     name: 'ZIYODA',
   },
   {
     id: 'zoda',
-    image: '/images/uzbekistan/team/zoda.svg',
+    image: '/images/uzbekistan/team/zoda.jpg',
     name: 'ZODA',
 
   },
@@ -95,7 +95,7 @@ export default function UzbekistanPage() {
 
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/uzbekistan/background.webm"
         title={t('country.uzbekistan')}
         description={t('countryPage.mainTitle')}

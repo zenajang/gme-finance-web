@@ -1,6 +1,7 @@
 'use client'
 
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection
+  from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -46,23 +47,23 @@ const MYANMAR_SOCIALS: SocialsItem[] = [
 const MYANMAR_TEAMS: Teams[] = [
   {
     id: 'min',
-    image: '/images/myanmar/team/min.svg',
+    image: '/images/myanmar/team/min.jpg',
     name: 'MIN',
   },
   {
     id: 'suzan',
-    image: '/images/myanmar/team/suzan.svg',
+    image: '/images/myanmar/team/suzan.jpg',
     name: 'SUZAN',
 
   },
   {
     id: 'crystal',
-    image: '/images/myanmar/team/crystal.svg',
+    image: '/images/myanmar/team/crystal.jpg',
     name: 'CRYSTAL',
   },
   {
     id: 'eaindra',
-    image: '/images/myanmar/team/eaindra.svg',
+    image: '/images/myanmar/team/eaindra.jpg',
     name: 'EAINDRA',
   },
   {
@@ -88,7 +89,7 @@ export default function MyanmarPage() {
   const { t } = useTranslation()
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/myanmar/background.webm"
         title={t('country.myanmar')}
         description={t('countryPage.mainTitle')}

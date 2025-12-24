@@ -1,6 +1,6 @@
 'use client'
 
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -37,12 +37,12 @@ const VIETNAM_SOCIALS: SocialsItem[] = [
 const VIETNAM_TEAMS: Teams[] = [
   {
     id: 'lenissa',
-    image: '/images/vietnam/team/lenissa.svg',
+    image: '/images/vietnam/team/lenissa.jpg',
     name: 'Lenissa',
   },
   {
     id: 'haha',
-    image: '/images/vietnam/team/haha.svg',
+    image: '/images/vietnam/team/haha.jpg',
     name: 'Haha',
 
   }
@@ -53,7 +53,7 @@ export default function VietnamPage() {
 
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/vietnam/background.webm"
         title={t('country.vietnam')}
         description={t('countryPage.mainTitle')}

@@ -1,7 +1,7 @@
 'use client'
 
 import { getGradient } from "@/constants/colors";
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -46,18 +46,18 @@ const MONGOLIA_SOCIALS: SocialsItem[] = [
 const MONGOLIA_TEAMS: Teams[] = [
   {
     id: 'uuree',
-    image: '/images/mongolia/team/uuree.svg',
+    image: '/images/mongolia/team/uuree.jpg',
     name: 'UUREE',
   },
   {
     id: 'eba',
-    image: '/images/mongolia/team/eba.svg',
+    image: '/images/mongolia/team/eba.jpg',
     name: 'EBA',
 
   },
   {
     id: 'migga',
-    image: '/images/mongolia/team/migga.svg',
+    image: '/images/mongolia/team/migga.jpg',
     name: 'MIGGA',
   },
   {
@@ -78,7 +78,7 @@ export default function MongoliaPage() {
 
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/mongolia/background.webm"
         title={t('country.mongolia')}
         description={t('countryPage.mainTitle')}

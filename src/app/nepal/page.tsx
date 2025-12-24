@@ -1,6 +1,6 @@
 'use client'
 
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -37,23 +37,23 @@ const NEPAL_SOCIALS: SocialsItem[] = [
 const NEPAL_TEAMS: Teams[] = [
   {
     id: 'madhukar',
-    image: '/images/nepal/team/madhukar.svg',
+    image: '/images/nepal/team/madhukar.jpg',
     name: 'MADHUKAR',
   },
   {
     id: 'aashmi',
-    image: '/images/nepal/team/aashmi.svg',
+    image: '/images/nepal/team/aashmi.jpg',
     name: 'AASHMI',
 
   },
   {
     id: 'asmita',
-    image: '/images/nepal/team/asmita.svg',
+    image: '/images/nepal/team/asmita.jpg',
     name: 'ASMITA',
   },
   {
     id: 'prabha',
-    image: '/images/nepal/team/prabha.svg',
+    image: '/images/nepal/team/prabha.jpg',
     name: 'PRABHA',
   },
   {
@@ -74,7 +74,7 @@ export default function NepalPage() {
 
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/nepal/background.webm"
         title={t('country.nepal')}
         description={t('countryPage.mainTitle')}

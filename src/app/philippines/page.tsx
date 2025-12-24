@@ -1,5 +1,5 @@
 
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import GarlandDecoration from "../components/sections/GarlandDecoration";
@@ -44,18 +44,18 @@ const PHILIPPINES_SOCIALS: SocialsItem[] = [
 const PHILIPPINES_TEAMS: Teams[] = [
   {
     id: 'glen',
-    image: '/images/philippines/team/glen.svg',
+    image: '/images/philippines/team/glen.jpg',
     name: 'GLEN',
   },
   {
     id: 'eunice',
-    image: '/images/philippines/team/eunice.svg',
+    image: '/images/philippines/team/eunice.jpg',
     name: 'EUNICE',
 
   },
   {
     id: 'cherry',
-    image: '/images/philippines/team/cherry.svg',
+    image: '/images/philippines/team/cherry.jpg',
     name: 'CHERRY',
   },
   {
@@ -80,7 +80,7 @@ export default function PhilippinesPage() {
 
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/philippines/background.webm"
         title="Philippines"
       />

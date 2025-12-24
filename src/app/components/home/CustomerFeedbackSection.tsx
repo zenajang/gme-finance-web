@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { COMMON_COLORS } from "@/constants/colors";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { createClient } from '@/lib/supabase/client';
@@ -39,6 +40,32 @@ function extractFirstVideo(html: string): string | null {
 
 function FeedbackCard({ post }: { post: BlogPost }) {
   const videoSrc = extractFirstVideo(post.content);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showControls, setShowControls] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleVideoClick = () => {
+    if (!videoRef.current) return;
+
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+      setShowControls(true);
+    } else {
+      videoRef.current.play();
+      setIsPlaying(true);
+      // 재생 시작 후 잠시 후에 컨트롤 숨기기
+      setTimeout(() => setShowControls(false), 1500);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (isPlaying) setShowControls(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (isPlaying) setShowControls(false);
+  };
 
   return (
     <article className="rounded-3xl bg-white flex flex-col min-h-[380px] md:min-h-[550px] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] overflow-hidden">
@@ -58,21 +85,40 @@ function FeedbackCard({ post }: { post: BlogPost }) {
         </p>
       </div>
       {videoSrc ? (
-        <div className="relative w-full h-[200px] md:h-1/2 lg:h-1/2 group">
+        <div
+          className="relative w-full h-[200px] md:h-1/2 lg:h-1/2 cursor-pointer"
+          onClick={handleVideoClick}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <video
+            ref={videoRef}
             className="w-full h-full object-cover"
-            controls
             preload="metadata"
             playsInline
             crossOrigin="anonymous"
             src={`${videoSrc}#t=0.5`}
+            onEnded={() => {
+              setIsPlaying(false);
+              setShowControls(true);
+            }}
           />
-          {/* 재생 버튼 오버레이 - 재생 전에만 보임 */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-[:not(:has(video:playing))]:opacity-100">
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-black/50 flex items-center justify-center">
-              <svg className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+          {/* 재생/일시정지 버튼 오버레이 */}
+          <div
+            className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+              showControls ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-black/50 flex items-center justify-center hover:bg-black/70 transition-colors">
+              {isPlaying ? (
+                <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                </svg>
+              ) : (
+                <svg className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              )}
             </div>
           </div>
         </div>
@@ -89,6 +135,7 @@ function FeedbackCard({ post }: { post: BlogPost }) {
 
 export default function CustomerFeedbackSection() {
   const { t } = useTranslation();
+  const router = useRouter();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -166,7 +213,10 @@ export default function CustomerFeedbackSection() {
           ))}
         </div>
         <div className="text-center mt-0 md:mt-15 lg:mt-15">
-          <button className="bg-white shadow-[0_0_15px_rgba(0,0,0,0.15)] text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-all">
+          <button
+            onClick={() => router.push('/about/blog?category=customer_feedback')}
+            className="bg-white shadow-[0_0_15px_rgba(0,0,0,0.15)] text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-all"
+          >
             {t('button.seeMore')}
           </button>
         </div>

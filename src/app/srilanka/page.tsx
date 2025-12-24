@@ -1,7 +1,7 @@
 'use client'
 
 import { getGradient } from "@/constants/colors";
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -37,18 +37,18 @@ const SRILANKA_SOCIALS: SocialsItem[] = [
 const SRILANKA_TEAMS: Teams[] = [
   {
     id: 'malsha',
-    image: '/images/srilanka/team/malsha.svg',
+    image: '/images/srilanka/team/malsha.jpg',
     name: 'MALSHA',
   },
   {
     id: 'nova',
-    image: '/images/srilanka/team/nova.svg',
+    image: '/images/srilanka/team/nova.jpg',
     name: 'NOVA',
 
   },
   {
     id: 'udra',
-    image: '/images/srilanka/team/udra.svg',
+    image: '/images/srilanka/team/udra.jpg',
     name: 'UDRA',
   },
   {
@@ -80,7 +80,7 @@ export default function SrilankaPage() {
 
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/srilanka/background.webm"
         title={t('country.sri lanka')}
         description={t('countryPage.mainTitle')}

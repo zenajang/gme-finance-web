@@ -2,7 +2,7 @@
 
 
 import { getGradient } from "@/constants/colors";
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -47,12 +47,12 @@ const INDONESIA_SOCIALS: SocialsItem[] = [
 const INDONESIA_TEAMS: Teams[] = [
   {
     id: 'ferry',
-    image: '/images/indonesia/team/ferry.svg',
+    image: '/images/indonesia/team/ferry.jpg',
     name: 'FERRY',
   },
   {
     id: 'livi',
-    image: '/images/indonesia/team/livi.svg',
+    image: '/images/indonesia/team/livi.jpg',
     name: 'LIVI',
 
   },
@@ -83,7 +83,7 @@ export default function IndonesiaPage() {
   const { t } = useTranslation();
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/indonesia/background.webm"
         title={t('country.indonesia')}
         description={t('countryPage.mainTitle')}

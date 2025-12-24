@@ -1,6 +1,6 @@
 'use client'
 
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -46,7 +46,7 @@ const PAKISTAN_SOCIALS: SocialsItem[] = [
 const PAKISTAN_TEAMS: Teams[] = [
   {
     id: 'emma',
-    image: '/images/india/team/emma.svg',
+    image: '/images/india/team/emma.jpg',
     name: 'EMMA',
   },
 ];
@@ -57,7 +57,7 @@ export default function PakistanPage() {
 
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/pakistan/background.webm"
         title={t('country.pakistan')}
         description={t('countryPage.mainTitle')}

@@ -1,7 +1,7 @@
 'use client'
 
 import { getColorScheme, getGradient } from "@/constants/colors";
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -48,7 +48,7 @@ export default function ThailandPage() {
 
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/thailand/background.webm"
         title={t('country.thailand')}
         description={t('countryPage.mainTitle')}

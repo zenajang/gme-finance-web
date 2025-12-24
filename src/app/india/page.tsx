@@ -1,6 +1,6 @@
 
 import { getGradient } from "@/constants/colors";
-import CountryIntroductionSection from "../components/home/CountryIntroductionSection";
+import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
 import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
@@ -44,7 +44,7 @@ const INDIA_SOCIALS: SocialsItem[] = [
 const INDIA_TEAMS: Teams[] = [
   {
     id: 'emma',
-    image: '/images/india/team/emma.svg',
+    image: '/images/india/team/emma.jpg',
     name: 'Emma',
   }
 ];
@@ -53,7 +53,7 @@ export default function IndiaPage() {
 
   return (
     <div>
-      <CountryIntroductionSection
+      <IntroductionSection
         videoSrc="/images/india/background.webm"
         title="India"
       />
