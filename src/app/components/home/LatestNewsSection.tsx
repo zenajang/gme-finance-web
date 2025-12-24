@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
@@ -187,12 +188,12 @@ export default function LatestNewsSection() {
         </div>
 
         <div className="text-center mt-0 md:mt-15 lg:mt-15">
-          <button
-            onClick={() => router.push('/about/blog?category=blog')}
-            className="bg-white text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-colors"
+          <Link
+            href="/about/blog?category=blog"
+            className="inline-block bg-white text-md md:text-[1.35rem] rounded-xl shadow-sm lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-colors"
           >
             {t('button.seeMore')}
-          </button>
+          </Link>
         </div>
       </div>
     </section>

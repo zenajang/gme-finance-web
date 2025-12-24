@@ -167,7 +167,10 @@ export default function CountrySection() {
                         }}
                         className="flex flex-col items-center p-2 rounded-lg transition-colors w-full cursor-pointer"
                       >
-                        <div className="w-24 h-24 overflow-visible relative flex items-center justify-center flag-ring">
+                        <div
+                          className="w-24 h-24 overflow-hidden relative flex items-center justify-center flag-ring rounded-full"
+                          style={{ boxShadow: '0 6px 20px rgba(0, 0, 0, 0.25)' }}
+                        >
                           <Image
                             src={country.flag}
                             alt={country.name}
@@ -177,7 +180,7 @@ export default function CountrySection() {
                             unoptimized
                           />
                         </div>
-                        <span className="text-sm font-medium whitespace-nowrap mt-2">
+                        <span className="text-sm font-medium whitespace-nowrap mt-4">
                           {country.name}
                         </span>
                       </div>
@@ -207,7 +210,10 @@ export default function CountrySection() {
                     href={`/${country.name.toLowerCase()}`}
                     className="flex flex-col items-center p-2 hover:bg-gray-50 rounded-lg transition-colors w-full"
                   >
-                    <div className="w-32 h-32 overflow-visible relative flex items-center justify-center flag-ring">
+                    <div
+                      className="w-32 h-32 overflow-hidden relative flex items-center justify-center flag-ring rounded-full"
+                      style={{ boxShadow: '0 6px 20px rgba(0, 0, 0, 0.25)' }}
+                    >
                       <Image
                         src={country.flag}
                         alt={country.name}
@@ -217,7 +223,7 @@ export default function CountrySection() {
                         unoptimized
                       />
                     </div>
-                    <span className="text-base font-medium whitespace-nowrap">
+                    <span className="text-base font-medium whitespace-nowrap mt-4">
                       {country.name}
                     </span>
                   </Link>

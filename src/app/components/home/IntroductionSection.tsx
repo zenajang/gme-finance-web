@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { COMMON_COLORS } from "@/constants/colors";
 
 interface IntroductionSectionProps {
@@ -12,6 +13,7 @@ interface IntroductionSectionProps {
   buttonTextColor?: string;
   buttonBgColor?: string;
   buttonHoverBgColor?: string;
+  buttonHref?: string;
 }
 
 export default function IntroductionSection({
@@ -23,6 +25,7 @@ export default function IntroductionSection({
   buttonTextColor = COMMON_COLORS.primaryText,
   buttonBgColor = COMMON_COLORS.white,
   buttonHoverBgColor = COMMON_COLORS.primaryLight,
+  buttonHref,
 }: IntroductionSectionProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
@@ -73,17 +76,49 @@ export default function IntroductionSection({
         <h1 className="text-5xl md:text-7xl lg:text-7xl font-bold mb-4">{title}</h1>
         <p className="text-md md:text-2xl lg:text-2xl mb-8">{description}</p>
         <div className="w-full text-center md:text-left mt-0 md:mt-20">
-          <button
-            className="text-md md:text-[1.6rem] lg:text-[1.6rem] px-10 md:px-30 py-2 md:py-4 font-medium transition-colors"
-            style={{
-              backgroundColor: isHovered ? buttonHoverBgColor : buttonBgColor,
-              color: buttonTextColor
-            }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            {buttonText}
-          </button>
+          {buttonHref ? (
+            buttonHref.startsWith('http') ? (
+              <a
+                href={buttonHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl inline-block text-md md:text-[1.6rem] lg:text-[1.6rem] px-10 md:px-30 py-2 md:py-4 font-medium transition-colors"
+                style={{
+                  backgroundColor: isHovered ? buttonHoverBgColor : buttonBgColor,
+                  color: buttonTextColor
+                }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                {buttonText}
+              </a>
+            ) : (
+              <Link
+                href={buttonHref}
+                className="inline-block text-md md:text-[1.6rem] lg:text-[1.6rem] px-10 md:px-30 py-2 md:py-4 font-medium transition-colors"
+                style={{
+                  backgroundColor: isHovered ? buttonHoverBgColor : buttonBgColor,
+                  color: buttonTextColor
+                }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                {buttonText}
+              </Link>
+            )
+          ) : (
+            <button
+              className="text-md md:text-[1.6rem] lg:text-[1.6rem] px-10 md:px-30 py-2 md:py-4 font-medium transition-colors"
+              style={{
+                backgroundColor: isHovered ? buttonHoverBgColor : buttonBgColor,
+                color: buttonTextColor
+              }}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {buttonText}
+            </button>
+          )}
         </div>
       </div>
     </section>

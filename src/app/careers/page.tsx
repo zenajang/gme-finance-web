@@ -143,10 +143,11 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
   return (
     <div>
       <IntroductionSection
-        videoSrc="/images/background.webm"
+        videoSrc="/images/career.webm"
         title={'Be the change'}
         description={'Join Our Financial Mission'}
         buttonText={'See Our Vacancies'}
+        buttonHref="https://www.saramin.co.kr/zf_user/company-info/view-inner-recruit?csn=OHdqZkRQSDBYZVd2ckZvN0pEcnZxZz09"
         buttonBgColor={COMMON_COLORS.primary}
         buttonHoverBgColor={COMMON_COLORS.primaryHover}
         buttonTextColor={COMMON_COLORS.white}
@@ -222,8 +223,8 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
               >
                 {/* 텍스트 */}
                 <div className="flex-1 bg-[#F9F9F9] rounded-lg">
-                  <h3 className="text-lg md:text-3xl font-bold mb-2 md:mb-4 pl-10 pt-10">{perk.title}</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed pl-10">
+                  <h3 className="text-lg md:text-3xl font-bold mb-2 md:mb-4 px-6 md:px-0 md:pl-10 pt-6 md:pt-10 text-center md:text-left">{perk.title}</h3>
+                  <p className="text-sm md:text-base text-gray-600 leading-relaxed px-6 md:px-0 md:pl-10 pb-6 md:pb-0 text-center md:text-left">
                     {perk.description}
                   </p>
                 </div>

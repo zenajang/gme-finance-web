@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { COMMON_COLORS } from "@/constants/colors";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { createClient } from '@/lib/supabase/client';
@@ -105,9 +105,8 @@ function FeedbackCard({ post }: { post: BlogPost }) {
           />
           {/* 재생/일시정지 버튼 오버레이 */}
           <div
-            className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-              showControls ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0'
+              }`}
           >
             <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-black/50 flex items-center justify-center hover:bg-black/70 transition-colors">
               {isPlaying ? (
@@ -135,7 +134,6 @@ function FeedbackCard({ post }: { post: BlogPost }) {
 
 export default function CustomerFeedbackSection() {
   const { t } = useTranslation();
-  const router = useRouter();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -178,11 +176,13 @@ export default function CustomerFeedbackSection() {
   }
 
   return (
-    <section className="pt-8 md:pt-14 lg:pt-16 pb-12 md:pb-20 lg:pb-20 px-0 md:px-45 lg:px-45 bg-white bg-cover bg-center bg-no-repeat relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-24 md:w-140 h-12 md:h-55 rounded-full -mr-12 md:-mr-52 -mt-0 rotate-45 animate-oscillate" style={{ background: `radial-gradient(circle, ${COMMON_COLORS.accentRed1} 0%, ${COMMON_COLORS.accentRed3} 100%)` }} />
-      <div className="absolute top-12 md:top-55 right-0 w-32 md:w-180 h-12 md:h-55 rounded-full -mr-16 md:-mr-75 -mt-0 rotate-45 animate-oscillate" style={{ backgroundColor: COMMON_COLORS.accentRed2 }} />
-      <div className="absolute bottom-20 md:bottom-40 left-10 w-32 md:w-[500px] h-12 md:h-55 rounded-full -ml-24 md:-ml-38 mb-3 md:-mb-18 -rotate-145 animate-oscillate" style={{ background: `radial-gradient(circle, ${COMMON_COLORS.accentRed1} 0%, ${COMMON_COLORS.accentRed3} 100%)` }} />
-      <div className="absolute bottom-32 md:bottom-90 left-0 w-40 md:w-[700px] h-12 md:h-55 rounded-full -ml-20 md:-ml-68 -mb-0 md:-mb-16 -rotate-145 animate-oscillate" style={{ backgroundColor: COMMON_COLORS.accentRed2 }} />
+    <section className="pt-8 md:pt-14 lg:pt-16 pb-16 md:pb-28 lg:pb-28 px-0 md:px-45 lg:px-45 bg-white bg-cover bg-center bg-no-repeat relative overflow-hidden">
+      {/* 오른쪽 상단 장식 */}
+      <div className="absolute top-0 right-0 w-24 md:w-140 h-13 md:h-55 rounded-full -mr-8 md:-mr-52 -mt-2 md:-mt-8 rotate-45 animate-oscillate" style={{ background: 'linear-gradient(to bottom, #fa775f, #ff7261)' }} />
+      <div className="absolute top-12 md:top-55 right-0 w-32 md:w-180 h-13 md:h-55 rounded-full -mr-12 md:-mr-75 -mt-2 md:-mt-5 rotate-45 animate-oscillate" style={{ background: 'linear-gradient(to bottom, #FF6200, #EC3322)' }} />
+      {/* 왼쪽 하단 장식 */}
+      <div className="absolute bottom-22 md:bottom-48 left-0 w-28 md:w-[500px] h-13 md:h-55 rounded-full -ml-5 md:-ml-38 -rotate-145 animate-oscillate" style={{ background: 'linear-gradient(to right, #fa775f, #ff7261)' }} />
+      <div className="absolute bottom-32 md:bottom-100 left-0 w-36 md:w-[700px] h-13 md:h-55 rounded-full -ml-12 md:-ml-68 -rotate-145 animate-oscillate" style={{ background: 'linear-gradient(to right, #FF6200, #EC3322)' }} />
       <div className="px-0 md:px-3 lg:px-3 relative z-10">
         <h2 className="text-heading text-black text-center md:px-0 md:mb-15">Customer Feedback</h2>
 
@@ -213,12 +213,12 @@ export default function CustomerFeedbackSection() {
           ))}
         </div>
         <div className="text-center mt-0 md:mt-15 lg:mt-15">
-          <button
-            onClick={() => router.push('/about/blog?category=customer_feedback')}
-            className="bg-white shadow-[0_0_15px_rgba(0,0,0,0.15)] text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-all"
+          <Link
+            href="/about/blog?category=customer_feedback"
+            className="inline-block bg-white rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.15)] text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-all"
           >
             {t('button.seeMore')}
-          </button>
+          </Link>
         </div>
       </div>
     </section>

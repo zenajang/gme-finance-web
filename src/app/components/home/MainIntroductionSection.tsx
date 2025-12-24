@@ -6,7 +6,7 @@ export default function MainIntroductionSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="relative h-[630px] md:h-[800px] lg:h-[995px] w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden">
       <div className="absolute inset-0">
         <video
           src="/images/main_image_autumn.webm"

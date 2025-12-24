@@ -304,20 +304,17 @@ select {
 }
 
 @keyframes oscillate {
-
-  0%,
-  100% {
-    transform: translateX(-4px) translateZ(0);
+  0% {
+    transform: translateX(-12px) translateY(-8px) scale(1) translateZ(0);
   }
 
-  50% {
-    transform: translateX(4px) translateZ(0);
+  100% {
+    transform: translateX(12px) translateY(8px) scale(1.03) translateZ(0);
   }
 }
 
 .animate-oscillate {
-  animation: oscillate 1s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite alternate;
-  animation-delay: 0.4s;
+  animation: oscillate 4.5s ease-in-out infinite alternate;
   will-change: transform;
   backface-visibility: hidden;
 }
