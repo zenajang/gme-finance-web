@@ -65,7 +65,7 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
   ];
 
   return (
-    <section className="py-0 md:py-16 lg:py-20 mb-15 md:mb-16 lg:mb-20">
+    <section className="py-10 md:py-16 lg:py-20 mb-5 md:mb-16 lg:mb-20">
       <div className="container mx-auto px-15 md:px-4 lg:px-4">
         <h2 className="text-heading text-center mb-8 md:mb-10 lg:mb-10" style={{ color: titleColor }}>{t('home.typesOfLoansTitle')}</h2>
         <div className="relative max-w-xs md:max-w-2xl mx-auto aspect-square">
