@@ -70,7 +70,7 @@ export default function LoanDetailSection({ backgroundImage = '/images/default-b
           {t('countryPage.LoanDetailsTitle')}
         </h2>
 
-        <div className="bg-white/60 rounded-2xl shadow-2xl border border-white/20">
+        <div className="bg-white/90 rounded-2xl shadow-2xl border border-white/20">
           <div className="overflow-x-auto">
             <table className="w-full">
               <tbody>

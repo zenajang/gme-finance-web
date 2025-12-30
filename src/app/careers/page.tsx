@@ -262,7 +262,8 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
                 {/* Profile Image with accent ring */}
                 <div className="flex justify-center mb-6">
                   <div className="relative">
-                    <div className="w-24 h-24 md:w-58 md:h-58 rounded-full overflow-hidden border-4 border-white"
+                    <div className="w-24 h-24 md:w-58 md:h-58 ro                    
+                    unded-full overflow-hidden border-4 border-white"
                       style={{ boxShadow: '0 8px 30px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(0, 0, 0, 0.1)' }}
                     >
                       <Image
@@ -290,7 +291,6 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
                   {/* Fade out gradient */}
                   <div className="absolute bottom-0 left-0 right-0 h-10 md:h-25 bg-gradient-to-t from-white via-white/70 to-transparent" />
                 </div>
-
                 {/* Read Full Testimony Button */}
                 <div className="text-center">
                   <button

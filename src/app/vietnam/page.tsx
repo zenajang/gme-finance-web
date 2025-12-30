@@ -97,9 +97,7 @@ export default function VietnamPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="vietnam" />
           <EMICalculatorSection />
-          <div className="mb-20">
-            <LoanApplicationForm country="vietnam" />
-          </div>
+          <LoanApplicationForm country="vietnam" />
         </section>
       </div>
     </div>

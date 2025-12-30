@@ -5,74 +5,286 @@ interface GarlandDecorationProps {
   variant?: 'standard' | 'compact';
 }
 
+// 국가별 garland 설정 (standard variant용) - 숫자는 vw 단위
+const garlandConfig: Record<string, {
+  desktop: {
+    left: { top: number; height: number; left: number; size?: string; rotate?: string };
+    right: { bottom: number; height: number; right: number; size?: string };
+  };
+  mobile: {
+    left: { top: number; height: number; width: number; left: number; size: string; rotate?: string };
+    right: { bottom: number; height: number; width: number; right: number; size: string };
+  };
+}> = {
+  philippines: {
+    desktop: {
+      left: { top: 23, height: 120, left: -2 },
+      right: { bottom: -25, height: 80, right: 0 },
+    },
+    mobile: {
+      left: { top: 60, height: 73, width: 70, left: -2, size: '80vw auto' },
+      right: { bottom: -30, height: 70, width: 70, right: 0, size: '80vw auto' }
+    },
+  },
+  nepal: {
+    desktop: {
+      left: { top: 30, height: 110, left: -20, rotate: '-1deg' },
+      right: { bottom: -20, height: 70, right: 0 },
+    },
+    mobile: {
+      left: { top: 50, height: 80, width: 100, left: -20, size: '100vw auto' },
+      right: { bottom: -18, height: 80, width: 100, right: 0, size: '45vw auto' },
+    },
+  },
+  bangladesh: {
+    desktop: {
+      left: { top: 25, height: 110, left: -1, rotate: '0deg' },
+      right: { bottom: -20, height: 120, right: 0 },
+    },
+    mobile: {
+      left: { top: 55, height: 80, width: 100, left: -3, size: '75vw auto', rotate: '0deg' },
+      right: { bottom: -25, height: 80, width: 100, right: 0, size: '75vw auto' },
+    },
+  },
+  pakistan: {
+    desktop: {
+      left: { top: 10, height: 150, left: 0, rotate: '0deg' },
+      right: { bottom: -20, height: 70, right: 0 },
+    },
+    mobile: {
+      left: { top: 50, height: 80, width: 100, left: 0, size: '100vw auto' },
+      right: { bottom: -18, height: 80, width: 100, right: 0, size: '45vw auto' },
+    },
+  },
+  india: {
+    desktop: {
+      left: { top: 10, height: 110, left: 0, rotate: '0deg' },
+      right: { bottom: -35, height: 110, right: 0 },
+    },
+    mobile: {
+      left: { top: 65, height: 100, width: 100, left: 0, size: '75vw auto', rotate: '0deg' },
+      right: { bottom: -22, height: 100, width: 100, right: 0, size: '75vw auto' },
+    },
+  },
+  indonesia: {
+    desktop: {
+      left: { top: 40, height: 65, left: -2 },
+      right: { bottom: -10, height: 65, right: 0 },
+    },
+    mobile: {
+      left: { top: 82, height: 100, width: 100, left: -6, size: '55vw auto' },
+      right: { bottom: -10, height: 100, width: 100, right: 0, size: '55vw auto' },
+    },
+  },
+  mongolia: {
+    desktop: {
+      left: { top: 20, height: 100, left: -15, rotate: '-1deg' },
+      right: { bottom: -20, height: 70, right: 0 },
+    },
+    mobile: {
+      left: { top: 77, height: 73, width: 70, left: -20, size: '80vw auto' },
+      right: { bottom: -25, height: 70, width: 70, right: 0, size: '60vw auto' },
+    },
+  },
+  myanmar: {
+    desktop: {
+      left: { top: 40, height: 60, left: -2, rotate: '-1deg' },
+      right: { bottom: 0, height: 50, right: 0 },
+    },
+    mobile: {
+      left: { top: 70, height: 100, width: 100, left: 0, rotate: '-1deg', size: '80vw auto' },
+      right: { bottom: -1, height: 100, width: 100, right: 0, size: '80vw auto' },
+    },
+  },
+  cambodia: {
+    desktop: {
+      left: { top: 25, height: 90, left: -10, rotate: '0deg' },
+      right: { bottom: -30, height: 80, right: -10 },
+    },
+    mobile: {
+      left: { top: 65, height: 100, width: 100, left: -20, rotate: '0deg', size: '90vw auto' },
+      right: { bottom: -20, height: 100, width: 100, right: -20, size: '80vw auto' },
+    },
+  },
+  thailand: {
+    desktop: {
+      left: { top: 20, height: 110, left: -2 },
+      right: { bottom: -20, height: 70, right: 0 },
+    },
+    mobile: {
+      left: { top: 55, height: 100, width: 100, left: 0, size: '75vw auto' },
+      right: { bottom: -20, height: 100, width: 100, right: 0, size: '60vw auto' },
+    },
+  },
+  vietnam: {
+    desktop: {
+      left: { top: 20, height: 110, left: -2 },
+      right: { bottom: -20, height: 70, right: 0 },
+    },
+    mobile: {
+      left: { top: 55, height: 100, width: 100, left: 0, size: '75vw auto' },
+      right: { bottom: -20, height: 100, width: 100, right: 0, size: '60vw auto' },
+    },
+  },
+  russia: {
+    desktop: {
+      left: { top: 0, height: 130, left: 0, rotate: '0deg' },
+      right: { bottom: -50, height: 130, right: 0 },
+    },
+    mobile: {
+      left: { top: 70, height: 100, width: 100, left: -3, rotate: '0deg', size: '100vw auto' },
+      right: { bottom: -20, height: 100, width: 100, right: -4, size: '100vw auto' },
+    },
+  },
+  srilanka: {
+    desktop: {
+      left: { top: 15, height: 100, left: 0, rotate: '0deg' },
+      right: { bottom: -38, height: 110, right: 0 },
+    },
+    mobile: {
+      left: { top: 55, height: 100, width: 100, left: -1, size: '60vw auto' },
+      right: { bottom: -25, height: 100, width: 100, right: -1, size: '60vw auto' },
+    },
+  },
+  uzbekistan: {
+    desktop: {
+      left: { top: 0, height: 130, left: 0, rotate: '0deg' },
+      right: { bottom: -50, height: 130, right: 0 },
+    },
+    mobile: {
+      left: { top: 70, height: 100, width: 100, left: -3, rotate: '0deg', size: '100vw auto' },
+      right: { bottom: -20, height: 100, width: 100, right: -4, size: '100vw auto' },
+    },
+  },
+};
+
+// 기본 설정 (설정이 없는 국가용)
+const defaultConfig = {
+  desktop: {
+    left: { top: 5, height: 40, left: -2 },
+    right: { bottom: -10, height: 40, right: 0 },
+  },
+  mobile: {
+    left: { top: 17, height: 23, width: 18, left: -1.5, size: '50vw auto' },
+    right: { bottom: -5, height: 20, width: 18, right: 0, size: '45vw auto' },
+  },
+};
+
 export default function GarlandDecoration({
   country,
   variant = 'standard'
 }: GarlandDecorationProps) {
   const isStandard = variant === 'standard';
-  const isPakistan = country === 'pakistan';
-  const isMyanmar = country === 'myanmar';
+  const config = garlandConfig[country] || defaultConfig;
 
-  // 모바일 garland 크기 설정
-  const getMobileRightSize = () => {
-    if (isPakistan) return '130px auto';
-    return isStandard ? '180px auto' : '360px auto';
-  };
+  if (isStandard) {
+    return (
+      <>
+        {/* 오른쪽 하단 garland - 모바일 */}
+        <div
+          className="absolute bg-no-repeat block md:hidden bg-right-bottom"
+          style={{
+            backgroundImage: `url('/images/${country}/garland_r.svg')`,
+            backgroundSize: config.mobile.right.size,
+            bottom: `${config.mobile.right.bottom}vw`,
+            height: `${config.mobile.right.height}vw`,
+            width: `${config.mobile.right.width}vw`,
+            right: `${config.mobile.right.right}vw`,
+            zIndex: 1
+          }}
+        />
+        {/* 오른쪽 하단 garland - 데스크톱 */}
+        <div
+          className="absolute bg-no-repeat bg-right hidden md:block w-full"
+          style={{
+            backgroundImage: `url('/images/${country}/garland_r.svg')`,
+            backgroundSize: config.desktop.right.size || 'contain',
+            bottom: `${config.desktop.right.bottom}vh`,
+            height: `${config.desktop.right.height}vh`,
+            right: `${config.desktop.right.right}vw`,
+            zIndex: 0
+          }}
+        />
 
-  const getMobileLeftSize = () => {
-    if (isPakistan) return '250px auto';
-    return isStandard ? '200px auto' : '350px auto';
-  };
+        {/* 왼쪽 상단 garland - 모바일 */}
+        <div
+          className="absolute bg-no-repeat block md:hidden bg-left-top"
+          style={{
+            backgroundImage: `url('/images/${country}/garland_l.svg')`,
+            backgroundSize: config.mobile.left.size,
+            transform: `rotate(${config.mobile.left.rotate || '10deg'})`,
+            top: `${config.mobile.left.top}vw`,
+            height: `${config.mobile.left.height}vw`,
+            width: `${config.mobile.left.width}vw`,
+            left: `${config.mobile.left.left}vw`,
+            zIndex: 2
+          }}
+        />
+        {/* 왼쪽 상단 garland - 데스크톱 */}
+        <div
+          className="absolute bg-no-repeat bg-left hidden md:block w-full"
+          style={{
+            backgroundImage: `url('/images/${country}/garland_l.svg')`,
+            transform: `rotate(${config.desktop.left.rotate || '10deg'})`,
+            backgroundSize: config.desktop.left.size || 'contain',
+            top: `${config.desktop.left.top}vh`,
+            height: `${config.desktop.left.height}vh`,
+            left: `${config.desktop.left.left}vw`,
+            zIndex: 2
+          }}
+        />
+      </>
+    );
+  }
 
+  // compact variant
   return (
     <>
       {/* 오른쪽 하단 garland - 모바일 */}
       <div
-        className={`absolute bg-no-repeat right-0 block md:hidden ${isStandard
-          ? `${isMyanmar ? 'bottom-0' : '-bottom-20'} h-80 w-70 bg-right-bottom`
-          : '-bottom-10 h-50 w-full bg-right-bottom'
-          }`}
+        className="absolute bg-no-repeat right-0 block md:hidden bg-right-bottom"
         style={{
           backgroundImage: `url('/images/${country}/garland_r.svg')`,
-          backgroundSize: getMobileRightSize(),
+          backgroundSize: '100% auto',
+          bottom: '-2.5vw',
+          height: '12.5vw',
+          width: '100%',
           zIndex: 2
         }}
       />
       {/* 오른쪽 하단 garland - 데스크톱 */}
       <div
-        className={`absolute bg-no-repeat bg-right right-0 hidden md:block w-full ${isStandard
-          ? '-bottom-85 h-250'
-          : 'bottom-0 h-200'
-          }`}
+        className="absolute bg-no-repeat bg-right right-0 hidden md:block w-full"
         style={{
           backgroundImage: `url('/images/${country}/garland_r.svg')`,
-          ...(isStandard ? {} : { backgroundSize: '100% auto' }),
+          backgroundSize: '100% auto',
+          bottom: 0,
+          height: '10vw',
           zIndex: 2
         }}
       />
 
       {/* 왼쪽 상단 garland - 모바일 */}
       <div
-        className={`absolute bg-no-repeat -left-5 block md:hidden ${isStandard
-          ? 'top-68 h-90 w-70 bg-left-t op -ml-3'
-          : 'top-75 h-50 w-full bg-left-top ml-5'
-          }`}
+        className="absolute bg-no-repeat block md:hidden bg-left-top"
         style={{
           backgroundImage: `url('/images/${country}/garland_l.svg')`,
-          backgroundSize: getMobileLeftSize(),
-          ...(isStandard ? { transform: 'rotate(10deg)' } : {}),
+          backgroundSize: '100% auto',
+          top: '19vw',
+          height: '12.5vw',
+          width: '100%',
+          left: 0,
           zIndex: 2
         }}
       />
       {/* 왼쪽 상단 garland - 데스크톱 */}
       <div
-        className={`absolute bg-no-repeat bg-left left-0 hidden md:block w-full ${isStandard
-          ? 'top-100 h-190 -ml-13'
-          : 'top-110 h-200'
-          }`}
+        className="absolute bg-no-repeat bg-left left-0 hidden md:block w-full"
         style={{
           backgroundImage: `url('/images/${country}/garland_l.svg')`,
-          ...(isStandard ? { transform: 'rotate(10deg)' } : { backgroundSize: '100% auto' }),
+          backgroundSize: '100% auto',
+          top: '5.5vw',
+          height: '10vw',
           zIndex: 2
         }}
       />

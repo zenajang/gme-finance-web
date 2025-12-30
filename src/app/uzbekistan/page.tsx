@@ -141,11 +141,9 @@ export default function UzbekistanPage() {
       <LoanDetailSection backgroundImage="/images/uzbekistan/loan_detail_bg.webp" country="uzbekistan" />
       <div style={{ background: colors.gradient1 }}>
         <section className="bg-no-repeat relative overflow-hidden">
-          <GarlandDecoration country="uzbekistan" variant="compact" />
+          <GarlandDecoration country="uzbekistan" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
-          <div className="md:mb-69 mb-15">
-            <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary} />
-          </div>
+          <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary} />
         </section>
       </div>
     </div>

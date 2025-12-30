@@ -122,9 +122,7 @@ export default function SrilankaPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="srilanka" />
           <EMICalculatorSection />
-          <div className="mb-20 mt-10">
-            <LoanApplicationForm />
-          </div>
+          <LoanApplicationForm />
         </section>
       </div>
     </div>

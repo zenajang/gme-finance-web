@@ -20,7 +20,6 @@ export type SocialsItem = {
   snsLogo: string;
   title: string;
   href?: string;     // Visit 버튼 눌렀을 때 이동할 링크
-
   platform: SocialPlatform;
   embedUrl: string;  // facebook: page url / tiktok: profile url / instagram_post: post url
 };
@@ -246,7 +245,14 @@ function SocialCard({
             className="w-[40px] h-[40px] md:w-[60px] md:h-[60px]"
           />
           <div className="flex-1 mt-2">
-            <h3 className="text-label leading-snug line-clamp-3 font-medium">{item.title}</h3>
+            <h3 className="text-label leading-snug line-clamp-3 font-medium">
+              {item.title.replace(/\s*\([^)]+\)$/, '')}
+              {item.title.match(/\s*\([^)]+\)$/) && (
+                <span className="block text-sm text-gray-600">
+                  {item.title.match(/\s*\([^)]+\)$/)?.[0].trim()}
+                </span>
+              )}
+            </h3>
           </div>
         </header>
 

@@ -75,7 +75,7 @@ export const COUNTRY_COLORS: Record<string, ColorScheme> = {
   },
 
   philippines: {
-    primary: '#EA0C1E',
+    primary: '#DF2121',
     hover: '#FF6B78',
     gradient1: '#FAE5EB',
     gradient2: '#FEF7DB'

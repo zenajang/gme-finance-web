@@ -8,7 +8,7 @@ import LoanApplicationForm from "../components/sections/LoanApplicationForm";
 import LoanDetailSection from "../components/sections/LoanDetailSection";
 import ProcessStep from "../components/sections/ProcessStep";
 import TeamSection, { Teams } from "../components/sections/TeamSection";
-import { getGradient } from "@/constants/colors";
+import { getColorScheme, getGradient } from "@/constants/colors";
 import TeamVideoSection from "../components/sections/TeamVideoSection";
 
 const PHILIPPINES_SOCIALS: SocialsItem[] = [
@@ -77,7 +77,7 @@ const PHILIPPINES_TEAMS: Teams[] = [
 ];
 
 export default function PhilippinesPage() {
-
+  const colors = getColorScheme('philippines')
   return (
     <div>
       <IntroductionSection
@@ -98,6 +98,7 @@ export default function PhilippinesPage() {
         </section>
         <TeamVideoSection
           title="Meet Our Philippines Team"
+          subtitleColor={colors.primary}
           videoUrl="https://www.youtube.com/embed/xWK8F88Akeo"
           leftImageSrc="/images/philippines/castle_l.svg"
           leftImageAlt="Left castle"
