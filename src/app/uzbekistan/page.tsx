@@ -113,7 +113,10 @@ export default function UzbekistanPage() {
             buttonBgColor={colors.primary}
             buttonHoverBgColor={colors.hover}
           />
-          <div className="absolute bg-no-repeat -top-170 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
+          {/* 모바일용 flower - 작은 크기 */}
+          <div className="absolute bg-no-repeat bg-left block md:hidden -top-20 -left-10 w-[50vw] h-[50vw]" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')", backgroundSize: 'contain' }} />
+          {/* 데스크톱용 flower */}
+          <div className="absolute bg-no-repeat bg-left hidden md:block -top-170 -left-30 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
           <TeamSection
             teams={UZBEKISTAN_TEAMS}
             title='Uzbekistan'
@@ -129,11 +132,14 @@ export default function UzbekistanPage() {
           centerImageAlt="Center pattern"
           centerImageWidth={3000}
           centerImageHeight={3000}
-          centerImageStyle={{ opacity: 0.8, zIndex: 5, marginTop: '200px' }}
+          centerImageStyle={{ opacity: 0.8, zIndex: 5, maxHeight: '30vh' }}
         />
         <LoanTypesSection />
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat bg-right -bottom-80 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
+          {/* 모바일용 flower - 작은 크기 */}
+          <div className="absolute bg-no-repeat bg-right block md:hidden -bottom-10 -right-10 w-[50vw] h-[50vw]" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')", backgroundSize: 'contain' }} />
+          {/* 데스크톱용 flower */}
+          <div className="absolute bg-no-repeat bg-right hidden md:block -bottom-80 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')" }} />
           <ProcessStep subtitleColor={colors.primary} />
         </section>
       </div>

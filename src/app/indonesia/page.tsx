@@ -1,7 +1,7 @@
 'use client'
 
 
-import { getGradient } from "@/constants/colors";
+import { getColorScheme, getGradient } from "@/constants/colors";
 import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -81,6 +81,7 @@ const INDONESIA_TEAMS: Teams[] = [
 
 export default function IndonesiaPage() {
   const { t } = useTranslation();
+  const colors = getColorScheme('indonesia')
   return (
     <div>
       <IntroductionSection
@@ -103,7 +104,8 @@ export default function IndonesiaPage() {
           />
         </section>
         <TeamVideoSection
-          title="introductionTitleid"
+          title={t('countryPage.introductionTitleid')}
+          subtitleColor={colors.primary}
           videoUrl="https://www.youtube.com/embed/Q-AGuNjVNMU"
         />
         <LoanTypesSection />

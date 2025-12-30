@@ -103,7 +103,7 @@ export default function MyanmarPage() {
         style={{ backgroundImage: "url('/images/myanmar/section_bg.svg')" }}
       >
         <section className="bg-no-repeat bg-cover bg-center relative overflow-hidden">
-          <div className="absolute bg-no-repeat bg-cover bg-center top-0 w-full h-330" style={{ backgroundImage: "url('/images/myanmar/wave_t.svg')" }} />
+          <div className="absolute bg-no-repeat bg-cover bg-center top-0 w-full h-160 md:h-330" style={{ backgroundImage: "url('/images/myanmar/wave_t.svg')" }} />
           <LatestSocials
             socials={MYANMAR_SOCIALS}
             buttonBgColor={colors.primary}
@@ -124,25 +124,25 @@ export default function MyanmarPage() {
             leftImageAlt="Left castle"
             leftImageWidth={380}
             leftImageHeight={380}
-            leftImageStyle={{ left: '-320px', marginTop: '80px', zIndex: 1 }}
+            leftImageStyle={{ width: '23vw', zIndex: 1 }}
             rightImageSrc="/images/myanmar/castle_r.svg"
             rightImageAlt="Right castle"
             rightImageWidth={380}
             rightImageHeight={380}
-            rightImageStyle={{ right: '-320px', marginTop: '146px', zIndex: 1 }}
+            rightImageStyle={{ width: '23vw', zIndex: 1 }}
           />
           <LoanTypesSection />
-          <div className="bg-no-repeat bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: "url('/images/myanmar/wave_b.svg')" }} />
-          <ProcessStep subtitleColor={colors.primary} />
+          <section className="relative overflow-hidden">
+            <div className="absolute bg-no-repeat bg-cover bg-center bottom-0 w-full h-200 md:h-280" style={{ backgroundImage: "url('/images/myanmar/wave_b.svg')" }} />
+            <ProcessStep subtitleColor={colors.primary} />
+          </section>
         </div>
       </div>
       <LoanDetailSection backgroundImage="/images/myanmar/loan_detail_bg.webp" country="myanmar" />
       <section className="bg-cover relative overflow-hidden" style={{ background: getGradient('myanmar') }}>
         <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
         <GarlandDecoration country="myanmar" />
-        <div className="mb-20 mt-10">
-          <LoanApplicationForm buttonBgColor={colors.primary} subtitleColor={colors.primary} />
-        </div>
+        <LoanApplicationForm buttonBgColor={colors.primary} subtitleColor={colors.primary} />
       </section>
     </div>
   );
