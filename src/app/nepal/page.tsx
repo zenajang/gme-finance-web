@@ -95,12 +95,12 @@ export default function NepalPage() {
           leftImageAlt="Left castle"
           leftImageWidth={300}
           leftImageHeight={300}
-          leftImageStyle={{ left: '-250px', marginTop: '120px', zIndex: 1 }}
+          leftImageStyle={{ width: '25vw', zIndex: 1 }}
           rightImageSrc="/images/nepal/castle_r.svg"
           rightImageAlt="Right castle"
           rightImageWidth={350}
           rightImageHeight={350}
-          rightImageStyle={{ right: '-270px', marginTop: '93px', zIndex: 1 }}
+          rightImageStyle={{ width: '22vw', zIndex: 1 }}
         />
         <LoanTypesSection />
         <section className="bg-no-repeat relative overflow-hidden">

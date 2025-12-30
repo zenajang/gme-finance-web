@@ -112,15 +112,15 @@ export default function BangladeshPage() {
           leftImageAlt="Left castle"
           leftImageWidth={500}
           leftImageHeight={500}
-          leftImageStyle={{ left: '-350px', marginTop: '140px', zIndex: 1 }}
+          leftImageStyle={{ width: '30vw', zIndex: 1 }}
           rightImageSrc="/images/bangladesh/castle_r.svg"
           rightImageAlt="Right castle"
           rightImageWidth={500}
           rightImageHeight={500}
-          rightImageStyle={{ right: '-390px', marginTop: '180px', zIndex: 1 }}
+          rightImageStyle={{ width: '28vw', zIndex: 1 }}
         />
         <LoanTypesSection />
-        <ProcessStep />
+        <ProcessStep subtitleColor={colors.primary} />
       </div>
       <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp" country="bangladesh" />
       <div style={{ background: getGradient('bangladesh') }}>

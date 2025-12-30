@@ -91,7 +91,7 @@ export default function SrilankaPage() {
         style={{ background: getGradient('srilanka') }}
       >
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat bg-left -top-30 left-0 w-full h-220 " style={{ backgroundImage: "url('/images/srilanka/garland_u.svg')" }} />
+          <div className="absolute bg-no-repeat bg-left -top-30 left-0 w-full h-100 md:h-220" style={{ backgroundImage: "url('/images/srilanka/garland_u.svg')", backgroundSize: 'contain' }} />
           <LatestSocials
             socials={SRILANKA_SOCIALS} />
           <TeamSection
@@ -114,7 +114,7 @@ export default function SrilankaPage() {
           />
           <LoanTypesSection />
           <ProcessStep />
-          <div className="absolute bg-no-repeat bg-right -bottom-10 right-0 w-full h-220" style={{ backgroundImage: "url('/images/srilanka/garland_d.svg')" }} />
+          <div className="absolute bg-no-repeat bg-right -bottom-10 right-0 w-full h-80 md:h-220" style={{ backgroundImage: "url('/images/srilanka/garland_d.svg')", backgroundSize: 'contain' }} />
         </section>
       </div>
       <LoanDetailSection backgroundImage="/images/srilanka/loan_detail_bg.webp" country="srilanka" />
