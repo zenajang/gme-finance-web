@@ -256,54 +256,72 @@ export default function BlogPage() {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mt-10 md:mt-20">Blog</h1>
-        <p className="mt-2 text-gray-600 text-center">
+        <p className="mt-2 text-gray-600 text-center text-sm md:text-base">
           Insights, stories, and updates from our team
         </p>
 
         {/* Category Filter Tabs */}
-        <div className="flex justify-center gap-2 mt-8">
-          <button
-            onClick={() => handleFilterChange('all')}
-            className={`px-4 md:px-6 py-2 text-sm md:text-base font-medium rounded-full transition-all ${filterCategory === 'all'
+        <div className="flex flex-col items-center gap-3 mt-8">
+          {/* 모바일에서 선택된 카테고리 이름 표시 */}
+          <p className="md:hidden text-md font-bold text-red-500">
+            {filterCategory === 'all' ? 'All Posts' : filterCategory === 'blog' ? 'Latest News' : 'Customer Feedback'}
+          </p>
+          <div className="flex justify-center gap-2">
+            <button
+              onClick={() => handleFilterChange('all')}
+              className={`px-3 md:px-6 py-2 text-sm md:text-base font-medium rounded-full transition-all whitespace-nowrap ${filterCategory === 'all'
                 ? 'text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            style={filterCategory === 'all' ? { backgroundColor: COMMON_COLORS.primary } : {}}
-          >
-            All
-            <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'all' ? 'bg-white/20' : 'bg-gray-200'
-              }`}>
-              {posts.length}
-            </span>
-          </button>
-          <button
-            onClick={() => handleFilterChange('blog')}
-            className={`px-4 md:px-6 py-2 text-sm md:text-base font-medium rounded-full transition-all ${filterCategory === 'blog'
+                }`}
+              style={filterCategory === 'all' ? { backgroundColor: COMMON_COLORS.primary } : {}}
+            >
+              All
+              <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'all' ? 'bg-white/20' : 'bg-gray-200'
+                }`}>
+                {posts.length}
+              </span>
+            </button>
+            <button
+              onClick={() => handleFilterChange('blog')}
+              className={`px-3 md:px-6 py-2 text-sm md:text-base font-medium rounded-full transition-all whitespace-nowrap ${filterCategory === 'blog'
                 ? 'text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            style={filterCategory === 'blog' ? { backgroundColor: COMMON_COLORS.primary } : {}}
-          >
-            Latest News
-            <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'blog' ? 'bg-white/20' : 'bg-gray-200'
-              }`}>
-              {posts.filter(p => p.category === 'blog').length}
-            </span>
-          </button>
-          <button
-            onClick={() => handleFilterChange('customer_feedback')}
-            className={`px-4 md:px-6 py-2 text-sm md:text-base font-medium rounded-full transition-all ${filterCategory === 'customer_feedback'
+                }`}
+              style={filterCategory === 'blog' ? { backgroundColor: COMMON_COLORS.primary } : {}}
+            >
+              {/* 모바일: 아이콘, 데스크톱: 텍스트 */}
+              <span className="md:hidden">
+                <svg className="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+              </span>
+              <span className="hidden md:inline">Latest News</span>
+              <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'blog' ? 'bg-white/20' : 'bg-gray-200'
+                }`}>
+                {posts.filter(p => p.category === 'blog').length}
+              </span>
+            </button>
+            <button
+              onClick={() => handleFilterChange('customer_feedback')}
+              className={`px-3 md:px-6 py-2 text-sm md:text-base font-medium rounded-full transition-all whitespace-nowrap ${filterCategory === 'customer_feedback'
                 ? 'text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            style={filterCategory === 'customer_feedback' ? { backgroundColor: COMMON_COLORS.primary } : {}}
-          >
-            Customer Feedback
-            <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'customer_feedback' ? 'bg-white/20' : 'bg-gray-200'
-              }`}>
-              {posts.filter(p => p.category === 'customer_feedback').length}
-            </span>
-          </button>
+                }`}
+              style={filterCategory === 'customer_feedback' ? { backgroundColor: COMMON_COLORS.primary } : {}}
+            >
+              {/* 모바일: 아이콘, 데스크톱: 텍스트 */}
+              <span className="md:hidden">
+                <svg className="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </span>
+              <span className="hidden md:inline">Customer Feedback</span>
+              <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'customer_feedback' ? 'bg-white/20' : 'bg-gray-200'
+                }`}>
+                {posts.filter(p => p.category === 'customer_feedback').length}
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 
