@@ -140,10 +140,10 @@ export default function FindBranchSection() {
   }, []);
 
   return (
-    <div className="relative">
-      <section className="relative h-60 md:h-70 lg:h-100">
+    <>
+      <section className="relative">
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center">
-          <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-4 lg:mb-10 lg:mt-15">
+          <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-4 lg:mb-10">
             Find a branch
           </h2>
           <p className="text-subheading text-center mb-5 md:mb-10 lg:mb-15 text-red-500 font-medium">
@@ -200,7 +200,7 @@ export default function FindBranchSection() {
       </section>
 
       {/* Branch Info */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden md:mb-10">
         <div className="container mx-auto px-4 relative">
           {/* Mobile Layout */}
           <div className="md:hidden">
@@ -235,7 +235,7 @@ export default function FindBranchSection() {
                 </div>
               </div>
 
-              <div className="p-3">
+              <div className="p-3 mb-10">
                 <div className="flex items-center">
                   <Image
                     src="/images/icons/time.svg"
@@ -250,7 +250,7 @@ export default function FindBranchSection() {
                 </div>
               </div>
             </div>
-            <div className="absolute left-0 bottom-0 -z-10">
+            <div className="absolute left-0 -bottom-10 -z-10">
               <Image
                 src="/images/earth.svg"
                 alt="earth background"
@@ -262,7 +262,7 @@ export default function FindBranchSection() {
           </div>
 
           {/* Desktop Layout */}
-          <div className="hidden md:grid gap-8 items-center mt-13 mb-8 ml-5">
+          <div className="hidden md:grid gap-8 items-center mt-13 ml-5">
             <div className="space-y-15 text-sm">
               <p className="font-semibold text-xl">
                 <Image
@@ -298,6 +298,6 @@ export default function FindBranchSection() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

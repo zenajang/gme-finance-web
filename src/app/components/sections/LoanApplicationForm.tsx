@@ -36,7 +36,7 @@ export default function LoanApplicationForm({
   };
 
   return (
-    <section className="py-3 mb-15 md:mb-30 md:py-16 lg:py-50 relative z-10">
+    <section className="py-3 mb-10 md:mb-20 py-10 md:py-20 lg:py-20 relative z-10">
       <div className="container mx-auto px-4 md:px-30 lg:px-20 max-w-lg">
         <div className="bg-white rounded-3xl p-8 md:p-12 lg:p-15 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.3)]">
           <h2 className="text-lg md:text-4xl lg:text-5xl font-bold text-black text-center mb-4 md:mb-5 lg:mb-10">{t('home.applyLoanAppTitle')}</h2>
