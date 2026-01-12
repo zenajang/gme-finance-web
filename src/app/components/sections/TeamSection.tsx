@@ -44,15 +44,38 @@ export default function TeamSection({
   const countryName = t(countryKey);
   const headingText = t('countryPage.teamTitle', { country: countryName });
 
-  const TeamCard = ({ team }: { team: Teams }) => (
-    <div className="w-[160px] md:w-[260px] lg:w-[320px] flex-shrink-0">
-      <div className="rounded-3xl relative h-[200px] md:h-[320px] lg:h-[420px] shadow-[0_0_20px_rgba(0,0,0,0.2)]" style={{ overflow: 'hidden' }}>
+  // 모바일용 TeamCard (3명 이하일 때)
+  const TeamCardMobile = ({ team }: { team: Teams }) => (
+    <div className="w-[140px] flex-shrink-0">
+      <div className="rounded-3xl relative shadow-[0_0_20px_rgba(0,0,0,0.2)]" style={{ overflow: 'hidden', aspectRatio: '3/4' }}>
         <Image
           src={team.image}
           alt={team.name}
           fill
           className="object-cover"
-          sizes="(min-width:1024px) 280px, (min-width:768px) 200px, 140px"
+          sizes="50vw"
+          priority={false}
+        />
+        <div
+          className="absolute bottom-0 left-0 right-0 py-3 flex items-center justify-center rounded-b-3xl"
+          style={{ backgroundColor: nameBgColor }}
+        >
+          <span className='text-label text-white text-center'>{team.name}</span>
+        </div>
+      </div>
+    </div>
+  );
+
+  // 데스크톱용 TeamCard (4명 이하일 때 - 4명 이상 Swiper 카드와 동일한 스타일)
+  const TeamCardDesktop = ({ team }: { team: Teams }) => (
+    <div className="py-10 w-full">
+      <div className="mx-8 rounded-3xl relative shadow-[0_0_20px_rgba(0,0,0,0.2)]" style={{ overflow: 'hidden', aspectRatio: '3/4' }}>
+        <Image
+          src={team.image}
+          alt={team.name}
+          fill
+          className="object-cover"
+          sizes="(min-width:1024px) 25vw, 33vw"
           priority={false}
         />
         <div
@@ -66,7 +89,7 @@ export default function TeamSection({
   );
 
   return (
-    <section className="px-0 md:py-20 lg:py-20 md:px-20 lg:px-30">
+    <section className="px-0 md:py-20 lg:py-20 md:px-20 lg:px-40">
       <div className="px-3 relative z-20">
         <h2 className="text-heading text-center mb-0 md:mb-10" style={{ color: titleColor }}>{headingText}</h2>
         <div className="max-w-8xl mx-auto relative">
@@ -74,13 +97,15 @@ export default function TeamSection({
             <>
               {/* 모바일 */}
               <div className="block md:hidden py-4">
-                {teams.length === 1 ? (
-                  // 1명일 때 중앙 정렬
-                  <div className="flex justify-center">
-                    <TeamCard team={teams[0]} />
+                {teams.length <= 2 ? (
+                  // 1~2명일 때 중앙 정렬
+                  <div className="flex justify-center gap-3">
+                    {teams.map((team, index) => (
+                      <TeamCardMobile key={team.id || index} team={team} />
+                    ))}
                   </div>
                 ) : (
-                  // 2명 이상일 때 Swiper
+                  // 3명 이상일 때 Swiper
                   <Swiper
                     spaceBetween={10}
                     slidesPerView={2.5}
@@ -91,16 +116,18 @@ export default function TeamSection({
                   >
                     {teams.map((team, index) => (
                       <SwiperSlide key={team.id || index}>
-                        <TeamCard team={team} />
+                        <TeamCardMobile team={team} />
                       </SwiperSlide>
                     ))}
                   </Swiper>
                 )}
               </div>
-              {/* 데스크톱 - Grid */}
-              <div className="hidden md:flex justify-center gap-3 md:gap-5 lg:gap-6 py-10 flex-wrap">
+              {/* 데스크톱 - Flex 중앙정렬 (4명 이상 Swiper와 동일한 카드 크기) */}
+              <div className="hidden md:flex justify-center gap-x-5">
                 {teams.map((team, index) => (
-                  <TeamCard key={team.id || index} team={team} />
+                  <div key={team.id || index} className="md:w-[calc((100%-40px)/3)] lg:w-[calc((100%-60px)/4)]">
+                    <TeamCardDesktop team={team} />
+                  </div>
                 ))}
               </div>
             </>
@@ -118,7 +145,7 @@ export default function TeamSection({
                 >
                   {teams.map((team, index) => (
                     <SwiperSlide key={team.id || index}>
-                      <div className="flex rounded-xl relative h-[150px] shadow-[0_0_20px_rgba(0,0,0,0.2)]" style={{ overflow: 'hidden', marginTop: '15px' }}>
+                      <div className="flex rounded-xl relative shadow-[0_0_20px_rgba(0,0,0,0.2)]" style={{ overflow: 'hidden', marginTop: '15px', aspectRatio: '3/4' }}>
                         <Image
                           src={team.image}
                           alt={team.name}
@@ -161,7 +188,7 @@ export default function TeamSection({
                 >
                   {teams.map((team, index) => (
                     <SwiperSlide className="py-10" key={team.id || index}>
-                      <div className="mx-15 rounded-3xl relative h-[300px] lg:h-[400px] shadow-[0_0_20px_rgba(0,0,0,0.2)]" style={{ overflow: 'hidden' }}>
+                      <div className="mx-8 rounded-3xl relative shadow-[0_0_20px_rgba(0,0,0,0.2)]" style={{ overflow: 'hidden', aspectRatio: '3/4' }}>
                         <Image
                           src={team.image}
                           alt={team.name}
@@ -171,7 +198,7 @@ export default function TeamSection({
                           priority={false}
                         />
                         <div
-                          className="absolute bottom-0 left-0 right-0 py-4 lg:py-5 flex items-center justify-center rounded-b-3xl"
+                          className="absolute bottom-0 left-0 right-0 py-3 md:py-4 lg:py-5 flex items-center justify-center rounded-b-3xl"
                           style={{ backgroundColor: nameBgColor }}
                         >
                           <span className='text-label text-white text-center'>{team.name}</span>
@@ -186,7 +213,7 @@ export default function TeamSection({
                     {/* 왼쪽 화살표 */}
                     <button
                       onClick={handlePrev}
-                      className="absolute left-0 top-1/2 -translate-y-1/2 w-13 h-13 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors z-10"
+                      className="absolute -left-16 top-1/2 -translate-y-1/2 w-13 h-13 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors z-10"
                       aria-label="Previous"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -196,7 +223,7 @@ export default function TeamSection({
                     {/* 오른쪽 화살표 */}
                     <button
                       onClick={handleNext}
-                      className="absolute right-0 top-1/2 -translate-y-1/2 w-13 h-13 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors z-10"
+                      className="absolute -right-16 top-1/2 -translate-y-1/2 w-13 h-13 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors z-10"
                       aria-label="Next"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -72,9 +72,10 @@ export default function CambodiaPage() {
         title={t('country.cambodia')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}
+        buttonHref="#apply-loan-online"
       />
       <div
-        className="bg-cover bg-center bg-no-repeat"
+        className="bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{ background: getGradient('cambodia') }}
       >
         <section className="bg-no-repeat relative overflow-hidden">
@@ -103,7 +104,7 @@ export default function CambodiaPage() {
           rightImageStyle={{ right: '-200px', marginTop: '120px', zIndex: 1 }}
         />
         <LoanTypesSection />
-        <section className="bg-no-repeat relative">
+        <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat -top-30 bg-center w-full pointer-events-none" style={{ backgroundImage: "url('/images/cambodia/pattern.svg')", backgroundSize: '90%', height: '240%', backgroundRepeat: 'no-repeat', zIndex: 0 }} />
           <div className="relative" style={{ zIndex: 10 }}>
             <ProcessStep />

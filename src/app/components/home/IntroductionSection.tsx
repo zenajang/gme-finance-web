@@ -92,6 +92,22 @@ export default function IntroductionSection({
               >
                 {buttonText}
               </a>
+            ) : buttonHref.startsWith('#') ? (
+              <button
+                onClick={() => {
+                  const element = document.querySelector(buttonHref);
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="rounded-xl inline-block text-md md:text-[1.6rem] lg:text-[1.6rem] px-10 md:px-30 py-2 md:py-4 font-medium transition-colors"
+                style={{
+                  backgroundColor: isHovered ? buttonHoverBgColor : buttonBgColor,
+                  color: buttonTextColor
+                }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                {buttonText}
+              </button>
             ) : (
               <Link
                 href={buttonHref}

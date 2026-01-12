@@ -97,6 +97,7 @@ export default function MyanmarPage() {
         buttonBgColor={colors.primary}
         buttonHoverBgColor={colors.hover}
         buttonTextColor={colors.gradient1}
+        buttonHref="#apply-loan-online"
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"

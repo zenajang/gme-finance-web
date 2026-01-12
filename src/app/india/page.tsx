@@ -56,13 +56,14 @@ export default function IndiaPage() {
       <IntroductionSection
         videoSrc="/images/india/background.webm"
         title="India"
+        buttonHref="#apply-loan-online"
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{ background: getGradient('india') }}
       >
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat bg-top -top-20 right-200 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_o_r.svg')" }} />
+          <div className="absolute bg-no-repeat -top-20 -left-10 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_o_r.svg')", backgroundSize: '25%', backgroundPosition: 'left top' }} />
           <LatestSocials
             socials={INDIA_SOCIALS} />
           <TeamSection
@@ -82,7 +83,7 @@ export default function IndiaPage() {
         </section>
       </div>
       <LoanDetailSection backgroundImage="/images/india/loan_detail_bg.webp" country="india" />
-      <div className="bg-cover bg-center bg-no-repeat" style={{ background: getGradient('india') }}>
+      <div className="bg-cover bg-center bg-no-repeat" style={{ background: getGradient('india', true) }}>
         <div className="bg-cover bg-no-repeat" style={{ backgroundImage: "url('/images/india/bg.svg')", backgroundPosition: 'center 50px' }}>
           <section className="bg-no-repeat relative overflow-hidden">
             <GarlandDecoration country="india" />

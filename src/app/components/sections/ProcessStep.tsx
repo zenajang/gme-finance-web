@@ -85,7 +85,7 @@ export default function ProcessStep({ subtitleColor = COMMON_COLORS.primaryText,
               {/* Mobile: Left side content, Desktop: Top content */}
               <div className="p-6 md:p-8 flex flex-col flex-1 justify-center md:justify-start">
                 <header className="mb-2 md:mb-3">
-                  <p className="text-sm md:text-[1.4rem] font-medium leading-tight md:leading-none">{t(item.name)}</p>
+                  <p className="text-sm md:text-[1.4rem] font-medium leading-[28px]">{t(item.name)}</p>
                 </header>
                 <p className="text-[0.6rem] md:text-base leading-snug line-clamp-3 md:line-clamp-8 text-gray-600">
                   {t(item.content)}

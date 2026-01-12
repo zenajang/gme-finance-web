@@ -326,7 +326,7 @@ export default function LatestSocials({
         </div>
 
         {/* 데스크톱 - Grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-8 mt-8">
+        <div className={`hidden md:grid gap-8 mt-8 ${socials.length === 2 ? 'md:grid-cols-2 max-w-4xl mx-auto' : 'md:grid-cols-3'}`}>
           {socials.map((item) => (
             <SocialCard
               key={item.id}

@@ -20,7 +20,8 @@ export default function LoanApplicationForm({
   country,
 }: LoanApplicationFormProps) {
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isKorean = i18n.language === 'ko';
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -36,15 +37,18 @@ export default function LoanApplicationForm({
   };
 
   return (
-    <section className="py-3 mb-10 md:mb-20 py-10 md:py-20 lg:py-20 relative z-10">
+    <section id="apply-loan-online" className="py-3 py-10 md:py-20 lg:py-80 relative z-10">
       <div className="container mx-auto px-4 md:px-30 lg:px-20 max-w-lg">
         <div className="bg-white rounded-3xl p-8 md:p-12 lg:p-15 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.3)]">
           <h2 className="text-lg md:text-4xl lg:text-5xl font-bold text-black text-center mb-4 md:mb-5 lg:mb-10">{t('home.applyLoanAppTitle')}</h2>
           <p className={`text-subheading text-center mb-3 md:mb-4 lg:mb-4`} style={{ color: subtitleColor }}>
             {country ? t(`home.applyLoanAppSubTitleByCountry.${country}`) : t('home.applyLoanAppSubTitle')}
           </p>
-          <p className="text-center text-base text-[0.65rem] md:text-lg lg:text-lg text-gray-600 lg:mx-65">
+          <p className="text-center text-base text-[0.65rem] md:text-lg lg:text-lg text-gray-600 lg:mx-45">
             {t('home.applyLoanAppSubTitle1')}
+          </p>
+          <p className="text-center text-base text-[0.65rem] md:text-lg lg:text-lg text-gray-600 lg:mx-45">
+            {t('home.applyLoanAppSubTitle2')}
           </p>
           <form className="space-y-4 px-0 md:px-12 lg:px-15 pt-5 md:pt-16 lg:pt-20 pb-6 md:pb-8 lg:pb-10" onSubmit={handleSubmit}>
             <p className="text-label">{t('name')}

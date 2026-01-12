@@ -32,9 +32,8 @@ function extractFirstImage(html: string): string | null {
 }
 
 // HTML에서 텍스트만 추출 (미리보기용)
-function getTextPreview(html: string, maxLength: number = 100): string {
-  const text = html.replace(/<[^>]*>/g, '');
-  return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+function getTextPreview(html: string): string {
+  return html.replace(/<[^>]*>/g, '');
 }
 
 function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
@@ -43,7 +42,7 @@ function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
   return (
     <article
       onClick={onClick}
-      className="rounded-2xl bg-white flex flex-col min-h-[380px] md:min-h-[560px] shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+      className="rounded-2xl bg-white flex flex-col h-[380px] md:h-[550px] shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
     >
       <div className="p-6 md:p-8 flex flex-col flex-1">
         <header className="flex items-start justify-between mb-3">
@@ -62,7 +61,7 @@ function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
         </h3>
 
         {/* 미리보기 */}
-        <p className="text-sm text-gray-600 line-clamp-2">
+        <p className="text-sm text-gray-600 line-clamp-6 md:line-clamp-3">
           {getTextPreview(post.content)}
         </p>
       </div>

@@ -70,8 +70,8 @@ export const COUNTRY_COLORS: Record<string, ColorScheme> = {
     hover: '#8fad95ff',
     introHover: '#eaf3ecff',
     subtitle: '#006E14',
-    gradient1: '#F8FFEA',
-    gradient2: '#FFFFFF',
+    gradient1: '#FFFFFF',
+    gradient2: '#F8FFEA',
   },
 
   philippines: {
@@ -91,9 +91,9 @@ export const COUNTRY_COLORS: Record<string, ColorScheme> = {
   india: {
     primary: '#0E7700',
     hover: '#abc2a8ff',
-    gradient1: '#FFD5B1',
+    gradient1: '#FFEFE0',
     gradient2: '#FFFFFF',
-    gradient3: '#D8EDB7',
+    gradient3: '#F0FBDE',
   },
 
   vietnam: {

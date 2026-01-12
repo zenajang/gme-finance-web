@@ -79,6 +79,7 @@ export default function NepalPage() {
         title={t('country.nepal')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}
+        buttonHref="#apply-loan-online"
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"

@@ -104,7 +104,7 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
       description: 'A GME Finance staff member believes in collaboration and thrives in a supportive team environment.',
       icon: (
         <Image
-          src="/images/icons/teamwork.svg"
+          src="/images/icons/teamWork.svg"
           alt="teamwork"
           width={200}
           height={200}
@@ -224,7 +224,7 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
                 {/* 텍스트 */}
                 <div className="flex-1 bg-[#F9F9F9] rounded-lg">
                   <h3 className="text-lg md:text-3xl font-bold mb-2 md:mb-4 px-6 md:px-0 md:pl-10 pt-6 md:pt-10 text-center md:text-left">{perk.title}</h3>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed px-6 md:px-0 md:pl-10 pb-6 md:pb-0 text-center md:text-left">
+                  <p className="text-sm md:text-lg text-[#2B2B2B] leading-relaxed px-6 md:px-10 md:pl-10 pb-6 md:pb-0 text-center md:text-left">
                     {perk.description}
                   </p>
                 </div>
@@ -262,8 +262,7 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
                 {/* Profile Image with accent ring */}
                 <div className="flex justify-center mb-6">
                   <div className="relative">
-                    <div className="w-24 h-24 md:w-58 md:h-58 ro                    
-                    unded-full overflow-hidden border-4 border-white"
+                    <div className="w-24 h-24 md:w-58 md:h-58 rounded-full overflow-hidden border-4 border-white"
                       style={{ boxShadow: '0 8px 30px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(0, 0, 0, 0.1)' }}
                     >
                       <Image

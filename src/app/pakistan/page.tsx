@@ -64,6 +64,7 @@ export default function PakistanPage() {
         buttonText={t('button.applyNow')}
         buttonTextColor={colors.primary}
         buttonHoverBgColor={colors.introHover}
+        buttonHref="#apply-loan-online"
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"
@@ -100,7 +101,7 @@ export default function PakistanPage() {
         </section>
       </div>
       <LoanDetailSection backgroundImage="/images/pakistan/loan_detail_bg.webp" country="pakistan" />
-      <div className="relative" style={{ background: getGradient('pakistan') }}>
+      <div className="relative" style={{ background: getGradient('pakistan', true) }}>
         <div className="absolute bg-repeat top-0 left-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/pattern.svg')", backgroundSize: 'auto' }} />
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="pakistan" />

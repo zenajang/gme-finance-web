@@ -102,6 +102,7 @@ export default function UzbekistanPage() {
         buttonText={t('button.applyNow')}
         buttonTextColor={colors.primary}
         buttonHoverBgColor={colors.introHover}
+        buttonHref="#apply-loan-online"
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"
@@ -145,13 +146,15 @@ export default function UzbekistanPage() {
       </div>
 
       <LoanDetailSection backgroundImage="/images/uzbekistan/loan_detail_bg.webp" country="uzbekistan" />
-      <div style={{ background: colors.gradient1 }}>
-        <section className="bg-no-repeat relative overflow-hidden">
-          <GarlandDecoration country="uzbekistan" />
+      <section className="bg-no-repeat relative overflow-hidden">
+        <GarlandDecoration country="uzbekistan" />
+        <div className="relative z-10" style={{ background: colors.gradient1 }}>
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
+        </div>
+        <div style={{ background: colors.gradient1 }}>
           <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary} />
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

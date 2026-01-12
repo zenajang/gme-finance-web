@@ -11,7 +11,9 @@ export default function SimpleLoanApplySection() {
       <ProcessStep />
       <FinancialPrioritySection />
       <ApplyLoanOnline />
-      <LoanApplicationForm />
+      <div className="mt-0 lg:-mt-50">
+        <LoanApplicationForm />
+      </div>
     </div>
   );
 }

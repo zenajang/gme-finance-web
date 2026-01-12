@@ -58,6 +58,7 @@ export default function VietnamPage() {
         title={t('country.vietnam')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}
+        buttonHref="#apply-loan-online"
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"

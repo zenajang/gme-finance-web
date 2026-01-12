@@ -83,9 +83,10 @@ export default function PhilippinesPage() {
       <IntroductionSection
         videoSrc="/images/philippines/background.webm"
         title="Philippines"
+        buttonHref="#apply-loan-online"
       />
       <div
-        className="bg-cover bg-center bg-no-repeat"
+        className="bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{ background: getGradient('philippines') }}
       >
         <section className="bg-no-repeat relative overflow-hidden">

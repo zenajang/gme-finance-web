@@ -1,5 +1,6 @@
 "use client";
 
+import { COMMON_COLORS } from "@/constants/colors";
 import Image from "next/image";
 import { useState, useRef, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
@@ -141,12 +142,13 @@ export default function FindBranchSection() {
 
   return (
     <>
-      <section className="relative">
+      <section className="relative mt-10 lg:mt-30">
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center">
           <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-4 lg:mb-10">
             Find a branch
           </h2>
-          <p className="text-subheading text-center mb-5 md:mb-10 lg:mb-15 text-red-500 font-medium">
+          <p style={{ color: COMMON_COLORS.primary }}
+            className="text-subheading text-center mb-5 md:mb-10 lg:mb-15 font-medium">
             {t('home.findBranchSubtitle')}
           </p>
           <div className="relative z-[200] max-w-7xl w-full mb-10" ref={dropdownRef}>

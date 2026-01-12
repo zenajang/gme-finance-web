@@ -83,14 +83,14 @@ export default function MongoliaPage() {
         title={t('country.mongolia')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}
+        buttonHref="#apply-loan-online"
       />
       <div
-        className="bg-cover bg-center bg-no-repeat"
+        className="bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{ background: getGradient('mongolia') }}
       >
         <section className="bg-no-repeat relative overflow-hidden">
-
-          <div className="absolute bg-no-repeat -top-190 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern_r.svg')", backgroundSize: '20%' }} />
+          <div className="absolute bg-no-repeat -top-50 -left-75 w-full h-full opacity-50" style={{ backgroundImage: "url('/images/mongolia/pattern_r.svg')", backgroundSize: '32%', backgroundPosition: 'left top' }} />
           <LatestSocials
             socials={MONGOLIA_SOCIALS} />
           <TeamSection
@@ -109,7 +109,7 @@ export default function MongoliaPage() {
         />
         <LoanTypesSection />
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat bg-right top-80 -right-30 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern_r.svg')", backgroundSize: '20%' }} />
+          <div className="absolute bg-no-repeat bg-right top-90 -right-40 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern_r.svg')", backgroundSize: '20%' }} />
           <ProcessStep />
         </section>
       </div>

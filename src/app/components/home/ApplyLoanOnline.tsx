@@ -11,7 +11,7 @@ export default function ApplyLoanOnline() {
   const READ_MORE_URL = "https://gmefinance.com/onlineloan/";
 
   return (
-    <section className="relative bg-[#f9f9f9] m-4 md:m-20 rounded-2xl pt-8 md:pt-20 pb-10 md:pb-20 px-4 md:px-70 overflow-hidden">
+    <section id="apply-loan-online" className="relative bg-[#f9f9f9] m-4 md:m-20 rounded-2xl pt-8 md:pt-20 pb-10 md:pb-20 px-4 md:px-70 overflow-hidden">
       <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-6 md:mb-20">How to Apply Loan Online?</h2>
       <div className="max-w-screen-xl mx-auto px-2 md:px-6 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-20">
         {/* Left: App Preview Image */}

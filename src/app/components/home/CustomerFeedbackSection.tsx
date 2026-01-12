@@ -25,9 +25,8 @@ function formatDate(d: string) {
 }
 
 // HTML에서 텍스트만 추출 (미리보기용)
-function getTextPreview(html: string, maxLength: number = 200): string {
-  const text = html.replace(/<[^>]*>/g, '');
-  return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+function getTextPreview(html: string): string {
+  return html.replace(/<[^>]*>/g, '');
 }
 
 // HTML에서 첫 번째 비디오 추출
@@ -68,9 +67,9 @@ function FeedbackCard({ post }: { post: BlogPost }) {
   };
 
   return (
-    <article className="rounded-3xl bg-white flex flex-col min-h-[380px] md:min-h-[550px] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] overflow-hidden">
+    <article className="rounded-3xl bg-white flex flex-col h-[380px] md:h-[550px] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] overflow-hidden">
       <div className="p-6 md:p-8 flex flex-col flex-1">
-        <header className="flex items-end justify-between mb-3">
+        <header className="flex items-end justify-between mb-5">
           <div className="flex items-end gap-2">
             <Image src="/images/thumb.png" alt="Speaker" width={30} height={30} className="w-5 h-5 md:w-[30px] md:h-[30px]" />
             <p className="text-sm md:text-[1.1rem] lg:text-[1.1rem] font-medium leading-none">{post.title}</p>
@@ -80,7 +79,7 @@ function FeedbackCard({ post }: { post: BlogPost }) {
           </div>
         </header>
 
-        <p className="text-sm md:text-sm lg:text-[1rem] leading-snug line-clamp-6 md:line-clamp-8 mb-3">
+        <p className="text-sm md:text-sm lg:text-[1rem] leading-snug line-clamp-6 md:line-clamp-6 mb-3">
           {getTextPreview(post.content)}
         </p>
       </div>

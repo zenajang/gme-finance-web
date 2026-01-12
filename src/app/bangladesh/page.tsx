@@ -85,6 +85,7 @@ export default function BangladeshPage() {
         buttonText={t('button.applyNow')}
         buttonHoverBgColor={colors.introHover}
         buttonTextColor={colors.primary}
+        buttonHref="#apply-loan-online"
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"

@@ -1,6 +1,6 @@
 'use client'
 
-import { getGradient } from "@/constants/colors";
+import { getColorScheme, getGradient } from "@/constants/colors";
 import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -77,6 +77,7 @@ const SRILANKA_TEAMS: Teams[] = [
 
 export default function SrilankaPage() {
   const { t } = useTranslation()
+  const colors = getColorScheme('srilanka')
 
   return (
     <div>
@@ -85,6 +86,7 @@ export default function SrilankaPage() {
         title={t('country.sri lanka')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}
+        buttonHref="#apply-loan-online"
       />
       <div
         className="bg-cover bg-center bg-no-repeat"
@@ -100,6 +102,7 @@ export default function SrilankaPage() {
           />
           <TeamVideoSection
             title={t('countryPage.introductionTitlelk')}
+            subtitleColor={colors.primary}
             videoUrl="https://www.youtube.com/embed/FJhRx5fyf64"
             leftImageSrc="/images/srilanka/flower.svg"
             leftImageAlt="Left flower"

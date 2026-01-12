@@ -46,39 +46,39 @@ const RUSSIA_SOCIALS: SocialsItem[] = [
 const RUSSIA_TEAMS: Teams[] = [
   {
     id: 'hamid',
-    image: '/images/uzbekistan/team/hamid.svg',
+    image: '/images/uzbekistan/team/hamid.jpg',
     name: 'HAMID',
   },
   {
     id: 'zed',
-    image: '/images/uzbekistan/team/zed.svg',
+    image: '/images/uzbekistan/team/zed.jpg',
     name: 'ZED',
 
   },
   {
     id: 'mark',
-    image: '/images/uzbekistan/team/mark.svg',
+    image: '/images/uzbekistan/team/mark.jpg',
     name: 'MARK',
   },
   {
     id: 'mikhail',
-    image: '/images/uzbekistan/team/mikhail.svg',
+    image: '/images/uzbekistan/team/mikhail.jpg',
     name: 'MIKHAIL',
   },
   {
     id: 'ruby',
-    image: '/images/uzbekistan/team/ruby.svg',
+    image: '/images/uzbekistan/team/ruby.jpg',
     name: 'RUBY',
 
   },
   {
     id: 'ziyoda',
-    image: '/images/uzbekistan/team/ziyoda.svg',
+    image: '/images/uzbekistan/team/ziyoda.jpg',
     name: 'ZIYODA',
   },
   {
     id: 'zoda',
-    image: '/images/uzbekistan/team/zoda.svg',
+    image: '/images/uzbekistan/team/zoda.jpg',
     name: 'ZODA',
 
   },
@@ -102,6 +102,7 @@ export default function RussiaPage() {
         buttonText={t('button.applyNow')}
         buttonTextColor={colors.primary}
         buttonHoverBgColor={colors.hover}
+        buttonHref="#apply-loan-online"
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"
@@ -142,13 +143,15 @@ export default function RussiaPage() {
         </section>
       </div>
       <LoanDetailSection backgroundImage="/images/russia/loan_detail_bg.webp" country="russia" />
-      <div style={{ background: getGradient('russia', true) }}>
-        <section className="bg-no-repeat relative overflow-hidden">
-          <GarlandDecoration country="russia" />
+      <section className="bg-no-repeat relative overflow-hidden">
+        <GarlandDecoration country="russia" />
+        <div className="relative z-10" style={{ background: '#DFE8FF' }}>
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
-          <LoanApplicationForm buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
-        </section>
-      </div>
+        </div>
+        <div style={{ background: getGradient('russia', true) }}>
+          <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
+        </div>
+      </section>
     </div>
   );
 }

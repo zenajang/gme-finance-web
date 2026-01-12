@@ -8,8 +8,8 @@ interface GarlandDecorationProps {
 // 국가별 garland 설정 (standard variant용) - 숫자는 vw 단위
 const garlandConfig: Record<string, {
   desktop: {
-    left: { top: number; height: number; left: number; size?: string; rotate?: string };
-    right: { bottom: number; height: number; right: number; size?: string };
+    left: { top: number; height: number; left: number; size?: string; rotate?: string; width?: string; maxHeight?: number; heightPx?: number; zIndex?: number };
+    right: { bottom: number; height: number; right: number; size?: string; width?: string; maxHeight?: number; heightPx?: number; zIndex?: number };
   };
   mobile: {
     left: { top: number; height: number; width: number; left: number; size: string; rotate?: string };
@@ -18,8 +18,8 @@ const garlandConfig: Record<string, {
 }> = {
   philippines: {
     desktop: {
-      left: { top: 23, height: 120, left: -2 },
-      right: { bottom: -25, height: 80, right: 0 },
+      left: { top: 0, height: 75, left: -12, size: '70vw auto', width: '70vw', rotate: '0deg' },
+      right: { bottom: -20, height: 55, right: -10, size: '55vw auto', width: '55vw', },
     },
     mobile: {
       left: { top: 60, height: 73, width: 70, left: -2, size: '80vw auto' },
@@ -28,8 +28,8 @@ const garlandConfig: Record<string, {
   },
   nepal: {
     desktop: {
-      left: { top: 30, height: 110, left: -20, rotate: '-1deg' },
-      right: { bottom: -20, height: 70, right: 0 },
+      left: { top: 6, height: 67, left: -12, size: '75vw auto', width: '75vw', rotate: '0deg' },
+      right: { bottom: -25, height: 70, right: 0, size: '33vw auto', width: '33vw' },
     },
     mobile: {
       left: { top: 50, height: 80, width: 100, left: -20, size: '100vw auto' },
@@ -38,8 +38,8 @@ const garlandConfig: Record<string, {
   },
   bangladesh: {
     desktop: {
-      left: { top: 25, height: 110, left: -1, rotate: '0deg' },
-      right: { bottom: -20, height: 120, right: 0 },
+      left: { top: 6, height: 70, left: 0, size: '60vw auto', width: '60vw', rotate: '0deg' },
+      right: { bottom: -16, height: 70, right: -2, size: '60vw auto', width: '60vw' },
     },
     mobile: {
       left: { top: 55, height: 80, width: 100, left: -3, size: '75vw auto', rotate: '0deg' },
@@ -48,8 +48,8 @@ const garlandConfig: Record<string, {
   },
   pakistan: {
     desktop: {
-      left: { top: 10, height: 150, left: 0, rotate: '0deg' },
-      right: { bottom: -20, height: 70, right: 0 },
+      left: { top: 6, height: 67, left: 0, size: '75vw auto', width: '75vw', rotate: '0deg' },
+      right: { bottom: -25, height: 70, right: 0, size: '33vw auto', width: '33vw' },
     },
     mobile: {
       left: { top: 50, height: 80, width: 100, left: 0, size: '100vw auto' },
@@ -58,8 +58,8 @@ const garlandConfig: Record<string, {
   },
   india: {
     desktop: {
-      left: { top: 10, height: 110, left: 0, rotate: '0deg' },
-      right: { bottom: -35, height: 110, right: 0 },
+      left: { top: 6, height: 53, left: -1, size: '70vw auto', width: '160vw', rotate: '0deg' },
+      right: { bottom: -26, height: 70, right: 0, size: '70vw auto', width: '70vw' },
     },
     mobile: {
       left: { top: 65, height: 100, width: 100, left: 0, size: '75vw auto', rotate: '0deg' },
@@ -68,8 +68,8 @@ const garlandConfig: Record<string, {
   },
   indonesia: {
     desktop: {
-      left: { top: 40, height: 65, left: -2 },
-      right: { bottom: -10, height: 65, right: 0 },
+      left: { top: 10, height: 50, left: -2, size: '45vw auto', width: '45vw', rotate: '0deg' },
+      right: { bottom: -5, height: 40, right: 0, size: '45vw auto', width: '45vw', },
     },
     mobile: {
       left: { top: 82, height: 100, width: 100, left: -6, size: '55vw auto' },
@@ -78,8 +78,8 @@ const garlandConfig: Record<string, {
   },
   mongolia: {
     desktop: {
-      left: { top: 20, height: 100, left: -15, rotate: '-1deg' },
-      right: { bottom: -20, height: 70, right: 0 },
+      left: { top: 6, height: 67, left: -12, size: '75vw auto', width: '75vw', rotate: '0deg' },
+      right: { bottom: -25, height: 70, right: -10, size: '60vw auto', width: '60vw' },
     },
     mobile: {
       left: { top: 77, height: 73, width: 70, left: -20, size: '80vw auto' },
@@ -88,8 +88,8 @@ const garlandConfig: Record<string, {
   },
   myanmar: {
     desktop: {
-      left: { top: 40, height: 60, left: -2, rotate: '-1deg' },
-      right: { bottom: 0, height: 50, right: 0 },
+      left: { top: 10, height: 50, left: -2, size: '60vw auto', width: '60vw', rotate: '0deg' },
+      right: { bottom: -10, height: 40, right: 0, size: '60vw auto', width: '60vw', },
     },
     mobile: {
       left: { top: 70, height: 100, width: 100, left: 0, rotate: '-1deg', size: '80vw auto' },
@@ -98,8 +98,8 @@ const garlandConfig: Record<string, {
   },
   cambodia: {
     desktop: {
-      left: { top: 25, height: 90, left: -10, rotate: '0deg' },
-      right: { bottom: -30, height: 80, right: -10 },
+      left: { top: 0, height: 70, left: -12, size: '70vw auto', width: '70vw', rotate: '0deg' },
+      right: { bottom: -22, height: 60, right: -  10, size: '70vw auto', width: '70vw', },
     },
     mobile: {
       left: { top: 65, height: 100, width: 100, left: -20, rotate: '0deg', size: '90vw auto' },
@@ -108,8 +108,8 @@ const garlandConfig: Record<string, {
   },
   thailand: {
     desktop: {
-      left: { top: 20, height: 110, left: -2 },
-      right: { bottom: -20, height: 70, right: 0 },
+      left: { top: 6, height: 67, left: 0, size: '60vw auto', width: '60vw', rotate: '0deg' },
+      right: { bottom: -25, height: 70, right: -10, size: '50vw auto', width: '50vw' },
     },
     mobile: {
       left: { top: 55, height: 100, width: 100, left: 0, size: '75vw auto' },
@@ -118,8 +118,8 @@ const garlandConfig: Record<string, {
   },
   vietnam: {
     desktop: {
-      left: { top: 20, height: 110, left: -2 },
-      right: { bottom: -20, height: 70, right: 0 },
+      left: { top: 6, height: 67, left: 0, size: '60vw auto', width: '60vw', rotate: '0deg' },
+      right: { bottom: -26, height: 70, right: -10, size: '50vw auto', width: '50vw' },
     },
     mobile: {
       left: { top: 55, height: 100, width: 100, left: 0, size: '75vw auto' },
@@ -128,18 +128,18 @@ const garlandConfig: Record<string, {
   },
   russia: {
     desktop: {
-      left: { top: 0, height: 130, left: 0, rotate: '0deg' },
-      right: { bottom: -50, height: 130, right: 0 },
+      left: { top: 0, height: 0, left: -10, rotate: '0deg', size: '120vw auto', width: '120vw', heightPx: 1350, zIndex: -1 },
+      right: { bottom: -23, height: 0, right: -10, size: '120vw auto', width: '120vw', heightPx: 1350, zIndex: -1 },
     },
     mobile: {
       left: { top: 70, height: 100, width: 100, left: -3, rotate: '0deg', size: '100vw auto' },
-      right: { bottom: -20, height: 100, width: 100, right: -4, size: '100vw auto' },
+      right: { bottom: -10, height: 100, width: 100, right: -4, size: '100vw auto' },
     },
   },
   srilanka: {
     desktop: {
-      left: { top: 15, height: 100, left: 0, rotate: '0deg' },
-      right: { bottom: -38, height: 110, right: 0 },
+      left: { top: 0, height: 60, left: -12, size: '70vw auto', width: '70vw', rotate: '0deg' },
+      right: { bottom: -22, height: 60, right: -  10, size: '70vw auto', width: '70vw', },
     },
     mobile: {
       left: { top: 55, height: 100, width: 100, left: -1, size: '60vw auto' },
@@ -148,8 +148,8 @@ const garlandConfig: Record<string, {
   },
   uzbekistan: {
     desktop: {
-      left: { top: 0, height: 130, left: 0, rotate: '0deg' },
-      right: { bottom: -50, height: 130, right: 0 },
+      left: { top: 0, height: 0, left: -10, rotate: '0deg', size: '120vw auto', width: '120vw', heightPx: 1350, zIndex: -1 },
+      right: { bottom: -23, height: 0, right: -10, size: '120vw auto', width: '120vw', heightPx: 1350, zIndex: -1 },
     },
     mobile: {
       left: { top: 70, height: 100, width: 100, left: -3, rotate: '0deg', size: '100vw auto' },
@@ -195,13 +195,16 @@ export default function GarlandDecoration({
         />
         {/* 오른쪽 하단 garland - 데스크톱 */}
         <div
-          className="absolute bg-no-repeat bg-right hidden md:block w-full"
+          className="absolute bg-no-repeat bg-right hidden md:block"
           style={{
             backgroundImage: `url('/images/${country}/garland_r.svg')`,
             backgroundSize: config.desktop.right.size || 'contain',
-            bottom: `${config.desktop.right.bottom}vh`,
-            height: `${config.desktop.right.height}vh`,
-            right: `${config.desktop.right.right}vw`,
+            bottom: `${config.desktop.right.bottom}%`,
+            height: config.desktop.right.heightPx
+              ? `${config.desktop.right.heightPx}px`
+              : `${config.desktop.right.height}%`,
+            width: config.desktop.right.width || '100%',
+            right: `${config.desktop.right.right}%`,
             zIndex: 0
           }}
         />
@@ -222,14 +225,17 @@ export default function GarlandDecoration({
         />
         {/* 왼쪽 상단 garland - 데스크톱 */}
         <div
-          className="absolute bg-no-repeat bg-left hidden md:block w-full"
+          className="absolute bg-no-repeat bg-left hidden md:block"
           style={{
             backgroundImage: `url('/images/${country}/garland_l.svg')`,
             transform: `rotate(${config.desktop.left.rotate || '10deg'})`,
             backgroundSize: config.desktop.left.size || 'contain',
-            top: `${config.desktop.left.top}vh`,
-            height: `${config.desktop.left.height}vh`,
-            left: `${config.desktop.left.left}vw`,
+            top: `${config.desktop.left.top}%`,
+            height: config.desktop.left.heightPx
+              ? `${config.desktop.left.heightPx}px`
+              : `${config.desktop.left.height}%`,
+            width: config.desktop.left.width || '100%',
+            left: `${config.desktop.left.left}%`,
             zIndex: 2
           }}
         />

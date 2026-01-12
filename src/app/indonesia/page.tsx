@@ -89,6 +89,7 @@ export default function IndonesiaPage() {
         title={t('country.indonesia')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}
+        buttonHref="#apply-loan-online"
       />
       <div
         className="bg-cover bg-center bg-no-repeat"

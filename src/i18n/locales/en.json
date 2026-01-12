@@ -53,7 +53,7 @@
     "newServiceStep3Des": "Simplify your loan experience. Get transparent & convenient access to your information, anytime, anywhere.",
     "simpleLoanApplicationTitle": "Simple Loan Application",
     "simpleLoanApplicationSubTitle": "5 Step Applying Process",
-    "simpleLoanStep1": "APPLY THROUGH GME APP",
+    "simpleLoanStep1": "APPLY THROUGH GME\u00A0APP",
     "simpleLoanStep1Des": "Download GME App in Google Play Store or App Store Register and Apply Loan",
     "simpleLoanStep2": "REQUIREMENT SUBMISSION",
     "simpleLoanStep2Des": "Fill up Your Information and Submit the Required Documents",
@@ -92,7 +92,8 @@
       "thailand": "Loan up to 25 Million KRW",
       "vietnam": "Loan up to 25 Million KRW"
     },
-    "applyLoanAppSubTitle1": "GME Finance makes it Easy and Convenient to Apply GME Loan. Apply Now!",
+    "applyLoanAppSubTitle1": "GME Finance makes it Easy and Convenient to Apply GME Loan.",
+    "applyLoanAppSubTitle2": "Apply Now!",
     "findBranchSubtitle": "Visit a nearby GME Finance Branch for a counsultation!"
   },
   "button": {
