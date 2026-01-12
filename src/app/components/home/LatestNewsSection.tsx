@@ -42,9 +42,9 @@ function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
   return (
     <article
       onClick={onClick}
-      className="rounded-2xl bg-white flex flex-col h-[380px] md:h-[550px] shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+      className="rounded-2xl bg-white flex flex-col h-[380px] md:h-auto md:aspect-[4/5] shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
     >
-      <div className="p-6 md:p-8 flex flex-col flex-1">
+      <div className="p-6 md:p-10 flex flex-col flex-1">
         <header className="flex items-start justify-between mb-3">
           <div className="flex items-start gap-2">
             <Image src="/images/speaker.png" alt="Speaker" width={25} height={25} className="w-5 h-5 md:w-[25px] md:h-[25px]" />
@@ -61,11 +61,11 @@ function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
         </h3>
 
         {/* 미리보기 */}
-        <p className="text-sm text-gray-600 line-clamp-6 md:line-clamp-3">
+        <p className="text-md text-gray-600 line-clamp-6 md:line-clamp-3">
           {getTextPreview(post.content)}
         </p>
       </div>
-      <div className="relative w-full h-[180px] md:h-1/2">
+      <div className="relative w-full h-[180px] md:h-3/5">
         {thumbnail ? (
           <Image
             src={thumbnail}

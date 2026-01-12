@@ -122,9 +122,7 @@ export default function PhilippinesPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="philippines" />
           <EMICalculatorSection />
-          <div className="mb-20">
-            <LoanApplicationForm country="philippines" />
-          </div>
+          <LoanApplicationForm country="philippines" />
         </section>
       </div>
     </div>

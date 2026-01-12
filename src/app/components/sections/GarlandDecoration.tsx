@@ -22,8 +22,8 @@ const garlandConfig: Record<string, {
       right: { bottom: -20, height: 55, right: -10, size: '55vw auto', width: '55vw', },
     },
     mobile: {
-      left: { top: 60, height: 73, width: 70, left: -2, size: '80vw auto' },
-      right: { bottom: -30, height: 70, width: 70, right: 0, size: '80vw auto' }
+      left: { top: 53, height: 73, width: 70, left: -10, size: '80vw auto' },
+      right: { bottom: -20, height: 70, width: 70, right: -10, size: '75vw auto' }
     },
   },
   nepal: {
@@ -42,8 +42,8 @@ const garlandConfig: Record<string, {
       right: { bottom: -16, height: 70, right: -2, size: '60vw auto', width: '60vw' },
     },
     mobile: {
-      left: { top: 55, height: 80, width: 100, left: -3, size: '75vw auto', rotate: '0deg' },
-      right: { bottom: -25, height: 80, width: 100, right: 0, size: '75vw auto' },
+      left: { top: 65, height: 80, width: 100, left: -5, size: '60vw auto', rotate: '0deg' },
+      right: { bottom: -18, height: 80, width: 100, right: 0, size: '60vw auto' },
     },
   },
   pakistan: {
@@ -82,8 +82,8 @@ const garlandConfig: Record<string, {
       right: { bottom: -25, height: 70, right: -10, size: '60vw auto', width: '60vw' },
     },
     mobile: {
-      left: { top: 77, height: 73, width: 70, left: -20, size: '80vw auto' },
-      right: { bottom: -25, height: 70, width: 70, right: 0, size: '60vw auto' },
+      left: { top: 62, height: 73, width: 70, left: -20, size: '80vw auto' },
+      right: { bottom: -20, height: 70, width: 70, right: -10, size: '60vw auto' },
     },
   },
   myanmar: {
@@ -132,18 +132,18 @@ const garlandConfig: Record<string, {
       right: { bottom: -23, height: 0, right: -10, size: '120vw auto', width: '120vw', heightPx: 1350, zIndex: -1 },
     },
     mobile: {
-      left: { top: 70, height: 100, width: 100, left: -3, rotate: '0deg', size: '100vw auto' },
-      right: { bottom: -10, height: 100, width: 100, right: -4, size: '100vw auto' },
+      left: { top: 60, height: 100, width: 120, left: -13, rotate: '0deg', size: '120vw auto' },
+      right: { bottom: -16, height: 100, width: 130, right: -17, size: '130vw auto' },
     },
   },
   srilanka: {
     desktop: {
       left: { top: 0, height: 60, left: -12, size: '70vw auto', width: '70vw', rotate: '0deg' },
-      right: { bottom: -22, height: 60, right: -  10, size: '70vw auto', width: '70vw', },
+      right: { bottom: -22, height: 60, right: -10, size: '70vw auto', width: '70vw', },
     },
     mobile: {
-      left: { top: 55, height: 100, width: 100, left: -1, size: '60vw auto' },
-      right: { bottom: -25, height: 100, width: 100, right: -1, size: '60vw auto' },
+      left: { top: 65, height: 100, width: 100, left: -10, size: '60vw auto' },
+      right: { bottom: -25, height: 100, width: 120, right: -12, size: '60vw auto' },
     },
   },
   uzbekistan: {
@@ -152,8 +152,8 @@ const garlandConfig: Record<string, {
       right: { bottom: -23, height: 0, right: -10, size: '120vw auto', width: '120vw', heightPx: 1350, zIndex: -1 },
     },
     mobile: {
-      left: { top: 70, height: 100, width: 100, left: -3, rotate: '0deg', size: '100vw auto' },
-      right: { bottom: -20, height: 100, width: 100, right: -4, size: '100vw auto' },
+      left: { top: 60, height: 100, width: 120, left: -13, rotate: '0deg', size: '120vw auto' },
+      right: { bottom: -16, height: 100, width: 130, right: -17, size: '130vw auto' },
     },
   },
 };
