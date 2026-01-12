@@ -104,7 +104,7 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
       description: 'A GME Finance staff member believes in collaboration and thrives in a supportive team environment.',
       icon: (
         <Image
-          src="/images/icons/teamWork.svg"
+          src="/images/icons/team_work.svg"
           alt="teamwork"
           width={200}
           height={200}
