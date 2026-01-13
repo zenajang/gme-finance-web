@@ -56,12 +56,12 @@ function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
         </header>
 
         {/* 제목 */}
-        <h3 className="text-md md:text-[1.85rem] leading-snug line-clamp-3 mb-3 font-medium">
+        <h3 className="text-sm md:text-[1.85rem] leading-snug line-clamp-3 mb-3 font-bold md:font-medium">
           {post.title}
         </h3>
 
         {/* 미리보기 */}
-        <p className="text-md text-gray-600 line-clamp-6 md:line-clamp-3">
+        <p className="text-sm md:text-sm lg:text-[1rem] text-gray-600 line-clamp-6 md:line-clamp-3">
           {getTextPreview(post.content)}
         </p>
       </div>

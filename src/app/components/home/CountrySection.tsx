@@ -16,12 +16,10 @@ export default function CountrySection() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [isSwiping, setIsSwiping] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number>(0);
   const swiperRef = useRef<SwiperType | null>(null);
-  const touchStartPos = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
   const duplicatedCountries = [...COUNTRIES, ...COUNTRIES, ...COUNTRIES];
   const singleSetWidth = COUNTRIES.length * 170;
@@ -108,6 +106,11 @@ export default function CountrySection() {
     setScrollPosition(section * sectionWidth);
   };
 
+  const canClickSlide = () => {
+    const swiper = swiperRef.current as (SwiperType & { allowClick?: boolean }) | null;
+    return swiper?.allowClick ?? true;
+  };
+
   return (
     <section className="pt-10 md:py-15 lg:py-15 bg-white overflow-x-hidden">
       <div className="px-0 md:px-3 lg:px-3">
@@ -123,27 +126,13 @@ export default function CountrySection() {
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
-              onTouchStart={(swiper, event) => {
-                const touch = (event as TouchEvent).touches[0];
-                touchStartPos.current = { x: touch.clientX, y: touch.clientY };
-                setIsSwiping(false);
-              }}
-              onTouchEnd={(swiper, event) => {
-                const touch = (event as TouchEvent).changedTouches[0];
-                const deltaX = Math.abs(touch.clientX - touchStartPos.current.x);
-                const deltaY = Math.abs(touch.clientY - touchStartPos.current.y);
-
-                // 10px 이상 움직였으면 스와이프로 판단
-                if (deltaX > 10 || deltaY > 10) {
-                  setIsSwiping(true);
-                  setTimeout(() => setIsSwiping(false), 150);
-                }
-              }}
               slidesPerView={3}
               centeredSlides={true}
               spaceBetween={10}
               loop={true}
               speed={300}
+              preventClicks={false}
+              preventClicksPropagation={false}
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
@@ -161,7 +150,7 @@ export default function CountrySection() {
                     >
                       <div
                         onClick={() => {
-                          if (!isSwiping) {
+                          if (canClickSlide()) {
                             router.push(`/${country.name.toLowerCase()}`);
                           }
                         }}

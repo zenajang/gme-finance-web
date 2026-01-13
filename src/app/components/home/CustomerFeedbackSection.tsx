@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { COMMON_COLORS } from "@/constants/colors";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { createClient } from '@/lib/supabase/client';
 
@@ -72,14 +71,14 @@ function FeedbackCard({ post }: { post: BlogPost }) {
         <header className="flex items-end justify-between mb-5">
           <div className="flex items-end gap-2">
             <Image src="/images/thumb.png" alt="Speaker" width={30} height={30} className="w-5 h-5 md:w-[30px] md:h-[30px]" />
-            <p className="text-sm md:text-[1.1rem] lg:text-[1.1rem] font-medium leading-none">{post.title}</p>
+            <p className="text-sm md:text-[1.1rem] lg:text-[1.2rem] font-bold md:font-medium leading-none">{post.title}</p>
           </div>
           <div className="hidden md:block text-small text-gray-500 leading-none">
             {formatDate(post.created_at)}
           </div>
         </header>
 
-        <p className="text-sm md:text-sm lg:text-[1rem] leading-snug line-clamp-6 md:line-clamp-6 mb-3">
+        <p className="text-sm md:text-sm lg:text-[1rem] leading-relaxed line-clamp-6 md:line-clamp-6 mt-2 mb-4">
           {getTextPreview(post.content)}
         </p>
       </div>
