@@ -105,12 +105,14 @@ export default function PhilippinesPage() {
           leftImageAlt="Left castle"
           leftImageWidth={600}
           leftImageHeight={600}
-          leftImageStyle={{ left: '-550px', marginTop: '105px', zIndex: 1 }}
+          leftImageOffsetX={200}
+          leftImageStyle={{ width: '30vw',zIndex: 1 }}
           rightImageSrc="/images/philippines/castle_r.svg"
           rightImageAlt="Right castle"
           rightImageWidth={370}
           rightImageHeight={370}
-          rightImageStyle={{ right: '-315px', marginTop: '-10px', zIndex: 1 }}
+          rightImageOffsetX={-10}
+          rightImageStyle={{ width:'20vw',zIndex: 1 }}
         />
         <LoanTypesSection />
         <section className="bg-no-repeat relative overflow-hidden">
@@ -122,7 +124,7 @@ export default function PhilippinesPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="philippines" />
           <EMICalculatorSection />
-          <LoanApplicationForm country="philippines" />
+          <LoanApplicationForm country="philippines"  anchorId="apply-loan-online" />
         </section>
       </div>
     </div>

@@ -123,14 +123,16 @@ export default function MyanmarPage() {
             videoUrl="https://www.youtube.com/embed/Y7qp3bG9AwA"
             leftImageSrc="/images/myanmar/castle_l.svg"
             leftImageAlt="Left castle"
+            leftImageOffsetX={10}
             leftImageWidth={380}
             leftImageHeight={380}
-            leftImageStyle={{ width: '23vw', zIndex: 1 }}
+            leftImageStyle={{ width: '25vw', zIndex: 1 }}
             rightImageSrc="/images/myanmar/castle_r.svg"
             rightImageAlt="Right castle"
+            rightImageOffsetX={-10}
             rightImageWidth={380}
             rightImageHeight={380}
-            rightImageStyle={{ width: '23vw', zIndex: 1 }}
+            rightImageStyle={{ width: '25vw', zIndex: 1 }}
           />
           <LoanTypesSection />
           <section className="relative overflow-hidden">
@@ -143,7 +145,7 @@ export default function MyanmarPage() {
       <section className="bg-cover relative overflow-hidden" style={{ background: getGradient('myanmar') }}>
         <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
         <GarlandDecoration country="myanmar" />
-        <LoanApplicationForm buttonBgColor={colors.primary} subtitleColor={colors.primary} />
+        <LoanApplicationForm buttonBgColor={colors.primary} subtitleColor={colors.primary}  anchorId="apply-loan-online" />
       </section>
     </div>
   );

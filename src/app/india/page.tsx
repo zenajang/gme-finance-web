@@ -89,7 +89,7 @@ export default function IndiaPage() {
             <GarlandDecoration country="india" />
             <EMICalculatorSection />
             <div className="mb-20 mt-10">
-              <LoanApplicationForm country="india" />
+              <LoanApplicationForm country="india"  anchorId="apply-loan-online" />
             </div>
           </section>
         </div>

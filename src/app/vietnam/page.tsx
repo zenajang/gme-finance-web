@@ -80,12 +80,13 @@ export default function VietnamPage() {
           leftImageAlt="Left castle"
           leftImageWidth={530}
           leftImageHeight={530}
-          leftImageStyle={{ left: '-450px', marginTop: '60px', zIndex: 1 }}
+          leftImageStyle={{width:'25vw', zIndex: 1 }}
           rightImageSrc="/images/vietnam/castle_r.svg"
           rightImageAlt="Right castle"
           rightImageWidth={1000}
           rightImageHeight={1000}
-          rightImageStyle={{ right: '-700px', marginTop: '68px', zIndex: 1 }}
+          rightImageOffsetX={-270}
+          rightImageStyle={{ width:'48vw', zIndex: 1 }}
         />
         <LoanTypesSection />
         <section className="bg-no-repeat relative overflow-hidden">
@@ -98,7 +99,7 @@ export default function VietnamPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="vietnam" />
           <EMICalculatorSection />
-          <LoanApplicationForm country="vietnam" />
+          <LoanApplicationForm country="vietnam"  anchorId="apply-loan-online" />
         </section>
       </div>
     </div>

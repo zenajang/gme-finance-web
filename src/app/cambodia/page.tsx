@@ -116,7 +116,7 @@ export default function CambodiaPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="cambodia" />
           <EMICalculatorSection />
-          <LoanApplicationForm />
+          <LoanApplicationForm  anchorId="apply-loan-online" />
         </section>
       </div>
     </div>

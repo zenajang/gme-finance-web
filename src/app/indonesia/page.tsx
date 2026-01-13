@@ -120,7 +120,7 @@ export default function IndonesiaPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="indonesia" />
           <EMICalculatorSection />
-          <LoanApplicationForm country="indonesia" />
+          <LoanApplicationForm country="indonesia"  anchorId="apply-loan-online" />
         </section>
       </div>
     </div>

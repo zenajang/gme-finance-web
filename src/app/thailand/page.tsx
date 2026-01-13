@@ -90,7 +90,7 @@ export default function ThailandPage() {
           <div className="absolute bg-no-repeat top-20 bg-left -left-40 w-full h-80" style={{ backgroundImage: "url('/images/thailand/cloud_r.svg')", zIndex: 1 }} />
           <GarlandDecoration country="thailand" />
           <EMICalculatorSection titleColor={colors.title} />
-          <LoanApplicationForm country="thailand" />
+          <LoanApplicationForm country="thailand"  anchorId="apply-loan-online" />
         </section>
       </div>
     </div>

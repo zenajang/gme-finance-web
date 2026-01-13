@@ -113,12 +113,14 @@ export default function BangladeshPage() {
           leftImageAlt="Left castle"
           leftImageWidth={500}
           leftImageHeight={500}
-          leftImageStyle={{ width: '30vw', zIndex: 1 }}
+          leftImageOffsetX={150}
+          leftImageStyle={{ width: '35vw', zIndex: 1 }}
           rightImageSrc="/images/bangladesh/castle_r.svg"
           rightImageAlt="Right castle"
           rightImageWidth={500}
           rightImageHeight={500}
-          rightImageStyle={{ width: '28vw', zIndex: 1 }}
+          rightImageOffsetX={-150}
+          rightImageStyle={{ width: '35vw', zIndex: 1 }}
         />
         <LoanTypesSection />
         <ProcessStep subtitleColor={colors.primary} />
@@ -128,7 +130,7 @@ export default function BangladeshPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="bangladesh" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
-          <LoanApplicationForm country='bangladesh' buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} subtitleColor={colors.primary} />
+          <LoanApplicationForm country='bangladesh' buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} subtitleColor={colors.primary}  anchorId="apply-loan-online" />
         </section>
       </div>
     </div>

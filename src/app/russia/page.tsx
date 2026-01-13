@@ -129,12 +129,12 @@ export default function RussiaPage() {
           leftImageAlt="Left castle"
           leftImageWidth={380}
           leftImageHeight={380}
-          leftImageStyle={{ left: '-320px', marginTop: '60px', zIndex: 1 }}
+          leftImageStyle={{ width:'20vw', zIndex: 1 }}
           rightImageSrc="/images/russia/castle_r.svg"
           rightImageAlt="Right castle"
           rightImageWidth={350}
           rightImageHeight={350}
-          rightImageStyle={{ right: '-290px', marginTop: '10px', zIndex: 1 }}
+          rightImageStyle={{  width:'20vw',  zIndex: 1 }}
         />
         <LoanTypesSection />
         <section className="bg-no-repeat relative overflow-hidden">
@@ -143,13 +143,13 @@ export default function RussiaPage() {
         </section>
       </div>
       <LoanDetailSection backgroundImage="/images/russia/loan_detail_bg.webp" country="russia" />
-      <section className="bg-no-repeat relative overflow-hidden">
+      <section className="bg-no-repeat relative overflow-hidden z-10 isolate">
         <GarlandDecoration country="russia" />
         <div className="relative z-10" style={{ background: '#DFE8FF' }}>
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
         </div>
         <div style={{ background: getGradient('russia', true) }}>
-          <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
+          <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}  anchorId="apply-loan-online" />
         </div>
       </section>
     </div>

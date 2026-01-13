@@ -106,14 +106,16 @@ export default function SrilankaPage() {
             videoUrl="https://www.youtube.com/embed/FJhRx5fyf64"
             leftImageSrc="/images/srilanka/flower.svg"
             leftImageAlt="Left flower"
-            leftImageWidth={700}
-            leftImageHeight={700}
-            leftImageStyle={{ left: '-450px', marginTop: '80px', zIndex: 1 }}
+            leftImageWidth={800}
+            leftImageHeight={800}
+            leftImageStyle={{ width: '40vw', marginTop:'120px',zIndex: 1 }}
+            leftImageOffsetX={200}
             rightImageSrc="/images/srilanka/flower.svg"
             rightImageAlt="Right flower"
             rightImageWidth={700}
             rightImageHeight={700}
-            rightImageStyle={{ right: '-500px', marginTop: '90px', zIndex: 1 }}
+            rightImageStyle={{ width: '40vw', marginTop:'120px',zIndex: 1 }}
+            rightImageOffsetX={-200}
           />
           <LoanTypesSection />
           <ProcessStep />
@@ -125,7 +127,7 @@ export default function SrilankaPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="srilanka" />
           <EMICalculatorSection />
-          <LoanApplicationForm />
+          <LoanApplicationForm  anchorId="apply-loan-online" />
         </section>
       </div>
     </div>

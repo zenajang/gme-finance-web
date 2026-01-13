@@ -19,7 +19,7 @@ export default function EMICalculatorSection({
   const { t } = useTranslation()
 
   return (
-    <section className="px-4 md:px-8 lg:px-40 pt-16 md:pt-20 relative z-10">
+    <section data-emi-section className="px-4 md:px-8 lg:px-40 pt-16 md:pt-20 relative z-10">
       <div className="relative w-full mx-auto">
         <div className="bg-white rounded-2xl shadow-xl p-10 md:p-10 relative overflow-hidden lg:p-15">
           <h2 className="text-lg md:text-4xl lg:text-5xl font-bold text-black text-center mb-4 md:mb-5 lg:mb-10">{t('countryPage.SupportTitle')}</h2>

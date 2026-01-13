@@ -152,7 +152,7 @@ export default function UzbekistanPage() {
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
         </div>
         <div style={{ background: colors.gradient1 }}>
-          <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary} />
+          <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary}  anchorId="apply-loan-online" />
         </div>
       </section>
     </div>

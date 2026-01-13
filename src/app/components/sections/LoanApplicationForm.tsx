@@ -12,12 +12,14 @@ type LoanApplicationFormProps = {
   currency?: string;
   currencySymbol?: string;
   country?: string;
+  anchorId?: string;
 }
 
 export default function LoanApplicationForm({
   subtitleColor = COMMON_COLORS.primary,
   buttonBgColor = COMMON_COLORS.primary,
   country,
+  anchorId,
 }: LoanApplicationFormProps) {
 
   const { t, i18n } = useTranslation();
@@ -36,8 +38,14 @@ export default function LoanApplicationForm({
     alert(`Form submitted:\nFirst Name: ${data.firstName}\nLast Name: ${data.lastName}\nNationality: ${data.nationality}`);
   };
 
+  const anchorClass = anchorId ? "scroll-mt-16 md:scroll-mt-24" : "";
+
   return (
-    <section id="apply-loan-online" className="py-3 py-10 md:py-20 lg:py-80 relative z-10">
+    <section
+      id={anchorId}
+      data-apply-form
+      className={`${anchorClass} py-3 py-10 md:py-20 lg:py-80 relative z-10`}
+    >
       <div className="container mx-auto px-4 md:px-30 lg:px-20 max-w-lg">
         <div className="bg-white rounded-3xl p-8 md:p-12 lg:p-15 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.3)]">
           <h2 className="text-lg md:text-4xl lg:text-5xl font-bold text-black text-center mb-4 md:mb-5 lg:mb-10">{t('home.applyLoanAppTitle')}</h2>

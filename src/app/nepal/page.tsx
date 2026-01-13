@@ -96,12 +96,14 @@ export default function NepalPage() {
           leftImageAlt="Left castle"
           leftImageWidth={300}
           leftImageHeight={300}
-          leftImageStyle={{ width: '25vw', zIndex: 1 }}
+          leftImageOffsetX={5}
+          leftImageStyle={{ width: '20vw',zIndex: 1 }}
           rightImageSrc="/images/nepal/castle_r.svg"
           rightImageAlt="Right castle"
           rightImageWidth={350}
           rightImageHeight={350}
-          rightImageStyle={{ width: '22vw', zIndex: 1 }}
+          rightImageOffsetX={-40}
+          rightImageStyle={{ width: '22vw',marginTop:'1.4vw', zIndex: 1 }}
         />
         <LoanTypesSection />
         <section className="bg-no-repeat relative overflow-hidden">
@@ -115,7 +117,7 @@ export default function NepalPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="nepal" />
           <EMICalculatorSection />
-          <LoanApplicationForm country="nepal" />
+          <LoanApplicationForm country="nepal"  anchorId="apply-loan-online" />
         </section>
       </div>
     </div>

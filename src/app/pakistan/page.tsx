@@ -107,7 +107,7 @@ export default function PakistanPage() {
           <GarlandDecoration country="pakistan" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
           <div className="mb-20">
-            <LoanApplicationForm country="pakistan" buttonBgColor={colors.primary} subtitleColor={colors.primary} />
+            <LoanApplicationForm country="pakistan" buttonBgColor={colors.primary} subtitleColor={colors.primary}  anchorId="apply-loan-online" />
           </div>
         </section>
       </div>

@@ -118,7 +118,7 @@ export default function MongoliaPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="mongolia" />
           <EMICalculatorSection />
-          <LoanApplicationForm country="mongolia" />
+          <LoanApplicationForm country="mongolia"  anchorId="apply-loan-online" />
         </section>
       </div>
     </div>

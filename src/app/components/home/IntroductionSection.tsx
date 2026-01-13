@@ -96,7 +96,17 @@ export default function IntroductionSection({
               <button
                 onClick={() => {
                   const element = document.querySelector(buttonHref);
-                  element?.scrollIntoView({ behavior: 'smooth' });
+                  if (!element) {
+                    return;
+                  }
+                  if (buttonHref === '#apply-loan-online') {
+                    const applyForm = document.querySelector('[data-apply-form]') as HTMLElement | null;
+                    const target = applyForm ?? element;
+                    const top = target.getBoundingClientRect().top + window.scrollY - 32;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                    return;
+                  }
+                  element.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="rounded-xl inline-block text-md md:text-[1.6rem] lg:text-[1.6rem] px-10 md:px-30 py-2 md:py-4 font-medium transition-colors"
                 style={{
