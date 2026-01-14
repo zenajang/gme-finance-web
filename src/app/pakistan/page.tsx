@@ -82,17 +82,19 @@ export default function PakistanPage() {
         </section>
         <TeamVideoSection
           title={t('countryPage.introductionTitlepk')}
+          subtitleColor={colors.primary}
           videoUrl="https://www.youtube.com/embed/8LYtzxvDWN4"
           leftImageSrc="/images/pakistan/castle_l.svg"
           leftImageAlt="Left castle"
           leftImageWidth={320}
           leftImageHeight={320}
-          leftImageStyle={{ left: '-240px', marginTop: '-30px', zIndex: 1 }}
+          leftImageStyle={{ width:'20vw',zIndex: 1 }}
           rightImageSrc="/images/pakistan/castle_r.svg"
           rightImageAlt="Right castle"
           rightImageWidth={680}
           rightImageHeight={680}
-          rightImageStyle={{ right: '-280px', marginTop: '40px', zIndex: 1 }}
+          rightImageOffsetX={-400}
+          rightImageStyle={{ width:'40vw', zIndex: 1 }}
         />
         <LoanTypesSection />
         <section className="bg-no-repeat relative overflow-hidden">

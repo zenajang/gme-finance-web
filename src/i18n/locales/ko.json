@@ -130,5 +130,40 @@
     "myanmar": "미얀마",
     "russia": "러시아",
     "india": "인도"
+  },
+  "blog": {
+    "badge": {
+      "primary": "오늘의 기록",
+      "secondary": "이야기 모음"
+    },
+    "title": "블로그",
+    "subtitle": "우리 팀의 인사이트와 이야기, 업데이트를 전합니다",
+    "filter": {
+      "all": "전체",
+      "blog": "새 소식",
+      "feedback": "고객 후기"
+    },
+    "filterSelected": {
+      "all": "전체 글",
+      "blog": "새 소식",
+      "feedback": "고객 후기"
+    },
+    "category": {
+      "latestNews": "최신 소식",
+      "customerFeedback": "고객 후기",
+      "news": "새 소식",
+      "feedback": "후기"
+    },
+    "section": {
+      "moreStories": "더 읽을 거리"
+    },
+    "button": {
+      "loadMore": "더 보기",
+      "viewAll": "전체 글 보기"
+    },
+    "empty": "아직 게시글이 없어요.",
+    "detail": {
+      "updatedLabel": "업데이트:"
+    }
   }
 }

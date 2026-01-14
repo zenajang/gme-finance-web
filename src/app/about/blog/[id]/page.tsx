@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import '@/app/components/admin/TiptapEditor.css';
+import { useTranslation } from 'react-i18next';
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
@@ -21,6 +22,7 @@ interface BlogPost {
 export default function BlogDetailPage() {
   const params = useParams();
   const router = useRouter();
+  const { t, i18n } = useTranslation();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -61,17 +63,21 @@ export default function BlogDetailPage() {
     return null;
   }
 
+  const locale = i18n.language || 'en';
+
   return (
-    <div className="min-h-screen bg-gray-50 mt-20">
+    <div className="min-h-screen blog-paper mt-20 relative overflow-hidden">
+      <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-[#ffe1cf] blur-3xl opacity-70 animate-float-slow" />
+      <div className="pointer-events-none absolute top-40 -left-16 h-64 w-64 rounded-full bg-[#ffd7c2] blur-3xl opacity-60 animate-float-slower" />
       {/* Article */}
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-white rounded-lg shadow-sm p-8 md:p-12">
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+        <div className="bg-white/90 backdrop-blur rounded-2xl shadow-[0_20px_60px_-40px_rgba(0,0,0,0.6)] ring-1 ring-black/5 p-8 md:p-12 animate-fade-up">
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
             {post.title}
           </h1>
           {/* Meta Info */}
-          <div className="flex items-center text-gray-500 mb-8 pb-8 border-b">
+          <div className="flex items-center text-gray-500 mb-8 pb-8 border-b border-black/5">
             <div className="flex items-center">
               <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
                 {post.author_email.charAt(0).toUpperCase()}
@@ -80,7 +86,7 @@ export default function BlogDetailPage() {
                 <p className="font-medium text-gray-900">{post.author_email}</p>
                 <div className="flex items-center text-sm">
                   <time dateTime={post.created_at}>
-                    {new Date(post.created_at).toLocaleDateString('en-US', {
+                    {new Date(post.created_at).toLocaleDateString(locale, {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
@@ -90,7 +96,8 @@ export default function BlogDetailPage() {
                     <>
                       <span className="mx-2">•</span>
                       <span className="text-blue-600">
-                        Updated : {new Date(post.updated_at).toLocaleDateString('en-US', {
+                        {t('blog.detail.updatedLabel')}{' '}
+                        {new Date(post.updated_at).toLocaleDateString(locale, {
                           year: 'numeric',
                           month: 'long',
                           day: 'numeric',
@@ -109,15 +116,15 @@ export default function BlogDetailPage() {
           />
         </div>
         {/* Navigation */}
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center animate-fade-up">
           <Link
             href="/about/blog"
-            className="inline-block px-6 py-3 bg-red-600 text-white rounded-lg md:rounded-xl hover:bg-red-700 transition-colors"
+            className="inline-block px-6 py-3 bg-red-600 text-white rounded-full shadow-md hover:bg-red-700 transition-colors"
           >
-            View All Posts
+            {t('blog.button.viewAll')}
           </Link>
         </div>
       </article>
     </div>
   );
-}
+} 

@@ -30,7 +30,7 @@ export default function CountriesPage() {
           />
         </div>
         <div className="relative mx-auto max-w-6xl px-6 pb-16">
-          <h1 className="pt-15 pb-5 md:pb-10 text-center text-3xl md:text-4xl font-bold text-neutral-800 mt-10 md:mt-30">
+          <h1 className="pt-15 pb-5 md:pt-20 md:pb-10 text-center text-3xl md:text-5xl font-extrabold tracking-tight text-neutral-800 mt-10 md:mt-30">
             Countries
           </h1>
 

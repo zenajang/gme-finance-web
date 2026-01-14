@@ -316,5 +316,40 @@
     },
     "SupportTitle": "How much support do you need?",
     "SupportSubTitle": "Check how much your monthly payment would be based on your desired loan amount"
+  },
+  "blog": {
+    "badge": {
+      "primary": "Today's Log",
+      "secondary": "Story Picks"
+    },
+    "title": "Blog",
+    "subtitle": "Insights, stories, and updates from our team",
+    "filter": {
+      "all": "All",
+      "blog": "Latest News",
+      "feedback": "Customer Feedback"
+    },
+    "filterSelected": {
+      "all": "All Posts",
+      "blog": "Latest News",
+      "feedback": "Customer Feedback"
+    },
+    "category": {
+      "latestNews": "Latest News",
+      "customerFeedback": "Customer Feedback",
+      "news": "News",
+      "feedback": "Feedback"
+    },
+    "section": {
+      "moreStories": "More Stories"
+    },
+    "button": {
+      "loadMore": "Load More",
+      "viewAll": "View All Posts"
+    },
+    "empty": "No posts yet.",
+    "detail": {
+      "updatedLabel": "Updated:"
+    }
   }
 }
