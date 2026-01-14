@@ -94,7 +94,23 @@
     },
     "applyLoanAppSubTitle1": "GME Finance makes it Easy and Convenient to Apply GME Loan.",
     "applyLoanAppSubTitle2": "Apply Now!",
-    "findBranchSubtitle": "Visit a nearby GME Finance Branch for a counsultation!"
+    "findBranchSubtitle": "Visit a nearby GME Finance Branch for a counsultation!",
+    "heroPills": {
+      "countries": "14+ Countries",
+      "secure": "Secure Transfer",
+      "fast": "Fast Service",
+      "bestRates": "Best Rates"
+    },
+    "heroStats": {
+      "countriesValue": "14+",
+      "countriesLabel": "Countries Served",
+      "loanValue": "KRW 500B+",
+      "loanLabel": "Loan Released",
+      "customersValue": "1M+",
+      "customersLabel": "Happy Customers",
+      "supportValue": "24/7",
+      "supportLabel": "Customer Support"
+    }
   },
   "button": {
     "seeMore": "See More",

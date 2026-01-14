@@ -215,6 +215,14 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
         <div>
           {perks.map((perk, index) => {
             const isEven = index % 2 === 0;
+            const isFirst = index === 0;
+            const isLast = index === perks.length - 1;
+            const textDesktopCorners = isEven
+              ? `${isFirst ? 'md:rounded-tl-lg' : ''} ${isLast ? 'md:rounded-bl-lg' : ''}`
+              : `${isFirst ? 'md:rounded-tr-lg' : ''} ${isLast ? 'md:rounded-br-lg' : ''}`;
+            const imageDesktopCorners = isEven
+              ? `${isFirst ? 'md:rounded-tr-lg' : ''} ${isLast ? 'md:rounded-br-lg' : ''}`
+              : `${isFirst ? 'md:rounded-tl-lg' : ''} ${isLast ? 'md:rounded-bl-lg' : ''}`;
 
             return (
               <div
@@ -222,7 +230,9 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
                 className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-stretch`}
               >
                 {/* 텍스트 */}
-                <div className="flex-1 bg-[#F9F9F9] rounded-lg">
+                <div
+                  className={`flex-1 bg-[#F9F9F9] ${isFirst ? 'rounded-t-lg' : ''} ${textDesktopCorners}`}
+                >
                   <h3 className="text-lg md:text-3xl font-bold mb-2 md:mb-4 px-6 md:px-0 md:pl-10 pt-6 md:pt-10 text-center md:text-left">{perk.title}</h3>
                   <p className="text-sm md:text-lg text-[#2B2B2B] leading-relaxed px-6 md:px-10 md:pl-10 pb-6 md:pb-0 text-center md:text-left">
                     {perk.description}
@@ -231,7 +241,9 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
 
                 {/* 이미지 */}
                 <div className="flex-1 w-full">
-                  <div className="relative w-full aspect-[5/3] rounded-lg overflow-hidden">
+                  <div
+                    className={`relative w-full aspect-[5/3] overflow-hidden ${isLast ? 'rounded-b-lg' : ''} ${imageDesktopCorners}`}
+                  >
                     <Image
                       src={perk.image}
                       alt={perk.title}

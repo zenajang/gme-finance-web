@@ -156,10 +156,10 @@ export default function FindBranchSection() {
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full px-4 md:px-6 py-4 md:py-6 pr-10 md:pr-12 rounded-md text-left text-black bg-white shadow-[0_0_20px_rgba(0,0,0,0.15)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 md:px-6 py-4 md:py-6 pr-10 md:pr-12 rounded-md text-left text-slate-800 bg-white/95 shadow-[0_20px_40px_-30px_rgba(15,23,42,0.35)] ring-1 ring-black/5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <div className="text-md md:text-3xl font-semibold">{selectedBranch.name}</div>
-                <div className="text-xs md:text-lg text-gray-500 mt-1">Global Money Express</div>
+                <div className="text-xs md:text-lg text-slate-500 mt-1">Global Money Express</div>
                 <div className="absolute right-6 top-1/2 -translate-y-1/2">
                   <svg
                     className={`w-6 h-6 transition-transform ${isOpen ? "rotate-180" : ""}`}
@@ -172,7 +172,7 @@ export default function FindBranchSection() {
                 </div>
               </button>
               {isOpen && (
-                <div className="absolute z-[200] w-full mt-2 rounded-md shadow-[0_0_20px_rgba(0,0,0,0.15)] max-h-80 overflow-y-auto bg-white">
+                <div className="absolute z-[200] w-full mt-2 rounded-md shadow-[0_20px_40px_-30px_rgba(15,23,42,0.35)] ring-1 ring-black/5 max-h-80 overflow-y-auto bg-white/95">
                   {BRANCHES.map((branch) => {
                     const isSelected = selectedBranch.id === branch.id;
                     return (
@@ -181,14 +181,14 @@ export default function FindBranchSection() {
                         type="button"
                         onClick={() => handleSelect(branch)}
                         className={`w-full px-6 py-4 text-left transition-colors ${isSelected
-                          ? "bg-red-50"
-                          : "bg-white hover:bg-gray-100"
+                          ? "bg-[#fff3ea]"
+                          : "bg-white/80 hover:bg-[#fff7f2]"
                           }`}
                       >
-                        <div className={`text-md lg:text-xl font-semibold ${isSelected ? "text-red-600" : "text-black"}`}>
+                        <div className={`text-md lg:text-xl font-semibold ${isSelected ? "text-[#b4533c]" : "text-slate-800"}`}>
                           {branch.name}
                         </div>
-                        <div className={`text-xs lg:text-sm ${isSelected ? "text-red-400" : "text-gray-500"}`}>
+                        <div className={`text-xs lg:text-sm ${isSelected ? "text-[#d27b65]" : "text-slate-500"}`}>
                           Global Money Express
                         </div>
                       </button>

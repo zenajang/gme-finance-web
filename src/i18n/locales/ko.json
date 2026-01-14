@@ -79,7 +79,23 @@
     "applyLoanAppSubTitle": "최대 3천만원 대출 가능",
     "applyLoanAppSubTitle1": "GME Finance로 쉽고 편리하게 GME 대출",
     "applyLoanAppSubTitle2": "지금 신청하세요!",
-    "findBranchSubtitle": "상담을 위해 가까운 GME Finance 지점을 방문하세요!"
+    "findBranchSubtitle": "상담을 위해 가까운 GME Finance 지점을 방문하세요!",
+    "heroPills": {
+      "countries": "14+ 국가",
+      "secure": "안전한 송금",
+      "fast": "빠른 서비스",
+      "bestRates": "최적 금리"
+    },
+    "heroStats": {
+      "countriesValue": "14+",
+      "countriesLabel": "서비스 국가",
+      "loanValue": "KRW 500B+",
+      "loanLabel": "누적 대출",
+      "customersValue": "1M+",
+      "customersLabel": "만족 고객",
+      "supportValue": "24/7",
+      "supportLabel": "고객 지원"
+    }
   },
   "button": {
     "seeMore": "더 보기",
