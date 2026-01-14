@@ -89,8 +89,8 @@ export const COUNTRY_COLORS: Record<string, ColorScheme> = {
   },
 
   india: {
-    primary: '#0E7700',
-    hover: '#abc2a8ff',
+    primary: '#F94B00',
+    hover: '#f4e2da',
     gradient1: '#FFEFE0',
     gradient2: '#FFFFFF',
     gradient3: '#F0FBDE',

@@ -1,5 +1,5 @@
 
-import { getGradient } from "@/constants/colors";
+import { getColorScheme, getGradient } from "@/constants/colors";
 import IntroductionSection from "../components/home/IntroductionSection";
 import LoanTypesSection from "../components/home/LoanTypesSection";
 import EMICalculatorSection from "../components/sections/EMICalculatorSection";
@@ -42,20 +42,23 @@ const INDIA_SOCIALS: SocialsItem[] = [
 ];
 
 const INDIA_TEAMS: Teams[] = [
-  {
-    id: 'emma',
-    image: '/images/india/team/emma.jpg',
-    name: 'Emma',
-  }
+   {
+    id: 'malaika',
+    image: '/images/team.svg',
+    name: 'MALAIKA',
+  },
 ];
 
 export default function IndiaPage() {
+  const colors =  getColorScheme('india')
 
   return (
     <div>
       <IntroductionSection
         videoSrc="/images/india/background.webm"
         title="India"
+        buttonTextColor={colors.primary}
+        buttonHoverBgColor={colors.hover}
         buttonHref="#apply-loan-online"
       />
       <div
@@ -65,9 +68,10 @@ export default function IndiaPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat -top-20 -left-10 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_o_r.svg')", backgroundSize: '25%', backgroundPosition: 'left top' }} />
           <LatestSocials
-            socials={INDIA_SOCIALS} />
+            socials={INDIA_SOCIALS} buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
           <TeamSection
             teams={INDIA_TEAMS}
+            nameBgColor={colors.primary}
             title='India'
           />
         </section>
@@ -87,9 +91,9 @@ export default function IndiaPage() {
         <div className="bg-cover bg-no-repeat" style={{ backgroundImage: "url('/images/india/bg.svg')", backgroundPosition: 'center 50px' }}>
           <section className="bg-no-repeat relative overflow-hidden">
             <GarlandDecoration country="india" />
-            <EMICalculatorSection />
+            <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
             <div className="mb-20 mt-10">
-              <LoanApplicationForm country="india"  anchorId="apply-loan-online" />
+              <LoanApplicationForm country="india" buttonBgColor={colors.primary} subtitleColor={colors.primary} anchorId="apply-loan-online" />
             </div>
           </section>
         </div>

@@ -45,9 +45,9 @@ const PAKISTAN_SOCIALS: SocialsItem[] = [
 
 const PAKISTAN_TEAMS: Teams[] = [
   {
-    id: 'emma',
-    image: '/images/india/team/emma.jpg',
-    name: 'EMMA',
+    id: 'malaika',
+    image: '/images/team.svg',
+    name: 'MALAIKA',
   },
 ];
 
