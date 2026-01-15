@@ -20,13 +20,15 @@ export default function MainIntroductionSection() {
       });
     };
 
-    video.addEventListener('canplaythrough', handleReady);
-    if (video.readyState >= 4) {
+    video.addEventListener('loadeddata', handleReady);
+    video.addEventListener('canplay', handleReady);
+    if (video.readyState >= 2) {
       handleReady();
     }
 
     return () => {
-      video.removeEventListener('canplaythrough', handleReady);
+      video.removeEventListener('loadeddata', handleReady);
+      video.removeEventListener('canplay', handleReady);
     };
   }, []);
 
@@ -36,6 +38,7 @@ export default function MainIntroductionSection() {
         <video
           ref={videoRef}
           src="/images/main_image_autumn.webm"
+          autoPlay
           loop
           muted
           playsInline
