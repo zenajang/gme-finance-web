@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { createClient } from '@/lib/supabase/client';
+import { COMMON_COLORS } from '@/constants/colors';
 
 import 'swiper/css';
 import { useTranslation } from 'react-i18next';
@@ -40,6 +41,7 @@ function FeedbackCard({ post }: { post: BlogPost }) {
   const videoSrc = extractFirstVideo(post.content);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showControls, setShowControls] = useState(true);
+  const [isVideoReady, setIsVideoReady] = useState(!videoSrc);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleVideoClick = () => {
@@ -96,6 +98,8 @@ function FeedbackCard({ post }: { post: BlogPost }) {
             playsInline
             crossOrigin="anonymous"
             src={`${videoSrc}#t=0.5`}
+            onLoadedData={() => setIsVideoReady(true)}
+            onError={() => setIsVideoReady(true)}
             onEnded={() => {
               setIsPlaying(false);
               setShowControls(true);
@@ -118,6 +122,14 @@ function FeedbackCard({ post }: { post: BlogPost }) {
               )}
             </div>
           </div>
+          {!isVideoReady && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div
+                className="w-10 h-10 rounded-full animate-spin"
+                style={{ border: '4px solid #e5e7eb', borderTopColor: COMMON_COLORS.primary }}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div className="relative w-full h-[200px] md:h-1/2 lg:h-1/2 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center overflow-hidden">

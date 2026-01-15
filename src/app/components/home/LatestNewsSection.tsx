@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { COMMON_COLORS } from '@/constants/colors';
 
 // Swiper 스타일 import
 import 'swiper/css';
@@ -38,6 +39,7 @@ function getTextPreview(html: string): string {
 
 function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
   const thumbnail = extractFirstImage(post.content);
+  const [isImageReady, setIsImageReady] = useState(!thumbnail);
 
   return (
     <article
@@ -74,6 +76,8 @@ function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
             className="object-cover transition-transform duration-1200 group-hover:scale-110"
             sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
             priority={false}
+            onLoadingComplete={() => setIsImageReady(true)}
+            onError={() => setIsImageReady(true)}
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
@@ -90,6 +94,14 @@ function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
                 d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
               />
             </svg>
+          </div>
+        )}
+        {!isImageReady && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div
+              className="w-10 h-10 rounded-full animate-spin"
+              style={{ border: '4px solid #e5e7eb', borderTopColor: COMMON_COLORS.primary }}
+            />
           </div>
         )}
       </div>
