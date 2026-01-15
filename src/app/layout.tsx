@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import '@radix-ui/themes/styles.css';
+import "./globals.css";
 import { Theme } from "@radix-ui/themes";
 import PageLoadingSpinner from "./components/common/PageLoadingSpinner";
 import LayoutWrapper from "./components/common/LayoutWrapper";
 import I18nProvider from "./components/common/I18nProvider";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Finance",
@@ -18,15 +25,9 @@ export default async function RootLayout({
 }>) {
   
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
-        />
-      </head>
+    <html lang="en" className={inter.className}>
       <body
-        className="antialiased min-h-screen bg-background text-foreground"
+        className={`${inter.variable} antialiased min-h-screen bg-background text-foreground`}
         suppressHydrationWarning={true}
       >
         <Theme appearance="light" accentColor="indigo" radius="large">

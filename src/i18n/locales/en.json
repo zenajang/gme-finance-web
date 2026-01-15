@@ -97,9 +97,8 @@
     "findBranchSubtitle": "Visit a nearby GME Finance Branch for a counsultation!",
     "heroPills": {
       "countries": "14+ Countries",
-      "secure": "Secure Transfer",
-      "fast": "Fast Service",
-      "bestRates": "Best Rates"
+      "secure": "Secure Application",
+      "fast": "Fast Approval"
     },
     "heroStats": {
       "countriesValue": "14+",
@@ -107,7 +106,7 @@
       "loanValue": "₩500B+",
       "loanLabel": "Loan Released",
       "customersValue": "1M+",
-      "customersLabel": "Happy Customers",
+      "customersLabel": "Successful Loan Cases",
       "supportValue": "24/7",
       "supportLabel": "Customer Support"
     }

@@ -82,17 +82,16 @@
     "findBranchSubtitle": "상담을 위해 가까운 GME Finance 지점을 방문하세요!",
     "heroPills": {
       "countries": "14+ 국가",
-      "secure": "안전한 송금",
-      "fast": "빠른 서비스",
-      "bestRates": "최적 금리"
+      "secure": "안전한 신청",
+      "fast": "빠른 승인"
     },
     "heroStats": {
       "countriesValue": "14+",
       "countriesLabel": "서비스 국가",
       "loanValue": "₩500B+",
       "loanLabel": "누적 대출",
-      "customersValue": "1M+",
-      "customersLabel": "만족 고객",
+      "customersValue": "60K+",
+      "customersLabel": "대출 성공 사례",
       "supportValue": "24/7",
       "supportLabel": "고객 지원"
     }
