@@ -19,7 +19,7 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
       icon: "/images/icons/housing.svg",
       position: { top: "16%", left: "29%" },
       position_name: { top: "3%", right: "84%" },
-      mobilePosition: { top: "15%", left: "30%" },
+      mobilePosition: { top: "15%", left: "31%" },
       mobilePosition_name: { top: "0%", right: "82%" },
     },
     {
@@ -35,7 +35,7 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
       icon: "/images/icons/student.svg",
       position: { top: "45%", left: "12%" },
       position_name: { top: "45%", right: "105%" },
-      mobilePosition: { top: "44%", left: "14%" },
+      mobilePosition: { top: "45%", left: "14%" },
       mobilePosition_name: { top: "42%", left: "-20%" },
     },
     {
@@ -43,7 +43,7 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
       icon: "/images/icons/car.svg",
       position: { top: "45%", right: "11%" },
       position_name: { top: "45%", left: "108%" },
-      mobilePosition: { top: "44%", right: "9%" },
+      mobilePosition: { top: "45%", right: "9%" },
       mobilePosition_name: { top: "42%", right: "-19%" },
     },
     {
@@ -51,7 +51,7 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
       icon: "/images/icons/property.svg",
       position: { bottom: "16%", left: "29%" },
       position_name: { bottom: "3%", right: "85%" },
-      mobilePosition: { bottom: "15%", left: "30%" },
+      mobilePosition: { bottom: "16%", left: "31%" },
       mobilePosition_name: { bottom: "0%", left: "-7%" },
     },
     {
@@ -59,7 +59,7 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
       icon: "/images/icons/business.svg",
       position: { bottom: "16%", right: "28%" },
       position_name: { bottom: "3%", left: "85%" },
-      mobilePosition: { bottom: "15%", right: "26%" },
+      mobilePosition: { bottom: "16%", right: "26%" },
       mobilePosition_name: { bottom: "0%", right: "-10%" },
     },
   ];
@@ -116,7 +116,7 @@ export default function LoanTypesSection({ titleColor = COMMON_COLORS.black }: L
                 style={loan.mobilePosition_name}
               >
                 <div className="flex flex-col items-center">
-                  <p className="text-xs font-medium text-red-600 mt-1 text-center">
+                  <p className="text-[9px] font-medium text-red-600 mt-1 text-center max-w-[58px] leading-tight">
                     {t(loan.name).split(' ').map((word, idx) => (
                       <span key={idx}>
                         {word}
