@@ -95,7 +95,7 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
           alt="integrity"
           width={200}
           height={200}
-          className="object-contain w-[25px] md:w-[100px]"
+          className="object-contain w-[25px] md:w-[120px]"
         />
       ),
     },
@@ -108,7 +108,7 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
           alt="teamwork"
           width={200}
           height={200}
-          className="object-contain w-[25px] md:w-[100px]"
+          className="object-contain w-[25px] md:w-[110px]"
         />
       ),
     },
@@ -119,9 +119,9 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
         <Image
           src="/images/icons/think.svg"
           alt="think"
-          width={200}
-          height={200}
-          className="object-contain w-[25px] md:w-[100px]"
+          width={300}
+          height={300}
+          className="object-contain w-[25px] md:w-[130px]"
         />
       ),
     },
@@ -162,7 +162,7 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
 
       {/* Values Section - 4 petals in clover pattern */}
       <div className="flex justify-center items-center py-10 md:py-8 px-4">
-        <div className="relative w-[286px] h-[286px] md:w-[860px] md:h-[860px]">
+        <div className="relative w-[310px] h-[310px] md:w-[940px] md:h-[940px]">
           {values.map((value, index) => {
             // Position and border-radius for each petal
             const petalStyles = [
@@ -181,18 +181,22 @@ Above all, the culture here is one of respect, collaboration, and a shared commi
 
             const isTopRow = index < 2;
             const justifyClass = isTopRow ? 'justify-start pt-8 md:pt-35' : 'justify-end pb-6 md:pb-35';
+            const titleClass = 'text-xs md:text-3xl font-bold leading-tight mb-1 md:mb-2';
+            const contentClass = 'text-center px-3 md:px-10';
 
             return (
               <div
                 key={index}
-                className={`absolute w-[140px] h-[140px] md:w-[420px] md:h-[420px] text-white flex flex-col items-center ${justifyClass}`}
+                className={`absolute w-[152px] h-[152px] md:w-[460px] md:h-[460px] text-white flex flex-col items-center ${justifyClass}`}
                 style={{
                   backgroundColor: COMMON_COLORS.primary,
                   ...petalStyles[index],
                 }}
               >
-                <div className="text-center px-3 md:px-10">
-                  <h3 className="text-xs md:text-3xl font-bold mb-1 md:mb-2">{value.title}</h3>
+                <div className={contentClass}>
+                  <h3 className={titleClass}>
+                    {value.title}
+                  </h3>
                   <p className="text-[8px] md:text-lg leading-tight md:leading-normal">
                     {value.description}
                   </p>

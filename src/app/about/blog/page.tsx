@@ -31,6 +31,7 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(9);
+  const [loadedVideos, setLoadedVideos] = useState<Record<string, boolean>>({});
 
   // URL 쿼리에서 초기 카테고리 설정
   const initialCategory = (searchParams.get('category') as FilterCategory) || 'all';
@@ -89,6 +90,10 @@ export default function BlogPage() {
 
   const locale = i18n.language || 'en';
 
+  const markVideoLoaded = (postId: string) => {
+    setLoadedVideos(prev => (prev[postId] ? prev : { ...prev, [postId]: true }));
+  };
+
   // HTML에서 텍스트만 추출 (미리보기용)
   function getTextPreview(html: string, maxLength: number = 150): string {
     const div = document.createElement('div');
@@ -144,7 +149,7 @@ export default function BlogPage() {
               src={thumbnail}
               alt={post.title}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover transition-transform duration-1200 group-hover:scale-110"
               sizes="(min-width: 1024px) 900px, 100vw"
               priority
             />
@@ -188,7 +193,7 @@ export default function BlogPage() {
     return (
       <Link href={`/about/blog/${post.id}`}>
         <article
-          className="group cursor-pointer rounded-2xl bg-white/80 backdrop-blur-md p-4 ring-1 ring-black/5 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.6)] transition-transform duration-300 hover:-translate-y-1"
+          className="group cursor-pointer rounded-2xl bg-white/80 backdrop-blur-md p-4 ring-1 ring-black/5 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.6)] transition-transform duration-600 hover:-translate-y-2 hover:scale-[1.02]"
           onMouseEnter={() => setHoveredId(post.id)}
           onMouseLeave={() => setHoveredId(null)}
         >
@@ -199,17 +204,19 @@ export default function BlogPage() {
                 src={thumbnail}
                 alt={post.title}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover transition-transform duration-1200 group-hover:scale-110"
                 sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
               />
             ) : videoSrc ? (
               <div className="relative w-full h-full">
                 <video
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover transition-opacity duration-500 ${loadedVideos[post.id] ? 'opacity-100' : 'opacity-0'}`}
                   src={`${videoSrc}#t=0.5`}
                   preload="metadata"
                   muted
                   playsInline
+                  onLoadedData={() => markVideoLoaded(post.id)}
+                  onError={() => markVideoLoaded(post.id)}
                 />
                 {/* 재생 아이콘 오버레이 */}
                 <div className="absolute inset-0 flex items-center justify-center bg-black/10">
