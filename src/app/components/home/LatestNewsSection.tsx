@@ -42,7 +42,7 @@ function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
   return (
     <article
       onClick={onClick}
-      className="rounded-2xl bg-white flex flex-col h-[380px] md:h-auto md:aspect-[4/5] shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+      className="group rounded-2xl bg-white flex flex-col h-[380px] md:h-auto md:aspect-[4/5] shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition-transform duration-600 hover:-translate-y-2 hover:scale-[1.02]"
     >
       <div className="p-6 md:p-10 flex flex-col flex-1">
         <header className="flex items-start justify-between mb-3">
@@ -71,7 +71,7 @@ function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
             src={thumbnail}
             alt={post.title}
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-1200 group-hover:scale-110"
             sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
             priority={false}
           />

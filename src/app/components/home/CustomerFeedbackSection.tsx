@@ -66,7 +66,7 @@ function FeedbackCard({ post }: { post: BlogPost }) {
   };
 
   return (
-    <article className="rounded-3xl bg-white flex flex-col h-[380px] md:h-auto md:aspect-[4/5] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] overflow-hidden">
+    <article className="group rounded-3xl bg-white flex flex-col h-[380px] md:h-auto md:aspect-[4/5] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)] overflow-hidden transition-transform duration-600 hover:-translate-y-2 hover:scale-[1.02]">
       <div className="p-6 md:p-10 flex flex-col flex-1">
         <header className="flex items-end justify-between mb-5">
           <div className="flex items-end gap-2">
@@ -84,14 +84,14 @@ function FeedbackCard({ post }: { post: BlogPost }) {
       </div>
       {videoSrc ? (
         <div
-          className="relative w-full h-[200px] md:h-1/2 lg:h-1/2 cursor-pointer"
+          className="relative w-full h-[200px] md:h-1/2 lg:h-1/2 cursor-pointer overflow-hidden"
           onClick={handleVideoClick}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           <video
             ref={videoRef}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-1200 group-hover:scale-110"
             preload="metadata"
             playsInline
             crossOrigin="anonymous"
@@ -120,7 +120,8 @@ function FeedbackCard({ post }: { post: BlogPost }) {
           </div>
         </div>
       ) : (
-        <div className="relative w-full h-[200px] md:h-1/2 lg:h-1/2 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
+        <div className="relative w-full h-[200px] md:h-1/2 lg:h-1/2 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 transition-transform duration-1200 group-hover:scale-110" />
           <svg className="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
           </svg>
