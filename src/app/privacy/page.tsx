@@ -1,6 +1,6 @@
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen py-20 px-4 md:px-8 lg:px-40">
+    <main className="min-h-screen py-5 md:py-20 px-4 md:px-8 lg:px-40">
       <div className="max-w-4xl mx-auto mt-15">
         <h1 className="text-2xl md:text-3xl font-bold mb-8 flex justify-center">㈜지엠이대부 기본약관 제1호 (2023.11.13. 개정)</h1>
         <div className="prose prose-lg max-w-none text-gray-700 space-y-8">
