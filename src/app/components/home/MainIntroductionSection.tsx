@@ -1,21 +1,46 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function MainIntroductionSection() {
   const { t } = useTranslation();
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleReady = () => {
+      setIsVideoReady(true);
+      video.play().catch(() => {
+        // Ignore autoplay rejection on some browsers.
+      });
+    };
+
+    video.addEventListener('canplaythrough', handleReady);
+    if (video.readyState >= 4) {
+      handleReady();
+    }
+
+    return () => {
+      video.removeEventListener('canplaythrough', handleReady);
+    };
+  }, []);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-neutral-200">
         <video
+          ref={videoRef}
           src="/images/main_image_autumn.webm"
-          autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          preload="auto"
+          className={`w-full h-full object-cover transition-opacity duration-700 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
         />
       </div>
       <div className="absolute inset-0 bg-black/40" />
