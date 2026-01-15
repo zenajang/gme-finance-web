@@ -37,14 +37,16 @@ export default function MainIntroductionSection() {
       <div className="absolute inset-0 bg-neutral-200">
         <video
           ref={videoRef}
-          src="/images/main_image_autumn.webm"
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
           className={`w-full h-full object-cover transition-opacity duration-700 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
-        />
+        >
+          <source src="/images/main_image_autumn.mp4" type="video/mp4" />
+          <source src="/images/main_image_autumn.webm" type="video/webm" />
+        </video>
       </div>
       <div className="absolute inset-0 bg-black/40" />
       <div className="relative z-10 w-full px-6 md:px-10 lg:px-60 h-full flex flex-col items-start justify-center text-white pt-16 md:pt-70">
