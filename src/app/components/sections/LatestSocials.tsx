@@ -213,7 +213,7 @@ function getSocialScale(platform: SocialPlatform) {
     case "facebook":
       return { x: 1, y: 1 };
     case "instagram_post":
-      return { x: 0.82, y: 0.77 };
+      return { x: 0.87, y: 0.78 };
     case "tiktok":
       return { x: 1.04, y: 1 };
     default:

@@ -55,7 +55,7 @@ export default function IndiaPage() {
   return (
     <div>
       <IntroductionSection
-        videoSrc="/images/india/background.webm"
+        videoSrc="/images/india/background.mp4"
         title="India"
         buttonTextColor={colors.primary}
         buttonHoverBgColor={colors.hover}
