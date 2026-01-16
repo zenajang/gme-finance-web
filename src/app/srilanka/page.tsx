@@ -82,7 +82,7 @@ export default function SrilankaPage() {
   return (
     <div>
       <IntroductionSection
-        videoSrc="/images/srilanka/background.webm"
+        videoSrc="/images/srilanka/background.mp4"
         title={t('country.sri lanka')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}

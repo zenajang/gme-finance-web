@@ -52,7 +52,7 @@ export default function IntroductionSection({
 
   return (
     <section className="relative h-screen">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0"> 
         <img
           src={defaultPoster}
           alt=""

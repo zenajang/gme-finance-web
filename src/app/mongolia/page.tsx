@@ -56,9 +56,9 @@ const MONGOLIA_TEAMS: Teams[] = [
 
   },
   {
-    id: 'migga',
-    image: '/images/mongolia/team/migga.jpg',
-    name: 'MIGGA',
+    id: 'miigaa',
+    image: '/images/mongolia/team/miigaa.jpg',
+    name: 'MIIGAA',
   },
   {
     id: 'zulaa',
@@ -79,7 +79,7 @@ export default function MongoliaPage() {
   return (
     <div>
       <IntroductionSection
-        videoSrc="/images/mongolia/background.webm"
+        videoSrc="/images/mongolia/background.mp4"
         title={t('country.mongolia')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}

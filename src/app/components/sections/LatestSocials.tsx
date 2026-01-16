@@ -35,15 +35,27 @@ interface LatestSocialsProps {
  * ========================= */
 
 function FacebookPageEmbed({ pageUrl }: { pageUrl: string }) {
+  const [embedWidth, setEmbedWidth] = useState(480);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      setEmbedWidth(window.innerWidth < 768 ? 315 : 480);
+    };
+
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
   const src =
     "https://www.facebook.com/plugins/page.php" +
     `?href=${encodeURIComponent(pageUrl)}` +
     "&tabs=timeline" +
-    "&width=550" +
-    "&height=520" +
+    `&width=${embedWidth}` +
+    "&height=600" +
     "&small_header=true" +
     "&adapt_container_width=true" +
-    "&hide_cover=false" +
+    "&hide_cover=true" +
     "&show_facepile=false";
 
   return (
@@ -196,6 +208,19 @@ function SocialEmbed({ item }: { item: SocialsItem }) {
   return null;
 }
 
+function getSocialScale(platform: SocialPlatform) {
+  switch (platform) {
+    case "facebook":
+      return { x: 1, y: 1 };
+    case "instagram_post":
+      return { x: 0.82, y: 0.77 };
+    case "tiktok":
+      return { x: 1.04, y: 1 };
+    default:
+      return { x: 1, y: 1 };
+  }
+}
+
 /** =========================
  * Card
  * ========================= */
@@ -214,25 +239,48 @@ function SocialCard({
   router: AppRouterInstance;
 }) {
   const { t } = useTranslation();
-
   return (
     <article
       className="
         rounded-3xl bg-white
         flex flex-col
-        h-[360px] md:h-[600px]
+        h-auto md:h-[600px]
         shadow-[0_10px_30px_-10px_rgba(0,0,0,0.3)]
         overflow-hidden
         mb-10
       "
     >
-      {/* ✅ 위젯 영역: 높이 고정 + 클릭 차단 오버레이 */}
-      <div className="w-full h-[240px] md:h-[420px] bg-white relative">
-        <div className="w-full h-full overflow-y-auto overflow-x-hidden pointer-events-none">
-          <SocialEmbed item={item} />
+      {/* 위젯 영역: 높이 고정 + 클릭 차단 오버레이 */}
+      <div className="w-full h-[330px] md:h-[420px] bg-white relative">
+        <div className="w-full h-full overflow-hidden md:overflow-y-auto md:overflow-x-hidden pointer-events-auto">
+          {item.platform === "facebook" ? (
+            <SocialEmbed item={item} />
+          ) : item.platform === "instagram_post" ? (
+            <div className="social-embed-center">
+              <div
+                className="social-embed-scale"
+                style={{
+                  ["--mobile-scale-x" as never]: `${getSocialScale(item.platform).x}`,
+                  ["--mobile-scale-y" as never]: `${getSocialScale(item.platform).y}`,
+                }}
+              >
+                <SocialEmbed item={item} />
+              </div>
+            </div>
+          ) : (
+            <div
+              className="social-embed-scale"
+              style={{
+                ["--mobile-scale-x" as never]: `${getSocialScale(item.platform).x}`,
+                ["--mobile-scale-y" as never]: `${getSocialScale(item.platform).y}`,
+              }}
+            >
+              <SocialEmbed item={item} />
+            </div>
+          )}
         </div>
         {/* 클릭 차단 오버레이 */}
-        <div className="absolute inset-0 z-10" />
+        <div className="absolute inset-0 z-10 hidden" />
       </div>
 
       <div className="p-4 md:p-6 flex flex-col flex-1">
@@ -306,6 +354,9 @@ export default function LatestSocials({
             slidesOffsetBefore={20}
             slidesOffsetAfter={-10}
             centeredSlides={false}
+            nested={true}
+            touchStartPreventDefault={false}
+            touchReleaseOnEdges={true}
             className="latest-socials-swiper"
           >
             {socials.map((item, index) => (

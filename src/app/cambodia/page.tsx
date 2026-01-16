@@ -68,7 +68,7 @@ export default function CambodiaPage() {
   return (
     <div>
       <IntroductionSection
-        videoSrc="/images/cambodia/background.webm"
+        videoSrc="/images/cambodia/background.mp4"
         title={t('country.cambodia')}
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}
