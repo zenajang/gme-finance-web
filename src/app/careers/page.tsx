@@ -73,7 +73,7 @@ export default function CareersPage() {
           alt="integrity"
           width={200}
           height={200}
-          className="object-contain w-[25px] md:w-[120px]"
+          className="object-contain w-[40px] md:w-[120px]"
         />
       ),
     },
@@ -86,7 +86,7 @@ export default function CareersPage() {
           alt="teamwork"
           width={200}
           height={200}
-          className="object-contain w-[25px] md:w-[110px]"
+          className="object-contain w-[40px] md:w-[110px]"
         />
       ),
     },
@@ -99,7 +99,7 @@ export default function CareersPage() {
           alt="think"
           width={300}
           height={300}
-          className="object-contain w-[25px] md:w-[130px]"
+          className="object-contain w-[43px] md:w-[130px]"
         />
       ),
     },
@@ -112,7 +112,7 @@ export default function CareersPage() {
           alt="failure"
           width={200}
           height={200}
-          className="object-contain w-[25px] md:w-[100px]"
+          className="object-contain w-[40px] md:w-[100px]"
         />
       ),
     },
