@@ -5,6 +5,7 @@ import { Theme } from "@radix-ui/themes";
 import PageLoadingSpinner from "./components/common/PageLoadingSpinner";
 import LayoutWrapper from "./components/common/LayoutWrapper";
 import I18nProvider from "./components/common/I18nProvider";
+import ImageLoadGuard from "./components/common/ImageLoadGuard";
 import { Inter } from "next/font/google";
 
 const inter = Inter({
@@ -31,6 +32,7 @@ export default async function RootLayout({
         suppressHydrationWarning={true}
       >
         <Theme appearance="light" accentColor="indigo" radius="large">
+          <ImageLoadGuard />
           <I18nProvider>
             <PageLoadingSpinner />
             <LayoutWrapper>{children}</LayoutWrapper>

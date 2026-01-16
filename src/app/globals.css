@@ -36,6 +36,18 @@ body {
   font-family: var(--font-sans);
 }
 
+img {
+  visibility: hidden;
+}
+
+img[data-loaded="true"] {
+  visibility: visible;
+}
+
+img[data-error="true"] {
+  display: none;
+}
+
 .radix-themes {
   --default-font-family: var(--font-inter), sans-serif;
   font-family: var(--font-inter), sans-serif;

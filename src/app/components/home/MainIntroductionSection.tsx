@@ -7,11 +7,14 @@ import { useTranslation } from 'react-i18next';
 export default function MainIntroductionSection() {
   const { t } = useTranslation();
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isLoopFading, setIsLoopFading] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const loopFadeRef = useRef(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    const fadeDuration = 2.2;
 
     const handleReady = () => {
       setIsVideoReady(true);
@@ -22,6 +25,19 @@ export default function MainIntroductionSection() {
 
     video.addEventListener('loadeddata', handleReady);
     video.addEventListener('canplay', handleReady);
+    const handleTimeUpdate = () => {
+      if (!Number.isFinite(video.duration) || video.duration <= 0) {
+        return;
+      }
+
+      const shouldFade = video.duration - video.currentTime <= fadeDuration;
+      if (shouldFade !== loopFadeRef.current) {
+        loopFadeRef.current = shouldFade;
+        setIsLoopFading(shouldFade);
+      }
+    };
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
     if (video.readyState >= 2) {
       handleReady();
     }
@@ -29,8 +45,17 @@ export default function MainIntroductionSection() {
     return () => {
       video.removeEventListener('loadeddata', handleReady);
       video.removeEventListener('canplay', handleReady);
+      video.removeEventListener('timeupdate', handleTimeUpdate);
     };
   }, []);
+
+  const videoOpacityClass = !isVideoReady
+    ? 'opacity-0'
+    : isLoopFading
+      ? 'opacity-20'
+      : 'opacity-100';
+
+  const videoTransitionMs = isLoopFading ? 1200 : 3200;
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
@@ -42,7 +67,8 @@ export default function MainIntroductionSection() {
           muted
           playsInline
           preload="auto"
-          className={`w-full h-full object-cover transition-opacity duration-700 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-cover transition-opacity ease-linear ${videoOpacityClass}`}
+          style={{ transitionDuration: `${videoTransitionMs}ms` }}
         >
           <source src="/images/main_image_autumn.mp4" type="video/mp4" />
           <source src="/images/main_image_autumn.webm" type="video/webm" />
