@@ -115,7 +115,7 @@ export default function TiptapEditor({ content, onChange, placeholder = 'Please 
       const { error } = await supabase.storage
         .from('images')
         .upload(filePath, file, {
-          cacheControl: '3600',
+          cacheControl: '31536000',
           upsert: false
         });
 
@@ -175,7 +175,7 @@ export default function TiptapEditor({ content, onChange, placeholder = 'Please 
       const { error } = await supabase.storage
         .from('images')
         .upload(filePath, file, {
-          cacheControl: '3600',
+          cacheControl: '31536000',
           upsert: false
         });
 

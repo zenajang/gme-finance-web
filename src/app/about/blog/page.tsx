@@ -218,14 +218,6 @@ export default function BlogPage() {
                   onLoadedData={() => markVideoLoaded(post.id)}
                   onError={() => markVideoLoaded(post.id)}
                 />
-                {/* 재생 아이콘 오버레이 */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-                  <div className="w-12 h-12 rounded-full bg-black/50 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
               </div>
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center">
