@@ -4,7 +4,7 @@ import "./globals.css";
 import { Theme } from "@radix-ui/themes";
 import PageLoadingSpinner from "./components/common/PageLoadingSpinner";
 import LayoutWrapper from "./components/common/LayoutWrapper";
-import I18nProvider from "./components/common/I18nProvider";
+import AppProviders from "./components/common/AppProviders";
 import ImageLoadGuard from "./components/common/ImageLoadGuard";
 import ServiceWorkerRegistrar from "./components/common/ServiceWorkerRegistrar";
 import { Inter } from "next/font/google";
@@ -35,10 +35,10 @@ export default async function RootLayout({
         <Theme appearance="light" accentColor="indigo" radius="large">
           <ImageLoadGuard />
           <ServiceWorkerRegistrar />
-          <I18nProvider>
+          <AppProviders>
             <PageLoadingSpinner />
             <LayoutWrapper>{children}</LayoutWrapper>
-          </I18nProvider>
+          </AppProviders>
         </Theme>
       </body>
     </html>

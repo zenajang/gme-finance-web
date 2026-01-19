@@ -1,25 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client';
+import useSWR from 'swr';
 import Link from 'next/link';
 import Image from 'next/image';
 import { COMMON_COLORS } from '@/constants/colors';
 import { useTranslation } from 'react-i18next';
+import { fetchPublishedPosts, type BlogPost } from '@/lib/supabase/blog';
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
-
-interface BlogPost {
-  id: string;
-  title: string;
-  content: string;
-  category: 'blog' | 'customer_feedback';
-  author_email: string;
-  created_at: string;
-  updated_at: string;
-}
 
 type FilterCategory = 'all' | 'blog' | 'customer_feedback';
 
@@ -27,8 +18,10 @@ export default function BlogPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { t, i18n } = useTranslation();
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { data: posts = [], isLoading, error } = useSWR(
+    ['blog_posts', { published: true }],
+    () => fetchPublishedPosts()
+  );
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(9);
   const [loadedVideos, setLoadedVideos] = useState<Record<string, boolean>>({});
@@ -53,27 +46,9 @@ export default function BlogPage() {
     setVisibleCount(prev => prev + 9);
   };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const supabase = createClient();
-        const { data, error } = await supabase
-          .from('blog_posts')
-          .select('*')
-          .eq('published', true)
-          .order('created_at', { ascending: false });
-
-        if (error) throw error;
-        setPosts(data || []);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+  if (error) {
+    console.error('Error fetching posts:', error);
+  }
 
   // URL 쿼리 변경 시 필터 업데이트
   useEffect(() => {
@@ -124,7 +99,7 @@ export default function BlogPage() {
     return null;
   }
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>

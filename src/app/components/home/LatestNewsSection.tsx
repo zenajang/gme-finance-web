@@ -1,25 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client';
 import { COMMON_COLORS } from '@/constants/colors';
+import useSWR from 'swr';
+import { fetchPublishedPosts, type BlogPost } from '@/lib/supabase/blog';
 
 // Swiper 스타일 import
 import 'swiper/css';
 import { useTranslation } from 'react-i18next';
-
-interface BlogPost {
-  id: string;
-  title: string;
-  content: string;
-  author_email: string;
-  created_at: string;
-  updated_at: string;
-}
 
 function formatDate(d: string) {
   const dt = new Date(d);
@@ -112,34 +104,16 @@ function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
 export default function LatestNewsSection() {
   const { t } = useTranslation();
   const router = useRouter();
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { data: posts = [], isLoading, error } = useSWR(
+    ['blog_posts', { published: true, category: 'blog', limit: 3 }],
+    () => fetchPublishedPosts({ category: 'blog', limit: 3 })
+  );
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const supabase = createClient();
-        const { data, error } = await supabase
-          .from('blog_posts')
-          .select('*')
-          .eq('published', true)
-          .eq('category', 'blog')
-          .order('created_at', { ascending: false })
-          .limit(3);
+  if (error) {
+    console.error('Error fetching posts:', error);
+  }
 
-        if (error) throw error;
-        setPosts(data || []);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return (
       <section className="py-8 md:py-14 lg:py-16 px-0 md:px-45 lg:px-45 relative overflow-hidden">
         <div

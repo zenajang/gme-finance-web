@@ -1,4 +1,4 @@
-const CACHE_VERSION = "1768791611228";
+const CACHE_VERSION = "__CACHE_VERSION__";
 const IMAGE_CACHE = `images-${CACHE_VERSION}`;
 const VIDEO_CACHE = `videos-${CACHE_VERSION}`;
 

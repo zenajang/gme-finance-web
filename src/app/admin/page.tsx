@@ -7,6 +7,7 @@ import { COMMON_COLORS } from '@/constants/colors';
 import dynamicImport from 'next/dynamic';
 import '../components/admin/TiptapEditor.css';
 import type { User } from '@supabase/supabase-js';
+import { useSWRConfig } from 'swr';
 
 // Tiptap editor dynamic import (disable SSR)
 const TiptapEditor = dynamicImport(() => import('@/app/components/admin/TiptapEditor'), {
@@ -89,6 +90,7 @@ function stripHtml(html: string): string {
 
 export default function AdminPage() {
   const router = useRouter();
+  const { mutate } = useSWRConfig();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'write' | 'list'>('write');
@@ -230,6 +232,11 @@ export default function AdminPage() {
           alert('Update failed: No rows were updated. Please check permissions.');
         } else {
           alert('Post updated successfully!');
+          mutate(
+            (key) =>
+              Array.isArray(key) &&
+              (key[0] === 'blog_posts' || key[0] === 'blog_post')
+          );
           resetForm();
           fetchPosts();
           setActiveTab('list');
@@ -252,6 +259,11 @@ export default function AdminPage() {
           alert('Error saving post: ' + error.message);
         } else {
           alert('Post saved successfully!');
+          mutate(
+            (key) =>
+              Array.isArray(key) &&
+              (key[0] === 'blog_posts' || key[0] === 'blog_post')
+          );
           resetForm();
           fetchPosts();
           setActiveTab('list');
@@ -278,6 +290,11 @@ export default function AdminPage() {
       if (editingPostId === id) {
         resetForm();
       }
+      mutate(
+        (key) =>
+          Array.isArray(key) &&
+          (key[0] === 'blog_posts' || key[0] === 'blog_post')
+      );
       fetchPosts();
     } else {
       alert('Error deleting post: ' + error.message);

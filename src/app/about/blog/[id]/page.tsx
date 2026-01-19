@@ -1,57 +1,34 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client';
+import useSWR from 'swr';
 import Link from 'next/link';
 import '@/app/components/admin/TiptapEditor.css';
 import { useTranslation } from 'react-i18next';
+import { fetchPublishedPostById, type BlogPost } from '@/lib/supabase/blog';
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
-
-interface BlogPost {
-  id: string;
-  title: string;
-  content: string;
-  author_email: string;
-  created_at: string;
-  updated_at: string;
-}
 
 export default function BlogDetailPage() {
   const params = useParams();
   const router = useRouter();
   const { t, i18n } = useTranslation();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [loading, setLoading] = useState(true);
+  const postId = params?.id ? String(params.id) : null;
+  const { data: post, isLoading, error } = useSWR<BlogPost | null>(
+    postId ? ['blog_post', { id: postId }] : null,
+    () => fetchPublishedPostById(postId as string)
+  );
 
   useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const supabase = createClient();
-        const { data, error } = await supabase
-          .from('blog_posts')
-          .select('*')
-          .eq('id', params.id)
-          .eq('published', true)
-          .single();
+    if (!isLoading && (error || !post)) {
+      console.error('Error fetching post:', error);
+      router.push('/about/blog');
+    }
+  }, [isLoading, error, post, router]);
 
-        if (error) throw error;
-        setPost(data);
-      } catch (error) {
-        console.error('Error fetching post:', error);
-        // 글을 찾을 수 없으면 목록으로 이동
-        router.push('/about/blog');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPost();
-  }, [params.id, router]);
-
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
