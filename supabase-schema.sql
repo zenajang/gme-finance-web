@@ -6,9 +6,13 @@ CREATE TABLE IF NOT EXISTS blog_posts (
   author_id UUID REFERENCES auth.users(id),
   author_email VARCHAR(255),
   published BOOLEAN DEFAULT false,
+  thumbnail_url TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
 );
+
+ALTER TABLE blog_posts
+  ADD COLUMN IF NOT EXISTS thumbnail_url TEXT;
 
 -- Create index for faster queries
 CREATE INDEX IF NOT EXISTS idx_blog_posts_created_at ON blog_posts (created_at DESC);

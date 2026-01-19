@@ -31,9 +31,10 @@ function extractFirstVideo(html: string): string | null {
 
 function FeedbackCard({ post }: { post: BlogPost }) {
   const videoSrc = extractFirstVideo(post.content);
+  const poster = post.thumbnail_url || undefined;
   const [isPlaying, setIsPlaying] = useState(false);
   const [showControls, setShowControls] = useState(true);
-  const [isVideoReady, setIsVideoReady] = useState(!videoSrc);
+  const [isVideoReady, setIsVideoReady] = useState(!videoSrc || !!poster);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleVideoClick = () => {
@@ -86,6 +87,7 @@ function FeedbackCard({ post }: { post: BlogPost }) {
           <video
             ref={videoRef}
             className="w-full h-full object-cover transition-transform duration-1200 group-hover:scale-110"
+            poster={poster}
             preload="metadata"
             playsInline
             crossOrigin="anonymous"

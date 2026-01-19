@@ -30,7 +30,7 @@ function getTextPreview(html: string): string {
 }
 
 function NewsCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
-  const thumbnail = extractFirstImage(post.content);
+  const thumbnail = post.thumbnail_url || extractFirstImage(post.content);
   const [isImageReady, setIsImageReady] = useState(!thumbnail);
 
   return (

@@ -8,6 +8,7 @@ export interface BlogPost {
   content: string;
   category: 'blog' | 'customer_feedback';
   author_email: string;
+  thumbnail_url?: string | null;
   created_at: string;
   updated_at: string;
 }

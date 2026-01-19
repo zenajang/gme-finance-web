@@ -33,6 +33,7 @@ interface BlogPost {
   author_email: string;
   published: boolean;
   category: 'blog' | 'customer_feedback';
+  thumbnail_url?: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -86,6 +87,95 @@ function extractFirstImage(html: string): string | null {
 // HTML 태그 제거하고 텍스트만 추출
 function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '').trim();
+}
+
+async function generateVideoThumbnail(videoUrl: string): Promise<string | null> {
+  try {
+    const video = document.createElement('video');
+    video.crossOrigin = 'anonymous';
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.src = videoUrl;
+
+    await new Promise<void>((resolve, reject) => {
+      const onLoaded = () => resolve();
+      const onError = () => reject(new Error('Video load failed'));
+      video.addEventListener('loadedmetadata', onLoaded, { once: true });
+      video.addEventListener('error', onError, { once: true });
+    });
+
+    const seekTime = Number.isFinite(video.duration)
+      ? Math.min(0.5, Math.max(0, video.duration * 0.1))
+      : 0.5;
+
+    await new Promise<void>((resolve, reject) => {
+      const onSeeked = () => resolve();
+      const onError = () => reject(new Error('Video seek failed'));
+      video.addEventListener('seeked', onSeeked, { once: true });
+      video.addEventListener('error', onError, { once: true });
+      video.currentTime = seekTime;
+    });
+
+    const canvas = document.createElement('canvas');
+    const maxWidth = 640;
+    const scale = video.videoWidth > 0 ? Math.min(1, maxWidth / video.videoWidth) : 1;
+    canvas.width = Math.round(video.videoWidth * scale);
+    canvas.height = Math.round(video.videoHeight * scale);
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      return null;
+    }
+
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    const blob = await new Promise<Blob | null>((resolve) => {
+      canvas.toBlob(resolve, 'image/jpeg', 0.75);
+    });
+
+    if (!blob) {
+      return null;
+    }
+
+    const supabase = createClient();
+    const fileName = `${Date.now()}_${Math.random().toString(36).slice(2)}.jpg`;
+    const filePath = `blog-thumbnails/${fileName}`;
+    const { error } = await supabase.storage
+      .from('images')
+      .upload(filePath, blob, {
+        cacheControl: '31536000',
+        upsert: false,
+        contentType: 'image/jpeg',
+      });
+
+    if (error) {
+      console.error('Thumbnail upload error:', error);
+      return null;
+    }
+
+    const { data: { publicUrl } } = supabase.storage
+      .from('images')
+      .getPublicUrl(filePath);
+
+    return publicUrl || null;
+  } catch (error) {
+    console.error('Thumbnail generation error:', error);
+    return null;
+  }
+}
+
+async function getThumbnailUrlFromContent(html: string): Promise<string | null> {
+  const videoInfo = getVideoInfo(html);
+  if (videoInfo.type === 'youtube' && videoInfo.thumbnail) {
+    return videoInfo.thumbnail;
+  }
+
+  if (videoInfo.type === 'video' && videoInfo.src) {
+    return generateVideoThumbnail(videoInfo.src);
+  }
+
+  return null;
 }
 
 export default function AdminPage() {
@@ -213,16 +303,28 @@ export default function AdminPage() {
     setSaving(true);
 
     try {
+      const thumbnailUrl = await getThumbnailUrlFromContent(content);
       const supabase = createClient();
       if (isEditMode && editingPostId) {
+        const updatePayload: {
+          title: string;
+          content: string;
+          category: string;
+          updated_at: string;
+          thumbnail_url?: string;
+        } = {
+          title,
+          content,
+          category,
+          updated_at: new Date().toISOString(),
+        };
+        if (thumbnailUrl) {
+          updatePayload.thumbnail_url = thumbnailUrl;
+        }
+
         const { data, error } = await supabase
           .from('blog_posts')
-          .update({
-            title,
-            content,
-            category,
-            updated_at: new Date().toISOString(),
-          })
+          .update(updatePayload)
           .eq('id', editingPostId)
           .select();
 
@@ -242,15 +344,29 @@ export default function AdminPage() {
           setActiveTab('list');
         }
       } else {
+        const insertPayload: {
+          title: string;
+          content: string;
+          category: string;
+          author_id?: string;
+          author_email?: string;
+          thumbnail_url?: string;
+        } = {
+          title,
+          content,
+          category,
+          author_id: user?.id,
+          author_email: user?.email,
+        };
+        if (thumbnailUrl) {
+          insertPayload.thumbnail_url = thumbnailUrl;
+        }
+
         const { error } = await supabase
           .from('blog_posts')
           .insert([
             {
-              title,
-              content,
-              category,
-              author_id: user?.id,
-              author_email: user?.email,
+              ...insertPayload,
               published: true,
             }
           ]);

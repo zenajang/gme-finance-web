@@ -109,7 +109,7 @@ export default function BlogPage() {
 
   // 브런치 스타일 - 히어로 카드 (첫 번째 글)
   const HeroCard = ({ post }: { post: BlogPost }) => {
-    const thumbnail = extractFirstImage(post.content);
+  const thumbnail = post.thumbnail_url || extractFirstImage(post.content);
 
     return (
       <Link href={`/about/blog/${post.id}`}>
@@ -162,7 +162,7 @@ export default function BlogPage() {
 
   // 브런치 스타일 - 일반 카드
   const BrunchCard = ({ post }: { post: BlogPost }) => {
-    const thumbnail = extractFirstImage(post.content);
+    const thumbnail = post.thumbnail_url || extractFirstImage(post.content);
     const videoSrc = extractFirstVideo(post.content);
 
     return (
