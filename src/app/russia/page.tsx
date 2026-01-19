@@ -50,9 +50,9 @@ const RUSSIA_TEAMS: Teams[] = [
     name: 'HAMID',
   },
   {
-    id: 'zed',
-    image: '/images/uzbekistan/team/zed.jpg',
-    name: 'ZED',
+    id: 'jed',
+    image: '/images/uzbekistan/team/jed.jpg',
+    name: 'JED',
 
   },
   {

@@ -38,12 +38,12 @@ const VIETNAM_TEAMS: Teams[] = [
   {
     id: 'lenissa',
     image: '/images/vietnam/team/lenissa.jpg',
-    name: 'Lenissa',
+    name: 'LENISSA',
   },
   {
     id: 'haha',
     image: '/images/vietnam/team/haha.jpg',
-    name: 'Haha',
+    name: 'HAHA',
 
   }
 ];
