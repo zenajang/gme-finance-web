@@ -671,7 +671,7 @@ export default function AdminPage() {
                   </span>
                   <div className="text-left">
                     <div>Blog Posts</div>
-                    <div className="text-xs text-gray-400">{posts.length} items</div>
+                    <div className="text-xs text-gray-400">{posts.length} posts</div>
                   </div>
                 </button>
                 <button
@@ -691,7 +691,7 @@ export default function AdminPage() {
                   </span>
                   <div className="text-left">
                     <div>Notices</div>
-                    <div className="text-xs text-gray-400">UI only</div>
+                    <div className="text-xs text-gray-400">{notices.length} notices</div>
                   </div>
                 </button>
               </nav>
@@ -849,7 +849,7 @@ export default function AdminPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                   </svg>
                   All Notices
-                  <span className={`ml-1 px-2 py-0.5 text-xs rounded-full ${activeNoticeTab === 'list' ? 'bg-white/20' : 'bg-gray-100'}`}>—</span>
+                  <span className={`ml-1 px-2 py-0.5 text-xs rounded-full ${activeNoticeTab === 'list' ? 'bg-white/20' : 'bg-gray-100'}`}>{notices.length}</span>
                 </button>
               </div>
             )}
@@ -1199,13 +1199,13 @@ export default function AdminPage() {
         )}
             {activeSection === 'notices' && activeNoticeTab === 'write' && (
               <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8">
-                <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl flex items-start gap-3">
+                <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
                     </svg>
                   </div>
-                  <div>
+                  <div className="flex flex-col">
                     <p className="font-semibold text-blue-900">
                       {noticeEditMode ? 'Editing Notice' : 'Create Notice'}
                     </p>
@@ -1254,7 +1254,6 @@ export default function AdminPage() {
                       >
                         Add Column
                       </button>
-                      <span className="text-xs text-gray-400">Table UI only (no save yet)</span>
                     </div>
 
                     <div className="overflow-x-auto">

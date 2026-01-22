@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import MainIntroductionSection from "./components/home/MainIntroductionSection";
 import CountrySection from "./components/home/CountrySection";
@@ -39,6 +40,22 @@ const FindBranchSection = dynamic(
   { loading: () => <BranchLoadingSkeleton /> }
 );
 
+export const metadata: Metadata = {
+  title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+  description: "Your Trusted Partner for Foreigner Loans in South Korea.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+    description: "Your Trusted Partner for Foreigner Loans in South Korea.",
+    url: "/",
+  },
+  twitter: {
+    title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+    description: "Your Trusted Partner for Foreigner Loans in South Korea.",
+  },
+};
 
 export default function Home() {
 

@@ -16,8 +16,30 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Finance",
-  description: "GME Finance",
+  metadataBase: new URL("https://gme-finance-web.vercel.app"),
+  title: {
+    default: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+    template: "%s | GME Finance",
+  },
+  description: "Your Trusted Partner for Foreigner Loans in South Korea.",
+  openGraph: {
+    title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+    description: "Your Trusted Partner for Foreigner Loans in South Korea.",
+    url: "/",
+    siteName: "GME Finance",
+    type: "website",
+    images: [
+      {
+        url: "/images/logo.png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+    description: "Your Trusted Partner for Foreigner Loans in South Korea.",
+    images: ["/images/logo.png"],
+  },
 };
 
 export default async function RootLayout({
