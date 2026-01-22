@@ -71,7 +71,7 @@ export default function FinancialPrioritySection() {
               className="object-contain w-full max-w-[900px]"
             />
 
-            <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+            <div className="absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
               <div className="relative flex items-center justify-center">
                 <Image
                   src="/images/gme-logo.svg"

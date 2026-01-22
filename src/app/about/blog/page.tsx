@@ -236,7 +236,7 @@ export default function BlogPage() {
       <div className="pointer-events-none absolute top-40 -left-16 h-64 w-64 rounded-full bg-[#ffd7c2] blur-3xl opacity-60 animate-float-slower" />
 
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-15 pb-10 md:pt-20 md:pb-14 mt-10 md:mt-30 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-18 pb-10 md:pb-14 mt-12 md:mt-18 relative z-10">
         <div className="flex flex-col items-center">
           <span className="animate-fade-up inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-gray-700 shadow-sm ring-1 ring-black/5 backdrop-blur">
             {t('blog.badge.primary')}

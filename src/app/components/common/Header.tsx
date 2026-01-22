@@ -17,7 +17,8 @@ const FORCE_VISIBLE_PATHS = [
   '/restrictions',
   '/manual',
   '/about/blog',
-  '/countries'
+  '/countries',
+  '/notices'
 ];
 
 export default function Header() {
@@ -163,12 +164,12 @@ export default function Header() {
                 Countries
               </Link>
 
-              {/*     <Link
+              <Link
                 href="/notices"
                 className={`${forceVisible ? 'text-gray-800 hover:text-gray-600' : 'text-white hover:text-gray-300'} transition-colors text-lg font-medium`}
               >
                 Notices
-              </Link> */}
+              </Link>
 
               <Link
                 href="/login"
@@ -267,13 +268,13 @@ export default function Header() {
             Countries
           </Link>
 
-          {/*<Link
+          <Link
             href="/notices"
             onClick={() => setIsMobileMenuOpen(false)}
             className="px-6 py-3 text-gray-800 hover:bg-gray-100 transition-colors text-base border-b border-gray-200"
           >
             Notices
-          </Link> */}
+          </Link>
 
           <Link
             href="/login"

@@ -38,6 +38,19 @@ interface BlogPost {
   updated_at: string;
 }
 
+interface NoticePost {
+  id: string;
+  title: string;
+  table_columns: string[];
+  table_rows: string[][];
+  author_id: string;
+  author_email: string;
+  pinned: boolean;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
 // HTML에서 자체 업로드 비디오 URL 추출
 function extractVideoSrc(html: string): string | null {
   const videoTagMatch = html.match(/<video[^>]*>/);
@@ -183,7 +196,9 @@ export default function AdminPage() {
   const { mutate } = useSWRConfig();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'write' | 'list'>('write');
+  const [activeSection, setActiveSection] = useState<'blog' | 'notices'>('blog');
+  const [activeBlogTab, setActiveBlogTab] = useState<'write' | 'list'>('write');
+  const [activeNoticeTab, setActiveNoticeTab] = useState<'write' | 'list'>('write');
 
   // Blog post state
   const [title, setTitle] = useState('');
@@ -191,7 +206,19 @@ export default function AdminPage() {
   const [category, setCategory] = useState<'blog' | 'customer_feedback'>('blog');
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [saving, setSaving] = useState(false);
+  const [notices, setNotices] = useState<NoticePost[]>([]);
+  const [noticeSaving, setNoticeSaving] = useState(false);
 
+  // Notice UI state (storage not wired yet)
+  const [noticeTitle, setNoticeTitle] = useState('');
+  const [noticePinned, setNoticePinned] = useState(false);
+  const [noticeColumns, setNoticeColumns] = useState<string[]>(['Name', 'Role', 'Department', 'Note']);
+  const [noticeRows, setNoticeRows] = useState<string[][]>([
+    ['', '', '', ''],
+    ['', '', '', ''],
+  ]);
+  const [noticeEditingId, setNoticeEditingId] = useState<string | null>(null);
+  const [noticeEditMode, setNoticeEditMode] = useState(false);
   // Edit mode state
   const [editingPostId, setEditingPostId] = useState<string | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -204,6 +231,7 @@ export default function AdminPage() {
   useEffect(() => {
     checkUser();
     fetchPosts();
+    fetchNotices();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -288,6 +316,19 @@ export default function AdminPage() {
     }
   }
 
+  async function fetchNotices() {
+    const supabase = createClient();
+    const { data, error } = await supabase
+      .from('notices')
+      .select('*')
+      .order('pinned', { ascending: false })
+      .order('created_at', { ascending: false });
+
+    if (!error && data) {
+      setNotices(data);
+    }
+  }
+
   async function handleLogout() {
     const supabase = createClient();
     await supabase.auth.signOut();
@@ -341,7 +382,7 @@ export default function AdminPage() {
           );
           resetForm();
           fetchPosts();
-          setActiveTab('list');
+          setActiveBlogTab('list');
         }
       } else {
         const insertPayload: {
@@ -382,7 +423,7 @@ export default function AdminPage() {
           );
           resetForm();
           fetchPosts();
-          setActiveTab('list');
+          setActiveBlogTab('list');
         }
       }
     } catch (err) {
@@ -417,13 +458,128 @@ export default function AdminPage() {
     }
   }
 
+  async function handleNoticeSave() {
+    if (!noticeTitle.trim()) {
+      alert('Please enter a notice title.');
+      return;
+    }
+
+    const normalizedRows = noticeRows
+      .map((row) => row.map((cell) => cell.trim()))
+      .filter((row) => row.some((cell) => cell.length > 0));
+
+    if (normalizedRows.length === 0) {
+      alert('Please add at least one row with content.');
+      return;
+    }
+
+    setNoticeSaving(true);
+
+    try {
+      const supabase = createClient();
+      const payload = {
+        title: noticeTitle.trim(),
+        table_columns: noticeColumns.map((col) => col.trim()),
+        table_rows: normalizedRows,
+        pinned: noticePinned,
+        status: 'Published',
+        author_id: user?.id,
+        author_email: user?.email,
+      };
+
+      if (noticeEditMode && noticeEditingId) {
+        const { data, error } = await supabase
+          .from('notices')
+          .update({
+            ...payload,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', noticeEditingId)
+          .select();
+
+        if (error) {
+          alert('Error updating notice: ' + error.message);
+          return;
+        }
+        if (!data || data.length === 0) {
+          alert('Update failed: No rows were updated. Check RLS/author_id.');
+          return;
+        }
+      } else {
+        const { error } = await supabase
+          .from('notices')
+          .insert([payload]);
+
+        if (error) {
+          alert('Error saving notice: ' + error.message);
+          return;
+        }
+      }
+
+      alert(noticeEditMode ? 'Notice updated successfully!' : 'Notice saved successfully!');
+      resetNoticeForm();
+      fetchNotices();
+      setActiveNoticeTab('list');
+    } catch (err) {
+      console.error('Notice save error:', err);
+      alert('An error occurred while saving the notice.');
+    } finally {
+      setNoticeSaving(false);
+    }
+  }
+
+  async function handleNoticeDelete(id: string) {
+    if (!confirm('Are you sure you want to delete this notice?')) return;
+
+    const supabase = createClient();
+    const { error } = await supabase
+      .from('notices')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      alert('Error deleting notice: ' + error.message);
+      return;
+    }
+
+    if (noticeEditingId === id) {
+      resetNoticeForm();
+    }
+
+    fetchNotices();
+  }
+
+  function resetNoticeForm() {
+    setNoticeTitle('');
+    setNoticePinned(false);
+    setNoticeColumns(['Name', 'Role', 'Department', 'Note']);
+    setNoticeRows([['', '', '', ''], ['', '', '', '']]);
+    setNoticeEditingId(null);
+    setNoticeEditMode(false);
+  }
+
+  function handleNoticeEdit(notice: NoticePost) {
+    setNoticeTitle(notice.title);
+    setNoticePinned(!!notice.pinned);
+    setNoticeColumns(notice.table_columns?.length ? notice.table_columns : ['Name', 'Role', 'Department', 'Note']);
+    setNoticeRows(
+      notice.table_rows?.length
+        ? notice.table_rows.map((row) => [...row])
+        : [['', '', '', ''], ['', '', '', '']]
+    );
+    setNoticeEditingId(notice.id);
+    setNoticeEditMode(true);
+    setActiveSection('notices');
+    setActiveNoticeTab('write');
+  }
+
   function handleEdit(post: BlogPost) {
     setTitle(post.title);
     setContent(post.content);
     setCategory(post.category || 'blog');
     setEditingPostId(post.id);
     setIsEditMode(true);
-    setActiveTab('write');
+    setActiveBlogTab('write');
   }
 
   // 폼 초기화
@@ -453,7 +609,7 @@ export default function AdminPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-3">
@@ -489,85 +645,217 @@ export default function AdminPage() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
+      <main className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col lg:flex-row gap-6">
+          {/* Sidebar */}
+          <aside className="lg:w-64 flex-shrink-0">
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sticky top-24">
+              <div className="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <span>Content</span>
               </div>
-              <div>
-                <p className="text-gray-500 text-sm">Total Posts</p>
-                <p className="text-2xl font-medium text-gray-900">{posts.length}</p>
-              </div>
+              <nav className="mt-2 space-y-1">
+                <button
+                  onClick={() => setActiveSection('blog')}
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
+                    activeSection === 'blog'
+                      ? 'bg-red-50 text-red-700 border border-red-100'
+                      : 'text-gray-600 hover:bg-gray-100'
+                  }`}
+                >
+                  <span className={`w-9 h-9 rounded-lg flex items-center justify-center ${
+                    activeSection === 'blog' ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-500'
+                  }`}>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </span>
+                  <div className="text-left">
+                    <div>Blog Posts</div>
+                    <div className="text-xs text-gray-400">{posts.length} items</div>
+                  </div>
+                </button>
+                <button
+                  onClick={() => setActiveSection('notices')}
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
+                    activeSection === 'notices'
+                      ? 'bg-blue-50 text-blue-700 border border-blue-100'
+                      : 'text-gray-600 hover:bg-gray-100'
+                  }`}
+                >
+                  <span className={`w-9 h-9 rounded-lg flex items-center justify-center ${
+                    activeSection === 'notices' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-500'
+                  }`}>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h10M7 16h6m5 5H6a2 2 0 01-2-2V5a2 2 0 012-2h8.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </span>
+                  <div className="text-left">
+                    <div>Notices</div>
+                    <div className="text-xs text-gray-400">UI only</div>
+                  </div>
+                </button>
+              </nav>
             </div>
-          </div>
+          </aside>
 
-          <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-gray-500 text-sm">Published</p>
-                <p className="text-2xl font-medium text-gray-900">{posts.filter(p => p.published).length}</p>
-              </div>
-            </div>
-          </div>
+          {/* Content */}
+          <section className="flex-1 min-w-0">
+            {/* Stats Cards */}
+            {activeSection === 'blog' ? (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-gray-500 text-sm">Total Posts</p>
+                      <p className="text-2xl font-medium text-gray-900">{posts.length}</p>
+                    </div>
+                  </div>
+                </div>
 
-          <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-gray-500 text-sm">Latest Post</p>
-                <p className="text-sm font-medium text-gray-900 truncate max-w-[150px]">
-                  {posts[0]?.title || 'No posts yet'}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+                <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-gray-500 text-sm">Published</p>
+                      <p className="text-2xl font-medium text-gray-900">{posts.filter(p => p.published).length}</p>
+                    </div>
+                  </div>
+                </div>
 
-        {/* Tab Navigation */}
-        <div className="flex gap-2 mb-6">
-          <button
-            onClick={() => setActiveTab('write')}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg md:rounded-xl font-medium transition-all duration-200 cursor-pointer ${activeTab === 'write'
-              ? 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg shadow-red-500/25'
-              : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
-              }`}
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-            </svg>
-            {isEditMode ? 'Edit Post' : 'Write New'}
-          </button>
-          <button
-            onClick={() => setActiveTab('list')}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg md:rounded-xl font-medium transition-all duration-200 cursor-pointer ${activeTab === 'list'
-              ? 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg shadow-red-500/25'
-              : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
-              }`}
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-            </svg>
-            All Posts
-            <span className={`ml-1 px-2 py-0.5 text-xs rounded-full ${activeTab === 'list' ? 'bg-white/20' : 'bg-gray-100'}`}>{posts.length}</span>
-          </button>
-        </div>
+                <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-gray-500 text-sm">Latest Post</p>
+                      <p className="text-sm font-medium text-gray-900 truncate max-w-[150px]">
+                        {posts[0]?.title || 'No posts yet'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6l4 2m5 4H6a2 2 0 01-2-2V6a2 2 0 012-2h7l5 5v9a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-gray-500 text-sm">Total Notices</p>
+                      <p className="text-2xl font-medium text-gray-900">{notices.length}</p>
+                    </div>
+                  </div>
+                </div>
 
-        {/* Write Tab */}
-        {activeTab === 'write' && (
+                <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v4m0 4h.01M4 19h16l-8-14-8 14z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-gray-500 text-sm">Pinned</p>
+                      <p className="text-2xl font-medium text-gray-900">{notices.filter(n => n.pinned).length}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3M5 11h14M7 19h10a2 2 0 002-2v-6H5v6a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-gray-500 text-sm">Latest Notice</p>
+                      <p className="text-sm font-medium text-gray-900 truncate max-w-[150px]">
+                        {notices[0]?.title || 'No notices yet'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Tab Navigation */}
+            {activeSection === 'blog' ? (
+              <div className="flex gap-2 mb-6">
+                <button
+                  onClick={() => setActiveBlogTab('write')}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-lg md:rounded-xl font-medium transition-all duration-200 cursor-pointer ${activeBlogTab === 'write'
+                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg shadow-red-500/25'
+                    : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                    }`}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                  {isEditMode ? 'Edit Post' : 'Write New'}
+                </button>
+                <button
+                  onClick={() => setActiveBlogTab('list')}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-lg md:rounded-xl font-medium transition-all duration-200 cursor-pointer ${activeBlogTab === 'list'
+                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg shadow-red-500/25'
+                    : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                    }`}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                  </svg>
+                  All Posts
+                  <span className={`ml-1 px-2 py-0.5 text-xs rounded-full ${activeBlogTab === 'list' ? 'bg-white/20' : 'bg-gray-100'}`}>{posts.length}</span>
+                </button>
+              </div>
+            ) : (
+              <div className="flex gap-2 mb-6">
+                <button
+                  onClick={() => setActiveNoticeTab('write')}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-lg md:rounded-xl font-medium transition-all duration-200 cursor-pointer ${activeNoticeTab === 'write'
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/25'
+                    : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                    }`}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                  Write Notice
+                </button>
+                <button
+                  onClick={() => setActiveNoticeTab('list')}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-lg md:rounded-xl font-medium transition-all duration-200 cursor-pointer ${activeNoticeTab === 'list'
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/25'
+                    : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                    }`}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                  </svg>
+                  All Notices
+                  <span className={`ml-1 px-2 py-0.5 text-xs rounded-full ${activeNoticeTab === 'list' ? 'bg-white/20' : 'bg-gray-100'}`}>—</span>
+                </button>
+              </div>
+            )}
+
+            {/* Write Tab */}
+            {activeSection === 'blog' && activeBlogTab === 'write' && (
           <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8">
             {/* Edit Mode Indicator */}
             {isEditMode && (
@@ -701,7 +989,7 @@ export default function AdminPage() {
         )}
 
         {/* List Tab */}
-        {activeTab === 'list' && (
+        {activeSection === 'blog' && activeBlogTab === 'list' && (
           <div className="space-y-4">
             {/* Filter Buttons */}
             <div className="flex gap-2 mb-4">
@@ -762,7 +1050,7 @@ export default function AdminPage() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">No posts yet</h3>
                 <p className="text-gray-500 mb-6">Create your first blog post to get started</p>
                 <button
-                  onClick={() => setActiveTab('write')}
+                  onClick={() => setActiveBlogTab('write')}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg md:rounded-xl font-medium shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all cursor-pointer"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -909,6 +1197,285 @@ export default function AdminPage() {
             )}
           </div>
         )}
+            {activeSection === 'notices' && activeNoticeTab === 'write' && (
+              <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8">
+                <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-blue-900">
+                      {noticeEditMode ? 'Editing Notice' : 'Create Notice'}
+                    </p>
+                    <p className="text-sm text-blue-600">
+                      {noticeEditMode ? 'Update the table and save changes.' : 'Create a new table-based notice.'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <label htmlFor="notice-title" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Notice Title
+                  </label>
+                  <input
+                    id="notice-title"
+                    type="text"
+                    value={noticeTitle}
+                    onChange={(e) => setNoticeTitle(e.target.value)}
+                    className="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
+                    placeholder="Important update for users..."
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Notice List (Table)
+                  </label>
+                  <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+                    <div className="flex flex-wrap items-center gap-2 mb-3">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setNoticeRows((prev) => [...prev, new Array(noticeColumns.length).fill('')]);
+                        }}
+                        className="px-3 py-1.5 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100"
+                      >
+                        Add Row
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setNoticeColumns((prev) => [...prev, `Column ${prev.length + 1}`]);
+                          setNoticeRows((prev) => prev.map((row) => [...row, '']));
+                        }}
+                        className="px-3 py-1.5 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100"
+                      >
+                        Add Column
+                      </button>
+                      <span className="text-xs text-gray-400">Table UI only (no save yet)</span>
+                    </div>
+
+                    <div className="overflow-x-auto">
+                      <table className="min-w-[900px] text-sm">
+                        <thead>
+                          <tr>
+                            <th className="px-2 py-2 text-center text-xs font-semibold text-gray-500">No</th>
+                            {noticeColumns.map((col, colIndex) => (
+                              <th key={colIndex} className="px-2 py-2 text-left">
+                                <div className="flex items-center gap-2">
+                                  <input
+                                    value={col}
+                                    onChange={(e) => {
+                                      const next = [...noticeColumns];
+                                      next[colIndex] = e.target.value;
+                                      setNoticeColumns(next);
+                                    }}
+                                    className="w-40 px-2 py-1 text-xs font-semibold text-gray-700 bg-white border border-gray-200 rounded"
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      if (noticeColumns.length <= 1) return;
+                                      setNoticeColumns((prev) => prev.filter((_, i) => i !== colIndex));
+                                      setNoticeRows((prev) => prev.map((row) => row.filter((_, i) => i !== colIndex)));
+                                    }}
+                                    className="text-gray-300 hover:text-gray-500"
+                                    title="Remove column"
+                                  >
+                                    ×
+                                  </button>
+                                </div>
+                              </th>
+                            ))}
+                            <th className="px-2 py-2 text-right text-xs text-gray-400">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100">
+                          {noticeRows.map((row, rowIndex) => (
+                            <tr key={rowIndex} className="bg-white">
+                              <td className="px-2 py-2 text-center text-xs text-gray-400">{rowIndex + 1}</td>
+                              {row.map((cell, colIndex) => (
+                                <td key={colIndex} className="px-2 py-2">
+                                  <input
+                                    value={cell}
+                                    onChange={(e) => {
+                                      setNoticeRows((prev) => {
+                                        const next = prev.map((r) => [...r]);
+                                        next[rowIndex][colIndex] = e.target.value;
+                                        return next;
+                                      });
+                                    }}
+                                    className="w-56 px-2 py-1 text-sm border border-gray-200 rounded"
+                                    placeholder={`Row ${rowIndex + 1}`}
+                                  />
+                                </td>
+                              ))}
+                              <td className="px-2 py-2 text-right">
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    if (noticeRows.length <= 1) return;
+                                    setNoticeRows((prev) => prev.filter((_, i) => i !== rowIndex));
+                                  }}
+                                  className="text-xs text-gray-400 hover:text-gray-600"
+                                >
+                                  Remove
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 mb-6">
+                  <button
+                    type="button"
+                    onClick={() => setNoticePinned((prev) => !prev)}
+                    className={`px-4 py-2 rounded-lg md:rounded-xl text-sm font-medium transition-colors border ${
+                      noticePinned ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-gray-100 text-gray-600 border-gray-200'
+                    }`}
+                  >
+                    {noticePinned ? 'Pinned Notice' : 'Pin to Top'}
+                  </button>
+                </div>
+
+                <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
+                  <button
+                    onClick={resetNoticeForm}
+                    className="px-6 py-2.5 text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg md:rounded-xl font-medium transition-colors cursor-pointer"
+                  >
+                    Clear
+                  </button>
+                  <button
+                    onClick={handleNoticeSave}
+                    disabled={noticeSaving}
+                    className="flex items-center gap-2 px-6 py-2.5 text-white rounded-lg md:rounded-xl font-medium transition-all disabled:opacity-60 cursor-pointer shadow-lg"
+                    style={{
+                      backgroundColor: noticeSaving ? COMMON_COLORS.grayDark : '#3b82f6',
+                      boxShadow: noticeSaving ? 'none' : '0 10px 25px -5px rgba(59, 130, 246, 0.25)',
+                    }}
+                  >
+                    {noticeSaving ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        </svg>
+                        <span>Saving...</span>
+                      </>
+                    ) : (
+                      <>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>{noticeEditMode ? 'Update Notice' : 'Publish Notice'}</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {activeSection === 'notices' && activeNoticeTab === 'list' && (
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">Notices</h3>
+                  </div>
+                  <button
+                    onClick={() => setActiveNoticeTab('write')}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg md:rounded-xl text-sm font-medium shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all cursor-pointer"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    New Notice
+                  </button>
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="min-w-full text-sm">
+                    <thead className="bg-gray-50 text-gray-500">
+                      <tr>
+                        <th className="px-6 py-3 text-left font-semibold">Title</th>
+                        <th className="px-6 py-3 text-left font-semibold">Status</th>
+                        <th className="px-6 py-3 text-left font-semibold">Pinned</th>
+                        <th className="px-6 py-3 text-left font-semibold">Author</th>
+                        <th className="px-6 py-3 text-left font-semibold">Date</th>
+                        <th className="px-6 py-3 text-right font-semibold">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                      {notices.map((notice) => (
+                        <tr key={notice.id} className="hover:bg-gray-50">
+                          <td className="px-6 py-4 text-gray-900 font-medium">{notice.title}</td>
+                          <td className="px-6 py-4">
+                            <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
+                              notice.status === 'Published'
+                                ? 'bg-emerald-100 text-emerald-700'
+                                : notice.status === 'Scheduled'
+                                  ? 'bg-amber-100 text-amber-700'
+                                  : 'bg-gray-100 text-gray-600'
+                            }`}>
+                              {notice.status}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4">
+                            {notice.pinned ? (
+                              <span className="inline-flex items-center gap-1 text-blue-600">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                </svg>
+                                Pinned
+                              </span>
+                            ) : (
+                              <span className="text-gray-400">—</span>
+                            )}
+                          </td>
+                          <td className="px-6 py-4 text-gray-500">{notice.author_email}</td>
+                          <td className="px-6 py-4 text-gray-500">
+                            {new Date(notice.created_at).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric'
+                            })}
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="flex items-center justify-end gap-2 text-gray-400">
+                              <button
+                                onClick={() => handleNoticeEdit(notice)}
+                                className="px-3 py-1.5 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200"
+                              >
+                                Edit
+                              </button>
+                              <button
+                                onClick={() => handleNoticeDelete(notice.id)}
+                                className="px-3 py-1.5 rounded-lg bg-gray-100 text-red-600 hover:bg-red-50"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {notices.length === 0 && (
+                  <div className="px-6 py-12 text-center text-sm text-gray-400">
+                    No notices yet. Create your first notice from the Write tab.
+                  </div>
+                )}
+              </div>
+            )}
+          </section>
+        </div>
       </main>
     </div>
   );
