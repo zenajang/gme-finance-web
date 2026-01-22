@@ -8,7 +8,6 @@ export default function ApplyLoanOnline() {
   const { t } = useTranslation()
   const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.gmeremit.online.gmeremittance_native";
   const APP_STORE_URL = "https://apps.apple.com/us/app/gme-remit/id1439161261";
-  const READ_MORE_URL = "https://gmefinance.com/onlineloan/";
 
   return (
     <section id="apply-loan-online" className="relative bg-[#f9f9f9] m-4 md:m-20 rounded-2xl pt-8 md:pt-20 pb-10 md:pb-20 px-4 md:px-70 overflow-hidden">
@@ -61,9 +60,9 @@ export default function ApplyLoanOnline() {
         </div>
       </div>
       <div className="flex justify-center md:justify-end mt-4 md:-mt-16">
-        <Link href={READ_MORE_URL} target="_blank" rel="noopener noreferrer">
+        <Link href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer">
           <button className="bg-[#DF2121] shadow-[0_0_15px_rgba(0,0,0,0.15)] text-md md:text-[1.35rem] lg:text-[1.35rem] text-white cursor-pointer px-10 md:px-30 lg:px-30 py-2 md:py-4 lg:py-4 font-semibold hover:bg-red-500 transition-all">
-            {t('button.readMore')}
+            {t('button.applyNow')}
           </button>
         </Link>
       </div>

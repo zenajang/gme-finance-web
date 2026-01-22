@@ -50,10 +50,16 @@ export const metadata: Metadata = {
     title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
     description: "Your Trusted Partner for Foreigner Loans in South Korea.",
     url: "/",
+    images: [
+      {
+        url: "/images/logo.png",
+      },
+    ],
   },
   twitter: {
     title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
     description: "Your Trusted Partner for Foreigner Loans in South Korea.",
+    images: ["/images/logo.png"],
   },
 };
 
