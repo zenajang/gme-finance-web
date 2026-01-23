@@ -9,6 +9,7 @@ interface LanguageSwitcherProps {
   className?: string;
   variant?: 'desktop' | 'mobile';
   forceVisible?: boolean;
+  size?: 'normal' | 'compact';
 }
 
 // 언어별 짧은 코드
@@ -31,7 +32,7 @@ const LANG_SHORT: Record<LanguageCode, string> = {
   ru: 'RU',
 };
 
-export default function LanguageSwitcher({ className = '', variant = 'desktop', forceVisible = false }: LanguageSwitcherProps) {
+export default function LanguageSwitcher({ className = '', variant = 'desktop', forceVisible = false, size = 'normal' }: LanguageSwitcherProps) {
   const { i18n } = useTranslation();
   const pathname = usePathname();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -55,6 +56,7 @@ export default function LanguageSwitcher({ className = '', variant = 'desktop', 
 
   // 모바일 버전
   if (variant === 'mobile') {
+    const mobileButtonClass = size === 'compact' ? 'px-3 py-1 text-xs' : 'px-4 py-1.5 text-sm';
     return (
       <div className={`px-6 py-4 border-t border-gray-100 ${className}`}>
         <div className="flex items-center justify-center">
@@ -71,7 +73,7 @@ export default function LanguageSwitcher({ className = '', variant = 'desktop', 
               <button
                 key={lang.code}
                 onClick={() => handleLanguageChange(lang.code, index)}
-                className={`relative z-10 flex-1 px-4 py-1.5 text-sm font-medium text-center transition-colors duration-300 ${i18n.language === lang.code
+                className={`relative z-10 flex-1 ${mobileButtonClass} font-medium text-center transition-colors duration-300 ${i18n.language === lang.code
                     ? 'text-gray-800'
                     : 'text-gray-500'
                   }`}
@@ -86,6 +88,7 @@ export default function LanguageSwitcher({ className = '', variant = 'desktop', 
   }
 
   // 데스크톱 버전
+  const desktopButtonClass = size === 'compact' ? 'px-3 py-0.5 text-xs' : 'px-4 py-1 text-sm';
   return (
     <div className={`relative flex items-center rounded-full p-1 ${forceVisible ? 'bg-white border border-gray-300 shadow-sm' : 'bg-white/10 backdrop-blur-sm'} ${className}`}>
       {/* 슬라이딩 배경 */}
@@ -100,7 +103,7 @@ export default function LanguageSwitcher({ className = '', variant = 'desktop', 
         <button
           key={lang.code}
           onClick={() => handleLanguageChange(lang.code, index)}
-          className={`relative z-10 text-center px-4 py-1 text-sm font-medium transition-colors duration-300 ${
+          className={`relative z-10 text-center ${desktopButtonClass} font-medium transition-colors duration-300 ${
             forceVisible
               ? i18n.language === lang.code ? 'text-white' : 'text-gray-600 hover:text-gray-900'
               : i18n.language === lang.code ? 'text-gray-800' : 'text-white/80 hover:text-white'

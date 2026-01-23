@@ -111,6 +111,27 @@
       "supportLabel": "Customer Support"
     }
   },
+  "notices": {
+    "page": {
+      "pill": "Heads-up",
+      "pillAccent": "Notices",
+      "title": "Notices",
+      "subtitle": "Check the latest notices and important updates.",
+      "loading": "Loading notices...",
+      "empty": "No notices yet."
+    },
+    "category": {
+      "all": "All",
+      "loss_of_benefit": "Planned loss of benefit",
+      "auction": "Planned house auction",
+      "transfer": "Planned transfer"
+    },
+    "table": {
+      "number": "No",
+      "title": "Title",
+      "date": "Date"
+    }
+  },
   "careers": {
     "hero": {
       "title": "Be the change",
@@ -438,6 +459,164 @@
     "empty": "No posts yet.",
     "detail": {
       "updatedLabel": "Updated:"
+    }
+  },
+  "admin": {
+    "loading": {
+      "editor": "Loading editor...",
+      "panel": "Loading admin panel..."
+    },
+    "header": {
+      "title": "GME Admin",
+      "subtitle": "Content Management",
+      "logout": "Logout"
+    },
+    "confirm": {
+      "leave": "Log out and leave this page?"
+    },
+    "alerts": {
+      "missingTitleContent": "Please enter both title and content.",
+      "updatePostError": "Error updating post: {{message}}",
+      "updatePostNoRows": "Update failed: No rows were updated. Please check permissions.",
+      "updatePostSuccess": "Post updated successfully!",
+      "savePostError": "Error saving post: {{message}}",
+      "savePostSuccess": "Post saved successfully!",
+      "savePostGeneric": "An error occurred while saving.",
+      "deletePostConfirm": "Are you sure you want to delete this post?",
+      "deletePostError": "Error deleting post: {{message}}",
+      "noticeTitleRequired": "Please enter a notice title.",
+      "noticeRowRequired": "Please add at least one row with content.",
+      "updateNoticeError": "Error updating notice: {{message}}",
+      "updateNoticeNoRows": "Update failed: No rows were updated. Check RLS/author_id.",
+      "saveNoticeError": "Error saving notice: {{message}}",
+      "updateNoticeSuccess": "Notice updated successfully!",
+      "saveNoticeSuccess": "Notice saved successfully!",
+      "saveNoticeGeneric": "An error occurred while saving the notice.",
+      "deleteNoticeConfirm": "Are you sure you want to delete this notice?",
+      "deleteNoticeError": "Error deleting notice: {{message}}",
+      "saveTemplatesError": "Error saving category notice text: {{message}}",
+      "saveTemplatesSuccess": "Category notice text saved successfully!"
+    },
+    "sidebar": {
+      "content": "Content",
+      "blog": "Blog Posts",
+      "notices": "Notices",
+      "postsCount": "{{count}} posts",
+      "noticesCount": "{{count}} notices"
+    },
+    "stats": {
+      "totalPosts": "Total Posts",
+      "published": "Published",
+      "latestPost": "Latest Post",
+      "totalNotices": "Total Notices",
+      "pinned": "Pinned",
+      "latestNotice": "Latest Notice",
+      "noPosts": "No posts yet",
+      "noNotices": "No notices yet"
+    },
+    "common": {
+      "cancel": "Cancel",
+      "clear": "Clear",
+      "saving": "Saving...",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "blog": {
+      "writeNew": "Write New",
+      "editPost": "Edit Post",
+      "allPosts": "All Posts",
+      "editingMode": "Editing Mode",
+      "editingModeSubtitle": "You are editing an existing post",
+      "category": "Category",
+      "categoryBlog": "Blog",
+      "categoryFeedback": "Customer Feedback",
+      "title": "Post Title",
+      "titlePlaceholder": "Enter an engaging title for your post...",
+      "content": "Content",
+      "editorPlaceholder": "Write your blog content here...",
+      "updatePost": "Update Post",
+      "publishPost": "Publish Post",
+      "filterAll": "All",
+      "emptyTitle": "No posts yet",
+      "emptySubtitle": "Create your first blog post to get started",
+      "createFirst": "Create First Post",
+      "videoBadge": "VIDEO",
+      "youtubeThumbnailAlt": "YouTube thumbnail",
+      "thumbnailAlt": "Thumbnail",
+      "youtubeLabel": "YouTube",
+      "videoLabel": "Video",
+      "updated": "Updated {{date}}",
+      "editPostTitle": "Edit post",
+      "deletePostTitle": "Delete post"
+    },
+    "notice": {
+      "write": "Write Notice",
+      "all": "All Notices",
+      "editing": "Editing Notice",
+      "create": "Create Notice",
+      "editingSubtitle": "Update the table and save changes.",
+      "createSubtitle": "Create a new table-based notice.",
+      "title": "Notice Title",
+      "titlePlaceholder": "Important update for users...",
+      "category": "Category",
+      "content": "Notice Content",
+      "contentHint": "Shown above the table",
+      "contentPlaceholder": "Enter notice text...",
+      "confirmChangeCategory": "You have unsaved changes. Switching categories will replace the current notice text. Continue?",
+      "confirmTitle": "Change category?",
+      "confirmSubtitle": "Current text will be replaced.",
+      "confirmProceed": "Change",
+      "uploadButton": "Upload Excel",
+      "uploadHint": "First sheet, first row = headers",
+      "uploadEmpty": "The Excel file is empty or has no usable columns.",
+      "uploadNoRows": "No data rows found. Only the header was imported.",
+      "uploadError": "Failed to read the Excel file.",
+      "table": {
+        "title": "Notice List (Table)",
+        "addRow": "Add Row",
+        "addColumn": "Add Column",
+        "number": "No",
+        "actions": "Actions",
+        "removeColumn": "Remove column",
+        "rowPlaceholder": "Row {{number}}",
+        "removeRow": "Remove",
+        "columnDefault": "Column {{number}}",
+        "columns": {
+          "name": "Name",
+          "role": "Role",
+          "department": "Department",
+          "note": "Note"
+        }
+      },
+      "pinned": "Pinned Notice",
+      "pinToTop": "Pin to Top",
+      "publish": "Publish Notice",
+      "update": "Update Notice",
+      "listTitle": "Notices",
+      "newNotice": "New Notice",
+      "tableHeaders": {
+        "title": "Title",
+        "category": "Category",
+        "status": "Status",
+        "pinned": "Pinned",
+        "author": "Author",
+        "date": "Date",
+        "actions": "Actions"
+      },
+      "pinnedLabel": "Pinned",
+      "empty": "No notices yet. Create your first notice from the Write tab.",
+      "status": {
+        "published": "Published",
+        "scheduled": "Scheduled",
+        "draft": "Draft"
+      }
+    },
+    "templates": {
+      "tab": "Category Notice Text",
+      "title": "Category Notice Text",
+      "subtitle": "Auto-fill text by category",
+      "save": "Save Notice Text",
+      "placeholder": "Enter default notice text for this category..."
     }
   }
 }

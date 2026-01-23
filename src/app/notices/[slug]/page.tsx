@@ -5,15 +5,21 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { NOTICES } from '../data';
+import { useTranslation } from 'react-i18next';
 
 export default function NoticeDetailPage() {
+  const { t } = useTranslation();
   const params = useParams();
   const slug = typeof params?.slug === 'string' ? params.slug : Array.isArray(params?.slug) ? params.slug[0] : '';
   const staticNotice = useMemo(() => NOTICES.find((item) => item.slug === slug), [slug]);
+  const getCategoryLabel = (value?: string | null) =>
+    t(`notices.category.${value || 'loss_of_benefit'}`, { defaultValue: value || '' });
   const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(slug);
   const [notice, setNotice] = useState<{
     id: string;
     title: string;
+    category?: string | null;
+    content?: string | null;
     table_columns: string[];
     table_rows: string[][];
     author_email: string | null;
@@ -28,7 +34,7 @@ export default function NoticeDetailPage() {
         const supabase = createClient();
         const { data, error } = await supabase
           .from('notices')
-          .select('id,title,table_columns,table_rows,author_email,pinned,created_at')
+          .select('id,title,category,content,table_columns,table_rows,author_email,pinned,created_at')
           .eq('id', slug)
           .single();
 
@@ -82,6 +88,11 @@ export default function NoticeDetailPage() {
                 <span className="rounded-full bg-gray-100 px-3 py-1 font-semibold text-gray-700">
                   Notice
                 </span>
+                {staticNotice.category && (
+                  <span className="rounded-full bg-red-50 px-3 py-1 font-semibold text-red-700">
+                    {getCategoryLabel(staticNotice.category)}
+                  </span>
+                )}
                 <time dateTime={staticNotice.date}>
                   {new Date(staticNotice.date).toLocaleDateString('ko-KR', {
                     year: 'numeric',
@@ -186,6 +197,11 @@ export default function NoticeDetailPage() {
                 <span className="rounded-full bg-gray-100 px-3 py-1 font-semibold text-gray-700">
                   Notice
                 </span>
+                {notice.category && (
+                  <span className="rounded-full bg-red-50 px-3 py-1 font-semibold text-red-700">
+                    {getCategoryLabel(notice.category)}
+                  </span>
+                )}
                 {notice.pinned && (
                   <span className="rounded-full bg-blue-50 px-3 py-1 font-semibold text-blue-700">
                     Pinned
@@ -207,6 +223,11 @@ export default function NoticeDetailPage() {
               </h1>
 
               <div className="mt-8 space-y-8 text-gray-700">
+                {notice.content && (
+                  <div className="whitespace-pre-line text-gray-600">
+                    {notice.content}
+                  </div>
+                )}
                 <section>
                   <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-3">
                     공지 명단
@@ -215,7 +236,6 @@ export default function NoticeDetailPage() {
                     <table className="w-full text-sm text-gray-700">
                       <thead className="bg-gray-50 text-gray-600">
                         <tr>
-                          <th className="px-4 py-3 text-left font-semibold">No</th>
                           {notice.table_columns.map((header, headerIndex) => (
                             <th
                               key={`${notice.id}-th-${headerIndex}-${header}`}
@@ -232,7 +252,6 @@ export default function NoticeDetailPage() {
                             key={`${notice.id}-tr-${rowIndex}`}
                             className="border-t border-gray-200"
                           >
-                            <td className="px-4 py-3 text-gray-400">{rowIndex + 1}</td>
                             {row.map((cell, cellIndex) => (
                               <td
                                 key={`${notice.id}-td-${rowIndex}-${cellIndex}`}

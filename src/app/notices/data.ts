@@ -5,6 +5,7 @@ export type Notice = {
   author: string;
   date: string;
   pinned?: boolean;
+  category?: string;
   body: Array<{
     heading?: string;
     paragraphs: string[];
@@ -28,6 +29,7 @@ export const NOTICES: Notice[] = [
     author: 'admin@gmefinance.com',
     date: '2024-10-15',
     pinned: true,
+    category: 'loss_of_benefit',
     body: [
       {
         heading: '채무조정 안내',

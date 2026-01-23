@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { COMMON_COLORS } from '@/constants/colors';
@@ -8,21 +8,29 @@ import dynamicImport from 'next/dynamic';
 import '../components/admin/TiptapEditor.css';
 import type { User } from '@supabase/supabase-js';
 import { useSWRConfig } from 'swr';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '@/app/components/common/LanguageSwitcher';
+import * as XLSX from 'xlsx';
 
-// Tiptap editor dynamic import (disable SSR)
-const TiptapEditor = dynamicImport(() => import('@/app/components/admin/TiptapEditor'), {
-  ssr: false,
-  loading: () => (
+function EditorLoading() {
+  const { t } = useTranslation();
+  return (
     <div className="h-64 bg-gray-50 rounded-xl flex items-center justify-center">
       <div className="flex items-center gap-3 text-gray-500">
         <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
         </svg>
-        <span>Loading editor...</span>
+        <span>{t('admin.loading.editor')}</span>
       </div>
     </div>
-  )
+  );
+}
+
+// Tiptap editor dynamic import (disable SSR)
+const TiptapEditor = dynamicImport(() => import('@/app/components/admin/TiptapEditor'), {
+  ssr: false,
+  loading: () => <EditorLoading />
 });
 
 interface BlogPost {
@@ -41,6 +49,8 @@ interface BlogPost {
 interface NoticePost {
   id: string;
   title: string;
+  category: string | null;
+  content?: string | null;
   table_columns: string[];
   table_rows: string[][];
   author_id: string;
@@ -194,11 +204,12 @@ async function getThumbnailUrlFromContent(html: string): Promise<string | null> 
 export default function AdminPage() {
   const router = useRouter();
   const { mutate } = useSWRConfig();
+  const { t, i18n } = useTranslation();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState<'blog' | 'notices'>('blog');
   const [activeBlogTab, setActiveBlogTab] = useState<'write' | 'list'>('write');
-  const [activeNoticeTab, setActiveNoticeTab] = useState<'write' | 'list'>('write');
+  const [activeNoticeTab, setActiveNoticeTab] = useState<'write' | 'list' | 'templates'>('write');
 
   // Blog post state
   const [title, setTitle] = useState('');
@@ -211,14 +222,40 @@ export default function AdminPage() {
 
   // Notice UI state (storage not wired yet)
   const [noticeTitle, setNoticeTitle] = useState('');
+  const [noticeContent, setNoticeContent] = useState('');
   const [noticePinned, setNoticePinned] = useState(false);
-  const [noticeColumns, setNoticeColumns] = useState<string[]>(['Name', 'Role', 'Department', 'Note']);
+  const noticeCategoryOptions = [
+    { value: 'loss_of_benefit', label: t('notices.category.loss_of_benefit') },
+    { value: 'auction', label: t('notices.category.auction') },
+    { value: 'transfer', label: t('notices.category.transfer') },
+  ] as const;
+  const getNoticeCategoryLabel = (value?: string | null) => {
+    const key = value || 'loss_of_benefit';
+    return t(`notices.category.${key}`, { defaultValue: key });
+  };
+  const getNoticeStatusLabel = (status?: string | null) => {
+    const normalized = (status || 'Published').toLowerCase();
+    return t(`admin.notice.status.${normalized}`, { defaultValue: status || '' });
+  };
+  const getDefaultNoticeColumns = () => ([
+    t('admin.notice.table.columns.name'),
+    t('admin.notice.table.columns.role'),
+    t('admin.notice.table.columns.department'),
+    t('admin.notice.table.columns.note'),
+  ]);
+  const [noticeCategory, setNoticeCategory] = useState<string>('loss_of_benefit');
+  const [noticeColumns, setNoticeColumns] = useState<string[]>(() => getDefaultNoticeColumns());
   const [noticeRows, setNoticeRows] = useState<string[][]>([
     ['', '', '', ''],
     ['', '', '', ''],
   ]);
   const [noticeEditingId, setNoticeEditingId] = useState<string | null>(null);
   const [noticeEditMode, setNoticeEditMode] = useState(false);
+  const [noticeTemplates, setNoticeTemplates] = useState<Record<string, string>>({});
+  const [templatesSaving, setTemplatesSaving] = useState(false);
+  const [confirmCategoryOpen, setConfirmCategoryOpen] = useState(false);
+  const [pendingCategory, setPendingCategory] = useState<string | null>(null);
+  const noticeFileInputRef = useRef<HTMLInputElement | null>(null);
   // Edit mode state
   const [editingPostId, setEditingPostId] = useState<string | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -232,8 +269,17 @@ export default function AdminPage() {
     checkUser();
     fetchPosts();
     fetchNotices();
+    fetchNoticeTemplates();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (noticeContent.trim().length > 0) return;
+    const template = noticeTemplates[noticeCategory] || '';
+    if (template.trim().length > 0) {
+      setNoticeContent(template);
+    }
+  }, [noticeTemplates, noticeContent, noticeCategory]);
 
   // 페이지가 히스토리에서 복원될 때마다 인증 체크
   useEffect(() => {
@@ -267,7 +313,7 @@ export default function AdminPage() {
       // 즉시 히스토리를 다시 푸시해서 페이지 이동을 막음
       window.history.pushState(null, '', '/admin');
 
-      const shouldLogout = window.confirm('로그아웃하고 페이지를 나가시겠습니까?');
+      const shouldLogout = window.confirm(t('admin.confirm.leave'));
 
       if (shouldLogout) {
         const supabase = createClient();
@@ -291,7 +337,7 @@ export default function AdminPage() {
       window.removeEventListener('popstate', handlePopState);
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, [router]);
+  }, [router, t]);
 
   async function checkUser() {
     const supabase = createClient();
@@ -329,6 +375,21 @@ export default function AdminPage() {
     }
   }
 
+  async function fetchNoticeTemplates() {
+    const supabase = createClient();
+    const { data, error } = await supabase
+      .from('notice_templates')
+      .select('category, content');
+
+    if (!error && data) {
+      const map: Record<string, string> = {};
+      data.forEach((row) => {
+        map[row.category] = row.content || '';
+      });
+      setNoticeTemplates(map);
+    }
+  }
+
   async function handleLogout() {
     const supabase = createClient();
     await supabase.auth.signOut();
@@ -337,7 +398,7 @@ export default function AdminPage() {
 
   async function handleSave() {
     if (!title || !content) {
-      alert('Please enter both title and content.');
+      alert(t('admin.alerts.missingTitleContent'));
       return;
     }
 
@@ -370,11 +431,11 @@ export default function AdminPage() {
           .select();
 
         if (error) {
-          alert('Error updating post: ' + error.message);
+          alert(t('admin.alerts.updatePostError', { message: error.message }));
         } else if (!data || data.length === 0) {
-          alert('Update failed: No rows were updated. Please check permissions.');
+          alert(t('admin.alerts.updatePostNoRows'));
         } else {
-          alert('Post updated successfully!');
+          alert(t('admin.alerts.updatePostSuccess'));
           mutate(
             (key) =>
               Array.isArray(key) &&
@@ -413,9 +474,9 @@ export default function AdminPage() {
           ]);
 
         if (error) {
-          alert('Error saving post: ' + error.message);
+          alert(t('admin.alerts.savePostError', { message: error.message }));
         } else {
-          alert('Post saved successfully!');
+          alert(t('admin.alerts.savePostSuccess'));
           mutate(
             (key) =>
               Array.isArray(key) &&
@@ -428,14 +489,14 @@ export default function AdminPage() {
       }
     } catch (err) {
       console.error('Save error:', err);
-      alert('An error occurred while saving.');
+      alert(t('admin.alerts.savePostGeneric'));
     } finally {
       setSaving(false);
     }
   }
 
   async function handleDelete(id: string) {
-    if (!confirm('Are you sure you want to delete this post?')) return;
+    if (!confirm(t('admin.alerts.deletePostConfirm'))) return;
 
     const supabase = createClient();
     const { error } = await supabase
@@ -454,13 +515,13 @@ export default function AdminPage() {
       );
       fetchPosts();
     } else {
-      alert('Error deleting post: ' + error.message);
+      alert(t('admin.alerts.deletePostError', { message: error.message }));
     }
   }
 
   async function handleNoticeSave() {
     if (!noticeTitle.trim()) {
-      alert('Please enter a notice title.');
+      alert(t('admin.alerts.noticeTitleRequired'));
       return;
     }
 
@@ -469,7 +530,7 @@ export default function AdminPage() {
       .filter((row) => row.some((cell) => cell.length > 0));
 
     if (normalizedRows.length === 0) {
-      alert('Please add at least one row with content.');
+      alert(t('admin.alerts.noticeRowRequired'));
       return;
     }
 
@@ -479,6 +540,8 @@ export default function AdminPage() {
       const supabase = createClient();
       const payload = {
         title: noticeTitle.trim(),
+        content: noticeContent.trim(),
+        category: noticeCategory,
         table_columns: noticeColumns.map((col) => col.trim()),
         table_rows: normalizedRows,
         pinned: noticePinned,
@@ -498,11 +561,11 @@ export default function AdminPage() {
           .select();
 
         if (error) {
-          alert('Error updating notice: ' + error.message);
+          alert(t('admin.alerts.updateNoticeError', { message: error.message }));
           return;
         }
         if (!data || data.length === 0) {
-          alert('Update failed: No rows were updated. Check RLS/author_id.');
+          alert(t('admin.alerts.updateNoticeNoRows'));
           return;
         }
       } else {
@@ -511,25 +574,25 @@ export default function AdminPage() {
           .insert([payload]);
 
         if (error) {
-          alert('Error saving notice: ' + error.message);
+          alert(t('admin.alerts.saveNoticeError', { message: error.message }));
           return;
         }
       }
 
-      alert(noticeEditMode ? 'Notice updated successfully!' : 'Notice saved successfully!');
+      alert(noticeEditMode ? t('admin.alerts.updateNoticeSuccess') : t('admin.alerts.saveNoticeSuccess'));
       resetNoticeForm();
       fetchNotices();
       setActiveNoticeTab('list');
     } catch (err) {
       console.error('Notice save error:', err);
-      alert('An error occurred while saving the notice.');
+      alert(t('admin.alerts.saveNoticeGeneric'));
     } finally {
       setNoticeSaving(false);
     }
   }
 
   async function handleNoticeDelete(id: string) {
-    if (!confirm('Are you sure you want to delete this notice?')) return;
+    if (!confirm(t('admin.alerts.deleteNoticeConfirm'))) return;
 
     const supabase = createClient();
     const { error } = await supabase
@@ -538,7 +601,7 @@ export default function AdminPage() {
       .eq('id', id);
 
     if (error) {
-      alert('Error deleting notice: ' + error.message);
+      alert(t('admin.alerts.deleteNoticeError', { message: error.message }));
       return;
     }
 
@@ -551,8 +614,10 @@ export default function AdminPage() {
 
   function resetNoticeForm() {
     setNoticeTitle('');
+    setNoticeContent('');
     setNoticePinned(false);
-    setNoticeColumns(['Name', 'Role', 'Department', 'Note']);
+    setNoticeCategory('loss_of_benefit');
+    setNoticeColumns(getDefaultNoticeColumns());
     setNoticeRows([['', '', '', ''], ['', '', '', '']]);
     setNoticeEditingId(null);
     setNoticeEditMode(false);
@@ -560,8 +625,10 @@ export default function AdminPage() {
 
   function handleNoticeEdit(notice: NoticePost) {
     setNoticeTitle(notice.title);
+    setNoticeContent(notice.content || '');
     setNoticePinned(!!notice.pinned);
-    setNoticeColumns(notice.table_columns?.length ? notice.table_columns : ['Name', 'Role', 'Department', 'Note']);
+    setNoticeCategory(notice.category || 'loss_of_benefit');
+    setNoticeColumns(notice.table_columns?.length ? notice.table_columns : getDefaultNoticeColumns());
     setNoticeRows(
       notice.table_rows?.length
         ? notice.table_rows.map((row) => [...row])
@@ -571,6 +638,133 @@ export default function AdminPage() {
     setNoticeEditMode(true);
     setActiveSection('notices');
     setActiveNoticeTab('write');
+  }
+
+  function applyNoticeCategory(nextCategory: string) {
+    setNoticeCategory(nextCategory);
+    setNoticeContent(noticeTemplates[nextCategory] || '');
+  }
+
+  function handleNoticeCategoryChange(nextCategory: string) {
+    if (nextCategory === noticeCategory) return;
+    const currentTemplate = (noticeTemplates[noticeCategory] || '').trim();
+    const currentContent = noticeContent.trim();
+    const hasEdits = currentContent.length > 0 && currentContent !== currentTemplate;
+
+    if (hasEdits) {
+      setPendingCategory(nextCategory);
+      setConfirmCategoryOpen(true);
+      return;
+    }
+
+    applyNoticeCategory(nextCategory);
+  }
+
+  function handleConfirmCategoryChange() {
+    if (!pendingCategory) {
+      setConfirmCategoryOpen(false);
+      return;
+    }
+    applyNoticeCategory(pendingCategory);
+    setPendingCategory(null);
+    setConfirmCategoryOpen(false);
+  }
+
+  function handleCancelCategoryChange() {
+    setPendingCategory(null);
+    setConfirmCategoryOpen(false);
+  }
+
+  async function handleNoticeExcelUpload(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const buffer = await file.arrayBuffer();
+      const workbook = XLSX.read(buffer, { type: 'array' });
+      const sheetName = workbook.SheetNames[0];
+      if (!sheetName) {
+        alert(t('admin.notice.uploadEmpty'));
+        return;
+      }
+      const sheet = workbook.Sheets[sheetName];
+      const rows = XLSX.utils.sheet_to_json<(string | number)[]>(sheet, {
+        header: 1,
+        blankrows: false,
+        defval: '',
+        raw: false,
+      });
+
+      if (!rows.length) {
+        alert(t('admin.notice.uploadEmpty'));
+        return;
+      }
+
+      const formatCell = (value: string | number) => String(value ?? '').trim();
+
+      const header = rows[0].map((cell) => formatCell(cell));
+      const dataRows = rows.slice(1);
+
+      const activeIndexes = header
+        .map((_, idx) => idx)
+        .filter((idx) => {
+          const label = header[idx].trim().toLowerCase();
+          if (label === 'no' || label === 'no.' || label === '번호') return false;
+          if (header[idx]) return true;
+          return dataRows.some((row) => String(row?.[idx] ?? '').trim().length > 0);
+        });
+
+      if (!activeIndexes.length) {
+        alert(t('admin.notice.uploadEmpty'));
+        return;
+      }
+
+      const columns = activeIndexes.map((idx, colIndex) => {
+        const label = header[idx];
+        return label || t('admin.notice.table.columnDefault', { number: colIndex + 1 });
+      });
+
+      const normalizedRows = dataRows
+        .map((row) => activeIndexes.map((idx) => formatCell(row?.[idx] ?? '')))
+        .filter((row) => row.some((cell) => cell.length > 0));
+
+      if (!normalizedRows.length) {
+        alert(t('admin.notice.uploadNoRows'));
+      }
+
+      setNoticeColumns(columns);
+      setNoticeRows(normalizedRows.length ? normalizedRows : [Array(columns.length).fill('')]);
+    } catch (error) {
+      console.error('Excel upload error:', error);
+      alert(t('admin.notice.uploadError'));
+    } finally {
+      if (event.target) {
+        event.target.value = '';
+      }
+    }
+  }
+
+  async function handleSaveTemplates() {
+    setTemplatesSaving(true);
+    try {
+      const supabase = createClient();
+      const payload = noticeCategoryOptions.map((option) => ({
+        category: option.value,
+        content: noticeTemplates[option.value] || '',
+      }));
+      const { error } = await supabase
+        .from('notice_templates')
+        .upsert(payload, { onConflict: 'category' });
+
+      if (error) {
+        alert(t('admin.alerts.saveTemplatesError', { message: error.message }));
+      } else {
+        alert(t('admin.alerts.saveTemplatesSuccess'));
+        fetchNoticeTemplates();
+      }
+    } finally {
+      setTemplatesSaving(false);
+    }
   }
 
   function handleEdit(post: BlogPost) {
@@ -591,6 +785,8 @@ export default function AdminPage() {
     setIsEditMode(false);
   }
 
+  const locale = i18n.language || 'en';
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
@@ -599,7 +795,7 @@ export default function AdminPage() {
             <div className="w-16 h-16 border-4 border-red-500/30 rounded-full" />
             <div className="absolute top-0 left-0 w-16 h-16 border-4 border-transparent border-t-red-500 rounded-full animate-spin" />
           </div>
-          <p className="text-gray-500 text-sm">Loading admin panel...</p>
+          <p className="text-gray-500 text-sm">{t('admin.loading.panel')}</p>
         </div>
       </div>
     );
@@ -619,8 +815,8 @@ export default function AdminPage() {
                   </svg>
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-gray-900">GME Admin</h1>
-                  <p className="text-xs text-gray-500">Content Management</p>
+                  <h1 className="text-lg font-bold text-gray-900">{t('admin.header.title')}</h1>
+                  <p className="text-xs text-gray-500">{t('admin.header.subtitle')}</p>
                 </div>
               </div>
             </div>
@@ -630,6 +826,7 @@ export default function AdminPage() {
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 <span className="text-sm text-gray-600">{user?.email}</span>
               </div>
+              <LanguageSwitcher className="hidden sm:flex" forceVisible size="compact" />
               <button
                 onClick={handleLogout}
                 className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-lg md:rounded-xl transition-all duration-200 border border-gray-200 cursor-pointer"
@@ -637,7 +834,7 @@ export default function AdminPage() {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
-                <span>Logout</span>
+                <span>{t('admin.header.logout')}</span>
               </button>
             </div>
           </div>
@@ -651,7 +848,7 @@ export default function AdminPage() {
           <aside className="lg:w-64 flex-shrink-0">
             <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sticky top-24">
               <div className="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                <span>Content</span>
+                <span>{t('admin.sidebar.content')}</span>
               </div>
               <nav className="mt-2 space-y-1">
                 <button
@@ -670,8 +867,8 @@ export default function AdminPage() {
                     </svg>
                   </span>
                   <div className="text-left">
-                    <div>Blog Posts</div>
-                    <div className="text-xs text-gray-400">{posts.length} posts</div>
+                    <div>{t('admin.sidebar.blog')}</div>
+                    <div className="text-xs text-gray-400">{t('admin.sidebar.postsCount', { count: posts.length })}</div>
                   </div>
                 </button>
                 <button
@@ -690,8 +887,8 @@ export default function AdminPage() {
                     </svg>
                   </span>
                   <div className="text-left">
-                    <div>Notices</div>
-                    <div className="text-xs text-gray-400">{notices.length} notices</div>
+                    <div>{t('admin.sidebar.notices')}</div>
+                    <div className="text-xs text-gray-400">{t('admin.sidebar.noticesCount', { count: notices.length })}</div>
                   </div>
                 </button>
               </nav>
@@ -711,7 +908,7 @@ export default function AdminPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-gray-500 text-sm">Total Posts</p>
+                      <p className="text-gray-500 text-sm">{t('admin.stats.totalPosts')}</p>
                       <p className="text-2xl font-medium text-gray-900">{posts.length}</p>
                     </div>
                   </div>
@@ -725,7 +922,7 @@ export default function AdminPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-gray-500 text-sm">Published</p>
+                      <p className="text-gray-500 text-sm">{t('admin.stats.published')}</p>
                       <p className="text-2xl font-medium text-gray-900">{posts.filter(p => p.published).length}</p>
                     </div>
                   </div>
@@ -739,9 +936,9 @@ export default function AdminPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-gray-500 text-sm">Latest Post</p>
+                      <p className="text-gray-500 text-sm">{t('admin.stats.latestPost')}</p>
                       <p className="text-sm font-medium text-gray-900 truncate max-w-[150px]">
-                        {posts[0]?.title || 'No posts yet'}
+                        {posts[0]?.title || t('admin.stats.noPosts')}
                       </p>
                     </div>
                   </div>
@@ -757,7 +954,7 @@ export default function AdminPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-gray-500 text-sm">Total Notices</p>
+                      <p className="text-gray-500 text-sm">{t('admin.stats.totalNotices')}</p>
                       <p className="text-2xl font-medium text-gray-900">{notices.length}</p>
                     </div>
                   </div>
@@ -771,7 +968,7 @@ export default function AdminPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-gray-500 text-sm">Pinned</p>
+                      <p className="text-gray-500 text-sm">{t('admin.stats.pinned')}</p>
                       <p className="text-2xl font-medium text-gray-900">{notices.filter(n => n.pinned).length}</p>
                     </div>
                   </div>
@@ -785,9 +982,9 @@ export default function AdminPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-gray-500 text-sm">Latest Notice</p>
+                      <p className="text-gray-500 text-sm">{t('admin.stats.latestNotice')}</p>
                       <p className="text-sm font-medium text-gray-900 truncate max-w-[150px]">
-                        {notices[0]?.title || 'No notices yet'}
+                        {notices[0]?.title || t('admin.stats.noNotices')}
                       </p>
                     </div>
                   </div>
@@ -808,7 +1005,7 @@ export default function AdminPage() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                   </svg>
-                  {isEditMode ? 'Edit Post' : 'Write New'}
+                  {isEditMode ? t('admin.blog.editPost') : t('admin.blog.writeNew')}
                 </button>
                 <button
                   onClick={() => setActiveBlogTab('list')}
@@ -820,7 +1017,7 @@ export default function AdminPage() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                   </svg>
-                  All Posts
+                  {t('admin.blog.allPosts')}
                   <span className={`ml-1 px-2 py-0.5 text-xs rounded-full ${activeBlogTab === 'list' ? 'bg-white/20' : 'bg-gray-100'}`}>{posts.length}</span>
                 </button>
               </div>
@@ -836,7 +1033,19 @@ export default function AdminPage() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                   </svg>
-                  Write Notice
+                  {t('admin.notice.write')}
+                </button>
+                <button
+                  onClick={() => setActiveNoticeTab('templates')}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-lg md:rounded-xl font-medium transition-all duration-200 cursor-pointer ${activeNoticeTab === 'templates'
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/25'
+                    : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                    }`}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5h8M8 9h8M8 13h6m-8 6h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  {t('admin.templates.tab')}
                 </button>
                 <button
                   onClick={() => setActiveNoticeTab('list')}
@@ -848,7 +1057,7 @@ export default function AdminPage() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                   </svg>
-                  All Notices
+                  {t('admin.notice.all')}
                   <span className={`ml-1 px-2 py-0.5 text-xs rounded-full ${activeNoticeTab === 'list' ? 'bg-white/20' : 'bg-gray-100'}`}>{notices.length}</span>
                 </button>
               </div>
@@ -867,22 +1076,22 @@ export default function AdminPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-semibold text-blue-900">Editing Mode</p>
-                    <p className="text-sm text-blue-600">You are editing an existing post</p>
+                    <p className="font-semibold text-blue-900">{t('admin.blog.editingMode')}</p>
+                    <p className="text-sm text-blue-600">{t('admin.blog.editingModeSubtitle')}</p>
                   </div>
                 </div>
                 <button
                   onClick={resetForm}
                   className="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800 hover:bg-blue-100 rounded-lg md:rounded-xl transition-colors cursor-pointer"
                 >
-                  Cancel
+                  {t('admin.common.cancel')}
                 </button>
               </div>
             )}
 
             <div className="mb-6 relative">
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Category
+                {t('admin.blog.category')}
               </label>
               <button
                 type="button"
@@ -890,7 +1099,7 @@ export default function AdminPage() {
                 onBlur={() => setTimeout(() => setIsCategoryOpen(false), 150)}
                 className="w-48 px-3 py-2 text-sm text-left border-2 border-gray-200 rounded-lg focus:outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10 transition-all bg-white cursor-pointer flex items-center justify-between"
               >
-                <span>{category === 'blog' ? 'Blog' : 'Customer Feedback'}</span>
+                <span>{category === 'blog' ? t('admin.blog.categoryBlog') : t('admin.blog.categoryFeedback')}</span>
                 <svg
                   className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${isCategoryOpen ? 'rotate-180' : ''}`}
                   fill="none"
@@ -907,14 +1116,14 @@ export default function AdminPage() {
                     onClick={() => { setCategory('blog'); setIsCategoryOpen(false); }}
                     className={`w-full px-3 py-2 text-sm text-left hover:bg-gray-100 transition-colors ${category === 'blog' ? 'bg-red-50 text-red-600' : ''}`}
                   >
-                    Blog
+                    {t('admin.blog.categoryBlog')}
                   </button>
                   <button
                     type="button"
                     onClick={() => { setCategory('customer_feedback'); setIsCategoryOpen(false); }}
                     className={`w-full px-3 py-2 text-sm text-left hover:bg-gray-100 transition-colors ${category === 'customer_feedback' ? 'bg-red-50 text-red-600' : ''}`}
                   >
-                    Customer Feedback
+                    {t('admin.blog.categoryFeedback')}
                   </button>
                 </div>
               )}
@@ -922,7 +1131,7 @@ export default function AdminPage() {
 
             <div className="mb-6">
               <label htmlFor="title" className="block text-sm font-semibold text-gray-700 mb-2">
-                Post Title
+                {t('admin.blog.title')}
               </label>
               <input
                 id="title"
@@ -930,18 +1139,18 @@ export default function AdminPage() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-xl focus:outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10 transition-all"
-                placeholder="Enter an engaging title for your post..."
+                placeholder={t('admin.blog.titlePlaceholder')}
               />
             </div>
 
             <div className="mb-6">
               <label htmlFor="content" className="block text-sm font-semibold text-gray-700 mb-2">
-                Content
+                {t('admin.blog.content')}
               </label>
               <TiptapEditor
                 content={content}
                 onChange={setContent}
-                placeholder="Write your blog content here..."
+                placeholder={t('admin.blog.editorPlaceholder')}
               />
             </div>
 
@@ -950,7 +1159,7 @@ export default function AdminPage() {
                 onClick={resetForm}
                 className="px-6 py-2.5 text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg md:rounded-xl font-medium transition-colors cursor-pointer"
               >
-                Clear
+                {t('admin.common.clear')}
               </button>
               <button
                 onClick={handleSave}
@@ -973,14 +1182,14 @@ export default function AdminPage() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                     </svg>
-                    <span>Saving...</span>
+                    <span>{t('admin.common.saving')}</span>
                   </>
                 ) : (
                   <>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span>{isEditMode ? 'Update Post' : 'Publish Post'}</span>
+                    <span>{isEditMode ? t('admin.blog.updatePost') : t('admin.blog.publishPost')}</span>
                   </>
                 )}
               </button>
@@ -1001,7 +1210,7 @@ export default function AdminPage() {
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
-                All
+                {t('admin.blog.filterAll')}
                 <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${
                   filterCategory === 'all' ? 'bg-white/20' : 'bg-gray-200'
                 }`}>
@@ -1016,7 +1225,7 @@ export default function AdminPage() {
                     : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
                 }`}
               >
-                Blog
+                {t('admin.blog.categoryBlog')}
                 <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${
                   filterCategory === 'blog' ? 'bg-white/20' : 'bg-blue-100'
                 }`}>
@@ -1031,7 +1240,7 @@ export default function AdminPage() {
                     : 'bg-purple-50 text-purple-600 hover:bg-purple-100'
                 }`}
               >
-                Customer Feedback
+                {t('admin.blog.categoryFeedback')}
                 <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${
                   filterCategory === 'customer_feedback' ? 'bg-white/20' : 'bg-purple-100'
                 }`}>
@@ -1047,8 +1256,8 @@ export default function AdminPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">No posts yet</h3>
-                <p className="text-gray-500 mb-6">Create your first blog post to get started</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('admin.blog.emptyTitle')}</h3>
+                <p className="text-gray-500 mb-6">{t('admin.blog.emptySubtitle')}</p>
                 <button
                   onClick={() => setActiveBlogTab('write')}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg md:rounded-xl font-medium shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all cursor-pointer"
@@ -1056,7 +1265,7 @@ export default function AdminPage() {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
-                  Create First Post
+                  {t('admin.blog.createFirst')}
                 </button>
               </div>
             ) : (
@@ -1084,7 +1293,7 @@ export default function AdminPage() {
                                     <path d="M8 5v14l11-7z" />
                                   </svg>
                                 </div>
-                                <span className="text-white text-xs font-medium">VIDEO</span>
+                                <span className="text-white text-xs font-medium">{t('admin.blog.videoBadge')}</span>
                               </div>
                             </div>
                           ) : videoInfo.type === 'youtube' && videoInfo.thumbnail ? (
@@ -1092,7 +1301,7 @@ export default function AdminPage() {
                             <>
                               <img
                                 src={videoInfo.thumbnail}
-                                alt="YouTube thumbnail"
+                                alt={t('admin.blog.youtubeThumbnailAlt')}
                                 className="w-full h-full object-cover"
                               />
                               <div className="absolute inset-0 flex items-center justify-center bg-black/30">
@@ -1106,7 +1315,7 @@ export default function AdminPage() {
                           ) : imageSrc ? (
                             <img
                               src={imageSrc}
-                              alt="Thumbnail"
+                              alt={t('admin.blog.thumbnailAlt')}
                               className="w-full h-full object-cover"
                             />
                           ) : null}
@@ -1122,7 +1331,7 @@ export default function AdminPage() {
                                 ? 'bg-purple-100 text-purple-700'
                                 : 'bg-blue-100 text-blue-700'
                                 }`}>
-                                {post.category === 'customer_feedback' ? 'Customer Feedback' : 'Blog'}
+                                {post.category === 'customer_feedback' ? t('admin.blog.categoryFeedback') : t('admin.blog.categoryBlog')}
                               </span>
                               {videoInfo.type && (
                                 <span className={`px-2.5 py-1 text-xs font-medium rounded-full ${
@@ -1130,11 +1339,11 @@ export default function AdminPage() {
                                     ? 'bg-red-100 text-red-700'
                                     : 'bg-orange-100 text-orange-700'
                                 }`}>
-                                  {videoInfo.type === 'youtube' ? 'YouTube' : 'Video'}
+                                  {videoInfo.type === 'youtube' ? t('admin.blog.youtubeLabel') : t('admin.blog.videoLabel')}
                                 </span>
                               )}
                               <span className="text-sm text-gray-400">
-                                {new Date(post.created_at).toLocaleDateString('en-US', {
+                                {new Date(post.created_at).toLocaleDateString(locale, {
                                   year: 'numeric',
                                   month: 'short',
                                   day: 'numeric'
@@ -1162,7 +1371,7 @@ export default function AdminPage() {
                                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                                   </svg>
-                                  <span>Updated {new Date(post.updated_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                                  <span>{t('admin.blog.updated', { date: new Date(post.updated_at).toLocaleDateString(locale, { month: 'short', day: 'numeric' }) })}</span>
                                 </div>
                               )}
                             </div>
@@ -1172,7 +1381,7 @@ export default function AdminPage() {
                             <button
                               onClick={() => handleEdit(post)}
                               className="p-2.5 text-blue-600 hover:bg-blue-50 rounded-lg md:rounded-xl transition-colors cursor-pointer"
-                              title="Edit post"
+                              title={t('admin.blog.editPostTitle')}
                             >
                               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -1181,7 +1390,7 @@ export default function AdminPage() {
                             <button
                               onClick={() => handleDelete(post.id)}
                               className="p-2.5 text-red-600 hover:bg-red-50 rounded-lg md:rounded-xl transition-colors cursor-pointer"
-                              title="Delete post"
+                              title={t('admin.blog.deletePostTitle')}
                             >
                               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -1207,17 +1416,17 @@ export default function AdminPage() {
                   </div>
                   <div className="flex flex-col">
                     <p className="font-semibold text-blue-900">
-                      {noticeEditMode ? 'Editing Notice' : 'Create Notice'}
+                      {noticeEditMode ? t('admin.notice.editing') : t('admin.notice.create')}
                     </p>
                     <p className="text-sm text-blue-600">
-                      {noticeEditMode ? 'Update the table and save changes.' : 'Create a new table-based notice.'}
+                      {noticeEditMode ? t('admin.notice.editingSubtitle') : t('admin.notice.createSubtitle')}
                     </p>
                   </div>
                 </div>
 
                 <div className="mb-6">
                   <label htmlFor="notice-title" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Notice Title
+                    {t('admin.notice.title')}
                   </label>
                   <input
                     id="notice-title"
@@ -1225,16 +1434,66 @@ export default function AdminPage() {
                     value={noticeTitle}
                     onChange={(e) => setNoticeTitle(e.target.value)}
                     className="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
-                    placeholder="Important update for users..."
+                    placeholder={t('admin.notice.titlePlaceholder')}
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label htmlFor="notice-category" className="block text-sm font-semibold text-gray-700 mb-2">
+                    {t('admin.notice.category')}
+                  </label>
+                  <select
+                    id="notice-category"
+                    value={noticeCategory}
+                    onChange={(e) => handleNoticeCategoryChange(e.target.value)}
+                    className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all bg-white"
+                  >
+                    {noticeCategoryOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="mb-6">
+                  <label htmlFor="notice-content" className="block text-sm font-semibold text-gray-700 mb-2">
+                    {t('admin.notice.content')}
+                  </label>
+                  <div className="flex items-center justify-between mb-2 text-xs text-gray-500">
+                    <span>{t('admin.notice.contentHint')}</span>
+                  </div>
+                  <textarea
+                    id="notice-content"
+                    value={noticeContent}
+                    onChange={(e) => setNoticeContent(e.target.value)}
+                    rows={4}
+                    className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
+                    placeholder={t('admin.notice.contentPlaceholder')}
                   />
                 </div>
 
                 <div className="mb-6">
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Notice List (Table)
+                    {t('admin.notice.table.title')}
                   </label>
                   <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
                     <div className="flex flex-wrap items-center gap-2 mb-3">
+                      <button
+                        type="button"
+                        onClick={() => noticeFileInputRef.current?.click()}
+                        className="px-3 py-1.5 text-xs font-medium text-blue-700 bg-white border border-blue-200 rounded-lg hover:bg-blue-50"
+                      >
+                        {t('admin.notice.uploadButton')}
+                      </button>
+                      <input
+                        ref={noticeFileInputRef}
+                        type="file"
+                        accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                        className="hidden"
+                        onChange={handleNoticeExcelUpload}
+                      />
+                      <span className="text-xs text-gray-400">{t('admin.notice.uploadHint')}</span>
                       <button
                         type="button"
                         onClick={() => {
@@ -1242,17 +1501,17 @@ export default function AdminPage() {
                         }}
                         className="px-3 py-1.5 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100"
                       >
-                        Add Row
+                        {t('admin.notice.table.addRow')}
                       </button>
                       <button
                         type="button"
                         onClick={() => {
-                          setNoticeColumns((prev) => [...prev, `Column ${prev.length + 1}`]);
+                          setNoticeColumns((prev) => [...prev, t('admin.notice.table.columnDefault', { number: prev.length + 1 })]);
                           setNoticeRows((prev) => prev.map((row) => [...row, '']));
                         }}
                         className="px-3 py-1.5 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100"
                       >
-                        Add Column
+                        {t('admin.notice.table.addColumn')}
                       </button>
                     </div>
 
@@ -1260,7 +1519,6 @@ export default function AdminPage() {
                       <table className="min-w-[900px] text-sm">
                         <thead>
                           <tr>
-                            <th className="px-2 py-2 text-center text-xs font-semibold text-gray-500">No</th>
                             {noticeColumns.map((col, colIndex) => (
                               <th key={colIndex} className="px-2 py-2 text-left">
                                 <div className="flex items-center gap-2">
@@ -1281,20 +1539,19 @@ export default function AdminPage() {
                                       setNoticeRows((prev) => prev.map((row) => row.filter((_, i) => i !== colIndex)));
                                     }}
                                     className="text-gray-300 hover:text-gray-500"
-                                    title="Remove column"
+                                    title={t('admin.notice.table.removeColumn')}
                                   >
                                     ×
                                   </button>
                                 </div>
                               </th>
                             ))}
-                            <th className="px-2 py-2 text-right text-xs text-gray-400">Actions</th>
+                            <th className="px-2 py-2 text-right text-xs text-gray-400">{t('admin.notice.table.actions')}</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100">
                           {noticeRows.map((row, rowIndex) => (
                             <tr key={rowIndex} className="bg-white">
-                              <td className="px-2 py-2 text-center text-xs text-gray-400">{rowIndex + 1}</td>
                               {row.map((cell, colIndex) => (
                                 <td key={colIndex} className="px-2 py-2">
                                   <input
@@ -1307,7 +1564,7 @@ export default function AdminPage() {
                                       });
                                     }}
                                     className="w-56 px-2 py-1 text-sm border border-gray-200 rounded"
-                                    placeholder={`Row ${rowIndex + 1}`}
+                                    placeholder={t('admin.notice.table.rowPlaceholder', { number: rowIndex + 1 })}
                                   />
                                 </td>
                               ))}
@@ -1320,7 +1577,7 @@ export default function AdminPage() {
                                   }}
                                   className="text-xs text-gray-400 hover:text-gray-600"
                                 >
-                                  Remove
+                                  {t('admin.notice.table.removeRow')}
                                 </button>
                               </td>
                             </tr>
@@ -1339,7 +1596,7 @@ export default function AdminPage() {
                       noticePinned ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-gray-100 text-gray-600 border-gray-200'
                     }`}
                   >
-                    {noticePinned ? 'Pinned Notice' : 'Pin to Top'}
+                    {noticePinned ? t('admin.notice.pinned') : t('admin.notice.pinToTop')}
                   </button>
                 </div>
 
@@ -1348,7 +1605,7 @@ export default function AdminPage() {
                     onClick={resetNoticeForm}
                     className="px-6 py-2.5 text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg md:rounded-xl font-medium transition-colors cursor-pointer"
                   >
-                    Clear
+                    {t('admin.common.clear')}
                   </button>
                   <button
                     onClick={handleNoticeSave}
@@ -1365,14 +1622,14 @@ export default function AdminPage() {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                         </svg>
-                        <span>Saving...</span>
+                        <span>{t('admin.common.saving')}</span>
                       </>
                     ) : (
                       <>
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>{noticeEditMode ? 'Update Notice' : 'Publish Notice'}</span>
+                        <span>{noticeEditMode ? t('admin.notice.update') : t('admin.notice.publish')}</span>
                       </>
                     )}
                   </button>
@@ -1384,7 +1641,7 @@ export default function AdminPage() {
               <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                 <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Notices</h3>
+                    <h3 className="text-lg font-semibold text-gray-900">{t('admin.notice.listTitle')}</h3>
                   </div>
                   <button
                     onClick={() => setActiveNoticeTab('write')}
@@ -1393,7 +1650,7 @@ export default function AdminPage() {
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                     </svg>
-                    New Notice
+                    {t('admin.notice.newNotice')}
                   </button>
                 </div>
 
@@ -1401,18 +1658,22 @@ export default function AdminPage() {
                   <table className="min-w-full text-sm">
                     <thead className="bg-gray-50 text-gray-500">
                       <tr>
-                        <th className="px-6 py-3 text-left font-semibold">Title</th>
-                        <th className="px-6 py-3 text-left font-semibold">Status</th>
-                        <th className="px-6 py-3 text-left font-semibold">Pinned</th>
-                        <th className="px-6 py-3 text-left font-semibold">Author</th>
-                        <th className="px-6 py-3 text-left font-semibold">Date</th>
-                        <th className="px-6 py-3 text-right font-semibold">Actions</th>
+                        <th className="px-6 py-3 text-left font-semibold">{t('admin.notice.tableHeaders.title')}</th>
+                        <th className="px-6 py-3 text-left font-semibold">{t('admin.notice.tableHeaders.category')}</th>
+                        <th className="px-6 py-3 text-left font-semibold">{t('admin.notice.tableHeaders.status')}</th>
+                        <th className="px-6 py-3 text-left font-semibold">{t('admin.notice.tableHeaders.pinned')}</th>
+                        <th className="px-6 py-3 text-left font-semibold">{t('admin.notice.tableHeaders.author')}</th>
+                        <th className="px-6 py-3 text-left font-semibold">{t('admin.notice.tableHeaders.date')}</th>
+                        <th className="px-6 py-3 text-right font-semibold">{t('admin.notice.tableHeaders.actions')}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
                       {notices.map((notice) => (
                         <tr key={notice.id} className="hover:bg-gray-50">
                           <td className="px-6 py-4 text-gray-900 font-medium">{notice.title}</td>
+                          <td className="px-6 py-4 text-gray-500">
+                            {getNoticeCategoryLabel(notice.category)}
+                          </td>
                           <td className="px-6 py-4">
                             <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
                               notice.status === 'Published'
@@ -1421,7 +1682,7 @@ export default function AdminPage() {
                                   ? 'bg-amber-100 text-amber-700'
                                   : 'bg-gray-100 text-gray-600'
                             }`}>
-                              {notice.status}
+                              {getNoticeStatusLabel(notice.status)}
                             </span>
                           </td>
                           <td className="px-6 py-4">
@@ -1430,7 +1691,7 @@ export default function AdminPage() {
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
                                 </svg>
-                                Pinned
+                                {t('admin.notice.pinnedLabel')}
                               </span>
                             ) : (
                               <span className="text-gray-400">—</span>
@@ -1438,7 +1699,7 @@ export default function AdminPage() {
                           </td>
                           <td className="px-6 py-4 text-gray-500">{notice.author_email}</td>
                           <td className="px-6 py-4 text-gray-500">
-                            {new Date(notice.created_at).toLocaleDateString('en-US', {
+                            {new Date(notice.created_at).toLocaleDateString(locale, {
                               year: 'numeric',
                               month: 'short',
                               day: 'numeric'
@@ -1450,13 +1711,13 @@ export default function AdminPage() {
                                 onClick={() => handleNoticeEdit(notice)}
                                 className="px-3 py-1.5 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200"
                               >
-                                Edit
+                                {t('admin.common.edit')}
                               </button>
                               <button
                                 onClick={() => handleNoticeDelete(notice.id)}
                                 className="px-3 py-1.5 rounded-lg bg-gray-100 text-red-600 hover:bg-red-50"
                               >
-                                Delete
+                                {t('admin.common.delete')}
                               </button>
                             </div>
                           </td>
@@ -1468,14 +1729,92 @@ export default function AdminPage() {
 
                 {notices.length === 0 && (
                   <div className="px-6 py-12 text-center text-sm text-gray-400">
-                    No notices yet. Create your first notice from the Write tab.
+                    {t('admin.notice.empty')}
                   </div>
                 )}
+              </div>
+            )}
+
+            {activeSection === 'notices' && activeNoticeTab === 'templates' && (
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">{t('admin.templates.title')}</h3>
+                    <p className="text-sm text-gray-500">{t('admin.templates.subtitle')}</p>
+                  </div>
+                  <button
+                    onClick={handleSaveTemplates}
+                    disabled={templatesSaving}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg md:rounded-xl text-sm font-medium shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all disabled:opacity-60"
+                  >
+                    {templatesSaving ? t('admin.common.saving') : t('admin.templates.save')}
+                  </button>
+                </div>
+                <div className="p-6 space-y-6">
+                  {noticeCategoryOptions.map((option) => (
+                    <div key={option.value}>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        {option.label}
+                      </label>
+                      <textarea
+                        value={noticeTemplates[option.value] || ''}
+                        onChange={(e) =>
+                          setNoticeTemplates((prev) => ({
+                            ...prev,
+                            [option.value]: e.target.value,
+                          }))
+                        }
+                        rows={4}
+                        className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
+                        placeholder={t('admin.templates.placeholder')}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </section>
         </div>
       </main>
+
+      {confirmCategoryOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+          onClick={handleCancelCategoryChange}
+        >
+          <div
+            className="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
+                !
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900">{t('admin.notice.confirmTitle')}</h4>
+                <p className="text-sm text-gray-500">{t('admin.notice.confirmSubtitle')}</p>
+              </div>
+            </div>
+            <p className="text-sm text-gray-700 mb-6">
+              {t('admin.notice.confirmChangeCategory')}
+            </p>
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={handleCancelCategoryChange}
+                className="px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg"
+              >
+                {t('admin.common.cancel')}
+              </button>
+              <button
+                onClick={handleConfirmCategoryChange}
+                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
+              >
+                {t('admin.notice.confirmProceed')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

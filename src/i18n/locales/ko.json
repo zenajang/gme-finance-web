@@ -96,6 +96,27 @@
       "supportLabel": "고객 지원"
     }
   },
+  "notices": {
+    "page": {
+      "pill": "공지사항",
+      "pillAccent": "안내",
+      "title": "공지사항",
+      "subtitle": "최신 공지와 중요한 안내를 확인하세요.",
+      "loading": "공지사항을 불러오는 중...",
+      "empty": "공지사항이 없습니다."
+    },
+    "category": {
+      "all": "전체",
+      "loss_of_benefit": "기한의 이익 상실 예정",
+      "auction": "주택 경매 예정",
+      "transfer": "양도 예정"
+    },
+    "table": {
+      "number": "번호",
+      "title": "제목",
+      "date": "등록일"
+    }
+  },
   "careers": {
     "hero": {
       "title": "함께 변화를 만들어요",
@@ -252,6 +273,164 @@
     "empty": "아직 게시글이 없어요.",
     "detail": {
       "updatedLabel": "업데이트:"
+    }
+  },
+  "admin": {
+    "loading": {
+      "editor": "에디터 불러오는 중...",
+      "panel": "관리자 페이지 불러오는 중..."
+    },
+    "header": {
+      "title": "GME 관리자",
+      "subtitle": "콘텐츠 관리",
+      "logout": "로그아웃"
+    },
+    "confirm": {
+      "leave": "로그아웃하고 페이지를 나가시겠습니까?"
+    },
+    "alerts": {
+      "missingTitleContent": "제목과 내용을 모두 입력해 주세요.",
+      "updatePostError": "게시글 업데이트 오류: {{message}}",
+      "updatePostNoRows": "업데이트 실패: 변경된 행이 없습니다. 권한을 확인해 주세요.",
+      "updatePostSuccess": "게시글이 수정되었습니다.",
+      "savePostError": "게시글 저장 오류: {{message}}",
+      "savePostSuccess": "게시글이 저장되었습니다.",
+      "savePostGeneric": "저장 중 오류가 발생했습니다.",
+      "deletePostConfirm": "이 게시글을 삭제하시겠습니까?",
+      "deletePostError": "게시글 삭제 오류: {{message}}",
+      "noticeTitleRequired": "공지 제목을 입력해 주세요.",
+      "noticeRowRequired": "내용이 있는 행을 최소 1개 추가해 주세요.",
+      "updateNoticeError": "공지 수정 오류: {{message}}",
+      "updateNoticeNoRows": "업데이트 실패: 변경된 행이 없습니다. RLS/author_id를 확인하세요.",
+      "saveNoticeError": "공지 저장 오류: {{message}}",
+      "updateNoticeSuccess": "공지가 수정되었습니다.",
+      "saveNoticeSuccess": "공지가 저장되었습니다.",
+      "saveNoticeGeneric": "공지 저장 중 오류가 발생했습니다.",
+      "deleteNoticeConfirm": "이 공지를 삭제하시겠습니까?",
+      "deleteNoticeError": "공지 삭제 오류: {{message}}",
+      "saveTemplatesError": "공시 문구 저장 오류: {{message}}",
+      "saveTemplatesSuccess": "공시 문구가 저장되었습니다."
+    },
+    "sidebar": {
+      "content": "콘텐츠",
+      "blog": "블로그 게시글",
+      "notices": "공지",
+      "postsCount": "게시글 {{count}}개",
+      "noticesCount": "공지 {{count}}개"
+    },
+    "stats": {
+      "totalPosts": "총 게시글",
+      "published": "발행됨",
+      "latestPost": "최근 게시글",
+      "totalNotices": "총 공지",
+      "pinned": "고정",
+      "latestNotice": "최근 공지",
+      "noPosts": "게시글 없음",
+      "noNotices": "공지 없음"
+    },
+    "common": {
+      "cancel": "취소",
+      "clear": "초기화",
+      "saving": "저장 중...",
+      "edit": "수정",
+      "delete": "삭제"
+    },
+    "blog": {
+      "writeNew": "새 글 작성",
+      "editPost": "게시글 수정",
+      "allPosts": "전체 게시글",
+      "editingMode": "편집 모드",
+      "editingModeSubtitle": "기존 게시글을 수정 중입니다",
+      "category": "카테고리",
+      "categoryBlog": "블로그",
+      "categoryFeedback": "고객 후기",
+      "title": "게시글 제목",
+      "titlePlaceholder": "게시글 제목을 입력하세요...",
+      "content": "내용",
+      "editorPlaceholder": "내용을 입력하세요...",
+      "updatePost": "게시글 업데이트",
+      "publishPost": "게시글 발행",
+      "filterAll": "전체",
+      "emptyTitle": "게시글이 없습니다",
+      "emptySubtitle": "첫 게시글을 작성해 보세요",
+      "createFirst": "첫 게시글 작성",
+      "videoBadge": "영상",
+      "youtubeThumbnailAlt": "유튜브 썸네일",
+      "thumbnailAlt": "썸네일",
+      "youtubeLabel": "YouTube",
+      "videoLabel": "영상",
+      "updated": "업데이트 {{date}}",
+      "editPostTitle": "게시글 수정",
+      "deletePostTitle": "게시글 삭제"
+    },
+    "notice": {
+      "write": "공지 작성",
+      "all": "전체 공지",
+      "editing": "공지 편집",
+      "create": "공지 작성",
+      "editingSubtitle": "테이블을 수정하고 저장하세요.",
+      "createSubtitle": "테이블 기반 공지를 작성하세요.",
+      "title": "공지 제목",
+      "titlePlaceholder": "공지 제목을 입력해주세요.",
+      "category": "카테고리",
+      "content": "공시 문구 (내용)",
+      "contentHint": "표 위에 표시됩니다",
+      "contentPlaceholder": "공시 문구(내용)를 입력하세요...",
+      "confirmChangeCategory": "작성 중인 내용이 있습니다. 카테고리를 변경하면 현재 내용이 교체됩니다. 계속하시겠습니까?",
+      "confirmTitle": "카테고리를 변경할까요?",
+      "confirmSubtitle": "현재 입력한 내용이 교체됩니다.",
+      "confirmProceed": "변경",
+      "uploadButton": "엑셀 업로드",
+      "uploadHint": "첫 번째 시트, 첫 줄은 헤더로 사용됩니다",
+      "uploadEmpty": "엑셀 파일이 비어있거나 사용할 수 있는 열이 없습니다.",
+      "uploadNoRows": "데이터 행이 없어 헤더만 불러왔습니다.",
+      "uploadError": "엑셀 파일을 읽을 수 없습니다.",
+      "table": {
+        "title": "공지 목록 (표)",
+        "addRow": "행 추가",
+        "addColumn": "열 추가",
+        "number": "번호",
+        "actions": "작업",
+        "removeColumn": "열 삭제",
+        "rowPlaceholder": "행 {{number}}",
+        "removeRow": "삭제",
+        "columnDefault": "열 {{number}}",
+        "columns": {
+          "name": "이름",
+          "role": "역할",
+          "department": "부서",
+          "note": "비고"
+        }
+      },
+      "pinned": "고정 공지",
+      "pinToTop": "상단 고정",
+      "publish": "공지 발행",
+      "update": "공지 업데이트",
+      "listTitle": "공지",
+      "newNotice": "새 공지",
+      "tableHeaders": {
+        "title": "제목",
+        "category": "카테고리",
+        "status": "상태",
+        "pinned": "고정",
+        "author": "작성자",
+        "date": "등록일",
+        "actions": "작업"
+      },
+      "pinnedLabel": "고정",
+      "empty": "공지사항이 없습니다. '작성' 탭에서 첫 공지를 추가하세요.",
+      "status": {
+        "published": "게시",
+        "scheduled": "예약",
+        "draft": "임시"
+      }
+    },
+    "templates": {
+      "tab": "카테고리 공시 문구",
+      "title": "카테고리별 공시 문구 저장",
+      "subtitle": "카테고리 선택 시 자동으로 불러올 공시 문구",
+      "save": "공시 문구 저장",
+      "placeholder": "이 카테고리의 기본 공시 문구를 입력하세요..."
     }
   }
 }
