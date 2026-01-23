@@ -382,6 +382,7 @@
       "confirmProceed": "변경",
       "uploadButton": "엑셀 업로드",
       "uploadHint": "첫 번째 시트, 첫 줄은 헤더로 사용됩니다",
+      "uploadFormatNote": "YYYY-MM-DD 형식이 필요하면 엑셀에서 날짜 열을 텍스트로 설정해 주세요.",
       "uploadEmpty": "엑셀 파일이 비어있거나 사용할 수 있는 열이 없습니다.",
       "uploadNoRows": "데이터 행이 없어 헤더만 불러왔습니다.",
       "uploadError": "엑셀 파일을 읽을 수 없습니다.",

@@ -568,6 +568,7 @@
       "confirmProceed": "Change",
       "uploadButton": "Upload Excel",
       "uploadHint": "First sheet, first row = headers",
+      "uploadFormatNote": "If you need YYYY-MM-DD, set the date column to Text in Excel.",
       "uploadEmpty": "The Excel file is empty or has no usable columns.",
       "uploadNoRows": "No data rows found. Only the header was imported.",
       "uploadError": "Failed to read the Excel file.",

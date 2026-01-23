@@ -1,0 +1,195 @@
+'use client';
+
+import { useCallback, useState } from 'react';
+import { createClient } from '@/lib/supabase/client';
+import type { User } from '@supabase/supabase-js';
+import type { BlogCategory, BlogPost } from '@/app/admin/types';
+
+interface UseBlogPostsOptions {
+  user: User | null;
+  getThumbnailUrlFromContent: (html: string) => Promise<string | null>;
+  mutate: (matcher: (key: unknown) => boolean) => void;
+  t: (key: string, options?: Record<string, unknown>) => string;
+  onSaved?: () => void;
+}
+
+export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSaved }: UseBlogPostsOptions) {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [category, setCategory] = useState<BlogCategory>('blog');
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [saving, setSaving] = useState(false);
+  const [editingPostId, setEditingPostId] = useState<string | null>(null);
+  const [isEditMode, setIsEditMode] = useState(false);
+
+  const fetchPosts = useCallback(async () => {
+    const supabase = createClient();
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (!error && data) {
+      setPosts(data as BlogPost[]);
+    }
+  }, []);
+
+  const resetForm = useCallback(() => {
+    setTitle('');
+    setContent('');
+    setCategory('blog');
+    setEditingPostId(null);
+    setIsEditMode(false);
+  }, []);
+
+  const handleSave = useCallback(async () => {
+    if (!title || !content) {
+      alert(t('admin.alerts.missingTitleContent'));
+      return;
+    }
+
+    setSaving(true);
+
+    try {
+      const thumbnailUrl = await getThumbnailUrlFromContent(content);
+      const supabase = createClient();
+      if (isEditMode && editingPostId) {
+        const updatePayload: {
+          title: string;
+          content: string;
+          category: string;
+          updated_at: string;
+          thumbnail_url?: string;
+        } = {
+          title,
+          content,
+          category,
+          updated_at: new Date().toISOString(),
+        };
+        if (thumbnailUrl) {
+          updatePayload.thumbnail_url = thumbnailUrl;
+        }
+
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .update(updatePayload)
+          .eq('id', editingPostId)
+          .select();
+
+        if (error) {
+          alert(t('admin.alerts.updatePostError', { message: error.message }));
+        } else if (!data || data.length === 0) {
+          alert(t('admin.alerts.updatePostNoRows'));
+        } else {
+          alert(t('admin.alerts.updatePostSuccess'));
+          mutate(
+            (key) =>
+              Array.isArray(key) &&
+              (key[0] === 'blog_posts' || key[0] === 'blog_post')
+          );
+          resetForm();
+          fetchPosts();
+          onSaved?.();
+        }
+      } else {
+        const insertPayload: {
+          title: string;
+          content: string;
+          category: string;
+          author_id?: string;
+          author_email?: string;
+          thumbnail_url?: string;
+        } = {
+          title,
+          content,
+          category,
+          author_id: user?.id,
+          author_email: user?.email,
+        };
+        if (thumbnailUrl) {
+          insertPayload.thumbnail_url = thumbnailUrl;
+        }
+
+        const { error } = await supabase
+          .from('blog_posts')
+          .insert([
+            {
+              ...insertPayload,
+              published: true,
+            }
+          ]);
+
+        if (error) {
+          alert(t('admin.alerts.savePostError', { message: error.message }));
+        } else {
+          alert(t('admin.alerts.savePostSuccess'));
+          mutate(
+            (key) =>
+              Array.isArray(key) &&
+              (key[0] === 'blog_posts' || key[0] === 'blog_post')
+          );
+          resetForm();
+          fetchPosts();
+          onSaved?.();
+        }
+      }
+    } catch (err) {
+      console.error('Save error:', err);
+      alert(t('admin.alerts.savePostGeneric'));
+    } finally {
+      setSaving(false);
+    }
+  }, [category, content, editingPostId, fetchPosts, getThumbnailUrlFromContent, isEditMode, mutate, onSaved, resetForm, t, title, user?.email, user?.id]);
+
+  const handleDelete = useCallback(async (id: string) => {
+    if (!confirm(t('admin.alerts.deletePostConfirm'))) return;
+
+    const supabase = createClient();
+    const { error } = await supabase
+      .from('blog_posts')
+      .delete()
+      .eq('id', id);
+
+    if (!error) {
+      if (editingPostId === id) {
+        resetForm();
+      }
+      mutate(
+        (key) =>
+          Array.isArray(key) &&
+          (key[0] === 'blog_posts' || key[0] === 'blog_post')
+      );
+      fetchPosts();
+    } else {
+      alert(t('admin.alerts.deletePostError', { message: error.message }));
+    }
+  }, [editingPostId, fetchPosts, mutate, resetForm, t]);
+
+  const handleEdit = useCallback((post: BlogPost) => {
+    setTitle(post.title);
+    setContent(post.content);
+    setCategory(post.category || 'blog');
+    setEditingPostId(post.id);
+    setIsEditMode(true);
+  }, []);
+
+  return {
+    title,
+    setTitle,
+    content,
+    setContent,
+    category,
+    setCategory,
+    posts,
+    saving,
+    isEditMode,
+    editingPostId,
+    setPosts,
+    fetchPosts,
+    handleSave,
+    handleDelete,
+    handleEdit,
+    resetForm,
+    setIsEditMode,
+  };
+}
