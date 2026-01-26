@@ -66,7 +66,8 @@ export default function MainIntroductionSection() {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
+          poster="/images/introduction.webp"
           className={`w-full h-full object-cover transition-opacity ease-linear ${videoOpacityClass}`}
           style={{ transitionDuration: `${videoTransitionMs}ms` }}
         >

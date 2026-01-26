@@ -66,7 +66,7 @@ export default function IntroductionSection({
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           className={`w-full h-full object-cover transition-opacity duration-700 ${isVideoReady ? 'opacity-100' : 'opacity-0'
             }`}
         />

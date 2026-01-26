@@ -1,12 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { COUNTRIES } from "@/constants/countries";
-import { useRouter } from "next/navigation";
 
 export default function CountriesPage() {
-  const router = useRouter();
-
   const formatName = (name: string) =>
     name === "SriLanka" ? "Sri Lanka" : name;
 
@@ -36,9 +34,9 @@ export default function CountriesPage() {
 
           <div className="mt-10 grid grid-cols-2 gap-x-10 gap-y-10 sm:grid-cols-3 md:grid-cols-4">
             {COUNTRIES.map((c) => (
-              <button
+              <Link
                 key={c.code}
-                onClick={() => router.push(`/${c.name.toLowerCase()}`)}
+                href={`/${c.name.toLowerCase()}`}
                 className="group flex flex-col items-center"
               >
                 <div className="relative h-[90px] w-[90px] md:h-[120px] md:w-[120px] rounded-full overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.25)] transition-transform group-hover:scale-[1.05]">
@@ -54,7 +52,7 @@ export default function CountriesPage() {
                 <p className="mt-3 text-md md:text-xl font-bold text-neutral-800">
                   {formatName(c.name)}
                 </p>
-              </button>
+              </Link>
             ))}
           </div>
         </div>

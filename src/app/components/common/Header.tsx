@@ -64,7 +64,7 @@ export default function Header() {
       >
         <div className="px-4 md:px-8 lg:px-15">
           <div className="flex items-center justify-between h-14 md:h-20 lg:h-20">
-            <Link href="/" className="flex items-center gap-2 md:gap-3 lg:gap-3">
+            <Link href="/" className="flex items-center gap-2 md:gap-3 lg:gap-3" aria-label="GME Finance home">
               <Image
                 src="/images/logo.png"
                 alt="GME Finance"

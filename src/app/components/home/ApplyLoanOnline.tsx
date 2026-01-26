@@ -22,7 +22,7 @@ export default function ApplyLoanOnline() {
             height={200}
             className="object-contain w-[150px] md:w-[240px]"
           />
-          <Link href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className="block">
+          <Link href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className="block" aria-label="Download from Google Play">
             <div className="relative rounded-xl overflow-hidden transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95 cursor-pointer">
               <Image
                 src="/images/google.svg"
@@ -33,7 +33,7 @@ export default function ApplyLoanOnline() {
               />
             </div>
           </Link>
-          <Link href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="block">
+          <Link href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="block" aria-label="Download from the App Store">
             <div className="relative rounded-xl overflow-hidden transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95 cursor-pointer">
               <Image
                 src="/images/apple.svg"
@@ -60,7 +60,7 @@ export default function ApplyLoanOnline() {
         </div>
       </div>
       <div className="flex justify-center md:justify-end mt-4 md:-mt-16">
-        <Link href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer">
+        <Link href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" aria-label="Apply now on Google Play">
           <button className="bg-[#DF2121] shadow-[0_0_15px_rgba(0,0,0,0.15)] text-md md:text-[1.35rem] lg:text-[1.35rem] text-white cursor-pointer px-10 md:px-30 lg:px-30 py-2 md:py-4 lg:py-4 font-semibold hover:bg-red-500 transition-all">
             {t('button.applyNow')}
           </button>
