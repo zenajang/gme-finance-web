@@ -20,7 +20,12 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [saving, setSaving] = useState(false);
   const [editingPostId, setEditingPostId] = useState<string | null>(null);
+  const [editingPostSlug, setEditingPostSlug] = useState<string | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
+
+  const shortSlugFromId = useCallback((id: string) => {
+    return id.replace(/-/g, '').slice(0, 8);
+  }, []);
 
   const fetchPosts = useCallback(async () => {
     const supabase = createClient();
@@ -39,6 +44,7 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
     setContent('');
     setCategory('blog');
     setEditingPostId(null);
+    setEditingPostSlug(null);
     setIsEditMode(false);
   }, []);
 
@@ -60,12 +66,16 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
           category: string;
           updated_at: string;
           thumbnail_url?: string;
+          slug?: string;
         } = {
           title,
           content,
           category,
           updated_at: new Date().toISOString(),
         };
+        if (!editingPostSlug) {
+          updatePayload.slug = shortSlugFromId(editingPostId);
+        }
         if (thumbnailUrl) {
           updatePayload.thumbnail_url = thumbnailUrl;
         }
@@ -99,6 +109,7 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
           author_id?: string;
           author_email?: string;
           thumbnail_url?: string;
+          slug?: string;
         } = {
           title,
           content,
@@ -110,18 +121,30 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
           insertPayload.thumbnail_url = thumbnailUrl;
         }
 
-        const { error } = await supabase
+        const { data: insertedRows, error } = await supabase
           .from('blog_posts')
           .insert([
             {
               ...insertPayload,
               published: true,
             }
-          ]);
+          ])
+          .select('id, slug');
 
         if (error) {
           alert(t('admin.alerts.savePostError', { message: error.message }));
         } else {
+          const inserted = insertedRows?.[0];
+          if (inserted?.id && !inserted.slug) {
+            const slug = shortSlugFromId(inserted.id);
+            const { error: slugError } = await supabase
+              .from('blog_posts')
+              .update({ slug })
+              .eq('id', inserted.id);
+            if (slugError) {
+              console.error('Slug update error:', slugError);
+            }
+          }
           alert(t('admin.alerts.savePostSuccess'));
           mutate(
             (key) =>
@@ -139,7 +162,7 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
     } finally {
       setSaving(false);
     }
-  }, [category, content, editingPostId, fetchPosts, getThumbnailUrlFromContent, isEditMode, mutate, onSaved, resetForm, t, title, user?.email, user?.id]);
+  }, [category, content, editingPostId, editingPostSlug, fetchPosts, getThumbnailUrlFromContent, isEditMode, mutate, onSaved, resetForm, shortSlugFromId, t, title, user?.email, user?.id]);
 
   const handleDelete = useCallback(async (id: string) => {
     if (!confirm(t('admin.alerts.deletePostConfirm'))) return;
@@ -170,6 +193,7 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
     setContent(post.content);
     setCategory(post.category || 'blog');
     setEditingPostId(post.id);
+    setEditingPostSlug(post.slug ?? null);
     setIsEditMode(true);
   }, []);
 

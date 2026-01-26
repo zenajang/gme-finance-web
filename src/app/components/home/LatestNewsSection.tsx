@@ -158,7 +158,7 @@ export default function LatestNewsSection() {
             {posts.map((post, index) => (
               <SwiperSlide key={post.id}>
                 <div className={index === posts.length - 1 ? 'pr-5' : ''}>
-                  <NewsCard post={post} onClick={() => router.push(`/about/blog/${post.id}`)} />
+                  <NewsCard post={post} onClick={() => router.push(`/about/blog/${post.slug || post.id}`)} />
                 </div>
               </SwiperSlide>
             ))}
@@ -168,7 +168,7 @@ export default function LatestNewsSection() {
         {/* 데스크톱 버전 - Grid 레이아웃 */}
         <div className="hidden md:grid md:grid-cols-3 gap-8 mt-8">
           {posts.map((post) => (
-            <NewsCard key={post.id} post={post} onClick={() => router.push(`/about/blog/${post.id}`)} />
+            <NewsCard key={post.id} post={post} onClick={() => router.push(`/about/blog/${post.slug || post.id}`)} />
           ))}
         </div>
 

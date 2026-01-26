@@ -108,11 +108,13 @@ export default function BlogPage() {
   }
 
   // 브런치 스타일 - 히어로 카드 (첫 번째 글)
+  const getPostHref = (post: BlogPost) => `/about/blog/${post.slug || post.id}`;
+
   const HeroCard = ({ post }: { post: BlogPost }) => {
   const thumbnail = post.thumbnail_url || extractFirstImage(post.content);
 
     return (
-      <Link href={`/about/blog/${post.id}`}>
+      <Link href={getPostHref(post)}>
         <article
           className="group relative w-full h-[400px] md:h-[520px] rounded-3xl overflow-hidden cursor-pointer shadow-[0_20px_60px_-40px_rgba(0,0,0,0.6)] ring-1 ring-black/5"
           onMouseEnter={() => setHoveredId(post.id)}
@@ -166,7 +168,7 @@ export default function BlogPage() {
     const videoSrc = extractFirstVideo(post.content);
 
     return (
-      <Link href={`/about/blog/${post.id}`}>
+      <Link href={getPostHref(post)}>
         <article
           className="group cursor-pointer rounded-2xl bg-white/80 backdrop-blur-md p-4 ring-1 ring-black/5 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.6)] transition-transform duration-600 hover:-translate-y-2 hover:scale-[1.02]"
           onMouseEnter={() => setHoveredId(post.id)}

@@ -6,7 +6,7 @@ import useSWR from 'swr';
 import Link from 'next/link';
 import '@/app/components/blog/BlogContent.css';
 import { useTranslation } from 'react-i18next';
-import { fetchPublishedPostById, type BlogPost } from '@/lib/supabase/blog';
+import { fetchPublishedPostBySlugOrId, type BlogPost } from '@/lib/supabase/blog';
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
@@ -15,10 +15,10 @@ export default function BlogDetailPage() {
   const params = useParams();
   const router = useRouter();
   const { t, i18n } = useTranslation();
-  const postId = params?.id ? String(params.id) : null;
+  const postIdentifier = params?.id ? String(params.id) : null;
   const { data: post, isLoading, error } = useSWR<BlogPost | null>(
-    postId ? ['blog_post', { id: postId }] : null,
-    () => fetchPublishedPostById(postId as string)
+    postIdentifier ? ['blog_post', { identifier: postIdentifier }] : null,
+    () => fetchPublishedPostBySlugOrId(postIdentifier as string)
   );
 
   useEffect(() => {
@@ -27,6 +27,12 @@ export default function BlogDetailPage() {
       router.push('/about/blog');
     }
   }, [isLoading, error, post, router]);
+
+  useEffect(() => {
+    if (!isLoading && post?.slug && postIdentifier && post.slug !== postIdentifier) {
+      router.replace(`/about/blog/${post.slug}`);
+    }
+  }, [isLoading, post?.slug, postIdentifier, router]);
 
   if (isLoading) {
     return (

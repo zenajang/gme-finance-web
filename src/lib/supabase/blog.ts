@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/client';
 
 export interface BlogPost {
   id: string;
+  slug?: string | null;
   title: string;
   content: string;
   category: 'blog' | 'customer_feedback';
@@ -47,6 +48,34 @@ export async function fetchPublishedPostById(id: string): Promise<BlogPost | nul
     .from('blog_posts')
     .select('*')
     .eq('id', id)
+    .eq('published', true)
+    .single();
+
+  if (error) {
+    throw error;
+  }
+
+  return data || null;
+}
+
+export async function fetchPublishedPostBySlugOrId(identifier: string): Promise<BlogPost | null> {
+  const supabase = createClient();
+
+  const { data: slugData, error: slugError } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('slug', identifier)
+    .eq('published', true)
+    .single();
+
+  if (!slugError && slugData) {
+    return slugData;
+  }
+
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('id', identifier)
     .eq('published', true)
     .single();
 

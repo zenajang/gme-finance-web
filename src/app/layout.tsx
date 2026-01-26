@@ -9,6 +9,7 @@ import ImageLoadGuard from "./components/common/ImageLoadGuard";
 import ServiceWorkerRegistrar from "./components/common/ServiceWorkerRegistrar";
 import { Inter } from "next/font/google";
 import en from "@/i18n/locales/en.json";
+import GoogleAnalytics from "./components/google-analytics/GoogleAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -102,6 +103,7 @@ export default async function RootLayout({
         className={`${inter.variable} antialiased min-h-screen bg-background text-foreground`}
         suppressHydrationWarning={true}
       >
+        <GoogleAnalytics/>
         <Theme appearance="light" accentColor="indigo" radius="large">
           <ImageLoadGuard />
           <ServiceWorkerRegistrar />

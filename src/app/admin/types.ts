@@ -2,6 +2,7 @@ export type BlogCategory = 'blog' | 'customer_feedback';
 
 export interface BlogPost {
   id: string;
+  slug?: string | null;
   title: string;
   content: string;
   author_id: string;
