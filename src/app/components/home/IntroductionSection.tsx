@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { COMMON_COLORS } from "@/constants/colors";
 
@@ -52,13 +53,17 @@ export default function IntroductionSection({
 
   return (
     <section className="relative h-screen">
-      <div className="absolute inset-0"> 
-        <img
-          src={defaultPoster}
-          alt=""
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${isVideoReady ? 'opacity-0' : 'opacity-100'
-            }`}
-        />
+      <div className="absolute inset-0">
+        {defaultPoster && (
+          <Image
+            src={defaultPoster}
+            alt=""
+            fill
+            sizes="100vw"
+            className={`object-cover transition-opacity duration-700 ${isVideoReady ? 'opacity-0' : 'opacity-100'}`}
+            priority
+          />
+        )}
         <video
           ref={videoRef}
           src={videoSrc}

@@ -22,8 +22,7 @@ export default function LoanApplicationForm({
   anchorId,
 }: LoanApplicationFormProps) {
 
-  const { t, i18n } = useTranslation();
-  const isKorean = i18n.language === 'ko';
+  const { t } = useTranslation();
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

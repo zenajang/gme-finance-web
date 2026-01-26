@@ -14,32 +14,39 @@ export default function PageLoadingSpinner() {
   }, [pathname]);
 
   useEffect(() => {
-    let progressInterval: NodeJS.Timeout;
-
-    if (loading) {
-      // 프로그레스 애니메이션
-      setProgress(0);
-      progressInterval = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 90) {
-            clearInterval(progressInterval);
-            return 90; // 90%에서 멈춤 (로딩 완료 시 100%로)
-          }
-          // 처음엔 빠르게, 나중엔 느리게
-          const increment = prev < 50 ? 8 : prev < 80 ? 3 : 1;
-          return prev + increment;
-        });
-      }, 100);
-    } else {
-      // 로딩 완료 시 100%로 채우고 사라짐
-      if (progress > 0) {
-        setProgress(100);
-        setTimeout(() => setProgress(0), 200);
-      }
+    if (!loading) {
+      return;
     }
+
+    // 프로그레스 애니메이션
+    setProgress(0);
+    const progressInterval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 90) {
+          clearInterval(progressInterval);
+          return 90; // 90%에서 멈춤 (로딩 완료 시 100%로)
+        }
+        // 처음엔 빠르게, 나중엔 느리게
+        const increment = prev < 50 ? 8 : prev < 80 ? 3 : 1;
+        return prev + increment;
+      });
+    }, 100);
 
     return () => clearInterval(progressInterval);
   }, [loading]);
+
+  useEffect(() => {
+    if (loading) {
+      return;
+    }
+
+    // 로딩 완료 시 100%로 채우고 사라짐
+    if (progress > 0) {
+      setProgress(100);
+      const timeoutId = setTimeout(() => setProgress(0), 200);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [loading, progress]);
 
   useEffect(() => {
     const handleStart = () => {

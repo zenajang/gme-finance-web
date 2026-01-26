@@ -23,7 +23,6 @@ const FORCE_VISIBLE_PATHS = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isAboutHovered, setIsAboutHovered] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
