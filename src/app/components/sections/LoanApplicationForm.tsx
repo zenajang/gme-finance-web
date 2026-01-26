@@ -79,7 +79,11 @@ export default function LoanApplicationForm({
             <p className="text-label mt-1 md:mt-10 lg:mt-10">{t('nationality')}
               <span className="font-bold text-red-600">*</span>
             </p>
+            <label htmlFor="nationality-select" className="sr-only">
+              {t('nationality')}
+            </label>
             <select
+              id="nationality-select"
               name="nationality"
               required
               className="w-full px-2 py-2 md:px-4 md:py-3 lg:px-4 lg:py-3 text-input border border-gray-300 rounded-lg text-gray-500"

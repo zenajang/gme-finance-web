@@ -179,6 +179,7 @@ export default function LatestNewsSection() {
             className="inline-block bg-white text-md md:text-[1.35rem] rounded-xl shadow-sm lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-colors"
           >
             {t('button.seeMore')}
+            <span className="sr-only"> blog posts</span>
           </Link>
         </div>
       </div>

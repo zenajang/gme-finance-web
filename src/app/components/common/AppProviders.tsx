@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, type ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 import { SWRConfig, useSWRConfig } from 'swr';
 import { createClient } from '@/lib/supabase/client';
 import I18nProvider from './I18nProvider';
@@ -9,10 +10,13 @@ interface AppProvidersProps {
   children: ReactNode;
 }
 
-function RealtimeBlogSync() {
+function RealtimeBlogSync({ enabled }: { enabled: boolean }) {
   const { mutate } = useSWRConfig();
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
     const supabase = createClient();
     const channel = supabase
       .channel('blog-posts-realtime')
@@ -32,12 +36,15 @@ function RealtimeBlogSync() {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [mutate]);
+  }, [enabled, mutate]);
 
   return null;
 }
 
 export default function AppProviders({ children }: AppProvidersProps) {
+  const pathname = usePathname();
+  const enableRealtime = Boolean(pathname?.startsWith('/about/blog'));
+
   return (
     <SWRConfig
       value={{
@@ -48,7 +55,7 @@ export default function AppProviders({ children }: AppProvidersProps) {
       }}
     >
       <I18nProvider>
-        <RealtimeBlogSync />
+        <RealtimeBlogSync enabled={enableRealtime} />
         {children}
       </I18nProvider>
     </SWRConfig>

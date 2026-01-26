@@ -206,6 +206,7 @@ export default function CustomerFeedbackSection() {
             className="inline-block bg-white rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.15)] text-md md:text-[1.35rem] lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-all"
           >
             {t('button.seeMore')}
+            <span className="sr-only"> customer feedback posts</span>
           </Link>
         </div>
       </div>
