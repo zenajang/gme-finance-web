@@ -77,8 +77,7 @@
     "applyLoanOnlineStep3": "등록하고 필요한 서류 제출",
     "applyLoanOnlineStep4": "등록 완료 후 온라인으로 대출 신청 가능",
     "applyLoanAppSubTitle": "최대 3천만원 대출 가능",
-    "applyLoanAppSubTitle1": "GME Finance로 쉽고 편리하게 GME 대출",
-    "applyLoanAppSubTitle2": "지금 신청하세요!",
+    "applyLoanAppSubTitle1": "정보를 남겨주시면 담당자가 빠르게 연락드리겠습니다",
     "findBranchSubtitle": "상담을 위해 가까운 GME Finance 지점을 방문하세요!",
     "heroPills": {
       "countries": "14+ 국가",
@@ -195,8 +194,17 @@
     "readMore": "자세히 보기",
     "applyNow": "지금 신청",
     "EMICalculator": "EMI 계산기",
-    "continue": "계속"
+    "continue": "계속",
+    "back": "이전",
+    "submit": "제출"
   },
+  "email": "이메일",
+  "emailPlaceholder": "이메일을 입력하세요",
+  "message": "메시지",
+  "messagePlaceholder": "문의 내용을 입력하세요",
+  "contactSuccess": "문의가 성공적으로 접수되었습니다. 곧 연락드리겠습니다.",
+  "contactError": "제출에 실패했습니다. 다시 시도해주세요.",
+  "submitting": "제출 중...",
   "footer": {
     "companyName": "상호: 주식회사 지엠이대부",
     "brandName": "브랜드명: GME Loan",

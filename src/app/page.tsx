@@ -1,42 +1,42 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import MainIntroductionSection from "./components/home/MainIntroductionSection";
-import CountrySection from "./components/home/CountrySection";
+import MainIntroductionSection from "@/features/home/components/MainIntroductionSection";
+import CountrySection from "@/features/home/components/CountrySection";
 import {
   NewsLoadingSkeleton,
   FeedbackLoadingSkeleton,
   BannerLoadingSkeleton,
   BranchLoadingSkeleton
 } from "./components/common/LoadingSkeletons";
-import NewServiceSection from './components/home/NewServiceSection';
+import NewServiceSection from '@/features/home/components/NewServiceSection';
 
 const AnimatedBannerSection = dynamic(
-  () => import("./components/home/AnimatedBannerSection"),
+  () => import("@/features/home/components/AnimatedBannerSection"),
   { loading: () => <BannerLoadingSkeleton /> }
 );
 
 const LatestNewsSection = dynamic(
-  () => import("./components/home/LatestNewsSection"),
+  () => import("@/features/home/components/LatestNewsSection"),
   { loading: () => <NewsLoadingSkeleton /> }
 );
 
 const CustomerFeedbackSection = dynamic(
-  () => import("./components/home/CustomerFeedbackSection"),
+  () => import("@/features/home/components/CustomerFeedbackSection"),
   { loading: () => <FeedbackLoadingSkeleton /> }
 );
 
 const LoanTypesSection = dynamic(
-  () => import("./components/home/LoanTypesSection"),
+  () => import("@/features/home/components/LoanTypesSection"),
   { loading: () => <div className="h-96 bg-white animate-pulse" /> }
 );
 
 const SimpleLoanApplySection = dynamic(
-  () => import("./components/home/SimpleLoanApplySection"),
+  () => import("@/features/home/components/SimpleLoanApplySection"),
   { loading: () => <div className="h-96 bg-gray-50 animate-pulse" /> }
 );
 
 const FindBranchSection = dynamic(
-  () => import("./components/home/FindBranchSection"),
+  () => import("@/features/home/components/FindBranchSection"),
   { loading: () => <BranchLoadingSkeleton /> }
 );
 

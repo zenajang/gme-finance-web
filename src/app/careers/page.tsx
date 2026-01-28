@@ -3,7 +3,7 @@
 import { COMMON_COLORS } from '@/constants/colors';
 import Image from 'next/image';
 import { useState } from 'react';
-import IntroductionSection from '../components/home/IntroductionSection';
+import IntroductionSection from '@/features/home/components/IntroductionSection';
 import { useTranslation } from 'react-i18next';
 
 export default function CareersPage() {

@@ -1,15 +1,15 @@
 
 import { getColorScheme, getGradient } from "@/constants/colors";
-import IntroductionSection from "../components/home/IntroductionSection";
-import LoanTypesSection from "../components/home/LoanTypesSection";
-import EMICalculatorSection from "../components/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "../components/sections/LatestSocials";
-import LoanApplicationForm from "../components/sections/LoanApplicationForm";
-import LoanDetailSection from "../components/sections/LoanDetailSection";
-import ProcessStep from "../components/sections/ProcessStep";
-import TeamSection, { Teams } from "../components/sections/TeamSection";
-import GarlandDecoration from "../components/sections/GarlandDecoration";
-import TeamVideoSection from "../components/sections/TeamVideoSection";
+import IntroductionSection from "@/features/home/components/IntroductionSection";
+import LoanTypesSection from "@/features/home/components/LoanTypesSection";
+import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
+import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
+import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
+import ProcessStep from "@/features/home/sections/ProcessStep";
+import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
+import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 
 const INDIA_SOCIALS: SocialsItem[] = [
   {

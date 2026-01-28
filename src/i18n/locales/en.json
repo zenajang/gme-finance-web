@@ -77,8 +77,8 @@
     "applyLoanOnlineStep1": "Download and Install GME App",
     "applyLoanOnlineStep2": "Available on Google Play Store and App Store",
     "applyLoanOnlineStep3": "Register and Submit the Necessary Requirements",
-    "applyLoanOnlineStep4": "After Successful Registeration, You can Now Apply for Loan Online",
-    "applyLoanAppTitle": "Apply Loan through GME App",
+    "applyLoanOnlineStep4": "After Successful Registration, You can Now Apply for Loan Online",
+    "applyLoanAppTitle": "Loan Consultation Made Easy",
     "applyLoanAppSubTitle": "Loan up to 30 Million KRW",
     "applyLoanAppSubTitleByCountry": {
       "bangladesh": "Loan up to 25 Million KRW",
@@ -92,8 +92,7 @@
       "thailand": "Loan up to 25 Million KRW",
       "vietnam": "Loan up to 25 Million KRW"
     },
-    "applyLoanAppSubTitle1": "GME Finance makes it Easy and Convenient to Apply GME Loan.",
-    "applyLoanAppSubTitle2": "Apply Now!",
+    "applyLoanAppSubTitle1": "Leave your contact details and we’ll reach out to you soon.",
     "findBranchSubtitle": "Visit a nearby GME Finance Branch for a counsultation!",
     "heroPills": {
       "countries": "14+ Countries",
@@ -211,8 +210,17 @@
     "applyNow": "Apply Now",
     "EMICalculator": "EMI Calculator",
     "continue": "Continue",
-    "visit": "Visit"
+    "visit": "Visit",
+    "back": "Back",
+    "submit": "Submit"
   },
+  "email": "Email",
+  "emailPlaceholder": "Enter your email",
+  "message": "Message",
+  "messagePlaceholder": "Enter your message",
+  "contactSuccess": "Your inquiry has been submitted successfully. We will contact you soon.",
+  "contactError": "Failed to submit. Please try again.",
+  "submitting": "Submitting...",
   "footer": {
     "companyName": "Company Name: GME Lending Co., Ltd.",
     "brandName": "Brand Name: GME Loan",
