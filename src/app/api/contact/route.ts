@@ -7,10 +7,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { firstName, lastName, nationality, email, message } = body;
+    const { firstName, lastName, nationality, visaType, email, phoneNumber, message } = body;
 
     // 유효성 검사
-    if (!firstName || !lastName || !nationality || !email || !message) {
+    if (!firstName || !lastName || !nationality || !visaType || !email || !phoneNumber || !message) {
       return NextResponse.json(
         { error: "All fields are required" },
         { status: 400 }
@@ -46,8 +46,16 @@ export async function POST(request: NextRequest) {
             <td style="padding: 10px; border: 1px solid #ddd;">${countryName}</td>
           </tr>
           <tr>
+            <td style="padding: 10px; border: 1px solid #ddd; background: #f5f5f5; font-weight: bold;">Visa Type</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">${visaType}</td>
+          </tr>
+          <tr>
             <td style="padding: 10px; border: 1px solid #ddd; background: #f5f5f5; font-weight: bold;">Email</td>
             <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:${email}">${email}</a></td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ddd; background: #f5f5f5; font-weight: bold;">Phone Number</td>
+            <td style="padding: 10px; border: 1px solid #ddd;"><a href="tel:${phoneNumber}">${phoneNumber}</a></td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #ddd; background: #f5f5f5; font-weight: bold;">Message</td>
