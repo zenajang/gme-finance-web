@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
 
     // 이메일 전송
     const { data, error } = await resend.emails.send({
-      from: "GME Finance <noreply@gmefinance.com>",
+      from: "GME Finance <contact@gmefinance.com>",
       to: toEmail,
       subject: `[Loan Consultation] New inquiry from ${firstName} ${lastName}`,
       html: `
@@ -51,11 +51,11 @@ export async function POST(request: NextRequest) {
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #ddd; background: #f5f5f5; font-weight: bold;">Email</td>
-            <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:${email}">${email}</a></td>
+            <td style="padding: 10px; border: 1px solid #ddd;">${email}</td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #ddd; background: #f5f5f5; font-weight: bold;">Phone Number</td>
-            <td style="padding: 10px; border: 1px solid #ddd;"><a href="tel:${phoneNumber}">${phoneNumber}</a></td>
+            <td style="padding: 10px; border: 1px solid #ddd;">${phoneNumber}</td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #ddd; background: #f5f5f5; font-weight: bold;">Message</td>
