@@ -53,6 +53,7 @@
     "LoanDetailsLabel5": "Metode Penandatanganan Kontrak",
     "LoanDetailsValue5": "Kontrak Digital",
     "LoanDetailsLabel6": "Plafon Pinjaman",
+    "LoanDetailsValue6":"2 Juta – 35 Juta KRW",
     "LoanDetailsLabel7": "Jenis Visa yang Berlaku",
     "LoanDetailsLabel8": "Metode Pembayaran",
     "LoanDetailsValue8": "Angsuran Bulanan",
@@ -65,7 +66,6 @@
         "value2": "3 - 45 bulan",
         "value3": "6 - 48 bulan",
         "value4": "Pinjaman GME, Pinjaman Perumahan, Pinjaman Pelajar, Pinjaman Properti, Pinjaman Liburan, Pinjaman Kendaraan, Pinjaman Usaha",
-        "value6": "2 Juta – 25 Juta KRW",
         "value7": "D2, E7-1, E7-3, E7-4, E9, E10, dan Visa F",
         "value9": "Gratis"
       }

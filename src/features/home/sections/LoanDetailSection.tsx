@@ -40,7 +40,7 @@ export default function LoanDetailSection({ backgroundImage = '/images/default-b
     },
     {
       label: t('countryPage.LoanDetailsLabel6'),
-      value: t(`countryPage.loanDetails.${country}.value6`)
+      value: t(`countryPage.LoanDetailsValue6`)
     },
     {
       label: t('countryPage.LoanDetailsLabel7'),
@@ -83,9 +83,7 @@ export default function LoanDetailSection({ backgroundImage = '/images/default-b
                       {detail.label}
                     </td>
                     <td className="py-5 px-2 md:px-6 text-black font-semibold text-input md:text-base text-center">
-
                       {detail.value}
-
                     </td>
                   </tr>
                 ))}

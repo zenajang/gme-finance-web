@@ -54,6 +54,7 @@
     "LoanDetailsLabel5": "চুক্তি স্বাক্ষরের পদ্ধতি",
     "LoanDetailsValue5": "ডিজিটাল চুক্তি",
     "LoanDetailsLabel6": "লোনের পরিমাণ",
+    "LoanDetailsValue6":"২০ থেকে - ৩ কোটি ৫০ লক্ষ KRW পর্যন্ত",
     "LoanDetailsLabel7": "যোগ্য ভিসার ধরন",
     "LoanDetailsLabel8": "কিস্তি পদ্ধতি",
     "LoanDetailsValue8": "মাসিক কিস্তি",
@@ -66,7 +67,6 @@
         "value2": "৪ থেকে ৪৫ মাস পর্যন্ত ( যেকোনো সময় পরিশোধযোগ্য )",
         "value3": "৭ থেকে ৪৮ মাস পর্যন্ত (E7, F2, F6 ভিসাধারীদের কার্ডে ভিসা না থাকলেও লোন আবেদন করা যাবে।)",
         "value4": "GME লোন, Housing লোন, Student লোন, Property লোন, Vacation লোন, Car লোন, Business লোন",
-        "value6": "২০ থেকে - ২ কোটি ৫০ লক্ষ KRW পর্যন্ত",
         "value7": "E9, E7, F2, F5, F6, D2 এবং যেকোনো অন্যান্য ভিসায় যারা বৈধ কর্মচুক্তিতে আছেন",
         "value9": "বিনামূল্যে"
       }

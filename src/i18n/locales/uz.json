@@ -51,6 +51,7 @@
     "LoanDetailsLabel5": "Shartnoma Imzolash Usuli",
     "LoanDetailsValue5": "Elektron shartnoma",
     "LoanDetailsLabel6": "Kredit miqdori",
+    "LoanDetailsValue6": "2 million – 35 million",
     "LoanDetailsLabel7": "Mos Vizalar Turlari",
     "LoanDetailsLabel8": "To‘lov usuli",
     "LoanDetailsValue8": "Oylik to‘lovlar",
@@ -63,7 +64,6 @@
         "value2": "3 - 45 oy",
         "value3": "6 - 48 oy",
         "value4": "GME Krediti, Uy-joy Krediti, Talaba Krediti, Ko‘chmas Mulk Krediti, Ta’til Krediti, Avtomobil Krediti, Biznes Krediti",
-        "value6": "2 million – 30 million",
         "value7": "D2, E9, E7, F2, F4, F5, F6, H2 va qonuniy ish joyiga ega boshqa barcha viza turlari",
         "value9": "Qo'shimcha pul olinmaydi"
       }

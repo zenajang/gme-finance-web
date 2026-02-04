@@ -53,6 +53,7 @@
     "LoanDetailsLabel5": "معاہدے پر دستخط کرنے کا طریقہ",
     "LoanDetailsValue5": "ڈیجیٹل معاہدہ",
     "LoanDetailsLabel6": "قابل قرضہ رقم",
+    "LoanDetailsValue6": "2 ملین - 35 ملین",
     "LoanDetailsLabel7": "اہل ویزا کی اقسام",
     "LoanDetailsLabel8": "ادائیگی کا طریقہ",
     "LoanDetailsValue8": "ماہانہ قسط",
@@ -65,7 +66,6 @@
         "value2": "4 - 45 ماہ",
         "value3": "7-48 ماہ",
         "value4": "GME Loan, Housing Loan, Student Loan, Property Loan, Vacation Loan, Car Loan, Business Loan",
-        "value6": "2 ملین - 25 ملین",
         "value7": "E9, E7, F2, F5, F6, D8, D2 اور قانونی کام کے معاہدے کے ساتھ کوئی دوسرا ویزا ہولڈر",
         "value9": "مفت"
       }

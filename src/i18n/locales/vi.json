@@ -53,6 +53,7 @@
     "LoanDetailsLabel5": "Phương pháp ký hợp đồng",
     "LoanDetailsValue5": "Hợp đồng điện tử",
     "LoanDetailsLabel6": "Số tiền có thể vay",
+    "LoanDetailsValue6": "2 triệu - 35 triệu",
     "LoanDetailsLabel7": "Các loại thị thực visa đủ điều kiện",
     "LoanDetailsLabel8": "Phương thức trả nợ",
     "LoanDetailsValue8": "Trả góp hàng tháng",
@@ -65,7 +66,6 @@
         "value2": "3 - 45 tháng",
         "value3": "7 - 48 tháng",
         "value4": "Tài chính GME, Khoản vay mua nhà, Khoản vay mua xe, Khoản vay bất động sản, Khoản vay du lịch, Khoản vay mua ô tô, Khoản vay kinh doanh",
-        "value6": "2 triệu - 25 triệu",
         "value7": "E10, E9, E7, F2, F5, F6, D2  và bất kỳ người sở hữu thị thực nào khác có Hợp đồng Lao động Hợp pháp",
         "value9": "Miễn phí"
       }
