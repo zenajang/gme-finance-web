@@ -24,7 +24,7 @@
   "daily": "Daily",
   "dongdaemunBranch": "Dongdaemun Branch",
   "ansanBranch": "Ansan Branch",
-  "bupyeongBranch": "Bupeong Branch",
+  "bupyeongBranch": "Bupyeong Branch",
   "songuriBranch": "Songu-ri Branch",
   "mongoliaBranch": "Mongolia Town Branch",
   "hwaseongBranch": "Hwaseong Branch",
@@ -99,16 +99,16 @@
     "applyLoanAppTitle": "Loan Consultation Made Easy",
     "applyLoanAppSubTitle": "Loan up to 30 Million KRW",
     "applyLoanAppSubTitleByCountry": {
-      "bangladesh": "Loan up to 25 Million KRW",
-      "india": "Loan up to 25 Million KRW",
-      "indonesia": "Loan up to 25 Million KRW",
-      "mongolia": "Loan up to 25 Million KRW",
-      "nepal": "Loan up to 25 Million KRW",
-      "pakistan": "Loan up to 25 Million KRW",
+      "bangladesh": "Loan up to 35 Million KRW",
+      "india": "Loan up to 35 Million KRW",
+      "indonesia": "Loan up to 35 Million KRW",
+      "mongolia": "Loan up to 35 Million KRW",
+      "nepal": "Loan up to 35 Million KRW",
+      "pakistan": "Loan up to 35 Million KRW",
       "philippines": "Loan up to 35 Million KRW",
-      "russia": "Loan up to 25 Million KRW",
-      "thailand": "Loan up to 25 Million KRW",
-      "vietnam": "Loan up to 25 Million KRW"
+      "russia": "Loan up to 35 Million KRW",
+      "thailand": "Loan up to 35 Million KRW",
+      "vietnam": "Loan up to 35 Million KRW"
     },
     "applyLoanAppSubTitle1": "Leave your contact details and we’ll reach out to you soon.",
     "findBranchSubtitle": "Visit a nearby GME Finance Branch for a counsultation!",
@@ -326,11 +326,11 @@
     "LoanDetailsLabel9": "Early Settlement Charges",
     "loanDetails": {
       "bangladesh": {
-        "value1": "Up to 25 mil",
+        "value1": "Up to 35 mil",
         "value2": "4 - 45 months",
         "value3": "7 - 48 months (E7, F2, and F6 visa holders can apply for a loan even if the visa is not shown on their ID card.)",
         "value4": "GME Loan, GME House Loan, Business Loan, Car Loan, Vacation Loan, Student Loan",
-        "value6": "2 mil - 25 mil",
+        "value6": "2 mil - 35 mil",
         "value7": "E9, E7, F2, F5, F6, D2 and any other visa holders with Legal Work Contract",
         "value9": "Free"
       },
@@ -344,29 +344,29 @@
         "value9": "Free"
       },
       "india": {
-        "value1": "Up to 25 mil",
+        "value1": "Up to 35 mil",
         "value2": "3 - 45 months",
         "value3": "6 - 48 months",
         "value4": "GME Loan, Housing Loan, Student Loan, Property Loan, Vacation Loan, Car Loan, Business Loan",
-        "value6": "2 mil - 25 mil",
+        "value6": "2 mil - 35 mil",
         "value7": "E9, E7, F2, F5, F6, D2 and any other visa holders with Legal Work Contract",
         "value9": "Free"
       },
       "indonesia": {
-        "value1": "Up to 25 mil",
+        "value1": "Up to 35 mil",
         "value2": "3 - 45 months",
         "value3": "6 - 48 months",
         "value4": "GME Loan, GME House Loan, Business Loan, Car Loan, Vacation Loan, Student Loan, Property Loan",
-        "value6": "2 mil - 25 mil",
+        "value6": "2 mil - 35 mil",
         "value7": "D2, E7-1, E7-3, E7-4, E9, E10, and F-series visas",
         "value9": "Free"
       },
       "mongolia": {
-        "value1": "Up to 25 mil",
+        "value1": "Up to 35 mil",
         "value2": "3 - 45 months",
         "value3": "6 - 48 months",
         "value4": "GME Loan, Car Loan, Property Loan,Business Loan",
-        "value6": "2 mil - 25 mil",
+        "value6": "2 mil - 35 mil",
         "value7": "D-2, E-9, E-10, E-7, E-1, E-2, E-3, F-2, F-2R, F-5, F-6, F-4, G-1"
       },
       "myanmar": {
@@ -379,20 +379,20 @@
         "value9": "Free"
       },
       "nepal": {
-        "value1": "Up to 25 mil",
+        "value1": "Up to 35 mil",
         "value2": "3 - 45 months",
         "value3": "7 - 48 months",
         "value4": "GME Loan, GME House Loan, Student Loan, Property Loan, Vacation Loan, Car Loan, Business Loan",
-        "value6": "2 mil - 25 mil",
+        "value6": "2 mil - 35 mil",
         "value7": "E9, E7, F2, D2, F5, F6, D8 and any other visa holders with Legal Work Contract",
         "value9": "Free"
       },
       "pakistan": {
-        "value1": "Up to 25 mil",
+        "value1": "Up to 35 mil",
         "value2": "4 - 45 months",
         "value3": "7 - 48 months",
         "value4": "GME Loan, GME House Loan, Business Loan, Student Loan, Property Loan, Vacation Loan, Car Loan",
-        "value6": "2 mil - 25 mil",
+        "value6": "2 mil - 35 mil",
         "value7": "E9, E7, F2, F5, F6, D8, D2 and any other visa holders with Legal Work Contract",
         "value9": "Free"
       },
@@ -406,11 +406,11 @@
         "value9": "Free"
       },
       "russia": {
-        "value1": "Up to 25 mil",
+        "value1": "Up to 35 mil",
         "value2": "3 - 45 months",
         "value3": "6 - 48 months",
         "value4": "GME Loan, GME House Loan, Student Loan, Property Loan, Vacation Loan, Car Loan, Business Loan",
-        "value6": "2 mil - 25 mil",
+        "value6": "2 mil - 35 mil",
         "value7": "D2, E9, E7, F2, F4, F5, F6, H2 and any other visa holders with Legal Work Contract",
         "value9": "Free"
       },
@@ -424,11 +424,11 @@
         "value9": "Free"
       },
       "thailand": {
-        "value1": "Up to 25 mil",
+        "value1": "Up to 35 mil",
         "value2": "3 - 45 months",
         "value3": "6 - 48 months",
         "value4": "GME Loan, GME House Loan, Student Loan, Property Loan, Vacation Loan, Car Loan, Business Loan",
-        "value6": "2 mil - 25 mil",
+        "value6": "2 mil - 35 mil",
         "value7": "E9, E7, F2, F5, F6",
         "value9": "Free"
       },
@@ -442,11 +442,11 @@
         "value9": "Free"
       },
       "vietnam": {
-        "value1": "Up to 25 mil",
+        "value1": "Up to 35 mil",
         "value2": "3 - 45 months",
         "value3": "7 - 48 months",
         "value4": "GME Loan, GME House Loan, Car Loan, Property Loan, Vaction Loan, Car Loan, Business Loan",
-        "value6": "2 mil - 25 mil",
+        "value6": "2 mil - 35 mil",
         "value7": "E10, E9, E7, F2, F5, F6, D2 and any other visa holders with Legal Work Contract",
         "value9": "Free"
       }

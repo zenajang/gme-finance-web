@@ -36,7 +36,7 @@
     "applyLoanAppTitle": "Ajukan Pinjaman melalui Aplikasi GME",
     "applyLoanAppSubTitle1": "Pengajuan pinjaman mudah dan nyaman dengan GME Finance. Ajukan Sekarang!",
     "applyLoanAppSubTitleByCountry": {
-      "indonesia": "Pinjaman hingga 25 Juta KRW"
+      "indonesia": "Pinjaman hingga 35 Juta KRW"
     }
   },
   "countryPage": {
@@ -62,7 +62,7 @@
     "SupportSubTitle": "Periksa berapa besar angsuran bulanan Anda berdasarkan jumlah pinjaman yang diinginkan",
     "loanDetails": {
       "indonesia": {
-        "value1": "Hingga 25 Juta KRW",
+        "value1": "Hingga 35 Juta KRW",
         "value2": "3 - 45 bulan",
         "value3": "6 - 48 bulan",
         "value4": "Pinjaman GME, Pinjaman Perumahan, Pinjaman Pelajar, Pinjaman Properti, Pinjaman Liburan, Pinjaman Kendaraan, Pinjaman Usaha",

@@ -36,7 +36,7 @@
     "applyLoanAppTitle": "Nộp đơn đăng kí vay qua ứng dụng GME REMIT",
     "applyLoanAppSubTitle1": "Nhanh chóng, Đơn giản, An toàn với khoản vay tại GME.  Đăng ký ngay!",
     "applyLoanAppSubTitleByCountry": {
-      "vietnam": "Khoản vay lên đến 25 triệu KRW"
+      "vietnam": "Khoản vay lên đến 35 triệu KRW"
     }
   },
   "countryPage": {
@@ -62,7 +62,7 @@
     "SupportSubTitle": "Kiểm tra số tiền thanh toán hàng tháng của bạn sẽ là bao nhiêu dựa trên số tiền vay mong muốn của bạn",
     "loanDetails": {
       "vietnam": {
-        "value1": "Lên đến 25 triệu won",
+        "value1": "Lên đến 35 triệu won",
         "value2": "3 - 45 tháng",
         "value3": "7 - 48 tháng",
         "value4": "Tài chính GME, Khoản vay mua nhà, Khoản vay mua xe, Khoản vay bất động sản, Khoản vay du lịch, Khoản vay mua ô tô, Khoản vay kinh doanh",
