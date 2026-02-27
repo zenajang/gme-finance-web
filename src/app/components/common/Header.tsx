@@ -26,7 +26,8 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const forceVisible = FORCE_VISIBLE_PATHS.some(path => pathname === path || pathname.startsWith(path + '/'));
+  const isCountryBlogPath = /^\/[^/]+\/blog(\/|$)/.test(pathname);
+  const forceVisible = isCountryBlogPath || FORCE_VISIBLE_PATHS.some(path => pathname === path || pathname.startsWith(path + '/'));
 
   useEffect(() => {
     const handleScroll = () => {

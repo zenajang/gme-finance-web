@@ -7,7 +7,14 @@
     "applyNow": "Hozir Ariza Bering",
     "EMICalculator": "EMI Kalkulyator",
     "continue": "Davom etish",
-    "visit": "Visit"
+    "visit": "Visit",
+    "seeMore": "Ko'proq ko'rish"
+  },
+  "blog": {
+    "title": "Blog",
+    "button": {
+      "viewAll": "Barcha postlarni ko'rish"
+    }
   },
   "country": {
     "uzbekistan": "O‘zbekiston"

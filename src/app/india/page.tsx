@@ -3,51 +3,15 @@ import { getColorScheme, getGradient } from "@/constants/colors";
 import IntroductionSection from "@/features/home/components/IntroductionSection";
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
-
-const INDIA_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-ind",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/profile.php?id=61571686684974&locale=ko_KR",
-    href: "https://www.facebook.com/profile.php?id=61571686684974&locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME India Finance (Facebook)",
-  },
-  {
-    id: "tt-ind",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gmefinanceindia",
-    href: "https://www.tiktok.com/@gmefinanceindia",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME India Finance (TikTok)",
-  },
-  {
-    id: "is-ind",
-    platform: "instagram_post",
-    embedUrl: "https://www.instagram.com/reel/DSRKwXCkc6J/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    href: "https://www.instagram.com/gmefinanceindia/",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/instagram.svg",
-    title: "GME India Finance (Instagram post)",
-  },
-];
-
-const INDIA_TEAMS: Teams[] = [
-   {
-    id: 'malaika',
-    image: '/images/team.svg',
-    name: 'MALAIKA',
-  },
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function IndiaPage() {
   const colors =  getColorScheme('india')
@@ -66,11 +30,12 @@ export default function IndiaPage() {
         style={{ background: getGradient('india') }}
       >
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat -top-20 -left-10 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_o_r.svg')", backgroundSize: '25%', backgroundPosition: 'left top' }} />
+          <div className="absolute pointer-events-none bg-no-repeat -top-20 -left-10 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_o_r.svg')", backgroundSize: '25%', backgroundPosition: 'left top' }} />
           <LatestSocials
-            socials={INDIA_SOCIALS} buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
+            socials={COUNTRY_SOCIALS.india} buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover}/>
+          <CountryBlogSection country="india" />
           <TeamSection
-            teams={INDIA_TEAMS}
+            teams={COUNTRY_TEAMS.india}
             nameBgColor={colors.primary}
             title='India'
           />
@@ -82,7 +47,7 @@ export default function IndiaPage() {
         />
         <LoanTypesSection />
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat bg-right -bottom-70 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_g_l.svg')" }} />
+          <div className="absolute pointer-events-none bg-no-repeat bg-right -bottom-70 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_g_l.svg')" }} />
           <ProcessStep />
         </section>
       </div>

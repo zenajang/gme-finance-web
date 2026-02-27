@@ -1,13 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  webpack: (config, { dev }) => {
+    if (dev) {
+      config.infrastructureLogging = {
+        level: "error",
+      };
+    }
+    return config;
+  },
   images: {
     unoptimized: true,
   },
   // Skip static generation for pages with Supabase
-  experimental: {
-    // Disable static generation for specific routes
-  },
+  experimental: {},
   // Generate build ID that doesn't fail on missing env vars
   generateBuildId: async () => {
     return 'build-' + Date.now();

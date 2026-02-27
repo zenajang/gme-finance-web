@@ -7,7 +7,14 @@
     "applyNow": "ابھی اپلائی کریں",
     "EMICalculator": "EMI کیلکولیٹر",
     "continue": "جاری رکھیں",
-    "visit": "ملاحظہ کریں"
+    "visit": "ملاحظہ کریں",
+    "seeMore": "مزید دیکھیں"
+  },
+  "blog": {
+    "title": "بلاگ",
+    "button": {
+      "viewAll": "تمام پوسٹ دیکھیں"
+    }
   },
   "country": {
     "pakistan": "پاکستان"

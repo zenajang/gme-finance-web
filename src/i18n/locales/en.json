@@ -288,6 +288,7 @@
     "cis": "CIS"
   },
   "countryPage": {
+    "blogSectionTitle": "Latest Updates",
     "team": "Team",
     "teamTitle": "{{country}} Team",
     "mainTitle": "Your Trusted Legal Loan Provider in South Korea",
@@ -529,8 +530,10 @@
       "content": "Content",
       "blog": "Blog Posts",
       "notices": "Notices",
+      "countries": "Country Posts",
       "postsCount": "{{count}} posts",
-      "noticesCount": "{{count}} notices"
+      "noticesCount": "{{count}} notices",
+      "countryPostsCount": "{{count}} posts"
     },
     "stats": {
       "totalPosts": "Total Posts",
@@ -540,7 +543,19 @@
       "pinned": "Pinned",
       "latestNotice": "Latest Notice",
       "noPosts": "No posts yet",
-      "noNotices": "No notices yet"
+      "noNotices": "No notices yet",
+      "totalCountryPosts": "Total Posts",
+      "activeCountries": "Active Countries",
+      "latestCountryPost": "Latest Post",
+      "noCountryPosts": "No posts yet"
+    },
+    "tabs": {
+      "write": "Write",
+      "list": "List"
+    },
+    "country": {
+      "selectCountry": "Select Country",
+      "noPosts": "No posts yet. Create the first post from the Write tab."
     },
     "common": {
       "cancel": "Cancel",

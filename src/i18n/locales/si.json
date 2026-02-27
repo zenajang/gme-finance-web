@@ -7,7 +7,14 @@
     "applyNow": "Apply Now",
     "EMICalculator": "EMI Calculator",
     "continue": "ඉදිරියට",
-    "visit": "බලන්න"
+    "visit": "බලන්න",
+    "seeMore": "තව බලන්න"
+  },
+  "blog": {
+    "title": "බ්ලොග්",
+    "button": {
+      "viewAll": "සියලු පෝස්ට් බලන්න"
+    }
   },
   "country": {
     "sri lanka": "ශ්‍රී ලංකා"

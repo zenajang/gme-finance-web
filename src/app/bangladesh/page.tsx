@@ -4,73 +4,16 @@ import { useTranslation } from 'react-i18next';
 import IntroductionSection from "@/features/home/components/IntroductionSection";
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
-
-const BANGLADESH_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-bd",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/gmefinancebangladesh?locale=ko_KR",
-    href: "https://www.facebook.com/gmefinancebangladesh?locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME Bangladesh Finance (Facebook)",
-  },
-  {
-    id: "tt-bd",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gmefinancebangladesh",
-    href: "https://www.tiktok.com/@gmefinancebangladesh",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME Bangladesh Finance (TikTok)",
-  },
-];
-
-const BANGLADESH_TEAMS: Teams[] = [
-  {
-    id: 'taizul',
-    image: '/images/bangladesh/team/taizul.jpg',
-    name: 'TAIZUL',
-  },
-  {
-    id: 'parag',
-    image: '/images/bangladesh/team/parag.jpg',
-    name: 'PARAG',
-  },
-  {
-    id: 'ripon',
-    image: '/images/bangladesh/team/ripon.jpg',
-    name: 'RIPON',
-  },
-  {
-    id: 'saiful',
-    image: '/images/bangladesh/team/saiful.jpg',
-    name: 'SAIFUL',
-  },
-  {
-    id: 'smita',
-    image: '/images/team.svg',
-    name: 'SMITA',
-  },
-  {
-    id: 'ritu',
-    image: '/images/team.svg',
-    name: 'RITU',
-  },
-  {
-    id: 'rokan',
-    image: '/images/team.svg',
-    name: 'ROKAN',
-  },
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function BangladeshPage() {
   const { t } = useTranslation();
@@ -94,13 +37,14 @@ export default function BangladeshPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat bg-left top-0 -left-14 w-full h-65" style={{ backgroundImage: "url('/images/bangladesh/fireflake.svg')" }} />
           <LatestSocials
-            socials={BANGLADESH_SOCIALS}
+            socials={COUNTRY_SOCIALS.bangladesh}
             buttonBgColor={colors.primary}
             buttonHoverBgColor={colors.hover}
           />
           <div className="absolute bg-no-repeat top-210 bg-right -right-10 w-full h-65" style={{ backgroundImage: "url('/images/bangladesh/fireflake.svg')" }} />
+          <CountryBlogSection country="bangladesh" />
           <TeamSection
-            teams={BANGLADESH_TEAMS}
+            teams={COUNTRY_TEAMS.bangladesh}
             title='Bangladesh'
             nameBgColor={colors.primary}
           />

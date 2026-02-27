@@ -18,6 +18,7 @@ export default function BlogPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { t, i18n } = useTranslation();
+
   const { data: posts = [], isLoading, error } = useSWR(
     ['blog_posts', { published: true }],
     () => fetchPublishedPosts()
@@ -58,10 +59,13 @@ export default function BlogPage() {
     }
   }, [searchParams]);
 
+  // country 카테고리 포스트는 메인 블로그에서 제외
+  const mainPosts = posts.filter(p => p.category !== 'country');
+
   // 필터된 포스트
   const filteredPosts = filterCategory === 'all'
-    ? posts
-    : posts.filter(post => post.category === filterCategory);
+    ? mainPosts
+    : mainPosts.filter(post => post.category === filterCategory);
 
   const locale = i18n.language || 'en';
 
@@ -255,71 +259,71 @@ export default function BlogPage() {
 
         {/* Category Filter Tabs */}
         <div className="animate-fade-up flex flex-col items-center gap-3 mt-8">
-          {/* 모바일에서 선택된 카테고리 이름 표시 */}
-          <p className="md:hidden text-md font-bold text-red-500">
-            {filterCategory === 'all'
-              ? t('blog.filterSelected.all')
-              : filterCategory === 'blog'
-                ? t('blog.filterSelected.blog')
-                : t('blog.filterSelected.feedback')}
-          </p>
-          <div className="flex justify-center gap-2 flex-wrap">
-            <button
-              onClick={() => handleFilterChange('all')}
-              className={`px-3 md:px-6 py-2 text-sm md:text-base font-semibold rounded-full transition-all whitespace-nowrap ring-1 ring-black/5 ${filterCategory === 'all'
-                ? 'text-white shadow-md'
-                : 'bg-white/70 text-gray-700 hover:bg-white'
-                }`}
-              style={filterCategory === 'all' ? { backgroundColor: COMMON_COLORS.primary } : {}}
-            >
-              {t('blog.filter.all')}
-              <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'all' ? 'bg-white/20' : 'bg-gray-200'
-                }`}>
-                {posts.length}
-              </span>
-            </button>
-            <button
-              onClick={() => handleFilterChange('blog')}
-              className={`px-3 md:px-6 py-2 text-sm md:text-base font-semibold rounded-full transition-all whitespace-nowrap ring-1 ring-black/5 ${filterCategory === 'blog'
-                ? 'text-white shadow-md'
-                : 'bg-white/70 text-gray-700 hover:bg-white'
-                }`}
-              style={filterCategory === 'blog' ? { backgroundColor: COMMON_COLORS.primary } : {}}
-            >
-              {/* 모바일: 아이콘, 데스크톱: 텍스트 */}
-              <span className="md:hidden">
-                <svg className="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                </svg>
-              </span>
-              <span className="hidden md:inline">{t('blog.filter.blog')}</span>
-              <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'blog' ? 'bg-white/20' : 'bg-gray-200'
-                }`}>
-                {posts.filter(p => p.category === 'blog').length}
-              </span>
-            </button>
-            <button
-              onClick={() => handleFilterChange('customer_feedback')}
-              className={`px-3 md:px-6 py-2 text-sm md:text-base font-semibold rounded-full transition-all whitespace-nowrap ring-1 ring-black/5 ${filterCategory === 'customer_feedback'
-                ? 'text-white shadow-md'
-                : 'bg-white/70 text-gray-700 hover:bg-white'
-                }`}
-              style={filterCategory === 'customer_feedback' ? { backgroundColor: COMMON_COLORS.primary } : {}}
-            >
-              {/* 모바일: 아이콘, 데스크톱: 텍스트 */}
-              <span className="md:hidden">
-                <svg className="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-              </span>
-              <span className="hidden md:inline">{t('blog.filter.feedback')}</span>
-              <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'customer_feedback' ? 'bg-white/20' : 'bg-gray-200'
-                }`}>
-                {posts.filter(p => p.category === 'customer_feedback').length}
-              </span>
-            </button>
+            {/* 모바일에서 선택된 카테고리 이름 표시 */}
+            <p className="md:hidden text-md font-bold text-red-500">
+              {filterCategory === 'all'
+                ? t('blog.filterSelected.all')
+                : filterCategory === 'blog'
+                  ? t('blog.filterSelected.blog')
+                  : t('blog.filterSelected.feedback')}
+            </p>
+            <div className="flex justify-center gap-2 flex-wrap">
+              <button
+                onClick={() => handleFilterChange('all')}
+                className={`px-3 md:px-6 py-2 text-sm md:text-base font-semibold rounded-full transition-all whitespace-nowrap ring-1 ring-black/5 ${filterCategory === 'all'
+                  ? 'text-white shadow-md'
+                  : 'bg-white/70 text-gray-700 hover:bg-white'
+                  }`}
+                style={filterCategory === 'all' ? { backgroundColor: COMMON_COLORS.primary } : {}}
+              >
+                {t('blog.filter.all')}
+                <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'all' ? 'bg-white/20' : 'bg-gray-200'
+                  }`}>
+                  {mainPosts.length}
+                </span>
+              </button>
+              <button
+                onClick={() => handleFilterChange('blog')}
+                className={`px-3 md:px-6 py-2 text-sm md:text-base font-semibold rounded-full transition-all whitespace-nowrap ring-1 ring-black/5 ${filterCategory === 'blog'
+                  ? 'text-white shadow-md'
+                  : 'bg-white/70 text-gray-700 hover:bg-white'
+                  }`}
+                style={filterCategory === 'blog' ? { backgroundColor: COMMON_COLORS.primary } : {}}
+              >
+                {/* 모바일: 아이콘, 데스크톱: 텍스트 */}
+                <span className="md:hidden">
+                  <svg className="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                  </svg>
+                </span>
+                <span className="hidden md:inline">{t('blog.filter.blog')}</span>
+                <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'blog' ? 'bg-white/20' : 'bg-gray-200'
+                  }`}>
+                  {posts.filter(p => p.category === 'blog').length}
+                </span>
+              </button>
+              <button
+                onClick={() => handleFilterChange('customer_feedback')}
+                className={`px-3 md:px-6 py-2 text-sm md:text-base font-semibold rounded-full transition-all whitespace-nowrap ring-1 ring-black/5 ${filterCategory === 'customer_feedback'
+                  ? 'text-white shadow-md'
+                  : 'bg-white/70 text-gray-700 hover:bg-white'
+                  }`}
+                style={filterCategory === 'customer_feedback' ? { backgroundColor: COMMON_COLORS.primary } : {}}
+              >
+                {/* 모바일: 아이콘, 데스크톱: 텍스트 */}
+                <span className="md:hidden">
+                  <svg className="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </span>
+                <span className="hidden md:inline">{t('blog.filter.feedback')}</span>
+                <span className={`ml-1.5 px-1.5 py-0.5 text-xs rounded-full ${filterCategory === 'customer_feedback' ? 'bg-white/20' : 'bg-gray-200'
+                  }`}>
+                  {posts.filter(p => p.category === 'customer_feedback').length}
+                </span>
+              </button>
+            </div>
           </div>
-        </div>
       </div>
 
       {/* Blog Posts - 브런치 스타일 */}
@@ -335,7 +339,7 @@ export default function BlogPage() {
           </div>
         ) : (
           <div>
-            {/* 히어로 카드 - blog 카테고리만 (All일 때도 blog만, Customer Feedback 필터는 제외) */}
+            {/* 히어로 카드 - blog 카테고리만 */}
             {filterCategory !== 'customer_feedback' && (() => {
               const heroPost = filterCategory === 'all'
                 ? filteredPosts.find(p => p.category === 'blog')

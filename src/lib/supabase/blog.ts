@@ -7,7 +7,8 @@ export interface BlogPost {
   slug?: string | null;
   title: string;
   content: string;
-  category: 'blog' | 'customer_feedback';
+  category: 'blog' | 'customer_feedback' | 'country';
+  country?: string | null;
   author_email: string;
   thumbnail_url?: string | null;
   created_at: string;
@@ -15,7 +16,8 @@ export interface BlogPost {
 }
 
 export async function fetchPublishedPosts(options?: {
-  category?: 'blog' | 'customer_feedback';
+  category?: 'blog' | 'customer_feedback' | 'country';
+  country?: string;
   limit?: number;
 }): Promise<BlogPost[]> {
   const supabase = createClient();
@@ -27,6 +29,10 @@ export async function fetchPublishedPosts(options?: {
 
   if (options?.category) {
     query = query.eq('category', options.category);
+  }
+
+  if (options?.country) {
+    query = query.eq('country', options.country);
   }
 
   if (options?.limit) {

@@ -71,7 +71,7 @@ export const COUNTRY_EMAILS: Record<string, string> = {
   cis: "gmefinancecis@gmeremit.com",
   in: "gmefinanceindia@gmeremit.com",
   id: "gmefinanceidn@gmeremit.com",
-  la: "gmefinancepak@gmeremit.com", // Laos - default
+  la: "gmefinancepak@gmeremit.com",
   mn: "gmefinancemongolia@gmeremit.com",
   mm: "gmefinancemyan@gmeremit.com",
   np: "gmefinancenepal@gmeremit.com",

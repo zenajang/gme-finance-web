@@ -101,7 +101,7 @@ export default function BlogDetailPage() {
         {/* Navigation */}
         <div className="mt-8 text-center animate-fade-up">
           <Link
-            href="/about/blog"
+            href={post.category === 'country' && post.country ? `/${post.country}/blog` : '/about/blog'}
             className="inline-block px-6 py-3 bg-red-600 text-white rounded-full shadow-md hover:bg-red-700 transition-colors"
           >
             {t('blog.button.viewAll')}

@@ -1,0 +1,172 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { COMMON_COLORS } from '@/constants/colors';
+import 'swiper/css';
+import { useTranslation } from 'react-i18next';
+
+interface CountryBlogPost {
+  id: string;
+  slug?: string | null;
+  title: string;
+  content: string;
+  country: string;
+  thumbnail_url?: string | null;
+  created_at: string;
+}
+
+function formatDate(d: string) {
+  const dt = new Date(d);
+  return `${dt.getFullYear()}.${String(dt.getMonth() + 1).padStart(2, '0')}.${String(dt.getDate()).padStart(2, '0')}`;
+}
+
+function extractFirstImage(html: string): string | null {
+  const imgMatch = html.match(/<img[^>]+src="([^">]+)"/);
+  return imgMatch ? imgMatch[1] : null;
+}
+
+function getTextPreview(html: string): string {
+  return html.replace(/<[^>]*>/g, '');
+}
+
+function NewsCard({ post, onClick }: { post: CountryBlogPost; onClick: () => void }) {
+  const thumbnail = post.thumbnail_url || extractFirstImage(post.content);
+  const [isImageReady, setIsImageReady] = useState(!thumbnail);
+
+  return (
+    <article
+      onClick={onClick}
+      className="group rounded-2xl bg-white flex flex-col h-[380px] md:h-auto md:aspect-[4/5] shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition-transform duration-600 hover:-translate-y-2 hover:scale-[1.02]"
+    >
+      <div className="p-6 md:p-10 flex flex-col flex-1">
+        <header className="flex items-start justify-between mb-3">
+          <div className="flex items-start gap-2">
+            <Image src="/images/speaker.png" alt="Speaker" width={25} height={25} className="w-5 h-5 md:w-[25px] md:h-[25px]" />
+            <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2">
+              <p className="text-sm md:text-[1.1em]">News</p>
+              <p className="text-xs md:text-sm text-gray-500 md:mt-0.5">{formatDate(post.created_at)}</p>
+            </div>
+          </div>
+        </header>
+
+        <h3 className="text-sm md:text-[1.85rem] leading-snug line-clamp-3 mb-3 font-bold md:font-medium">
+          {post.title}
+        </h3>
+
+        <p className="text-sm md:text-sm lg:text-[1rem] text-gray-600 line-clamp-6 md:line-clamp-3">
+          {getTextPreview(post.content)}
+        </p>
+      </div>
+      <div className="relative w-full h-[180px] md:h-3/5">
+        {thumbnail ? (
+          <Image
+            src={thumbnail}
+            alt={post.title}
+            fill
+            className="object-cover transition-transform duration-1200 group-hover:scale-110"
+            sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+            priority={false}
+            onLoad={() => setIsImageReady(true)}
+            onError={() => setIsImageReady(true)}
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
+            <svg className="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            </svg>
+          </div>
+        )}
+        {!isImageReady && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div
+              className="w-10 h-10 rounded-full animate-spin"
+              style={{ border: '4px solid #e5e7eb', borderTopColor: COMMON_COLORS.primary }}
+            />
+          </div>
+        )}
+      </div>
+    </article>
+  );
+}
+
+interface CountryBlogSectionProps {
+  country: string;
+}
+
+export default function CountryBlogSection({ country }: CountryBlogSectionProps) {
+  const { t } = useTranslation();
+  const router = useRouter();
+  const [posts, setPosts] = useState<CountryBlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const supabase = createClient();
+        const { data } = await supabase
+          .from('blog_posts')
+          .select('id, slug, title, content, country, thumbnail_url, created_at')
+          .eq('category', 'country')
+          .eq('country', country)
+          .eq('published', true)
+          .order('created_at', { ascending: false })
+          .limit(3);
+        setPosts(data ?? []);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, [country]);
+
+  if (loading || posts.length === 0) return null;
+
+  return (
+    <section className="py-8 md:py-14 lg:py-16 px-0 md:px-45 lg:px-45">
+      <div className="px-0 md:px-3 lg:px-3">
+        <h2 className="text-heading text-gray-900 text-center md:px-0 md:mb-15">{t('blog.title')}</h2>
+
+        {/* 모바일 - Swiper */}
+        <div className="block md:hidden mt-0 py-6">
+          <Swiper
+            spaceBetween={20}
+            slidesPerView={1.15}
+            slidesOffsetBefore={20}
+            slidesOffsetAfter={-10}
+            centeredSlides={false}
+          >
+            {posts.map((post, index) => (
+              <SwiperSlide key={post.id}>
+                <div className={index === posts.length - 1 ? 'pr-5' : ''}>
+                  <NewsCard post={post} onClick={() => router.push(`/about/blog/${post.slug || post.id}`)} />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* 데스크톱 - Grid */}
+        <div className="hidden md:flex md:flex-wrap md:justify-center gap-8 mt-8">
+          {posts.map((post) => (
+            <div key={post.id} className="w-full md:w-[calc(33.333%-1.5rem)]">
+              <NewsCard post={post} onClick={() => router.push(`/about/blog/${post.slug || post.id}`)} />
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-0 md:mt-15 lg:mt-15">
+          <button
+            onClick={() => router.push(`/${country}/blog`)}
+            className="inline-block bg-white text-md md:text-[1.35rem] rounded-xl shadow-sm lg:text-[1.35rem] text-red-500 cursor-pointer px-18 md:px-40 lg:px-40 py-2 md:py-6 lg:py-6 font-semibold hover:bg-red-50 transition-colors"
+          >
+            {t('button.seeMore')}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}

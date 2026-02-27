@@ -7,7 +7,14 @@
     "applyNow": "Яг одоо зээлийн хүсэлтээ гаргаарай",
     "EMICalculator": "EMI тооцоолуур",
     "continue": "Үргэлжлүүлэх",
-    "visit": "Үзэх"
+    "visit": "Үзэх",
+    "seeMore": "Цааш үзэх"
+  },
+  "blog": {
+    "title": "Блог",
+    "button": {
+      "viewAll": "Бүх нийтлэл харах"
+    }
   },
   "country": {
     "mongolia": "Монгол"

@@ -4,64 +4,16 @@ import { getGradient } from "@/constants/colors";
 import IntroductionSection from "@/features/home/components/IntroductionSection";
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-
-const CAMBODIA_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-cb",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/profile.php?id=61568524845755&locale=ko_KR",
-    href: "https://www.facebook.com/profile.php?id=61568524845755&locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME Cambodia Finance (Facebook)",
-  },
-  {
-    id: "tt-cb",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gmefinancecambodia",
-    href: "https://www.tiktok.com/@gmefinancecambodia",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME Cambodia Finance (TikTok)",
-  }
-];
-
-const CAMBODIA_TEAMS: Teams[] = [
-  {
-    id: 'tabitha',
-    image: '/images/cambodia/team/tabitha.jpg',
-    name: 'TABITHA',
-  },
-  {
-    id: 'viny',
-    image: '/images/cambodia/team/viny.jpg',
-    name: 'VINY',
-
-  },
-  {
-    id: 'kanha',
-    image: '/images/team.svg',
-    name: 'KANHA',
-  },
-  {
-    id: 'sophea',
-    image: '/images/team.svg',
-    name: 'SOPHEA',
-  },
-  {
-    id: 'chhea',
-    image: '/images/team.svg',
-    name: 'CHHEA',
-  },
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function CambodiaPage() {
   const { t } = useTranslation();
@@ -82,9 +34,10 @@ export default function CambodiaPage() {
           <div className="absolute bg-no-repeat -top-450 bg-center w-full" style={{ backgroundImage: "url('/images/cambodia/pattern_w.svg')", backgroundSize: '100%', height: '180%', backgroundRepeat: 'no-repeat', zIndex: 0 }} />
           <div className="relative" style={{ zIndex: 10 }}>
             <LatestSocials
-              socials={CAMBODIA_SOCIALS} />
+              socials={COUNTRY_SOCIALS.cambodia} />
+            <CountryBlogSection country="cambodia" />
             <TeamSection
-              teams={CAMBODIA_TEAMS}
+              teams={COUNTRY_TEAMS.cambodia}
               title='Cambodia'
             />
           </div>

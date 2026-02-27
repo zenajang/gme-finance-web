@@ -5,79 +5,16 @@ import { getColorScheme, getGradient } from "@/constants/colors";
 import IntroductionSection from "@/features/home/components/IntroductionSection";
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-
-const INDONESIA_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-in",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/gmefinanceindonesia?locale=ko_KR",
-    href: "https://www.facebook.com/gmefinanceindonesia?locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME Indonesia Finance (Facebook)",
-  },
-  {
-    id: "tt-in",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gmefinanceindonesia",
-    href: "https://www.tiktok.com/@gmefinanceindonesia",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME Indonesia Finance (TikTok)",
-  },
-  {
-    id: "is-in",
-    platform: "instagram_post",
-    embedUrl: "https://www.instagram.com/reel/DQwfSNtjxr5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    href: "https://www.instagram.com/gmefinance.indonesia/",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/instagram.svg",
-    title: "GME Indonesia Finance (Instagram post)",
-  },
-];
-
-const INDONESIA_TEAMS: Teams[] = [
-  {
-    id: 'ferry',
-    image: '/images/indonesia/team/ferry.jpg',
-    name: 'FERRY',
-  },
-  {
-    id: 'livi',
-    image: '/images/indonesia/team/livi.jpg',
-    name: 'LIVI',
-
-  },
-  {
-    id: 'adiba',
-    image: '/images/team.svg',
-    name: 'ADIBA',
-  },
-  {
-    id: 'winda',
-    image: '/images/team.svg',
-    name: 'WINDA',
-  },
-  {
-    id: 'sandi',
-    image: '/images/team.svg',
-    name: 'SANDI',
-
-  },
-  {
-    id: 'widi',
-    image: '/images/team.svg',
-    name: 'WIDI',
-  },
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function IndonesiaPage() {
   const { t } = useTranslation();
@@ -98,9 +35,10 @@ export default function IndonesiaPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-repeat bg-top top-0 w-full h-300" style={{ backgroundImage: "url('/images/indonesia/garland_d.svg')", transform: 'rotate(180deg)' }} />
           <LatestSocials
-            socials={INDONESIA_SOCIALS} />
+            socials={COUNTRY_SOCIALS.indonesia} />
+          <CountryBlogSection country="indonesia" />
           <TeamSection
-            teams={INDONESIA_TEAMS}
+            teams={COUNTRY_TEAMS.indonesia}
             title='Indonesia'
           />
         </section>
@@ -112,7 +50,7 @@ export default function IndonesiaPage() {
         <LoanTypesSection />
         <section className="bg-no-repeat relative overflow-hidden">
           <ProcessStep />
-          <div className="absolute bg-repeat bg-bottom bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/indonesia/garland_u.svg')", transform: 'rotate(180deg)' }} />
+          <div className="absolute pointer-events-none bg-repeat bg-bottom bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/indonesia/garland_u.svg')", transform: 'rotate(180deg)' }} />
         </section>
       </div>
       <LoanDetailSection backgroundImage="/images/indonesia/loan_detail_bg.webp" country="indonesia" />

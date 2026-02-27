@@ -3,53 +3,17 @@
 import IntroductionSection from "@/features/home/components/IntroductionSection";
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-
-const PAKISTAN_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-pk",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/GMEFinancePakistan?locale=ko_KR",
-    href: "https://www.facebook.com/GMEFinancePakistan?locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME Pakistan Finance (Facebook)",
-  },
-  {
-    id: "tt-pk",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gmefinancepakistan",
-    href: "https://www.tiktok.com/@gmefinancepakistan",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME Pakistan Finance (TikTok)",
-  },
-  {
-    id: "is-pk",
-    platform: "instagram_post",
-    embedUrl: "https://www.instagram.com/reel/DSVB_4Pke3s/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    href: "https://www.instagram.com/gme_pakistan/",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/instagram.svg",
-    title: "GME Pakistan Finance (Instagram post)",
-  },
-];
-
-const PAKISTAN_TEAMS: Teams[] = [
-  {
-    id: 'malaika',
-    image: '/images/team.svg',
-    name: 'MALAIKA',
-  },
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function PakistanPage() {
   const colors = getColorScheme('pakistan')
@@ -71,11 +35,12 @@ export default function PakistanPage() {
         style={{ background: getGradient('pakistan') }}
       >
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat bg-top -top-40 -left-200 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/flower.svg')" }} />
+          <div className="absolute pointer-events-none bg-no-repeat bg-top -top-40 -left-200 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/flower.svg')" }} />
           <LatestSocials
-            socials={PAKISTAN_SOCIALS} buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
+            socials={COUNTRY_SOCIALS.pakistan} buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
+          <CountryBlogSection country="pakistan" />
           <TeamSection
-            teams={PAKISTAN_TEAMS}
+            teams={COUNTRY_TEAMS.pakistan}
             nameBgColor={colors.primary}
             title='pakistan'
           />
@@ -104,7 +69,7 @@ export default function PakistanPage() {
       </div>
       <LoanDetailSection backgroundImage="/images/pakistan/loan_detail_bg.webp" country="pakistan" />
       <div className="relative" style={{ background: getGradient('pakistan', true) }}>
-        <div className="absolute bg-repeat top-0 left-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/pattern.svg')", backgroundSize: 'auto' }} />
+        <div className="absolute pointer-events-none bg-repeat top-0 left-0 w-full h-full" style={{ backgroundImage: "url('/images/pakistan/pattern.svg')", backgroundSize: 'auto' }} />
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="pakistan" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />

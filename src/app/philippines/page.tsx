@@ -3,78 +3,15 @@ import IntroductionSection from "@/features/home/components/IntroductionSection"
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
-
-const PHILIPPINES_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-ph",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/gmefinanceph?locale=ko_KR",
-    href: "https://www.facebook.com/gmefinanceph?locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME Philippines Finance (Facebook)",
-  },
-  {
-    id: "tt-ph",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gmefinancephilippines",
-    href: "https://www.tiktok.com/@gmefinancephilippines",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME Philippines Finance (TikTok)",
-  },
-  {
-    id: "is-ph",
-    platform: "instagram_post",
-    embedUrl: "https://www.instagram.com/p/DSYn5btj202/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    href: "https://www.instagram.com/gmefinance.philippines/",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/instagram.svg",
-    title: "GME Philippines Finance (Instagram post)",
-  },
-];
-
-const PHILIPPINES_TEAMS: Teams[] = [
-  {
-    id: 'glen',
-    image: '/images/philippines/team/glen.jpg',
-    name: 'GLEN',
-  },
-  {
-    id: 'eunice',
-    image: '/images/philippines/team/eunice.jpg',
-    name: 'EUNICE',
-
-  },
-  {
-    id: 'cherry',
-    image: '/images/philippines/team/cherry.jpg',
-    name: 'CHERRY',
-  },
-  {
-    id: 'jo',
-    image: '/images/team.svg',
-    name: 'JO',
-  },
-  {
-    id: 'josh',
-    image: '/images/team.svg',
-    name: 'JOSH',
-
-  },
-  {
-    id: 'kais',
-    image: '/images/team.svg',
-    name: 'KAIS',
-  },
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function PhilippinesPage() {
   const colors = getColorScheme('philippines')
@@ -91,9 +28,10 @@ export default function PhilippinesPage() {
       >
         <section className="bg-no-repeat relative overflow-hidden">
           <LatestSocials
-            socials={PHILIPPINES_SOCIALS} />
+            socials={COUNTRY_SOCIALS.philippines} />
+          <CountryBlogSection country="philippines" />
           <TeamSection
-            teams={PHILIPPINES_TEAMS}
+            teams={COUNTRY_TEAMS.philippines}
             title='Philippines'
           />
         </section>

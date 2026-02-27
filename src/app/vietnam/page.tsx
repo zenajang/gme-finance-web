@@ -3,50 +3,17 @@
 import IntroductionSection from "@/features/home/components/IntroductionSection";
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import { getGradient } from "@/constants/colors";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-
-const VIETNAM_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-vn",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/gmefinancevn?locale=ko_KR",
-    href: "https://www.facebook.com/gmefinancevn?locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME Vietnam Finance (Facebook)",
-  },
-  {
-    id: "tt-vn",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gmefinancevietnam",
-    href: "https://www.tiktok.com/@gmefinancevietnam",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME Vietnam Finance (TikTok)",
-  }
-];
-
-const VIETNAM_TEAMS: Teams[] = [
-  {
-    id: 'lenissa',
-    image: '/images/vietnam/team/lenissa.jpg',
-    name: 'LENISSA',
-  },
-  {
-    id: 'haha',
-    image: '/images/vietnam/team/haha.jpg',
-    name: 'HAHA',
-
-  }
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function VietnamPage() {
   const { t } = useTranslation()
@@ -66,10 +33,11 @@ export default function VietnamPage() {
       >
         <section className="bg-no-repeat relative overflow-hidden">
           <LatestSocials
-            socials={VIETNAM_SOCIALS} />
-          <div className="absolute bg-no-repeat -top-170 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_y.svg')", backgroundSize: '25% auto' }} />
+            socials={COUNTRY_SOCIALS.vietnam} />
+          <div className="absolute pointer-events-none bg-no-repeat -top-170 bg-left -left-30 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_y.svg')", backgroundSize: '25% auto' }} />
+          <CountryBlogSection country="vietnam" />
           <TeamSection
-            teams={VIETNAM_TEAMS}
+            teams={COUNTRY_TEAMS.vietnam}
             title='vietnam'
           />
         </section>
@@ -90,7 +58,7 @@ export default function VietnamPage() {
         />
         <LoanTypesSection />
         <section className="bg-no-repeat relative overflow-hidden">
-          <div className="absolute bg-no-repeat bg-right -bottom-80 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')", backgroundSize: '20% auto' }} />
+          <div className="absolute pointer-events-none bg-no-repeat bg-right -bottom-80 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')", backgroundSize: '20% auto' }} />
           <ProcessStep />
         </section>
       </div>

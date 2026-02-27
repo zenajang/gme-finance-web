@@ -4,85 +4,17 @@ import IntroductionSection
   from "@/features/home/components/IntroductionSection";
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-
-const MYANMAR_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-in",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/profile.php?id=61574808429892&locale=ko_KR",
-    href: "https://www.facebook.com/profile.php?id=61574808429892&locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME Myanmar Finance (Facebook)",
-  },
-  {
-    id: "tt-in",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gmefinancemyanmar",
-    href: "https://www.tiktok.com/@gmefinancemyanmar",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME Myanmar Finance (TikTok)",
-  },
-  {
-    id: "is-in",
-    platform: "instagram_post",
-    embedUrl: "https://www.instagram.com/p/DHzkAyFuID_/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    href: "https://www.instagram.com/gmefinancemyanmar/",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/instagram.svg",
-    title: "GME Myanmar Finance (Instagram post)",
-  },
-];
-
-const MYANMAR_TEAMS: Teams[] = [
-  {
-    id: 'min',
-    image: '/images/myanmar/team/min.jpg',
-    name: 'MIN',
-  },
-  {
-    id: 'suzan',
-    image: '/images/myanmar/team/suzan.jpg',
-    name: 'SUZAN',
-
-  },
-  {
-    id: 'crystal',
-    image: '/images/myanmar/team/crystal.jpg',
-    name: 'CRYSTAL',
-  },
-  {
-    id: 'eaindra',
-    image: '/images/myanmar/team/eaindra.jpg',
-    name: 'EAINDRA',
-  },
-  {
-    id: 'hanna',
-    image: '/images/team.svg',
-    name: 'HANNA',
-
-  },
-  {
-    id: 'thazin',
-    image: '/images/team.svg',
-    name: 'THAZIN',
-  },
-  {
-    id: 'puhe',
-    image: '/images/team.svg',
-    name: 'PUHE',
-  },
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function MyanmarPage() {
   const colors = getColorScheme('myanmar')
@@ -106,12 +38,13 @@ export default function MyanmarPage() {
         <section className="bg-no-repeat bg-cover bg-center relative overflow-hidden">
           <div className="absolute bg-no-repeat bg-cover bg-center top-0 w-full h-160 md:h-330" style={{ backgroundImage: "url('/images/myanmar/wave_t.svg')" }} />
           <LatestSocials
-            socials={MYANMAR_SOCIALS}
+            socials={COUNTRY_SOCIALS.myanmar}
             buttonBgColor={colors.primary}
             buttonHoverBgColor={colors.hover}
           />
+          <CountryBlogSection country="myanmar" />
           <TeamSection
-            teams={MYANMAR_TEAMS}
+            teams={COUNTRY_TEAMS.myanmar}
             title='Myanmar'
             nameBgColor={colors.primary}
           />

@@ -3,91 +3,17 @@
 import IntroductionSection from "@/features/home/components/IntroductionSection";
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-
-const RUSSIA_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-rus",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/gmefinancerussia?locale=ko_KR",
-    href: "https://www.facebook.com/gmefinancerussia?locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME Russia Finance (Facebook)",
-  },
-  {
-    id: "tt-rus",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gmefinancerus",
-    href: "https://www.tiktok.com/@gmefinancerus",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME Russia Finance (TikTok)",
-  },
-  {
-    id: "is-rus",
-    platform: "instagram_post",
-    embedUrl: "https://www.instagram.com/p/DSHJ7ocEiq_/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    href: "https://www.instagram.com/gmefinancecis/",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/instagram.svg",
-    title: "GME Russia Finance (Instagram post)",
-  },
-];
-
-const RUSSIA_TEAMS: Teams[] = [
-  {
-    id: 'hamid',
-    image: '/images/uzbekistan/team/hamid.jpg',
-    name: 'HAMID',
-  },
-  {
-    id: 'jed',
-    image: '/images/uzbekistan/team/jed.jpg',
-    name: 'JED',
-
-  },
-  {
-    id: 'mark',
-    image: '/images/uzbekistan/team/mark.jpg',
-    name: 'MARK',
-  },
-  {
-    id: 'mikhail',
-    image: '/images/uzbekistan/team/mikhail.jpg',
-    name: 'MIKHAIL',
-  },
-  {
-    id: 'ruby',
-    image: '/images/uzbekistan/team/ruby.jpg',
-    name: 'RUBY',
-
-  },
-  {
-    id: 'ziyoda',
-    image: '/images/uzbekistan/team/ziyoda.jpg',
-    name: 'ZIYODA',
-  },
-  {
-    id: 'zoda',
-    image: '/images/uzbekistan/team/zoda.jpg',
-    name: 'ZODA',
-
-  },
-  {
-    id: 'abror',
-    image: '/images/team.svg',
-    name: 'ABROR',
-  },
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function RussiaPage() {
   const colors = getColorScheme('russia')
@@ -111,12 +37,13 @@ export default function RussiaPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-repeat bg-top top-0 w-full h-130" style={{ backgroundImage: "url('/images/russia/snow_bg_b.svg')" }} />
           <LatestSocials
-            socials={RUSSIA_SOCIALS}
+            socials={COUNTRY_SOCIALS.russia}
             buttonBgColor={colors.primary}
             buttonHoverBgColor={colors.hover}
           />
+          <CountryBlogSection country="russia" />
           <TeamSection
-            teams={RUSSIA_TEAMS}
+            teams={COUNTRY_TEAMS.russia}
             title={'cis'}
             nameBgColor={colors.primary}
           />

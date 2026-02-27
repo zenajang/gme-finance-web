@@ -7,7 +7,14 @@
     "applyNow": "ដាក់ស្នើឥឡូវនេះ",
     "EMICalculator": "គណនាការទូទាត់ EMI",
     "continue": "បន្តរ",
-    "visit": "ចូលមើល"
+    "visit": "ចូលមើល",
+    "seeMore": "មើលបន្ថែម"
+  },
+  "blog": {
+    "title": "ប្លក់",
+    "button": {
+      "viewAll": "មើលអត្ថបទទាំងអស់"
+    }
   },
   "country": {
     "cambodia": "កម្ពុជា",

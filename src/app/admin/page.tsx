@@ -9,10 +9,12 @@ import { useSWRConfig } from 'swr';
 import { useTranslation } from 'react-i18next';
 import BlogSection from '@/app/admin/components/BlogSection';
 import NoticeSection from '@/app/admin/components/NoticeSection';
+import CountrySection from '@/app/admin/components/CountrySection';
 import AdminHeader from '@/app/admin/components/AdminHeader';
 import AdminSidebar from '@/app/admin/components/AdminSidebar';
 import AdminStats from '@/app/admin/components/AdminStats';
-import type { BlogPost, NoticePost, NoticeCategoryOption } from '@/app/admin/types';
+import type { BlogPost, NoticePost, NoticeCategoryOption, CountryPost, CountryKey } from '@/app/admin/types';
+// CountryPost and CountryKey used below in state declarations
 import { useAdminAuth } from '@/app/admin/hooks/useAdminAuth';
 import { useBlogPosts } from '@/app/admin/hooks/useBlogPosts';
 import { useNotices } from '@/app/admin/hooks/useNotices';
@@ -183,9 +185,20 @@ export default function AdminPage() {
   const { mutate } = useSWRConfig();
   const { t, i18n } = useTranslation();
   const { user, loading, checkUser, handleLogout } = useAdminAuth();
-  const [activeSection, setActiveSection] = useState<'blog' | 'notices'>('blog');
+  const [activeSection, setActiveSection] = useState<'blog' | 'notices' | 'countries'>('blog');
   const [activeBlogTab, setActiveBlogTab] = useState<'write' | 'list'>('write');
   const [activeNoticeTab, setActiveNoticeTab] = useState<'write' | 'list' | 'templates'>('write');
+  const [activeCountryTab, setActiveCountryTab] = useState<'write' | 'list'>('write');
+
+  // Country blog state
+  const [countryPosts, setCountryPosts] = useState<CountryPost[]>([]);
+  const [countryTitle, setCountryTitle] = useState('');
+  const [countryContent, setCountryContent] = useState('');
+  const [countrySelected, setCountrySelected] = useState<CountryKey>('vietnam');
+  const [countrySaving, setCountrySaving] = useState(false);
+  const [countryEditMode, setCountryEditMode] = useState(false);
+  const [countryEditingId, setCountryEditingId] = useState<string | null>(null);
+  const [filterCountry, setFilterCountry] = useState<CountryKey | 'all'>('all');
 
   const noticeCategoryOptions: ReadonlyArray<NoticeCategoryOption> = [
     { value: 'loss_of_benefit', label: t('notices.category.loss_of_benefit') },
@@ -284,12 +297,77 @@ export default function AdminPage() {
     setActiveNoticeTab('write');
   };
 
+  const resetCountryForm = () => {
+    setCountryTitle('');
+    setCountryContent('');
+    setCountrySelected('vietnam');
+    setCountryEditMode(false);
+    setCountryEditingId(null);
+  };
+
+  const handleEditCountry = (post: CountryPost) => {
+    setCountryTitle(post.title);
+    setCountryContent(post.content);
+    setCountrySelected(post.country);
+    setCountryEditMode(true);
+    setCountryEditingId(post.id);
+    setActiveSection('countries');
+    setActiveCountryTab('write');
+  };
+
+  const handleSaveCountry = async () => {
+    if (!countryTitle.trim()) return;
+    setCountrySaving(true);
+    try {
+      const supabase = createClient();
+      const thumbnail = await getThumbnailUrlFromContent(countryContent);
+      const payload = {
+        title: countryTitle.trim(),
+        content: countryContent,
+        country: countrySelected,
+        category: 'country' as const,
+        published: true,
+        author_id: user?.id,
+        author_email: user?.email,
+        thumbnail_url: thumbnail,
+      };
+      if (countryEditMode && countryEditingId) {
+        await supabase.from('blog_posts').update({ ...payload, updated_at: new Date().toISOString() }).eq('id', countryEditingId);
+      } else {
+        await supabase.from('blog_posts').insert([payload]);
+      }
+      resetCountryForm();
+      setActiveCountryTab('list');
+      await fetchCountryPosts();
+    } finally {
+      setCountrySaving(false);
+    }
+  };
+
+  const handleDeleteCountry = async (id: string) => {
+    if (!confirm(t('admin.alerts.deleteNoticeConfirm'))) return;
+    const supabase = createClient();
+    await supabase.from('blog_posts').delete().eq('id', id);
+    await fetchCountryPosts();
+  };
+
+  const fetchCountryPosts = async () => {
+    const supabase = createClient();
+    const { data } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('category', 'country')
+      .order('created_at', { ascending: false });
+    setCountryPosts((data ?? []) as CountryPost[]);
+  };
+
   // Check user authentication
   useEffect(() => {
     checkUser();
     fetchPosts();
     fetchNotices();
     fetchNoticeTemplates();
+    fetchCountryPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -380,14 +458,38 @@ export default function AdminPage() {
             setActiveSection={setActiveSection}
             postsCount={posts.length}
             noticesCount={notices.length}
+            countryPostsCount={countryPosts.length}
             t={t}
           />
 
           {/* Content */}
           <section className="flex-1 min-w-0">
-            <AdminStats activeSection={activeSection} posts={posts} notices={notices} t={t} />
+            <AdminStats activeSection={activeSection} posts={posts} notices={notices} countryPosts={countryPosts} t={t} />
 
-            {activeSection === 'blog' ? (
+            {activeSection === 'countries' ? (
+              <CountrySection
+                activeCountryTab={activeCountryTab}
+                setActiveCountryTab={setActiveCountryTab}
+                isEditMode={countryEditMode}
+                resetForm={resetCountryForm}
+                title={countryTitle}
+                setTitle={setCountryTitle}
+                country={countrySelected}
+                setCountry={setCountrySelected}
+                content={countryContent}
+                setContent={setCountryContent}
+                saving={countrySaving}
+                handleSave={handleSaveCountry}
+                posts={countryPosts}
+                filterCountry={filterCountry}
+                setFilterCountry={setFilterCountry}
+                handleEdit={handleEditCountry}
+                handleDelete={handleDeleteCountry}
+                locale={locale}
+                t={t}
+                Editor={TiptapEditor}
+              />
+            ) : activeSection === 'blog' ? (
               <BlogSection
                 activeBlogTab={activeBlogTab}
                 setActiveBlogTab={setActiveBlogTab}

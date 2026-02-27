@@ -7,7 +7,14 @@
     "applyNow": "Подать заявку сейчас",
     "EMICalculator": "Калькулятор EMI",
     "continue": "Продолжить",
-    "visit": "Посетить"
+    "visit": "Посетить",
+    "seeMore": "Смотреть ещё"
+  },
+  "blog": {
+    "title": "Блог",
+    "button": {
+      "viewAll": "Все публикации"
+    }
   },
   "country": {
     "russia": "Россия",

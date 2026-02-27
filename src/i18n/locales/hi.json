@@ -1,4 +1,13 @@
 {
+  "button": {
+    "seeMore": "और देखें"
+  },
+  "blog": {
+    "title": "ब्लॉग",
+    "button": {
+      "viewAll": "सभी पोस्ट देखें"
+    }
+  },
   "home": {
     "applyLoanAppSubTitle": "Loan up to 35 Million KRW",
     "applyLoanAppSubTitleByCountry": {

@@ -4,76 +4,16 @@ import { getColorScheme, getGradient } from "@/constants/colors";
 import IntroductionSection from "@/features/home/components/IntroductionSection";
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-
-const SRILANKA_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-sr",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/gmefinancesrilanka?locale=ko_KR",
-    href: "https://www.facebook.com/gmefinancesrilanka?locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME Sri Lanka Finance (Facebook)",
-  },
-  {
-    id: "tt-sr",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gme_finance_srilanka",
-    href: "https://www.tiktok.com/@gme_finance_srilanka",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME Sri Lanka Finance (TikTok)",
-  },
-];
-
-const SRILANKA_TEAMS: Teams[] = [
-  {
-    id: 'malsha',
-    image: '/images/srilanka/team/malsha.jpg',
-    name: 'MALSHA',
-  },
-  {
-    id: 'nova',
-    image: '/images/srilanka/team/nova.jpg',
-    name: 'NOVA',
-
-  },
-  {
-    id: 'udra',
-    image: '/images/srilanka/team/udra.jpg',
-    name: 'UDRA',
-  },
-  {
-    id: 'mallikaa',
-    image: '/images/team.svg',
-    name: 'MALLIKA',
-  },
-  {
-    id: 'thilini',
-    image: '/images/team.svg',
-    name: 'THILINI',
-
-  },
-  {
-    id: 'subodani',
-    image: '/images/team.svg',
-    name: 'SUBODANI',
-  },
-  {
-    id: 'amalsha',
-    image: '/images/team.svg',
-    name: 'AMALSHA',
-
-  }
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function SrilankaPage() {
   const { t } = useTranslation()
@@ -95,9 +35,10 @@ export default function SrilankaPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat bg-left -top-30 left-0 w-full h-100 md:h-220" style={{ backgroundImage: "url('/images/srilanka/garland_u.svg')", backgroundSize: 'contain' }} />
           <LatestSocials
-            socials={SRILANKA_SOCIALS} />
+            socials={COUNTRY_SOCIALS.srilanka} />
+          <CountryBlogSection country="srilanka" />
           <TeamSection
-            teams={SRILANKA_TEAMS}
+            teams={COUNTRY_TEAMS.srilanka}
             title='Sri lanka'
           />
           <TeamVideoSection

@@ -7,7 +7,14 @@
     "applyNow": "Đăng ký ngay",
     "EMICalculator": "Máy tính EMI",
     "continue": "Tiếp tục",
-    "visit": "Truy cập"
+    "visit": "Truy cập",
+    "seeMore": "Xem thêm"
+  },
+  "blog": {
+    "title": "Blog",
+    "button": {
+      "viewAll": "Xem tất cả bài viết"
+    }
   },
   "country": {
     "vietnam": "Việt Nam"

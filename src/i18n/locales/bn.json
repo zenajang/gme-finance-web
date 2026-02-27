@@ -7,7 +7,14 @@
     "applyNow": "এখনই আবেদন করুন",
     "EMICalculator": "মাসিক কিস্তি (EMI) ক্যালকুলেটর",
     "continue": "চালিয়ে যান",
-    "visit": "ভিজিট করুন"
+    "visit": "ভিজিট করুন",
+    "seeMore": "আরো দেখুন"
+  },
+  "blog": {
+    "title": "ব্লগ",
+    "button": {
+      "viewAll": "সব পোস্ট দেখুন"
+    }
   },
   "country": {
     "bangladesh": "বাংলাদেশ"

@@ -4,43 +4,16 @@ import { getColorScheme, getGradient } from "@/constants/colors";
 import IntroductionSection from "@/features/home/components/IntroductionSection";
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-
-const THAILAND_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-th",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/gmethai.finance?locale=ko_KR",
-    href: "https://www.facebook.com/gmethai.finance?locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME Thailand Finance (Facebook)",
-  },
-  {
-    id: "tt-th",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gmefinancethailand",
-    href: "https://www.tiktok.com/@gmefinancethailand",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME Thailand Finance (TikTok)",
-  },
-];
-
-const THAILAND_TEAMS: Teams[] = [
-  {
-    id: 'attaya',
-    image: '/images/team.svg',
-    name: 'ATTHAYA',
-  }
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function ThailandPage() {
   const colors = getColorScheme('thailand')
@@ -61,11 +34,12 @@ export default function ThailandPage() {
       >
         <section className="bg-no-repeat relative overflow-hidden">
           <LatestSocials
-            socials={THAILAND_SOCIALS}
+            socials={COUNTRY_SOCIALS.thailand}
             titleColor={colors.title}
           />
+          <CountryBlogSection country="thailand" />
           <TeamSection
-            teams={THAILAND_TEAMS}
+            teams={COUNTRY_TEAMS.thailand}
             title='thailand'
             titleColor={colors.title}
           />

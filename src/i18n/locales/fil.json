@@ -4,7 +4,14 @@
   "lastName": "Last Name",
   "nationality": "Nationality",
   "button": {
-    "visit": "Visit"
+    "visit": "Visit",
+    "seeMore": "Tingnan Pa"
+  },
+  "blog": {
+    "title": "Blog",
+    "button": {
+      "viewAll": "Tingnan Lahat ng Post"
+    }
   },
   "country": {
     "philippines": "Philippines"

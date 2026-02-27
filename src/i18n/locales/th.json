@@ -7,7 +7,14 @@
     "applyNow": "สมัครเลย",
     "EMICalculator": "คำนวณผ่าน EMI(ผ่อนรายเดือน)",
     "continue": "ดำเนินการต่อ",
-    "visit": "เยี่ยมชม"
+    "visit": "เยี่ยมชม",
+    "seeMore": "ดูเพิ่มเติม"
+  },
+  "blog": {
+    "title": "บล็อก",
+    "button": {
+      "viewAll": "ดูโพสต์ทั้งหมด"
+    }
   },
   "country": {
     "thailand": "ประเทศไทย"

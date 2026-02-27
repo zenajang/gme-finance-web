@@ -3,71 +3,17 @@
 import IntroductionSection from "@/features/home/components/IntroductionSection";
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials, { SocialsItem } from "@/features/home/sections/LatestSocials";
+import LatestSocials from "@/features/home/sections/LatestSocials";
 import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection, { Teams } from "@/features/home/sections/TeamSection";
+import TeamSection from "@/features/home/sections/TeamSection";
+import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import { getGradient } from "@/constants/colors";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-
-const NEPAL_SOCIALS: SocialsItem[] = [
-  {
-    id: "fb-np",
-    platform: "facebook",
-    embedUrl: "https://www.facebook.com/GMEFinanceNepal?locale=ko_KR",
-    href: "https://www.facebook.com/GMEFinanceNepal?locale=ko_KR",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/facebook.svg",
-    title: "GME Nepal Finance (Facebook)",
-  },
-  {
-    id: "tt-np",
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@gmefinancenepal",
-    href: "https://www.tiktok.com/@gmefinancenepal",
-    image: "/images/dummy.jpg",
-    snsLogo: "/images/icons/tictok.svg",
-    title: "GME Nepal Finance (TikTok)",
-  },
-];
-
-const NEPAL_TEAMS: Teams[] = [
-  {
-    id: 'madhukar',
-    image: '/images/nepal/team/madhukar.jpg',
-    name: 'MADHUKAR',
-  },
-  {
-    id: 'aashmi',
-    image: '/images/nepal/team/aashmi.jpg',
-    name: 'AASHMI',
-
-  },
-  {
-    id: 'asmita',
-    image: '/images/nepal/team/asmita.jpg',
-    name: 'ASMITA',
-  },
-  {
-    id: 'prabha',
-    image: '/images/nepal/team/prabha.jpg',
-    name: 'PRABHA',
-  },
-  {
-    id: 'smriti',
-    image: '/images/team.svg',
-    name: 'SMRITI',
-
-  },
-  {
-    id: 'salina',
-    image: '/images/team.svg',
-    name: 'SALINA',
-  },
-];
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
 
 export default function NepalPage() {
   const { t } = useTranslation()
@@ -86,8 +32,9 @@ export default function NepalPage() {
         style={{ background: getGradient('nepal') }}
       >
         <section className="bg-no-repeat relative overflow-hidden">
-          <LatestSocials socials={NEPAL_SOCIALS} />
-          <TeamSection teams={NEPAL_TEAMS} title='Nepal' />
+          <LatestSocials socials={COUNTRY_SOCIALS.nepal} />
+          <CountryBlogSection country="nepal" />
+          <TeamSection teams={COUNTRY_TEAMS.nepal} title='Nepal' />
         </section>
         <TeamVideoSection
           title={t('countryPage.introductionTitlenp')}

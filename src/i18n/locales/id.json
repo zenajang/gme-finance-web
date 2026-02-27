@@ -7,7 +7,14 @@
     "applyNow": "Ajukan Sekarang",
     "EMICalculator": "Kalkulator Angsuran",
     "continue": "Lanjutkan",
-    "visit": "Kunjungi"
+    "visit": "Kunjungi",
+    "seeMore": "Lihat Lebih Banyak"
+  },
+  "blog": {
+    "title": "Blog",
+    "button": {
+      "viewAll": "Lihat Semua Postingan"
+    }
   },
   "country": {
     "indonesia": "Indonesia"
