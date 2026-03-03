@@ -10,7 +10,14 @@ const nextConfig: NextConfig = {
     return config;
   },
   images: {
-    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'bjvimqlluaksrztvrgfa.supabase.co',
+        pathname: '/storage/v1/object/public/**',
+      },
+    ],
   },
   // Skip static generation for pages with Supabase
   experimental: {},
