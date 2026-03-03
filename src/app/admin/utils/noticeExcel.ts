@@ -17,7 +17,7 @@ const defaultStripHeader = (header: string) => {
 };
 
 export function parseNoticeExcel(buffer: ArrayBuffer, options: ParseNoticeExcelOptions): ParseNoticeExcelResult {
-  const workbook = XLSX.read(buffer, { type: 'array', cellNF: true, cellText: true, cellDates: true });
+  const workbook = XLSX.read(buffer, { type: 'array', cellNF: true, cellText: true });
   const sheetName = workbook.SheetNames[0];
   if (!sheetName) {
     return { columns: [], rows: [], warning: 'empty' };
@@ -37,13 +37,6 @@ export function parseNoticeExcel(buffer: ArrayBuffer, options: ParseNoticeExcelO
       const cell = sheet[addr];
       if (!cell) {
         row.push('');
-        continue;
-      }
-      if (cell.t === 'd' && cell.v instanceof Date) {
-        const year = cell.v.getFullYear();
-        const month = String(cell.v.getMonth() + 1).padStart(2, '0');
-        const day = String(cell.v.getDate()).padStart(2, '0');
-        row.push(`${year}-${month}-${day}`);
         continue;
       }
       if (cell.t === 'n' && typeof cell.v === 'number' && cell.z) {
