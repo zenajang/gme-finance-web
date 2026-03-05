@@ -21,7 +21,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://gmefinance.com"),
   title: {
-    default: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+    default: "GME Finance | Loan for Foreigners in Korea | 외국인대출",
     template: "%s | GME Finance",
   },
   description: "Your Trusted Partner for Foreigner Loans in South Korea.",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+    title: "GME Finance | Loan for Foreigners in Korea | 외국인대출",
     description: "Your Trusted Partner for Foreigner Loans in South Korea.",
     url: "/",
     siteName: "GME Finance",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+    title: "GME Finance | Loan for Foreigners in Korea | 외국인대출",
     description: "Your Trusted Partner for Foreigner Loans in South Korea.",
     images: ["/images/logo.png"],
   },

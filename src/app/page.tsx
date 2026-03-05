@@ -41,13 +41,13 @@ const FindBranchSection = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+  title: "GME Finance | Loan for Foreigners in Korea | 외국인대출",
   description: "Your Trusted Partner for Foreigner Loans in South Korea.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+    title: "GME Finance | Loan for Foreigners in Korea | 외국인대출",
     description: "Your Trusted Partner for Foreigner Loans in South Korea.",
     url: "/",
     images: [
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    title: "GME Finance | Loan for Foreigner in Korea | 외국인대출",
+    title: "GME Finance | Loan for Foreigners in Korea | 외국인대출",
     description: "Your Trusted Partner for Foreigner Loans in South Korea.",
     images: ["/images/logo.png"],
   },
