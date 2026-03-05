@@ -49,7 +49,7 @@ export default function ApplyLoanOnline() {
         {/* Right: Title & Text */}
         <div className="flex-1">
           <p className="text-base md:text-md lg:text-4xl leading-relaxed mb-2 md:mb-4 text-center md:text-left font-bold">
-            Step1
+            Step 1
           </p>
           <p className="text-xs md:text-md lg:text-2xl leading-relaxed mb-2 md:mb-8 text-center md:text-left font-medium">
             {t('home.applyLoanOnlineStep1')}<br />
