@@ -13,6 +13,7 @@ export interface CountryPost {
   country: CountryKey;
   author_id: string;
   author_email: string;
+  author_name?: string | null;
   published: boolean;
   thumbnail_url?: string | null;
   created_at: string;
@@ -26,6 +27,7 @@ export interface BlogPost {
   content: string;
   author_id: string;
   author_email: string;
+  author_name?: string | null;
   published: boolean;
   category: BlogCategory;
   thumbnail_url?: string | null;

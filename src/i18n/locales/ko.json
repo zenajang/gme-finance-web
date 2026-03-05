@@ -292,7 +292,9 @@
       "feedback": "후기"
     },
     "section": {
-      "moreStories": "더 읽을 거리"
+      "moreStories": "더 읽을 거리",
+      "latestNews": "Latest News",
+      "feedback": "Customer Feedback"
     },
     "button": {
       "loadMore": "더 보기",
@@ -374,6 +376,8 @@
       "categoryFeedback": "고객 후기",
       "title": "게시글 제목",
       "titlePlaceholder": "게시글 제목을 입력하세요...",
+      "authorName": "작성자 이름",
+      "authorNamePlaceholder": "작성자 이름을 입력하세요...",
       "content": "내용",
       "editorPlaceholder": "내용을 입력하세요...",
       "updatePost": "게시글 업데이트",

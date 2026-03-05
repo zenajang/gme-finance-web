@@ -63,10 +63,10 @@ export default function BlogDetailPage() {
           <div className="flex items-center text-gray-500 mb-8 pb-8 border-b border-black/5">
             <div className="flex items-center">
               <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
-                {post.author_email.charAt(0).toUpperCase()}
+                {(post.author_name || post.author_email).charAt(0).toUpperCase()}
               </div>
               <div>
-                <p className="font-medium text-gray-900">{post.author_email}</p>
+                <p className="font-medium text-gray-900">{post.author_name || post.author_email}</p>
                 <div className="flex items-center text-sm">
                   <time dateTime={post.created_at}>
                     {new Date(post.created_at).toLocaleDateString(locale, {

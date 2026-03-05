@@ -26,6 +26,8 @@ interface CountrySectionProps {
   resetForm: () => void;
   title: string;
   setTitle: (v: string) => void;
+  authorName: string;
+  setAuthorName: (v: string) => void;
   country: CountryKey;
   setCountry: (v: CountryKey) => void;
   content: string;
@@ -49,6 +51,8 @@ export default function CountrySection({
   resetForm,
   title,
   setTitle,
+  authorName,
+  setAuthorName,
   country,
   setCountry,
   content,
@@ -136,6 +140,20 @@ export default function CountrySection({
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder={t('admin.blog.titlePlaceholder')}
+                className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-400"
+              />
+            </div>
+
+            {/* Author Name */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {t('admin.blog.authorName')}
+              </label>
+              <input
+                type="text"
+                value={authorName}
+                onChange={(e) => setAuthorName(e.target.value)}
+                placeholder={t('admin.blog.authorNamePlaceholder')}
                 className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-400"
               />
             </div>

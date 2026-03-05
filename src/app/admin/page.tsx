@@ -195,6 +195,7 @@ export default function AdminPage() {
   const [countryTitle, setCountryTitle] = useState('');
   const [countryContent, setCountryContent] = useState('');
   const [countrySelected, setCountrySelected] = useState<CountryKey>('vietnam');
+  const [countryAuthorName, setCountryAuthorName] = useState('');
   const [countrySaving, setCountrySaving] = useState(false);
   const [countryEditMode, setCountryEditMode] = useState(false);
   const [countryEditingId, setCountryEditingId] = useState<string | null>(null);
@@ -219,6 +220,8 @@ export default function AdminPage() {
     setTitle,
     content,
     setContent,
+    authorName,
+    setAuthorName,
     category,
     setCategory,
     posts,
@@ -300,6 +303,7 @@ export default function AdminPage() {
   const resetCountryForm = () => {
     setCountryTitle('');
     setCountryContent('');
+    setCountryAuthorName('');
     setCountrySelected('vietnam');
     setCountryEditMode(false);
     setCountryEditingId(null);
@@ -308,6 +312,7 @@ export default function AdminPage() {
   const handleEditCountry = (post: CountryPost) => {
     setCountryTitle(post.title);
     setCountryContent(post.content);
+    setCountryAuthorName(post.author_name ?? '');
     setCountrySelected(post.country);
     setCountryEditMode(true);
     setCountryEditingId(post.id);
@@ -329,6 +334,7 @@ export default function AdminPage() {
         published: true,
         author_id: user?.id,
         author_email: user?.email,
+        author_name: countryAuthorName.trim() || undefined,
         thumbnail_url: thumbnail,
       };
       if (countryEditMode && countryEditingId) {
@@ -474,6 +480,8 @@ export default function AdminPage() {
                 resetForm={resetCountryForm}
                 title={countryTitle}
                 setTitle={setCountryTitle}
+                authorName={countryAuthorName}
+                setAuthorName={setCountryAuthorName}
                 country={countrySelected}
                 setCountry={setCountrySelected}
                 content={countryContent}
@@ -497,6 +505,8 @@ export default function AdminPage() {
                 resetForm={resetForm}
                 title={title}
                 setTitle={setTitle}
+                authorName={authorName}
+                setAuthorName={setAuthorName}
                 category={category}
                 setCategory={setCategory}
                 isCategoryOpen={isCategoryOpen}

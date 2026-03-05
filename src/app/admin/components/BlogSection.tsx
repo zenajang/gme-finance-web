@@ -12,6 +12,8 @@ interface BlogSectionProps {
   resetForm: () => void;
   title: string;
   setTitle: Dispatch<SetStateAction<string>>;
+  authorName: string;
+  setAuthorName: Dispatch<SetStateAction<string>>;
   category: BlogCategory;
   setCategory: Dispatch<SetStateAction<BlogCategory>>;
   isCategoryOpen: boolean;
@@ -40,6 +42,8 @@ export default function BlogSection({
   resetForm,
   title,
   setTitle,
+  authorName,
+  setAuthorName,
   category,
   setCategory,
   isCategoryOpen,
@@ -165,6 +169,20 @@ export default function BlogSection({
               onChange={(e) => setTitle(e.target.value)}
               className="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-xl focus:outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10 transition-all"
               placeholder={t('admin.blog.titlePlaceholder')}
+            />
+          </div>
+
+          <div className="mb-6">
+            <label htmlFor="authorName" className="block text-sm font-semibold text-gray-700 mb-2">
+              {t('admin.blog.authorName')}
+            </label>
+            <input
+              id="authorName"
+              type="text"
+              value={authorName}
+              onChange={(e) => setAuthorName(e.target.value)}
+              className="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-xl focus:outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10 transition-all"
+              placeholder={t('admin.blog.authorNamePlaceholder')}
             />
           </div>
 
@@ -383,7 +401,7 @@ export default function BlogSection({
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                               </svg>
-                              <span className="truncate max-w-[150px]">{post.author_email}</span>
+                              <span className="truncate max-w-[150px]">{post.author_name || post.author_email}</span>
                             </div>
                             {post.updated_at && post.updated_at !== post.created_at && (
                               <div className="flex items-center gap-1.5 text-blue-500">

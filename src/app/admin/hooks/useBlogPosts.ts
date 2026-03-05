@@ -16,6 +16,7 @@ interface UseBlogPostsOptions {
 export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSaved }: UseBlogPostsOptions) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [authorName, setAuthorName] = useState('');
   const [category, setCategory] = useState<BlogCategory>('blog');
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [saving, setSaving] = useState(false);
@@ -42,6 +43,7 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
   const resetForm = useCallback(() => {
     setTitle('');
     setContent('');
+    setAuthorName('');
     setCategory('blog');
     setEditingPostId(null);
     setEditingPostSlug(null);
@@ -64,6 +66,7 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
           title: string;
           content: string;
           category: string;
+          author_name?: string;
           updated_at: string;
           thumbnail_url?: string;
           slug?: string;
@@ -71,6 +74,7 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
           title,
           content,
           category,
+          author_name: authorName.trim() || undefined,
           updated_at: new Date().toISOString(),
         };
         if (!editingPostSlug) {
@@ -108,6 +112,7 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
           category: string;
           author_id?: string;
           author_email?: string;
+          author_name?: string;
           thumbnail_url?: string;
           slug?: string;
         } = {
@@ -116,6 +121,7 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
           category,
           author_id: user?.id,
           author_email: user?.email,
+          author_name: authorName.trim() || undefined,
         };
         if (thumbnailUrl) {
           insertPayload.thumbnail_url = thumbnailUrl;
@@ -162,7 +168,7 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
     } finally {
       setSaving(false);
     }
-  }, [category, content, editingPostId, editingPostSlug, fetchPosts, getThumbnailUrlFromContent, isEditMode, mutate, onSaved, resetForm, shortSlugFromId, t, title, user?.email, user?.id]);
+  }, [authorName, category, content, editingPostId, editingPostSlug, fetchPosts, getThumbnailUrlFromContent, isEditMode, mutate, onSaved, resetForm, shortSlugFromId, t, title, user?.email, user?.id]);
 
   const handleDelete = useCallback(async (id: string) => {
     if (!confirm(t('admin.alerts.deletePostConfirm'))) return;
@@ -191,6 +197,7 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
   const handleEdit = useCallback((post: BlogPost) => {
     setTitle(post.title);
     setContent(post.content);
+    setAuthorName(post.author_name ?? '');
     setCategory(post.category || 'blog');
     setEditingPostId(post.id);
     setEditingPostSlug(post.slug ?? null);
@@ -202,6 +209,8 @@ export function useBlogPosts({ user, getThumbnailUrlFromContent, mutate, t, onSa
     setTitle,
     content,
     setContent,
+    authorName,
+    setAuthorName,
     category,
     setCategory,
     posts,

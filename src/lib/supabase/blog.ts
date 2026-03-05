@@ -10,6 +10,7 @@ export interface BlogPost {
   category: 'blog' | 'customer_feedback' | 'country';
   country?: string | null;
   author_email: string;
+  author_name?: string | null;
   thumbnail_url?: string | null;
   created_at: string;
   updated_at: string;

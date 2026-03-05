@@ -352,10 +352,74 @@ export default function BlogPage() {
             })()}
 
             {/* 나머지 포스트 그리드 */}
-            {(() => {
-              const heroPostId = filterCategory === 'all'
-                ? filteredPosts.find(p => p.category === 'blog')?.id
-                : filterCategory !== 'customer_feedback' ? filteredPosts[0]?.id : null;
+            {filterCategory === 'all' ? (() => {
+              const heroPostId = filteredPosts.find(p => p.category === 'blog')?.id;
+              const newsPosts = filteredPosts.filter(p => p.category === 'blog' && p.id !== heroPostId);
+              const feedbackPosts = filteredPosts.filter(p => p.category === 'customer_feedback');
+
+              const SECTION_LIMIT = 6;
+              const visibleNews = newsPosts.slice(0, SECTION_LIMIT);
+              const visibleFeedback = feedbackPosts.slice(0, SECTION_LIMIT);
+
+              return (
+                <div>
+                  {newsPosts.length > 0 && (
+                    <div className="mb-16">
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-8">{t('blog.section.latestNews')}</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                        {visibleNews.map((post, index) => (
+                          <div
+                            key={post.id}
+                            className="animate-fade-up"
+                            style={{ animationDelay: `${Math.min(index, 6) * 80}ms` }}
+                          >
+                            <BrunchCard post={post} />
+                          </div>
+                        ))}
+                      </div>
+                      {newsPosts.length > SECTION_LIMIT && (
+                        <div className="text-center mt-10">
+                          <button
+                            onClick={() => handleFilterChange('blog')}
+                            className="px-8 py-3 text-base font-semibold rounded-full transition-all bg-white/80 text-gray-700 hover:bg-white shadow-sm ring-1 ring-black/5"
+                          >
+                            {t('blog.button.viewAll')} ({newsPosts.length})
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {feedbackPosts.length > 0 && (
+                    <div>
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-8">{t('blog.section.feedback')}</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                        {visibleFeedback.map((post, index) => (
+                          <div
+                            key={post.id}
+                            className="animate-fade-up"
+                            style={{ animationDelay: `${Math.min(index, 6) * 80}ms` }}
+                          >
+                            <BrunchCard post={post} />
+                          </div>
+                        ))}
+                      </div>
+                      {feedbackPosts.length > SECTION_LIMIT && (
+                        <div className="text-center mt-10">
+                          <button
+                            onClick={() => handleFilterChange('customer_feedback')}
+                            className="px-8 py-3 text-base font-semibold rounded-full transition-all bg-white/80 text-gray-700 hover:bg-white shadow-sm ring-1 ring-black/5"
+                          >
+                            {t('blog.button.viewAll')} ({feedbackPosts.length})
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })() : (() => {
+              const heroPostId = filterCategory !== 'customer_feedback' ? filteredPosts[0]?.id : null;
 
               const allGridPosts = filterCategory === 'customer_feedback'
                 ? filteredPosts
@@ -366,9 +430,6 @@ export default function BlogPage() {
 
               return allGridPosts.length > 0 ? (
                 <div>
-                  {filterCategory !== 'customer_feedback' && (
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-8">{t('blog.section.moreStories')}</h3>
-                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                     {visibleGridPosts.map((post, index) => (
                       <div

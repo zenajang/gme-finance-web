@@ -371,7 +371,7 @@ export const COUNTRY_SOCIALS: Record<string, SocialsItem[]> = {
 
 export const COUNTRY_TEAMS: Record<string, Teams[]> = {
   bangladesh: [
-    { id: "taizul", image: "/images/bangladesh/team/taizul.jpg", name: "TAIZUL" },
+    { id: "sadia", image: "/images/team.svg", name: "SADIA" },
     { id: "parag", image: "/images/bangladesh/team/parag.jpg", name: "PARAG" },
     { id: "ripon", image: "/images/bangladesh/team/ripon.jpg", name: "RIPON" },
     { id: "saiful", image: "/images/bangladesh/team/saiful.jpg", name: "SAIFUL" },
@@ -390,11 +390,13 @@ export const COUNTRY_TEAMS: Record<string, Teams[]> = {
 
   india: [
     { id: "malaika", image: "/images/team.svg", name: "MALAIKA" },
+    { id: "mariam", image: "/images/team.svg", name: "MARIAM" },
   ],
 
   indonesia: [
     { id: "ferry", image: "/images/indonesia/team/ferry.jpg", name: "FERRY" },
     { id: "livi", image: "/images/indonesia/team/livi.jpg", name: "LIVI" },
+    { id: "prilia", image: "/images/team.svg", name: "PRILIA" },
     { id: "adiba", image: "/images/team.svg", name: "ADIBA" },
     { id: "winda", image: "/images/team.svg", name: "WINDA" },
     { id: "sandi", image: "/images/team.svg", name: "SANDI" },
@@ -402,7 +404,6 @@ export const COUNTRY_TEAMS: Record<string, Teams[]> = {
   ],
 
   mongolia: [
-    { id: "uuree", image: "/images/mongolia/team/uuree.jpg", name: "UUREE" },
     { id: "eba", image: "/images/mongolia/team/eba.jpg", name: "EBA" },
     { id: "miigaa", image: "/images/mongolia/team/miigaa.jpg", name: "MIIGAA" },
     { id: "zulaa", image: "/images/team.svg", name: "ZULAA" },
@@ -426,6 +427,7 @@ export const COUNTRY_TEAMS: Record<string, Teams[]> = {
     { id: "prabha", image: "/images/nepal/team/prabha.jpg", name: "PRABHA" },
     { id: "smriti", image: "/images/team.svg", name: "SMRITI" },
     { id: "salina", image: "/images/team.svg", name: "SALINA" },
+    { id: "sesam", image: "/images/team.svg", name: "SESAM" },
   ],
 
   pakistan: [
@@ -433,9 +435,7 @@ export const COUNTRY_TEAMS: Record<string, Teams[]> = {
   ],
 
   philippines: [
-    { id: "glen", image: "/images/philippines/team/glen.jpg", name: "GLEN" },
     { id: "eunice", image: "/images/philippines/team/eunice.jpg", name: "EUNICE" },
-    { id: "cherry", image: "/images/philippines/team/cherry.jpg", name: "CHERRY" },
     { id: "jo", image: "/images/team.svg", name: "JO" },
     { id: "josh", image: "/images/team.svg", name: "JOSH" },
     { id: "kais", image: "/images/team.svg", name: "KAIS" },
@@ -443,20 +443,18 @@ export const COUNTRY_TEAMS: Record<string, Teams[]> = {
 
   russia: [
     { id: "hamid", image: "/images/uzbekistan/team/hamid.jpg", name: "HAMID" },
-    { id: "jed", image: "/images/uzbekistan/team/jed.jpg", name: "JED" },
     { id: "mark", image: "/images/uzbekistan/team/mark.jpg", name: "MARK" },
     { id: "mikhail", image: "/images/uzbekistan/team/mikhail.jpg", name: "MIKHAIL" },
     { id: "ruby", image: "/images/uzbekistan/team/ruby.jpg", name: "RUBY" },
-    { id: "ziyoda", image: "/images/uzbekistan/team/ziyoda.jpg", name: "ZIYODA" },
     { id: "zoda", image: "/images/uzbekistan/team/zoda.jpg", name: "ZODA" },
-    { id: "abror", image: "/images/team.svg", name: "ABROR" },
+    { id: "abror", image: "/images/team.svg", name: "ABROR" }
   ],
 
   srilanka: [
     { id: "malsha", image: "/images/srilanka/team/malsha.jpg", name: "MALSHA" },
     { id: "nova", image: "/images/srilanka/team/nova.jpg", name: "NOVA" },
     { id: "udra", image: "/images/srilanka/team/udra.jpg", name: "UDRA" },
-    { id: "mallikaa", image: "/images/team.svg", name: "MALLIKA" },
+    { id: "umesha", image: "/images/team.svg", name: "UMESHA" },
     { id: "thilini", image: "/images/team.svg", name: "THILINI" },
     { id: "subodani", image: "/images/team.svg", name: "SUBODANI" },
     { id: "amalsha", image: "/images/team.svg", name: "AMALSHA" },
@@ -464,15 +462,14 @@ export const COUNTRY_TEAMS: Record<string, Teams[]> = {
 
   thailand: [
     { id: "attaya", image: "/images/team.svg", name: "ATTHAYA" },
+     { id: "fang", image: "/images/team.svg", name: "FANG" },
   ],
 
   uzbekistan: [
     { id: "hamid", image: "/images/uzbekistan/team/hamid.jpg", name: "HAMID" },
-    { id: "jed", image: "/images/uzbekistan/team/jed.jpg", name: "JED" },
     { id: "mark", image: "/images/uzbekistan/team/mark.jpg", name: "MARK" },
     { id: "mikhail", image: "/images/uzbekistan/team/mikhail.jpg", name: "MIKHAIL" },
     { id: "ruby", image: "/images/uzbekistan/team/ruby.jpg", name: "RUBY" },
-    { id: "ziyoda", image: "/images/uzbekistan/team/ziyoda.jpg", name: "ZIYODA" },
     { id: "zoda", image: "/images/uzbekistan/team/zoda.jpg", name: "ZODA" },
     { id: "abror", image: "/images/team.svg", name: "ABROR" },
   ],
@@ -480,5 +477,7 @@ export const COUNTRY_TEAMS: Record<string, Teams[]> = {
   vietnam: [
     { id: "lenissa", image: "/images/vietnam/team/lenissa.jpg", name: "LENISSA" },
     { id: "haha", image: "/images/vietnam/team/haha.jpg", name: "HAHA" },
+    { id: "Rose", image: "/images/team.svg", name: "ROSE" },
+    { id: "Jayce", image: "/images/team.svg", name: "JAYCE" },
   ],
 };
