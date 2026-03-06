@@ -24,11 +24,7 @@ export default function NewServiceSection() {
         <div className="flex-1">
           <p className="text-sm md:text-md lg:text-xl leading-relaxed mb-4 lg:mb-8 text-center md:text-left font-medium">
             {t('home.newServiceDes1')}<br />
-            {t('home.newServiceDes2')}
-          </p>
-          <p className="text-sm md:text-md lg:text-xl leading-relaxed mb-4 lg:mb-8 text-center md:text-left font-medium">
-            {t('home.newServiceDes3')}<br />
-            {t('home.newServiceDes4')}
+            {t('home.newServiceDes3')}
           </p>
           <ul className="space-y-6 text-gray-700 lg:-ml-5">
             <li className="flex items-start gap-4 bg-white rounded-lg p-3 lg:p-6">

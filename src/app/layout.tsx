@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     default: "GME Finance | Loan for Foreigners in Korea | 외국인대출",
     template: "%s | GME Finance",
   },
-  description: "Your Trusted Partner for Foreigner Loans in South Korea.",
+  description: "Your trusted partner for foreigner loans in South Korea.",
   robots: {
     index: true,
     follow: true,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "GME Finance | Loan for Foreigners in Korea | 외국인대출",
-    description: "Your Trusted Partner for Foreigner Loans in South Korea.",
+    description: "Your trusted partner for foreigner loans in South Korea.",
     url: "/",
     siteName: "GME Finance",
     type: "website",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "GME Finance | Loan for Foreigners in Korea | 외국인대출",
-    description: "Your Trusted Partner for Foreigner Loans in South Korea.",
+    description: "Your trusted partner for foreigner loans in South Korea.",
     images: ["/images/logo.png"],
   },
 };
