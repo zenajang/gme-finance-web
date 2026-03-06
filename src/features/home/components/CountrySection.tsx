@@ -115,7 +115,7 @@ export default function CountrySection() {
     <section className="pt-10 md:py-15 lg:py-15 bg-white overflow-x-hidden">
       <div className="px-0 md:px-3 lg:px-3">
         <h2 className="text-heading text-center mb-8 md:mb-10 lg:mb-10">
-          Please select your country
+          Choose a country
         </h2>
 
         {/* 모바일: Swiper 사용 */}

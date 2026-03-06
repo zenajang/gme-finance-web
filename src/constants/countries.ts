@@ -8,7 +8,7 @@ export const COUNTRIES: Country[] = [
   { name: "Uzbekistan", flag: "/images/country/uzbekistan_r.png", code: "uz" },
   { name: "Indonesia", flag: "/images/country/indonesia_r.png", code: "id" },
   { name: "Myanmar", flag: "/images/country/myanmar_r.png", code: "mm" },
-  { name: "SriLanka", flag: "/images/country/srilanka_r.png", code: "lk" },
+  { name: "Sri Lanka", flag: "/images/country/srilanka_r.png", code: "lk" },
   { name: "Bangladesh", flag: "/images/country/bangladesh_r.png", code: "bd" },
   { name: "Nepal", flag: "/images/country/nepal_r.png", code: "np" },
   { name: "Cambodia", flag: "/images/country/cambodia_r.png", code: "kh" },

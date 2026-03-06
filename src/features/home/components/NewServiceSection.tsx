@@ -7,7 +7,7 @@ export default function NewServiceSection() {
   const { t } = useTranslation()
   return (
     <section className="relative bg-[#f9f9f9] pt-10 lg:pt-20 pb-10 lg:pb-20">
-      <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-5 lg:mb-0">GME App New Services</h2>
+      <h2 className="text-xl md:text-5xl lg:text-5xl font-bold text-center mb-5 lg:mb-0">Your Digital Finance Partner </h2>
       <div className="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row items-center gap-6 md:gap-20">
         {/* Left: App Preview Image */}
         <div className="flex-1 w-full flex justify-center">
@@ -35,7 +35,7 @@ export default function NewServiceSection() {
               <span className="text-3xl lg:text-5xl font-medium">1</span>
               <p>
                 <span className="font-semibold text-sm lg:text-lg">{t('home.newServiceStep1')}</span><br />
-                <span className="text-xs lg:text-md">{t('home.newServiceStep1Des')}</span>
+                <span className="text-sm lg:text-md">{t('home.newServiceStep1Des')}</span>
               </p>
             </li>
 
@@ -43,7 +43,7 @@ export default function NewServiceSection() {
               <span className="text-3xl lg:text-5xl font-medium">2</span>
               <p>
                 <span className="font-semibold text-sm lg:text-lg">{t('home.newServiceStep2')}</span><br />
-                <span className="text-xs lg:text-md">{t('home.newServiceStep2Des')}</span>
+                <span className="text-sm lg:text-md">{t('home.newServiceStep2Des')}</span>
               </p>
             </li>
 
@@ -51,7 +51,7 @@ export default function NewServiceSection() {
               <span className="text-3xl lg:text-5xl font-medium">3</span>
               <p>
                 <span className="font-semibold text-sm lg:text-lg">{t('home.newServiceStep3')}</span><br />
-                <span className="text-xs lg:text-md">{t('home.newServiceStep3Des')}</span>
+                <span className="text-sm lg:text-md">{t('home.newServiceStep3Des')}</span>
               </p>
             </li>
           </ul>

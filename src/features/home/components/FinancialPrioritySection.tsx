@@ -55,7 +55,7 @@ export default function FinancialPrioritySection() {
           <div className="flex items-center gap-4">
             <Image src="/images/icons/day_night.svg" alt="icon" width={60} height={60} />
             <p className="text-sm font-medium">
-              {t("home.finacialPriority5")} {t("home.finacialPriority5br")}
+              {t("home.finacialPriority5")}
             </p>
           </div>
         </div>
@@ -93,18 +93,18 @@ export default function FinancialPrioritySection() {
             </p>
 
             {/* 오른쪽 상단 */}
-            <p className="absolute z-20 top-[22%] right-[-12%] text-center text-lg font-medium w-80">
+            <p className="absolute z-20 top-[22%] right-[-10%] text-center text-lg font-medium w-80">
               {t("home.finacialPriority5")}<br /> {t("home.finacialPriority5br")}
             </p>
 
             {/* 왼쪽 하단 */}
-            <p className="absolute z-20 bottom-[26%] left-[4%] text-center text-lg font-medium">
+            <p className="absolute z-20 bottom-[35%] left-[4%] text-center text-lg font-medium">
               {t("home.finacialPriority2")}<br /> {t("home.finacialPriority2br")}
             </p>
 
             {/* 오른쪽 하단 */}
-            <p className="absolute z-20 bottom-[30%] right-[5%] text-center text-lg font-medium">
-              {t("home.finacialPriority4")}
+            <p className="absolute z-20 bottom-[35%] right-[8%] text-center text-lg font-medium">
+              {t("home.finacialPriority4")}<br /> {t("home.finacialPriorit4br")}
             </p>
           </div>
 
@@ -115,7 +115,6 @@ export default function FinancialPrioritySection() {
             </p>
           </div>
         </div>
-
       </div>
     </section>
   );

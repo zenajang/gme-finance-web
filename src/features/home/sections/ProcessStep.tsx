@@ -68,8 +68,8 @@ export default function ProcessStep({ subtitleColor = COMMON_COLORS.primaryText,
   return (
     <section className="py-0 md:py-14 lg:py-16 z-20">
       <div className="mx-auto px-4 md:px-38 lg:px-38">
-        <h2 className="text-heading text-center mb-2 mt-10 md:mb-5 lg:mb-10" style={{ color: titleColor }}>{t('home.simpleLoanApplicationTitle')}</h2>
-        <p className="text-subheading text-center mb-0 md:mb-10 lg:mb-12 " style={{ color: subtitleColor }}>{t('home.simpleLoanApplicationSubTitle')}</p>
+        <h2 className="text-heading text-center mb-2 mt-10 md:mb-5 lg:mb-10" style={{ color: titleColor }}>{t('home.quickLoanApplicationTitle')}</h2>
+        <p className="text-subheading text-center mb-0 md:mb-10 lg:mb-12 " style={{ color: subtitleColor }}>{t('home.quickLoanApplicationSubTitle')}</p>
         <div className="grid md:grid-cols-5 gap-5 md:gap-10 lg:gap-10 mt-0 py-8">
           {PROCESS.map((item) => (
             <article
