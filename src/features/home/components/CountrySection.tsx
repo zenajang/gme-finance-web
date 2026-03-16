@@ -151,7 +151,7 @@ export default function CountrySection() {
                       <div
                         onClick={() => {
                           if (canClickSlide()) {
-                            router.push(`/${country.name.toLowerCase()}`);
+                            router.push(`/${country.name.toLowerCase().replace(/\s+/g, '')}`);
                           }
                         }}
                         className="flex flex-col items-center p-2 rounded-lg transition-colors w-full cursor-pointer"
@@ -196,7 +196,7 @@ export default function CountrySection() {
                   className="flex-shrink-0 w-[170px]"
                 >
                   <Link
-                    href={`/${country.name.toLowerCase()}`}
+                    href={`/${country.name.toLowerCase().replace(/\s+/g, '')}`}
                     className="flex flex-col items-center p-2 hover:bg-gray-50 rounded-lg transition-colors w-full"
                   >
                     <div

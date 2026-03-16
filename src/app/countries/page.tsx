@@ -36,7 +36,7 @@ export default function CountriesPage() {
             {COUNTRIES.map((c) => (
               <Link
                 key={c.code}
-                href={`/${c.name.toLowerCase()}`}
+                href={`/${c.name.toLowerCase().replace(/\s+/g, '')}`}
                 className="group flex flex-col items-center"
               >
                 <div className="relative h-[90px] w-[90px] md:h-[120px] md:w-[120px] rounded-full overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.25)] transition-transform group-hover:scale-[1.05]">
