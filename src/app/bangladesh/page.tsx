@@ -13,7 +13,7 @@ import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
-import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS, COUNTRY_PHONES } from "@/constants/countryPageData";
 
 export default function BangladeshPage() {
   const { t } = useTranslation();
@@ -29,6 +29,8 @@ export default function BangladeshPage() {
         buttonHoverBgColor={colors.introHover}
         buttonTextColor={colors.primary}
         buttonHref="#apply-loan-online"
+        mobilePhone={COUNTRY_PHONES.bangladesh?.mobile}
+        hotlinePhone={COUNTRY_PHONES.bangladesh?.hotline}
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"

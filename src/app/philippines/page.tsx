@@ -11,7 +11,7 @@ import TeamSection from "@/features/home/sections/TeamSection";
 import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import { getColorScheme, getGradient } from "@/constants/colors";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
-import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS, COUNTRY_PHONES } from "@/constants/countryPageData";
 
 export default function PhilippinesPage() {
   const colors = getColorScheme('philippines')
@@ -21,6 +21,8 @@ export default function PhilippinesPage() {
         videoSrc="/images/philippines/background.webm"
         title="Philippines"
         buttonHref="#apply-loan-online"
+        mobilePhone={COUNTRY_PHONES.philippines?.mobile}
+        hotlinePhone={COUNTRY_PHONES.philippines?.hotline}
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"

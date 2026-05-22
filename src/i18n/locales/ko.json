@@ -217,7 +217,9 @@
     "back": "이전",
     "submit": "제출",
     "cancel": "취소",
-    "agree": "동의"
+    "agree": "동의",
+    "mobile": "모바일",
+    "hotline": "핫라인"
   },
   "email": "이메일",
   "emailPlaceholder": "이메일을 입력하세요",

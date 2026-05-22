@@ -231,7 +231,9 @@
     "back": "Back",
     "submit": "Submit",
     "cancel": "Cancel",
-    "agree": "Agree"
+    "agree": "Agree",
+    "mobile": "Mobile",
+    "hotline": "Hotline"
   },
   "email": "Email",
   "emailPlaceholder": "Enter your email",

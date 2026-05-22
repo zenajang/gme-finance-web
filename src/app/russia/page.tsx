@@ -13,7 +13,7 @@ import { getColorScheme, getGradient } from "@/constants/colors";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS, COUNTRY_PHONES } from "@/constants/countryPageData";
 
 export default function RussiaPage() {
   const colors = getColorScheme('russia')
@@ -29,6 +29,8 @@ export default function RussiaPage() {
         buttonTextColor={colors.primary}
         buttonHoverBgColor={colors.hover}
         buttonHref="#apply-loan-online"
+        mobilePhone={COUNTRY_PHONES.russia?.mobile}
+        hotlinePhone={COUNTRY_PHONES.russia?.hotline}
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"

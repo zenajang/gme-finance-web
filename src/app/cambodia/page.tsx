@@ -13,7 +13,7 @@ import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS, COUNTRY_PHONES } from "@/constants/countryPageData";
 
 export default function CambodiaPage() {
   const { t } = useTranslation();
@@ -25,6 +25,8 @@ export default function CambodiaPage() {
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}
         buttonHref="#apply-loan-online"
+        mobilePhone={COUNTRY_PHONES.cambodia?.mobile}
+        hotlinePhone={COUNTRY_PHONES.cambodia?.hotline}
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"

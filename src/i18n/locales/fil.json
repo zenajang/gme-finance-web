@@ -5,7 +5,9 @@
   "nationality": "Nationality",
   "button": {
     "visit": "Visit",
-    "seeMore": "Tingnan Pa"
+    "seeMore": "Tingnan Pa",
+    "mobile": "Mobile",
+    "hotline": "Hotline"
   },
   "blog": {
     "title": "Blog",

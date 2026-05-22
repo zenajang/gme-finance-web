@@ -13,7 +13,7 @@ import { getGradient } from "@/constants/colors";
 import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
 import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
 import { useTranslation } from "react-i18next";
-import { COUNTRY_SOCIALS, COUNTRY_TEAMS } from "@/constants/countryPageData";
+import { COUNTRY_SOCIALS, COUNTRY_TEAMS, COUNTRY_PHONES } from "@/constants/countryPageData";
 
 export default function NepalPage() {
   const { t } = useTranslation()
@@ -26,6 +26,8 @@ export default function NepalPage() {
         description={t('countryPage.mainTitle')}
         buttonText={t('button.applyNow')}
         buttonHref="#apply-loan-online"
+        mobilePhone={COUNTRY_PHONES.nepal?.mobile}
+        hotlinePhone={COUNTRY_PHONES.nepal?.hotline}
       />
       <div
         className="bg-cover bg-center bg-no-repeat overflow-hidden"

@@ -481,3 +481,25 @@ export const COUNTRY_TEAMS: Record<string, Teams[]> = {
     { id: "Jayce", image: "/images/team.svg", name: "JAYCE" },
   ],
 };
+
+export interface CountryPhones {
+  mobile?: string;
+  hotline?: string;
+}
+
+export const COUNTRY_PHONES: Record<string, CountryPhones> = {
+  bangladesh: { mobile: "010-9932-6864", hotline: "1555-6167" },
+  cambodia: { mobile: "010-3077-6864", hotline: "1555-6168" },
+  india: { mobile: "010-7509-6864", hotline: "1555-6175" },
+  indonesia: { mobile: "010-7923-6864", hotline: "1555-6173" },
+  mongolia: { mobile: "010-3384-6864", hotline: "1555-6171" },
+  myanmar: { mobile: "010-2976-6864", hotline: "1555-6170" },
+  nepal: { mobile: "010-6584-6864", hotline: "1555-6174" },
+  pakistan: { mobile: "010-7509-6864", hotline: "1555-6175" },
+  philippines: { mobile: "010-3354-6864", hotline: "1555-6176" },
+  russia: { mobile: "010-9805-6864", hotline: "1555-6169" },
+  srilanka: { mobile: "010-2965-6864", hotline: "1555-6177" },
+  thailand: { mobile: "010-9695-6864", hotline: "1555-6178" },
+  uzbekistan: { mobile: "010-9805-6864", hotline: "1555-6169" },
+  vietnam: { mobile: "010-9582-6864", hotline: "1555-6179" },
+};

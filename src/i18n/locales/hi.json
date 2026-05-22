@@ -1,6 +1,8 @@
 {
   "button": {
-    "seeMore": "और देखें"
+    "seeMore": "और देखें",
+    "mobile": "मोबाइल",
+    "hotline": "हॉटलाइन"
   },
   "blog": {
     "title": "ब्लॉग",
