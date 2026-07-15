@@ -95,6 +95,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <head>
+        <GoogleAnalytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -105,7 +106,6 @@ export default async function RootLayout({
         suppressHydrationWarning={true}
       >
         <ChannelTalk />
-        <GoogleAnalytics />
         <Theme appearance="light" accentColor="indigo" radius="large">
           <ImageLoadGuard />
           <ServiceWorkerRegistrar />
