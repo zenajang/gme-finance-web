@@ -1,11 +1,12 @@
 'use client';
 
 interface AdminSidebarProps {
-  activeSection: 'blog' | 'notices' | 'countries';
-  setActiveSection: (value: 'blog' | 'notices' | 'countries') => void;
+  activeSection: 'blog' | 'notices' | 'countries' | 'staff';
+  setActiveSection: (value: 'blog' | 'notices' | 'countries' | 'staff') => void;
   postsCount: number;
   noticesCount: number;
   countryPostsCount: number;
+  staffCount: number;
   t: (key: string, options?: Record<string, unknown>) => string;
 }
 
@@ -15,6 +16,7 @@ export default function AdminSidebar({
   postsCount,
   noticesCount,
   countryPostsCount,
+  staffCount,
   t,
 }: AdminSidebarProps) {
   return (
@@ -82,6 +84,26 @@ export default function AdminSidebar({
             <div className="text-left">
               <div>{t('admin.sidebar.countries')}</div>
               <div className="text-xs text-gray-400">{t('admin.sidebar.countryPostsCount', { count: countryPostsCount })}</div>
+            </div>
+          </button>
+          <button
+            onClick={() => setActiveSection('staff')}
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
+              activeSection === 'staff'
+                ? 'bg-amber-50 text-amber-700 border border-amber-100'
+                : 'text-gray-600 hover:bg-gray-100'
+            }`}
+          >
+            <span className={`w-9 h-9 rounded-lg flex items-center justify-center ${
+              activeSection === 'staff' ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-500'
+            }`}>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4z" />
+              </svg>
+            </span>
+            <div className="text-left">
+              <div>{t('admin.sidebar.staff')}</div>
+              <div className="text-xs text-gray-400">{t('admin.sidebar.staffCount', { count: staffCount })}</div>
             </div>
           </button>
         </nav>

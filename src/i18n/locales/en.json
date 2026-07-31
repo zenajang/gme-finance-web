@@ -140,7 +140,8 @@
       "all": "All",
       "loss_of_benefit": "Planned loss of benefit",
       "auction": "Planned house auction",
-      "transfer": "Planned transfer"
+      "transfer": "Planned transfer",
+      "staff": "Collection Staff"
     },
     "table": {
       "number": "No",
@@ -536,7 +537,33 @@
       "countries": "Country Posts",
       "postsCount": "{{count}} posts",
       "noticesCount": "{{count}} notices",
-      "countryPostsCount": "{{count}} posts"
+      "countryPostsCount": "{{count}} posts",
+      "staff": "Collection Staff",
+      "staffCount": "{{count}} people"
+    },
+    "staff": {
+      "addTitle": "Add Collection Staff",
+      "editTitle": "Edit Collection Staff",
+      "name": "Name",
+      "department": "Department",
+      "employeeNumber": "Employee No.",
+      "corporateNumber": "Corporate No.",
+      "add": "Add",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "manage": "Manage",
+      "empty": "No collection staff registered.",
+      "excelUpload": "Upload Excel",
+      "excelHint": "Excel columns: Name / Department / Employee No. / Corporate No.",
+      "nameRequired": "Please enter a name.",
+      "saveError": "Save failed: {{message}}",
+      "deleteConfirm": "Delete this staff member?",
+      "deleteError": "Delete failed: {{message}}",
+      "excelEmpty": "No valid data found in the Excel file.",
+      "excelError": "An error occurred while uploading the Excel file.",
+      "excelSuccess": "{{count}} staff added."
     },
     "stats": {
       "totalPosts": "Total Posts",

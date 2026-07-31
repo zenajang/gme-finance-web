@@ -54,3 +54,14 @@ export type NoticeCategoryOption = Readonly<{
   value: string;
   label: string;
 }>;
+
+export interface CollectionStaff {
+  id: string;
+  name: string;                        // 담당자
+  department?: string | null;          // 부서
+  employee_number?: string | null;     // 사원번호 (비공개)
+  corporate_number?: string | null;    // 법인번호
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+}

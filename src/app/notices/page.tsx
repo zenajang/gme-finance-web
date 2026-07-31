@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { NOTICES } from './data';
 import { useTranslation } from 'react-i18next';
+import CollectionStaffSearch from './CollectionStaffSearch';
 
 type NoticeRow = {
   id: string;
@@ -50,6 +51,7 @@ export default function NoticesPage() {
     { value: 'loss_of_benefit', label: t('notices.category.loss_of_benefit') },
     { value: 'auction', label: t('notices.category.auction') },
     { value: 'transfer', label: t('notices.category.transfer') },
+    { value: 'staff', label: t('notices.category.staff') },
   ] as const;
   const [selectedCategory, setSelectedCategory] = useState<(typeof categories)[number]['value']>('all');
 
@@ -123,6 +125,10 @@ export default function NoticesPage() {
           </div>
         </div>
 
+        {selectedCategory === 'staff' ? (
+          <CollectionStaffSearch />
+        ) : (
+        <>
         <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <div className="min-w-[520px]">
@@ -214,6 +220,8 @@ export default function NoticesPage() {
               {'>'}
             </button>
           </div>
+        )}
+        </>
         )}
       </div>
     </main>

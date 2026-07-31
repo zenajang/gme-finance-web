@@ -127,7 +127,8 @@
       "all": "전체",
       "loss_of_benefit": "기한의 이익 상실 예정",
       "auction": "주택 경매 예정",
-      "transfer": "양도 예정"
+      "transfer": "양도 예정",
+      "staff": "추심직원조회"
     },
     "table": {
       "number": "번호",
@@ -349,7 +350,33 @@
       "blog": "블로그 게시글",
       "notices": "공지",
       "postsCount": "게시글 {{count}}개",
-      "noticesCount": "공지 {{count}}개"
+      "noticesCount": "공지 {{count}}개",
+      "staff": "추심직원",
+      "staffCount": "{{count}}명"
+    },
+    "staff": {
+      "addTitle": "추심직원 추가",
+      "editTitle": "추심직원 수정",
+      "name": "담당자",
+      "department": "부서",
+      "employeeNumber": "사원번호",
+      "corporateNumber": "법인번호",
+      "add": "추가",
+      "edit": "수정",
+      "delete": "삭제",
+      "cancel": "취소",
+      "saving": "저장 중...",
+      "manage": "관리",
+      "empty": "등록된 추심직원이 없습니다.",
+      "excelUpload": "엑셀 업로드",
+      "excelHint": "엑셀 컬럼: 담당자 / 부서 / 사원번호 / 법인번호",
+      "nameRequired": "담당자(이름)를 입력하세요.",
+      "saveError": "저장 실패: {{message}}",
+      "deleteConfirm": "이 직원을 삭제할까요?",
+      "deleteError": "삭제 실패: {{message}}",
+      "excelEmpty": "엑셀에서 유효한 데이터를 찾지 못했습니다.",
+      "excelError": "엑셀 업로드 중 오류가 발생했습니다.",
+      "excelSuccess": "{{count}}명 추가되었습니다."
     },
     "stats": {
       "totalPosts": "총 게시글",

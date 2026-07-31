@@ -16,7 +16,7 @@ interface CountryPost {
 }
 
 interface AdminStatsProps {
-  activeSection: 'blog' | 'notices' | 'countries';
+  activeSection: 'blog' | 'notices' | 'countries' | 'staff';
   posts: BlogPost[];
   notices: NoticePost[];
   countryPosts: CountryPost[];
@@ -24,6 +24,10 @@ interface AdminStatsProps {
 }
 
 export default function AdminStats({ activeSection, posts, notices, countryPosts, t }: AdminStatsProps) {
+  if (activeSection === 'staff') {
+    return null;
+  }
+
   if (activeSection === 'blog') {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">

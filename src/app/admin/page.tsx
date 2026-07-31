@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import BlogSection from '@/app/admin/components/BlogSection';
 import NoticeSection from '@/app/admin/components/NoticeSection';
 import CountrySection from '@/app/admin/components/CountrySection';
+import CollectionStaffSection from '@/app/admin/components/CollectionStaffSection';
 import AdminHeader from '@/app/admin/components/AdminHeader';
 import AdminSidebar from '@/app/admin/components/AdminSidebar';
 import AdminStats from '@/app/admin/components/AdminStats';
@@ -18,6 +19,7 @@ import type { BlogPost, NoticePost, NoticeCategoryOption, CountryPost, CountryKe
 import { useAdminAuth } from '@/app/admin/hooks/useAdminAuth';
 import { useBlogPosts } from '@/app/admin/hooks/useBlogPosts';
 import { useNotices } from '@/app/admin/hooks/useNotices';
+import { useCollectionStaff } from '@/app/admin/hooks/useCollectionStaff';
 
 function EditorLoading() {
   const { t } = useTranslation();
@@ -185,10 +187,32 @@ export default function AdminPage() {
   const { mutate } = useSWRConfig();
   const { t, i18n } = useTranslation();
   const { user, loading, checkUser, handleLogout } = useAdminAuth();
-  const [activeSection, setActiveSection] = useState<'blog' | 'notices' | 'countries'>('blog');
+  const [activeSection, setActiveSection] = useState<'blog' | 'notices' | 'countries' | 'staff'>('blog');
   const [activeBlogTab, setActiveBlogTab] = useState<'write' | 'list'>('write');
   const [activeNoticeTab, setActiveNoticeTab] = useState<'write' | 'list' | 'templates'>('write');
   const [activeCountryTab, setActiveCountryTab] = useState<'write' | 'list'>('write');
+
+  // 추심직원 관리
+  const {
+    staff,
+    name: staffName,
+    setName: setStaffName,
+    department: staffDepartment,
+    setDepartment: setStaffDepartment,
+    employeeNumber: staffEmployeeNumber,
+    setEmployeeNumber: setStaffEmployeeNumber,
+    corporateNumber: staffCorporateNumber,
+    setCorporateNumber: setStaffCorporateNumber,
+    editingId: staffEditingId,
+    saving: staffSaving,
+    fileInputRef: staffFileInputRef,
+    fetchStaff,
+    resetForm: resetStaffForm,
+    handleEdit: handleStaffEdit,
+    handleSave: handleStaffSave,
+    handleDelete: handleStaffDelete,
+    handleExcelUpload: handleStaffExcelUpload,
+  } = useCollectionStaff({ t });
 
   // Country blog state
   const [countryPosts, setCountryPosts] = useState<CountryPost[]>([]);
@@ -374,6 +398,7 @@ export default function AdminPage() {
     fetchNotices();
     fetchNoticeTemplates();
     fetchCountryPosts();
+    fetchStaff();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -465,6 +490,7 @@ export default function AdminPage() {
             postsCount={posts.length}
             noticesCount={notices.length}
             countryPostsCount={countryPosts.length}
+            staffCount={staff.length}
             t={t}
           />
 
@@ -526,6 +552,27 @@ export default function AdminPage() {
                 locale={locale}
                 t={t}
                 Editor={TiptapEditor}
+              />
+            ) : activeSection === 'staff' ? (
+              <CollectionStaffSection
+                staff={staff}
+                name={staffName}
+                setName={setStaffName}
+                department={staffDepartment}
+                setDepartment={setStaffDepartment}
+                employeeNumber={staffEmployeeNumber}
+                setEmployeeNumber={setStaffEmployeeNumber}
+                corporateNumber={staffCorporateNumber}
+                setCorporateNumber={setStaffCorporateNumber}
+                editingId={staffEditingId}
+                saving={staffSaving}
+                fileInputRef={staffFileInputRef}
+                handleSave={handleStaffSave}
+                handleEdit={handleStaffEdit}
+                handleDelete={handleStaffDelete}
+                handleExcelUpload={handleStaffExcelUpload}
+                resetForm={resetStaffForm}
+                t={t}
               />
             ) : (
               <NoticeSection
