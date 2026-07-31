@@ -127,12 +127,6 @@ export default function CollectionStaffSearch() {
           </div>
         </div>
       </div>
-
-      {/* 안내 */}
-      <div className="mt-6 space-y-1 text-xs text-gray-500 leading-relaxed">
-        <p>{t('notices.staffSearch.note1')}</p>
-        <p>{t('notices.staffSearch.note2')}</p>
-      </div>
     </section>
   );
 }

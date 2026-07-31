@@ -160,9 +160,7 @@
       "colEmployeeNumber": "Employee No.",
       "colCorporateNumber": "Corporate No.",
       "loading": "Loading...",
-      "empty": "No matching results.",
-      "note1": "※ Door-to-door sales personnel of loan brokers can be looked up via the Consumer Loan Finance Association (CLFA) system.",
-      "note2": "※ Click the \"CLFA\" banner below → on the CLFA site, use the right-side quick menu (light-blue) 'Loan Sales Agent Directory'."
+      "empty": "No matching results."
     }
   },
   "careers": {
