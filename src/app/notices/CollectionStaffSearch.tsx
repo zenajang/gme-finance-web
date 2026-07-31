@@ -1,14 +1,17 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { createClient } from '@/lib/supabase/client';
 import type { CollectionStaff } from '@/app/admin/types';
 
 export default function CollectionStaffSearch() {
+  const { t } = useTranslation();
   const [staff, setStaff] = useState<CollectionStaff[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
   const [submittedQuery, setSubmittedQuery] = useState('');
+  const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
     const fetchStaff = async () => {
@@ -33,27 +36,31 @@ export default function CollectionStaffSearch() {
   }, []);
 
   const results = useMemo(() => {
+    if (!hasSearched) return [];
     const keyword = submittedQuery.trim().toLowerCase();
     if (!keyword) return staff;
     return staff.filter((s) => s.name.toLowerCase().includes(keyword));
-  }, [staff, submittedQuery]);
+  }, [staff, submittedQuery, hasSearched]);
 
-  const handleSearch = () => setSubmittedQuery(query);
+  const handleSearch = () => {
+    setSubmittedQuery(query);
+    setHasSearched(true);
+  };
 
   return (
     <section aria-labelledby="collection-staff-heading">
       <div className="mb-8">
         <h2 id="collection-staff-heading" className="text-xl md:text-2xl font-bold text-gray-900">
-          찾으시는 추심인력을 조회해보세요.
+          {t('notices.staffSearch.title')}
         </h2>
-        <p className="mt-2 text-sm text-gray-500">※ 대출심사를 진행하는 상담원은 제외</p>
+        <p className="mt-2 text-sm text-gray-500">{t('notices.staffSearch.excludeNote')}</p>
       </div>
 
       {/* 검색 */}
       <div className="rounded-2xl border border-gray-200 bg-white shadow-sm p-5 md:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           <label htmlFor="staff-search" className="text-sm font-semibold text-gray-700 sm:w-16 shrink-0">
-            검색
+            {t('notices.staffSearch.searchLabel')}
           </label>
           <div className="flex flex-1 gap-2">
             <input
@@ -64,7 +71,7 @@ export default function CollectionStaffSearch() {
               onKeyDown={(e) => {
                 if (e.key === 'Enter') handleSearch();
               }}
-              placeholder="이름을 입력하세요"
+              placeholder={t('notices.staffSearch.searchPlaceholder')}
               className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#DF2121] focus:outline-none focus:ring-1 focus:ring-[#DF2121]"
             />
             <button
@@ -72,7 +79,7 @@ export default function CollectionStaffSearch() {
               onClick={handleSearch}
               className="whitespace-nowrap rounded-lg bg-gray-800 px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-900"
             >
-              이름 검색
+              {t('notices.staffSearch.searchButton')}
             </button>
           </div>
         </div>
@@ -80,29 +87,29 @@ export default function CollectionStaffSearch() {
 
       {/* 검색결과 */}
       <div className="mt-8">
-        <h3 className="mb-3 text-lg font-bold text-gray-900">검색결과</h3>
+        <h3 className="mb-3 text-lg font-bold text-gray-900">{t('notices.staffSearch.resultsTitle')}</h3>
         <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[520px] text-sm">
               <thead>
                 <tr className="bg-gray-50 text-gray-700 border-b border-gray-200">
-                  <th scope="col" className="px-4 md:px-6 py-3 text-center font-semibold">담당자</th>
-                  <th scope="col" className="px-4 md:px-6 py-3 text-center font-semibold">부서</th>
-                  <th scope="col" className="px-4 md:px-6 py-3 text-center font-semibold">사원번호</th>
-                  <th scope="col" className="px-4 md:px-6 py-3 text-center font-semibold">법인번호</th>
+                  <th scope="col" className="px-4 md:px-6 py-3 text-center font-semibold">{t('notices.staffSearch.colName')}</th>
+                  <th scope="col" className="px-4 md:px-6 py-3 text-center font-semibold">{t('notices.staffSearch.colDepartment')}</th>
+                  <th scope="col" className="px-4 md:px-6 py-3 text-center font-semibold">{t('notices.staffSearch.colEmployeeNumber')}</th>
+                  <th scope="col" className="px-4 md:px-6 py-3 text-center font-semibold">{t('notices.staffSearch.colCorporateNumber')}</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
                   <tr>
                     <td colSpan={4} className="px-6 py-10 text-center text-gray-400">
-                      불러오는 중...
+                      {t('notices.staffSearch.loading')}
                     </td>
                   </tr>
                 ) : results.length === 0 ? (
                   <tr>
                     <td colSpan={4} className="px-6 py-10 text-center text-gray-400">
-                      조회된 데이터가 없습니다.
+                      {t('notices.staffSearch.empty')}
                     </td>
                   </tr>
                 ) : (
@@ -119,6 +126,12 @@ export default function CollectionStaffSearch() {
             </table>
           </div>
         </div>
+      </div>
+
+      {/* 안내 */}
+      <div className="mt-6 space-y-1 text-xs text-gray-500 leading-relaxed">
+        <p>{t('notices.staffSearch.note1')}</p>
+        <p>{t('notices.staffSearch.note2')}</p>
       </div>
     </section>
   );

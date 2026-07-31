@@ -134,6 +134,22 @@
       "number": "번호",
       "title": "제목",
       "date": "등록일"
+    },
+    "staffSearch": {
+      "title": "찾으시는 추심인력을 조회해보세요.",
+      "excludeNote": "※ 대출심사를 진행하는 상담원은 제외",
+      "searchLabel": "검색",
+      "searchPlaceholder": "이름을 입력하세요",
+      "searchButton": "이름 검색",
+      "resultsTitle": "검색결과",
+      "colName": "담당자",
+      "colDepartment": "부서",
+      "colEmployeeNumber": "사원번호",
+      "colCorporateNumber": "법인번호",
+      "loading": "불러오는 중...",
+      "empty": "조회된 데이터가 없습니다.",
+      "note1": "※ 대부중개인 소속 방문판매 인력 조회는 한국대부금융협회 시스템을 통하여 조회 가능",
+      "note2": "※ 하단 배너 \"CLFA 한국대부금융협회\" 클릭 → [한국대부금융협회] 우측 퀵메뉴(하늘색바탕) '대부금융판매원 명부조회 클릭'"
     }
   },
   "careers": {
