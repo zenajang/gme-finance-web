@@ -48,7 +48,7 @@ export default function CollectionStaffSearch() {
   };
 
   return (
-    <section aria-labelledby="collection-staff-heading" className="mt-4">
+    <section aria-labelledby="collection-staff-heading" className="mt-10">
       <div className="mb-8">
         <h2 id="collection-staff-heading" className="text-xl md:text-2xl font-bold text-gray-900">
           {t('notices.staffSearch.title')}
