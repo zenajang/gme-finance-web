@@ -10,6 +10,7 @@ import ServiceWorkerRegistrar from "./components/common/ServiceWorkerRegistrar";
 import { Inter } from "next/font/google";
 import en from "@/i18n/locales/en.json";
 import GoogleAnalytics from "./components/google-analytics/GoogleAnalytics";
+import Metricool from "./components/metricool/Metricool";
 import ChannelTalk from "./components/channel-talk/ChannelTalk";
 
 const inter = Inter({
@@ -96,6 +97,7 @@ export default async function RootLayout({
     <html lang="en" className={inter.className}>
       <head>
         <GoogleAnalytics />
+        <Metricool />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
