@@ -1,4 +1,5 @@
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+// web-gmeremit와 동일하게 GA ID 하드코딩 (GA4 ID는 공개 식별자라 노출돼도 무방)
+const GA_ID = 'G-1Q21GW688N';
 
 // Rendered inside <head> so Google Search Console can verify ownership via GA.
 export default function GoogleAnalytics() {
