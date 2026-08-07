@@ -3,7 +3,7 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
-const GA_ID = 'G-1Q21GW688N';
+const GA_ID = 'G-795L00SDQ4';
 
 export default function GAListener() {
   const pathname = usePathname();
