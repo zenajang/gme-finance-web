@@ -125,8 +125,12 @@ export const NOTICES: Notice[] = [
     ],
     attachments: [
       {
-        label: '채무조정 신청서 다운로드',
-        href: '/documents/채무조정_신청서.pdf'
+        label: '채무조정 요청서 다운로드',
+        href: '/documents/채무조정_요청서.pdf'
+      },
+      {
+        label: '신용정보활용 동의서 다운로드',
+        href: '/documents/신용정보활용_동의서.pdf'
       }
     ]
   }
