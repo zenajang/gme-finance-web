@@ -27,7 +27,7 @@ export const NOTICES: Notice[] = [
     excerpt:
       '채무조정 안내 ◾ 채무조정 요청권이란?  → 채무조정 요청권이란, 「개인금융채권의 관리 및 개인금융채무자의 보호에 관한 법률」 제35조에 따라…',
     author: 'admin@gmefinance.com',
-    date: '2024-10-15',
+    date: '2026-08-26',
     pinned: true,
     category: 'loss_of_benefit',
     body: [
