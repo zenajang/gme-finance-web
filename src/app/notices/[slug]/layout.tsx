@@ -6,12 +6,13 @@ export { default } from "@/app/components/common/SimpleLayout";
 // 검색 노출은 아래 slug만 허용. 나머지 공지(UUID 상세 등)는 noindex.
 const INDEXABLE_SLUGS = new Set(["debt-adjustment-guide"]);
 
+// Next.js 15 부터 params 는 Promise 다.
 type NoticeLayoutParams = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
-export function generateMetadata({ params }: NoticeLayoutParams): Metadata {
-  const slug = params.slug;
+export async function generateMetadata({ params }: NoticeLayoutParams): Promise<Metadata> {
+  const { slug } = await params;
   const notice = NOTICES.find((item) => item.slug === slug);
   const title =
     notice?.title ??
