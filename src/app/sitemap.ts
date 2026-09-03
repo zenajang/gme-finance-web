@@ -6,7 +6,7 @@ const routes = [
   "/",
   "/countries",
   "/about/blog",
-  "/notices",
+  "/notices/debt-adjustment-guide",
   "/careers",
   "/usage",
   "/privacy",
