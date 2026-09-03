@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { buildPageMetadata } from "@/lib/seo";
-import { NOTICES } from "../data";
+import { INDEX, NOINDEX, buildPageMetadata } from "@/lib/seo";
+import { INDEXABLE_NOTICE_SLUGS, NOTICES } from "../data";
 export { default } from "@/app/components/common/SimpleLayout";
 
-// 검색 노출은 아래 slug만 허용. 나머지 공지(UUID 상세 등)는 noindex.
-const INDEXABLE_SLUGS = new Set(["debt-adjustment-guide"]);
+const INDEXABLE_SLUGS = new Set(INDEXABLE_NOTICE_SLUGS);
 
 // Next.js 15 부터 params 는 Promise 다.
 type NoticeLayoutParams = {
@@ -27,10 +26,10 @@ export async function generateMetadata({ params }: NoticeLayoutParams): Promise<
     path: `/notices/${slug}`,
   });
 
-  if (INDEXABLE_SLUGS.has(slug)) return metadata;
-
+  // 부모 /notices/layout.tsx 가 robots: NOINDEX 를 걸어두므로, 허용 슬러그는
+  // robots 를 생략하면 안 되고 INDEX 로 명시해 덮어써야 한다.
   return {
     ...metadata,
-    robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
+    robots: INDEXABLE_SLUGS.has(slug) ? INDEX : NOINDEX,
   };
 }
