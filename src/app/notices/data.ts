@@ -135,3 +135,8 @@ export const NOTICES: Notice[] = [
     ]
   }
 ];
+
+// 검색 노출을 허용하는 공지 slug. 여기 없는 공지(UUID 상세 등)는
+// noindex + robots.txt Disallow 양쪽으로 막힌다.
+// robots.ts / [slug]/layout.tsx 가 이 목록을 그대로 참조하므로 한 곳만 고치면 된다.
+export const INDEXABLE_NOTICE_SLUGS = ['debt-adjustment-guide'];
