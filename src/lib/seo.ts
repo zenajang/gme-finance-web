@@ -9,11 +9,13 @@ type PageMetadataInput = {
   path: string;
 };
 
-// 검색 색인 + 링크 추적 모두 거부. 개인정보가 렌더되는 페이지에 붙인다.
+// 색인만 거부하고 링크 추적은 허용한다(noindex, follow). 개인정보가 렌더되는
+// 페이지에 붙인다. follow 를 막으면 크롤러가 목록에서 상세로 못 넘어가
+// 이미 색인된 상세들이 noindex 를 읽지 못한 채 남는다.
 export const NOINDEX: Metadata["robots"] = {
   index: false,
-  follow: false,
-  googleBot: { index: false, follow: false },
+  follow: true,
+  googleBot: { index: false, follow: true },
 };
 
 // 부모 layout 의 robots 를 덮어써야 하는 페이지용. Next.js 는 자식이
