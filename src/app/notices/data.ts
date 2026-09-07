@@ -130,7 +130,7 @@ export const NOTICES: Notice[] = [
       },
       {
         label: '신용정보활용 동의서 다운로드',
-        href: '/documents/신용정보활용_동의서.pdf'
+        href: '/documents/신용정보활용동의서_지엠이대부.pdf'
       }
     ]
   },
