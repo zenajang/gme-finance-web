@@ -130,7 +130,36 @@ export const NOTICES: Notice[] = [
       },
       {
         label: '신용정보활용 동의서 다운로드',
-        href: '/documents/신용정보활용_동의서.pdf'
+        href: '/documents/신용정보활용동의서_지엠이대부.pdf'
+      }
+    ]
+  },
+  {
+    slug: 'notice-of-intent-to-accelerate',
+    title: '기한이익상실예정 안내',
+    excerpt:'',
+    author: 'admin@gmefinance.com',
+    date: '2024-03-04',
+    pinned: true,
+    category: 'expiry_of_benefit',
+    body: [
+      {
+        paragraphs: ['기한의 이익 상실 예정 통지 안내 ']
+      },
+      {
+        paragraphs: [
+          '지엠이대부는 「개인금융채권의 관리 및 개인금융채무자의 보호에 관한 법률」 제 6 조 ( 기한의 이익 상실 예정의 통지 ) 에 따라 아래와 같이 기한의 이익 상실 예정 개인금융채무자 명단을 게시합니다 .'
+        ]
+      },
+      {
+        paragraphs: [
+          '해당 채무자께서는 본 게시일로부터 10 영업일 이내 에 필요한 상환 또는 조치를 취하여 주시기 바랍니다 . 10 영업일 경과 시 기한의 이익이 상실 되며 , 이에 따라 당사는 약정된 상환 기일 이전에 전체 대출금 상환을 요구할 권리를 행사할 수 있음을 알려드립니다 .또한, 「개인금융채권의 관리 및 개인금융채무자의 보호에 관한 법률」 제 32 조에 따라 연체한 개인금융채무자는 채무조정을 요청할수 있음을 안내드립니다.채무조정의 요건과 요청절차, 방법에 관한 사항은 당사 홈페이지 Noctices> 공지에서  채무조정 안내를 확인 하시거나 고객센터로 연락주시기 바랍니다.문의사항이 있으실 경우 , 당사 고객센터로 연락 주시기 바랍니다 .'
+        ]
+      },
+      {
+        paragraphs: [
+          '문의처 : 02-765-5555'
+        ]
       }
     ]
   }
@@ -139,4 +168,4 @@ export const NOTICES: Notice[] = [
 // 검색 노출을 허용하는 공지 slug. 여기 없는 공지(UUID 상세 등)는
 // noindex + robots.txt Disallow 양쪽으로 막힌다.
 // robots.ts / [slug]/layout.tsx 가 이 목록을 그대로 참조하므로 한 곳만 고치면 된다.
-export const INDEXABLE_NOTICE_SLUGS = ['debt-adjustment-guide'];
+export const INDEXABLE_NOTICE_SLUGS = ['debt-adjustment-guide','notice-of-intent-to-accelerate'];
