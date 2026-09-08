@@ -4,7 +4,6 @@ import IntroductionSection from "@/features/home/components/IntroductionSection"
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
 import LatestSocials from "@/features/home/sections/LatestSocials";
-import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
 import TeamSection from "@/features/home/sections/TeamSection";
@@ -75,9 +74,6 @@ export default function PakistanPage() {
         <section className="bg-no-repeat relative overflow-hidden">
           <GarlandDecoration country="pakistan" />
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
-          <div className="mb-20">
-            <LoanApplicationForm country="pakistan" buttonBgColor={colors.primary} subtitleColor={colors.primary}  anchorId="apply-loan-online" />
-          </div>
         </section>
       </div>
     </div>
