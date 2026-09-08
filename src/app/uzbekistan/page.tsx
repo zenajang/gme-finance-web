@@ -5,7 +5,6 @@ import IntroductionSection from "@/features/home/components/IntroductionSection"
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
 import LatestSocials from "@/features/home/sections/LatestSocials";
-import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
 import TeamSection from "@/features/home/sections/TeamSection";
@@ -81,7 +80,6 @@ export default function UzbekistanPage() {
           <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
         </div>
         <div style={{ background: colors.gradient1 }}>
-          <LoanApplicationForm subtitleColor={colors.primary} buttonBgColor={colors.primary}  anchorId="apply-loan-online" />
         </div>
       </section>
     </div>
