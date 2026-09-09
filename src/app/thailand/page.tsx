@@ -5,7 +5,6 @@ import IntroductionSection from "@/features/home/components/IntroductionSection"
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
 import LatestSocials from "@/features/home/sections/LatestSocials";
-import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
 import TeamSection from "@/features/home/sections/TeamSection";
@@ -66,7 +65,6 @@ export default function ThailandPage() {
           <div className="absolute bg-no-repeat top-20 bg-left -left-40 w-full h-80" style={{ backgroundImage: "url('/images/thailand/cloud_r.svg')", zIndex: 1 }} />
           <GarlandDecoration country="thailand" />
           <EMICalculatorSection titleColor={colors.title} />
-          <LoanApplicationForm country="thailand"  anchorId="apply-loan-online" />
         </section>
       </div>
     </div>

@@ -5,7 +5,6 @@ import IntroductionSection
 import LoanTypesSection from "@/features/home/components/LoanTypesSection";
 import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
 import LatestSocials from "@/features/home/sections/LatestSocials";
-import LoanApplicationForm from "@/features/home/sections/LoanApplicationForm";
 import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
 import ProcessStep from "@/features/home/sections/ProcessStep";
 import TeamSection from "@/features/home/sections/TeamSection";
@@ -80,7 +79,6 @@ export default function MyanmarPage() {
       <section className="bg-cover relative overflow-hidden" style={{ background: getGradient('myanmar') }}>
         <EMICalculatorSection buttonBgColor={colors.primary} buttonHoverBgColor={colors.hover} />
         <GarlandDecoration country="myanmar" />
-        <LoanApplicationForm buttonBgColor={colors.primary} subtitleColor={colors.primary}  anchorId="apply-loan-online" />
       </section>
     </div>
   );
