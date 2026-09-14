@@ -72,7 +72,7 @@ export default function Home() {
       <AnimatedBannerSection />
       <LatestNewsSection />
       <CustomerFeedbackSection />
-      <LoanTypesSection />
+      {/* <LoanTypesSection /> */}
       <NewServiceSection />
       <SimpleLoanApplySection />
       <FindBranchSection />
