@@ -55,7 +55,7 @@ export default function ThailandPage() {
           centerImageHeight={2000}
           centerImageStyle={{ opacity: 0.8, zIndex: 5, marginTop: '200px' }}
         />
-        <LoanTypesSection titleColor={colors.title} />
+        {/* <LoanTypesSection titleColor={colors.title} /> */}
         <ProcessStep titleColor={colors.title} subtitleColor={colors.subtitle} />
       </div>
       <LoanDetailSection backgroundImage="/images/thailand/loan_detail_bg.webp" country="thailand" />

@@ -67,7 +67,7 @@ export default function BangladeshPage() {
           rightImageOffsetX={-150}
           rightImageStyle={{ width: '35vw', zIndex: 1 }}
         />
-        <LoanTypesSection />
+        {/* <LoanTypesSection /> */}
         <ProcessStep subtitleColor={colors.primary} />
       </div>
       <LoanDetailSection backgroundImage="/images/bangladesh/loan_detail_bg.webp" country="bangladesh" />

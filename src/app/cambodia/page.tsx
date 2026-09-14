@@ -57,7 +57,7 @@ export default function CambodiaPage() {
           rightImageHeight={200}
           rightImageStyle={{ right: '-200px', marginTop: '120px', zIndex: 1 }}
         />
-        <LoanTypesSection />
+        {/* <LoanTypesSection /> */}
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat -top-30 bg-center w-full pointer-events-none" style={{ backgroundImage: "url('/images/cambodia/pattern.svg')", backgroundSize: '90%', height: '240%', backgroundRepeat: 'no-repeat', zIndex: 0 }} />
           <div className="relative" style={{ zIndex: 10 }}>

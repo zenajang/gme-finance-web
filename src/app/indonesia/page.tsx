@@ -48,7 +48,7 @@ export default function IndonesiaPage() {
           subtitleColor={colors.primary}
           videoUrl="https://www.youtube.com/embed/Q-AGuNjVNMU"
         />
-        <LoanTypesSection />
+        {/* <LoanTypesSection /> */}
         <section className="bg-no-repeat relative overflow-hidden">
           <ProcessStep />
           <div className="absolute pointer-events-none bg-repeat bg-bottom bottom-0 right-0 w-full h-full" style={{ backgroundImage: "url('/images/indonesia/garland_u.svg')", transform: 'rotate(180deg)' }} />

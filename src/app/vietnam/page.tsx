@@ -57,7 +57,7 @@ export default function VietnamPage() {
           rightImageOffsetX={-270}
           rightImageStyle={{ width:'48vw', zIndex: 1 }}
         />
-        <LoanTypesSection />
+        {/* <LoanTypesSection /> */}
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute pointer-events-none bg-no-repeat bg-right -bottom-80 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/vietnam/pattern_r.svg')", backgroundSize: '20% auto' }} />
           <ProcessStep />

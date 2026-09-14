@@ -63,7 +63,7 @@ export default function UzbekistanPage() {
           centerImageHeight={3000}
           centerImageStyle={{ opacity: 0.8, zIndex: 5, maxHeight: '30vh' }}
         />
-        <LoanTypesSection />
+        {/* <LoanTypesSection /> */}
         <section className="bg-no-repeat relative overflow-hidden">
           {/* 모바일용 flower - 작은 크기 */}
           <div className="absolute bg-no-repeat bg-right block md:hidden -bottom-10 -right-10 w-[50vw] h-[50vw]" style={{ backgroundImage: "url('/images/uzbekistan/flower_lg.svg')", backgroundSize: 'contain' }} />

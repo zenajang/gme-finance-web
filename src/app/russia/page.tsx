@@ -64,7 +64,7 @@ export default function RussiaPage() {
           rightImageHeight={350}
           rightImageStyle={{  width:'20vw',  zIndex: 1 }}
         />
-        <LoanTypesSection />
+        {/* <LoanTypesSection /> */}
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat bg-bottom bottom-0 w-full h-135" style={{ backgroundImage: "url('/images/russia/snow_bg.svg')" }} />
           <ProcessStep subtitleColor="#3A57B4" />

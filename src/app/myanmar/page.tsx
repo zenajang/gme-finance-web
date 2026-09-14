@@ -68,7 +68,7 @@ export default function MyanmarPage() {
             rightImageHeight={380}
             rightImageStyle={{ width: '25vw', zIndex: 1 }}
           />
-          <LoanTypesSection />
+          {/* <LoanTypesSection /> */}
           <section className="relative overflow-hidden">
             <div className="absolute bg-no-repeat bg-cover bg-center bottom-0 w-full h-200 md:h-280" style={{ backgroundImage: "url('/images/myanmar/wave_b.svg')" }} />
             <ProcessStep subtitleColor={colors.primary} />
