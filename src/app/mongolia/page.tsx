@@ -51,7 +51,7 @@ export default function MongoliaPage() {
           centerImageHeight={3000}
           centerImageStyle={{ opacity: 0.8, zIndex: 5, marginTop: '200px' }}
         />
-        <LoanTypesSection />
+        {/* <LoanTypesSection /> */}
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute pointer-events-none bg-no-repeat bg-right top-90 -right-40 w-full h-full" style={{ backgroundImage: "url('/images/mongolia/pattern_r.svg')", backgroundSize: '20%' }} />
           <ProcessStep />

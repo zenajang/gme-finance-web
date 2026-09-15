@@ -46,7 +46,7 @@ export default function IndiaPage() {
           subtitleColor="#F94B00"
           videoUrl="https://www.youtube.com/embed/8LYtzxvDWN4"
         />
-        <LoanTypesSection />
+        {/* <LoanTypesSection /> */}
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute pointer-events-none bg-no-repeat bg-right -bottom-70 -right-50 w-full h-full" style={{ backgroundImage: "url('/images/india/pattern_g_l.svg')" }} />
           <ProcessStep />

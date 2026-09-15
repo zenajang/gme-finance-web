@@ -59,7 +59,7 @@ export default function SrilankaPage() {
             rightImageStyle={{ width: '40vw', marginTop:'120px',zIndex: 1 }}
             rightImageOffsetX={-200}
           />
-          <LoanTypesSection />
+          {/* <LoanTypesSection /> */}
           <ProcessStep />
           <div className="absolute bg-no-repeat bg-right -bottom-10 right-0 w-full h-80 md:h-220" style={{ backgroundImage: "url('/images/srilanka/garland_d.svg')", backgroundSize: 'contain' }} />
         </section>

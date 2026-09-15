@@ -53,7 +53,7 @@ export default function PhilippinesPage() {
           rightImageOffsetX={-10}
           rightImageStyle={{ width:'20vw',zIndex: 1 }}
         />
-        <LoanTypesSection />
+        {/* <LoanTypesSection /> */}
         <section className="bg-no-repeat relative overflow-hidden">
           <ProcessStep />
         </section>

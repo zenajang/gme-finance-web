@@ -53,7 +53,7 @@ export default function NepalPage() {
           rightImageOffsetX={-40}
           rightImageStyle={{ width: '22vw',marginTop:'1.4vw', zIndex: 1 }}
         />
-        <LoanTypesSection />
+        {/* <LoanTypesSection /> */}
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat bg-right -bottom-6 -right-10 w-full h-65" style={{ backgroundImage: "url('/images/nepal/cow.svg')" }} />
           <div className="absolute bg-no-repeat bg-left bottom-0 -left-14 w-full h-65" style={{ backgroundImage: "url('/images/nepal/castle.svg')" }} />

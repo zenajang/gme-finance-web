@@ -62,7 +62,7 @@ export default function PakistanPage() {
           rightImageOffsetX={-400}
           rightImageStyle={{ width:'40vw', zIndex: 1 }}
         />
-        <LoanTypesSection />
+        {/* <LoanTypesSection /> */}
         <section className="bg-no-repeat relative overflow-hidden">
           <div className="absolute bg-no-repeat bg-right -bottom-90 -right-50 w-full h-220" style={{ backgroundImage: "url('/images/pakistan/flower.svg')" }} />
           <ProcessStep subtitleColor={colors.primary} />
