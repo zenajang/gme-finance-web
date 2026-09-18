@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { NOTICES } from '../data';
+import { maskNoticeCell } from '../utils/mask';
 import { useTranslation } from 'react-i18next';
 
 export default function NoticeDetailPage() {
@@ -257,7 +258,7 @@ export default function NoticeDetailPage() {
                                 key={`${notice.id}-td-${rowIndex}-${cellIndex}`}
                                 className="px-4 py-3 whitespace-pre-line"
                               >
-                                {cell}
+                                {maskNoticeCell(notice.table_columns[cellIndex] ?? '', cell, notice.category)}
                               </td>
                             ))}
                           </tr>
