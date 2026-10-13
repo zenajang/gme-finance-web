@@ -119,10 +119,10 @@ export default function RestrictionsPage() {
               <table className="w-full border-collapse border border-gray-300 bg-white">
                 <thead>
                   <tr className="bg-gray-200">
-                    <th className="border border-gray-300 px-4 py-3 text-center font-bold text-gray-900 w-20">구분</th>
-                    <th className="border border-gray-300 px-4 py-3 text-center font-bold text-gray-900 w-45">위탁대상자</th>
+                    <th className="border border-gray-300 px-4 py-3 text-center font-bold text-gray-900 w-17">구분</th>
+                    <th className="border border-gray-300 px-4 py-3 text-center font-bold text-gray-900 w-48">위탁대상자</th>
                     <th className="border border-gray-300 px-4 py-3 text-center font-bold text-gray-900">위탁업무내용</th>
-                    <th className="border border-gray-300 px-4 py-3 text-center font-bold text-gray-900 w-36">위탁기간</th>
+                    <th className="border border-gray-300 px-4 py-3 text-center font-bold text-gray-900 w-40">위탁기간</th>
                   </tr>
                 </thead>
                 <tbody>
