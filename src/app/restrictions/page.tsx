@@ -134,7 +134,7 @@ export default function RestrictionsPage() {
                   </tr>
                   <tr>
                     <td className="border border-gray-300 px-4 py-3 text-center">2</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center"> (주)글로벌머니익스프레스</td>
+                    <td className="border border-gray-300 px-4 py-3 text-center"> ㈜글로벌머니익스프레스</td>
                     <td className="border border-gray-300 px-4 py-3">대출 신청 접수 및 서류접수를 위한 모바일 앱 운영·관리</td>
                     <td className="border border-gray-300 px-4 py-3 text-center">위탁계약종료시까지</td>
                   </tr>
