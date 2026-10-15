@@ -1,8 +1,8 @@
-export default function PrivacyPage() {
+export default function CompanyTermPage() {
   return (
     <main className="min-h-screen py-5 md:py-20 px-4 md:px-8 lg:px-40">
       <div className="max-w-4xl mx-auto mt-15">
-        <h1 className="text-2xl md:text-3xl font-bold mb-8 flex justify-center">㈜지엠이대부 기본약관 제1호 (2023.11.13. 개정)</h1>
+        <h1 className="text-2xl md:text-3xl font-bold mb-8 flex justify-center">대부거래표준약관 (2019.05.15. 개정)</h1>
         <div className="prose prose-lg max-w-none text-gray-700 space-y-8">
 
           <section>
@@ -116,7 +116,6 @@ export default function PrivacyPage() {
               <li>어음교환소의 거래정지처분이 있을 때</li>
               <li>도피 또는 기타의 사유로 금융기관에서 채무자에 대한 지급을 정지한 것으로 인정된 때</li>
               <li>파산신청이 있는 때</li>
-              <li>제16조(통지사항 및 효력) 1항에서 대부업자와 정한 약정을 위반하면서 분할상환원리금의 지급을 지체하는 등 건전한 계속 거래 유지가 어렵다고 인정된 때</li>
             </ul>
             <p className="mb-3">② 채무자에게 다음 각호의 사유가 발생한 경우에는 기한의 이익을 상실한다. 다만, 대부업자는 기한의 이익상실일 7영업일전까지 다음 각 호의 채무이행지체사실과 이에 따라 기한의 이익이 상실된다는 사실을 채무자에게 통지하여야 하며, 기한의 이익상실일 7영업일전까지 통지하지 않은 경우에는 채무자는 실제통지가 도달한 날부터 7영업일이 경과한 날에 기한의 이익을 상실한다.</p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
@@ -220,11 +219,6 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-3">제24조 (관할법원의 합의)</h2>
             <p>이 약관에 의한 대부거래 계약에 관하여 대부업자와 채무자 사이에 소송의 필요가 생긴 때에는 법이 정하는 관할법원과 아울러 대부업자의 거래영업점 소재지 지방법원을 관할법원으로 하기로 한다. 다만, 채무자의 책임있는 사유로 부실채권이 발생되어 그 채권의 관리를 위하여 대부업자가 본점, 지역본부 또는 다른 영업점으로 그 채권관리업무를 이관한 경우에는 법이 정하는 관할법원과 아울러 이관 받은 본점, 지역본부 또는 다른 영업점 소재지 지방법원을 관할법원으로 하기로 한다.</p>
-          </section>
-
-          <section className="bg-gray-100 p-6 rounded-lg">
-            <h2 className="text-xl font-bold text-gray-900 mb-3">특약</h2>
-            <p>외국인 신용대출은 소재지 불명 또는 비자만료등 대부업자의 채권보전에 현저한 위험이 발생 할 수 있으므로 제12조(기한의 이익의 상실)1항을 1회라도 위반시 대부업자의 독촉ㆍ통지 등이 없어도, 채무자는 기한의 이익을 상실한다.</p>
           </section>
 
         </div>
