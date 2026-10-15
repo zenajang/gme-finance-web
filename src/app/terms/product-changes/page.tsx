@@ -5,11 +5,11 @@ export default function ProductChangesTermPage() {
         <h1 className="text-2xl md:text-3xl font-bold mb-8 flex justify-center">상품/약관 변경고시</h1>
         <div className="prose prose-lg max-w-none text-gray-700">
           <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">대부거래기본약관 변경에 대한 안내(2025.05.21 시행)</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">대부거래표준약관 변경에 대한 안내(2025.05.21 시행)</h2>
             <ul className="list-disc pl-6 space-y-2 mb-4">
               <li>1. 시행일 : 2025년 05월 21일부터 시행</li>
               <li>2. 대상고객 : 신용대출 상품을 이용하는 모든 고객(기존 고객 제외)</li>
-              <li>3. 변경내용 : 변경된 대부거래기본약관에 대한 자세항 사항은 하단의 「기본약관」에서 확인하실 수 있습니다.</li>
+              <li>3. 변경내용 : 변경된 대부거래표준약관에 대한 자세항 사항은 하단의 「기본약관」에서 확인하실 수 있습니다.</li>
             </ul>
           </section>
 
