@@ -2,7 +2,7 @@ import { buildPageMetadata } from "@/lib/seo";
 export { default } from "@/app/components/common/SimpleLayout";
 
 export const metadata = buildPageMetadata({
-  title: "Product Change Notice",
-  description: "Product and related change notices from GME Finance.",
-  path: "/marketing",
+  title: "Terms of Use",
+  description: "Terms of use and service policies for GME Finance.",
+  path: "/terms/use",
 });

@@ -64,21 +64,21 @@ export default function Footer() {
             {/* 모바일: 그리드, 태블릿/데스크톱: 인라인 */}
             <div className="grid grid-cols-2 gap-2 mt-3 md:inline md:mt-0 lg:inline lg:mt-0">
               <span className="hidden md:inline lg:inline"> | </span>
-              <Link href="/usage" className="underline md:ml-1 lg:ml-1">{t('footer.termsOfUse')}</Link>
+              <Link href="/terms/use" className="underline md:ml-1 lg:ml-1">{t('footer.termsOfUse')}</Link>
               <span className="hidden md:inline lg:inline"> | </span>
-              <Link href="/privacy" className="underline md:ml-1 lg:ml-1">{t('footer.lendingTerms')}</Link>
+              <Link href="/terms/company" className="underline md:ml-1 lg:ml-1">{t('footer.lendingTerms')}</Link>
               <span className="hidden md:inline lg:inline"> | </span>
-              <Link href="/marketing" className="underline md:ml-1 lg:ml-1">{t('footer.productChanges')}</Link>
+              <Link href="/terms/product-changes" className="underline md:ml-1 lg:ml-1">{t('footer.productChanges')}</Link>
               <span className="hidden md:inline lg:inline"> | </span>
-              <Link href="/personal-info" className="underline md:ml-1 lg:ml-1">{t('footer.privacyPolicy')}</Link>
+              <Link href="/privacy-policy" className="underline md:ml-1 lg:ml-1">{t('footer.privacyPolicy')}</Link>
               <span className="hidden md:inline lg:inline"> | </span>
               <Link href="/credit-info" className="underline md:ml-1 lg:ml-1">{t('footer.creditInfoSystem')}</Link>
               <span className="hidden md:inline lg:inline"> | </span>
-              <Link href="/guidelines" className="underline md:ml-1 lg:ml-1">{t('footer.customerRights')}</Link>
+              <Link href="/customer-rights" className="underline md:ml-1 lg:ml-1">{t('footer.customerRights')}</Link>
               <span className="hidden md:inline lg:inline"> | </span>
-              <Link href="/restrictions" className="underline md:ml-1 lg:ml-1">{t('footer.thirdPartyDisclosure')}</Link>
+              <Link href="/third-party-disclosure" className="underline md:ml-1 lg:ml-1">{t('footer.thirdPartyDisclosure')}</Link>
               <span className="hidden md:inline lg:inline"> | </span>
-              <Link href="/manual" className="underline md:ml-1 lg:ml-1">{t('footer.loanProductInfo')}</Link>
+              <Link href="/loan-product-info" className="underline md:ml-1 lg:ml-1">{t('footer.loanProductInfo')}</Link>
             </div>
           </div>
         </div>

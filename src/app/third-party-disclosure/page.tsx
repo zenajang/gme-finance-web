@@ -1,4 +1,4 @@
-export default function RestrictionsPage() {
+export default function RestrictionsTermPage() {
   return (
     <main className="min-h-screen py-5 md:py-20 px-4 md:px-8 lg:px-40">
       <div className="max-w-4xl mx-auto mt-15">
@@ -119,36 +119,35 @@ export default function RestrictionsPage() {
               <table className="w-full border-collapse border border-gray-300 bg-white">
                 <thead>
                   <tr className="bg-gray-200">
-                    <th className="border border-gray-300 px-4 py-3 text-center font-bold text-gray-900 w-17">구분</th>
-                    <th className="border border-gray-300 px-4 py-3 text-center font-bold text-gray-900 w-48">위탁대상자</th>
-                    <th className="border border-gray-300 px-4 py-3 text-center font-bold text-gray-900">위탁업무내용</th>
-                    <th className="border border-gray-300 px-4 py-3 text-center font-bold text-gray-900 w-40">위탁기간</th>
+                    <th className="border border-gray-300 px-2 py-3 text-center font-bold text-gray-900 w-14">구분</th>
+                    <th className="border border-gray-300 px-2 py-3 text-center font-bold text-gray-900 w-52">위탁대상자</th>
+                    <th className="border border-gray-300 px-3 py-3 text-center font-bold text-gray-900">위탁업무내용</th>
+                    <th className="border border-gray-300 px-2 py-3 text-center font-bold text-gray-900 w-42">위탁기간</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-3 text-center">1</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center">㈜웨인테크놀로지</td>
-                    <td className="border border-gray-300 px-4 py-3">대부전산과 관련된 각종 시스템관리 및 개발,유지보수,문자메시지 및 카카오알림톡 전송서비스</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center">위탁계약종료시까지</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center">1</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center">㈜웨인테크놀로지</td>
+                    <td className="border border-gray-300 px-3 py-3">대부전산과 관련된 각종 시스템관리 및 개발,유지보수,문자메시지 및 카카오알림톡 전송서비스</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center">위탁계약종료시까지</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-3 text-center">2</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center"> ㈜글로벌머니익스프레스</td>
-                    <td className="border border-gray-300 px-4 py-3">대출 신청 접수 및 서류접수를 위한 모바일 앱 운영·관리</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center">위탁계약종료시까지</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center">2</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center"> ㈜글로벌머니익스프레스</td>
+                    <td className="border border-gray-300 px-3 py-3">대출 신청 접수 및 서류접수를 위한 모바일 앱 운영·관리</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center">위탁계약종료시까지</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-3 text-center">3</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center">NICE신용정보㈜</td>
-                    <td className="border border-gray-300 px-4 py-3">모바일 전자계약서 작성·수령</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center">위탁계약종료시까지</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center">3</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center">NICE신용정보㈜</td>
+                    <td className="border border-gray-300 px-3 py-3">모바일 전자계약서 작성·수령</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center">위탁계약종료시까지</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </section>
-
         </div>
       </div>
     </main>
