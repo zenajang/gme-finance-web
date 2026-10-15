@@ -1,4 +1,4 @@
-export default function RestrictionsPage() {
+export default function RestrictionsTermPage() {
   return (
     <main className="min-h-screen py-5 md:py-20 px-4 md:px-8 lg:px-40">
       <div className="max-w-4xl mx-auto mt-15">
@@ -148,7 +148,6 @@ export default function RestrictionsPage() {
               </table>
             </div>
           </section>
-
         </div>
       </div>
     </main>

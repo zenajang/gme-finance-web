@@ -8,14 +8,12 @@ import LanguageSwitcher from './LanguageSwitcher';
 
 // Header가 항상 보여야 하는 페이지들
 const FORCE_VISIBLE_PATHS = [
-  '/usage',
-  '/privacy',
-  '/marketing',
-  '/personal-info',
+  '/terms',
+  '/privacy-policy',
   '/credit-info',
-  '/guidelines',
-  '/restrictions',
-  '/manual',
+  '/customer-rights',
+  '/third-party-disclosure',
+  '/loan-product-info',
   '/about/blog',
   '/countries',
   '/notices'
