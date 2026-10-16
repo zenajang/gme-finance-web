@@ -6,7 +6,7 @@ export default function UsagePage() {
         <div className="prose prose-lg max-w-none text-gray-700 space-y-8">
           <section>
             <h2 className="text-xl font-bold mb-4">제 1 조 (목적)</h2>
-            <p>본 약관은 (주)지엠이대부(이하 &apos;회사&apos;)가 운영하는 홈페이지(http://www.gmefinance.co.kr)에서 제공하는 인터넷 관련 서비스를 이용함에 있어, 회사와 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.</p>
+            <p>본 약관은 (주)지엠이대부(이하 &apos;회사&apos;)가 운영하는 홈페이지(http://www.gmefinance.com)에서 제공하는 인터넷 관련 서비스를 이용함에 있어, 회사와 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.</p>
           </section>
 
           <section>
