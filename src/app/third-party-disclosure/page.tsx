@@ -113,7 +113,7 @@ export default function RestrictionsTermPage() {
 
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-3">개인정보처리 위탁현황</h2>
-            <p className="mb-6">(개인정보처리 위탁) ㈜GME대부 회사는 원칙적으로 이용자의 동의없이 해당 개인정보의 처리를 타인에게 위탁하지 않습니다. 다만 이용자의 동의를 받아 회사가 현재 개인정보처리를 위탁하는 사항은 다음과 같습니다.</p>
+            <p className="mb-6">(개인정보처리 위탁) ㈜지엠이대부는 원활한 업무 처리를 위하여 아래와 같이 개인정보 처리업무를 위탁하고 있습니다. 회사는 위탁계약 체결 시 「개인정보 보호법」 제26조에 따라 위탁업무 수행 목적 외 개인정보 처리 금지, 기술적·관리적 보호조치, 재위탁 제한, 수탁자에 대한 관리·감독, 손해배상 등에 관한 사항을 계약서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다. 위탁업무의 내용이나 수탁자가 변경되는 경우 본 개인정보처리방침을 통해 지체 없이 공개하겠습니다.</p>
 
             <div className="overflow-x-auto">
               <table className="w-full border-collapse border border-gray-300 bg-white">
@@ -129,20 +129,20 @@ export default function RestrictionsTermPage() {
                   <tr>
                     <td className="border border-gray-300 px-2 py-3 text-center">1</td>
                     <td className="border border-gray-300 px-2 py-3 text-center">㈜웨인테크놀로지</td>
-                    <td className="border border-gray-300 px-3 py-3">대부전산과 관련된 각종 시스템관리 및 개발,유지보수,문자메시지 및 카카오알림톡 전송서비스</td>
-                    <td className="border border-gray-300 px-2 py-3 text-center">위탁계약종료시까지</td>
+                    <td className="border border-gray-300 px-3 py-3">대부전산과 관련된 각종 시스템관리 및 개발·유지보수, 문자메시지 및 카카오알림톡 전송서비스</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center">위탁계약 종료 시까지</td>
                   </tr>
                   <tr>
                     <td className="border border-gray-300 px-2 py-3 text-center">2</td>
                     <td className="border border-gray-300 px-2 py-3 text-center"> ㈜글로벌머니익스프레스</td>
                     <td className="border border-gray-300 px-3 py-3">대출 신청 접수 및 서류접수를 위한 모바일 앱 운영·관리</td>
-                    <td className="border border-gray-300 px-2 py-3 text-center">위탁계약종료시까지</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center">위탁계약 종료 시까지</td>
                   </tr>
                   <tr>
                     <td className="border border-gray-300 px-2 py-3 text-center">3</td>
                     <td className="border border-gray-300 px-2 py-3 text-center">NICE신용정보㈜</td>
                     <td className="border border-gray-300 px-3 py-3">모바일 전자계약서 작성·수령</td>
-                    <td className="border border-gray-300 px-2 py-3 text-center">위탁계약종료시까지</td>
+                    <td className="border border-gray-300 px-2 py-3 text-center">위탁계약 종료 시까지</td>
                   </tr>
                 </tbody>
               </table>
