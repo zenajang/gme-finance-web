@@ -5,7 +5,7 @@ export default function PersonalInfoPage() {
         <h1 className="text-2xl md:text-3xl font-bold mb-8 flex justify-center">(주)GME대부 개인정보 취급(처리)방침</h1>
         <div className="prose prose-lg max-w-none text-gray-700 space-y-8">
 
-          <p>㈜GME대부(&apos;www.gmefinance.co.kr&apos;이하 &apos;회사&apos;) 는 『신용정보의 이용 및 보호에 관한 법률』,『개인정보보호법』 및 『정보통신망이용촉진 및 정보보호에 관한 법률』에 따라 고객의 개인정보 보호 및 권익을 보호하여, 이용자의 권리보장에 최선을 다하고 있습니다. 회사는 개인정보취급(처리)방침을 개정하는 경우 영업점에 게시(또는 웹사이트 공지 등)을 통하여 공지할 것입니다.</p>
+          <p>㈜GME대부(&apos;www.gmefinance.com&apos;이하 &apos;회사&apos;) 는 『신용정보의 이용 및 보호에 관한 법률』,『개인정보보호법』 및 『정보통신망이용촉진 및 정보보호에 관한 법률』에 따라 고객의 개인정보 보호 및 권익을 보호하여, 이용자의 권리보장에 최선을 다하고 있습니다. 회사는 개인정보취급(처리)방침을 개정하는 경우 영업점에 게시(또는 웹사이트 공지 등)을 통하여 공지할 것입니다.</p>
 
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-3">제1조 (개인정보의 처리 목적)</h2>
