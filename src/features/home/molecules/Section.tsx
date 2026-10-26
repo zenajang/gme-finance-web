@@ -4,6 +4,8 @@ import Container from '@/features/home/atoms/Container';
 interface SectionProps {
   id: string;
   tone: 'white' | 'gray';
+  // 섹션마다 위아래 여백이 다른 경우 덮어쓴다
+  paddingClassName?: string;
   children: ReactNode;
 }
 
@@ -13,11 +15,16 @@ const TONE_CLASS = {
   gray: 'before:bg-[rgba(246,247,249,.76)]',
 } as const;
 
-const Section = ({ id, tone, children }: SectionProps) => {
+const Section = ({
+  id,
+  tone,
+  paddingClassName = 'py-22 max-lg:py-17',
+  children,
+}: SectionProps) => {
   return (
     <section
       id={id}
-      className={`relative py-22 before:pointer-events-none before:absolute before:inset-0 max-lg:py-17 ${TONE_CLASS[tone]}`}
+      className={`relative before:pointer-events-none before:absolute before:inset-0 ${paddingClassName} ${TONE_CLASS[tone]}`}
     >
       <Container className="relative">{children}</Container>
     </section>
