@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex h-[760px] items-center overflow-hidden pb-7 before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(90deg,rgba(255,255,255,.94)_0%,rgba(255,255,255,.86)_42%,rgba(255,255,255,.38)_72%,rgba(255,255,255,.16)_100%)] max-lg:before:bg-[linear-gradient(180deg,rgba(255,255,255,.82)_0%,rgba(255,255,255,.7)_55%,rgba(255,255,255,.55)_100%)] max-[1281px]:h-[680px] max-lg:h-auto max-lg:pt-33 max-lg:pb-16 max-sm:pt-28 max-sm:pb-12"
+      className="relative flex h-[760px] items-center overflow-hidden pb-7 before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(90deg,rgba(255,255,255,.94)_0%,rgba(255,255,255,.86)_42%,rgba(255,255,255,.38)_72%,rgba(255,255,255,.16)_100%)] max-lg:before:bg-[linear-gradient(180deg,rgba(255,255,255,.82)_0%,rgba(255,255,255,.7)_55%,rgba(255,255,255,.55)_100%)] max-xl:h-[680px] max-lg:h-auto max-lg:pt-33 max-lg:pb-16 max-sm:pt-28 max-sm:pb-12"
     >
       <Container className="relative grid grid-cols-[minmax(0,1fr)_minmax(300px,430px)] items-center gap-12 pt-[38px] pb-[22px] max-lg:grid-cols-1 max-lg:gap-[38px]">
         <div className="max-w-[680px]">
