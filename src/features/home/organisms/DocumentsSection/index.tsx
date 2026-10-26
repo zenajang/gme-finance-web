@@ -16,7 +16,8 @@ const DocumentsSection = () => {
         {REQUIRED_DOCUMENTS.map((document) => (
           <li
             key={document}
-            className="flex items-center gap-3.5 rounded-[10px] border border-line bg-white px-5 py-[18px] transition hover:border-line-strong hover:shadow-[0_10px_24px_rgba(17,18,22,.09)]"
+            data-reveal
+            className="flex items-center gap-3.5 rounded-[10px] border border-line bg-white px-5 py-[18px] transition duration-200 ease-gme hover:border-line-strong hover:shadow-[0_10px_24px_rgba(17,18,22,.09)]"
           >
             <span
               aria-hidden="true"
@@ -36,7 +37,7 @@ const DocumentsSection = () => {
           </li>
         ))}
       </ul>
-      <div className="mt-[26px] flex max-w-[780px] items-start gap-3 rounded-[7px] border border-line bg-fog px-5 py-[18px]">
+      <div data-reveal className="mt-[26px] flex max-w-[780px] items-start gap-3 rounded-[7px] border border-line bg-fog px-5 py-[18px]">
         <svg aria-hidden="true" className="mt-px size-[18px] shrink-0 text-brand" fill="none" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.6" />
           <path d="M12 11v5.3M12 8.2v.1" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />

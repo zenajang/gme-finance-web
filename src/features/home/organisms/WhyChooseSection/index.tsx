@@ -18,6 +18,7 @@ const WhyChooseSection = () => {
         {REASONS.map((reason) => (
           <li
             key={reason}
+            data-reveal
             className="flex items-center gap-[13px] rounded-[10px] border border-[#e1e3e7] bg-white px-5 py-[18px] text-[#202228]"
           >
             <span
@@ -30,7 +31,7 @@ const WhyChooseSection = () => {
           </li>
         ))}
       </ul>
-      <p className="mt-[18px] text-[13px] leading-[1.55] text-[#70747c]">
+      <p data-reveal className="mt-[18px] text-[13px] leading-[1.55] text-[#70747c]">
         Loan approval, amount, rate and eligibility are subject to individual screening and
         applicable terms.
       </p>

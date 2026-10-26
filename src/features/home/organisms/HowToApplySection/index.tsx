@@ -58,6 +58,7 @@ const HowToApplySection = () => {
         ))}
       </ol>
       <div
+        data-reveal
         className={`${CARD} mt-6 grid grid-cols-[42px_minmax(0,1fr)] items-center gap-4 border-[#dfe2e7] px-6 py-5 shadow-[0_8px_24px_rgba(17,18,22,.035)] max-md:grid-cols-[36px_1fr] max-md:p-[18px]`}
       >
         <span

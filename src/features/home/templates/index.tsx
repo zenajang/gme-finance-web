@@ -1,3 +1,4 @@
+import RevealObserver from '@/features/home/atoms/RevealObserver';
 import AppSection from '@/features/home/organisms/AppSection';
 import CalculatorSection from '@/features/home/organisms/CalculatorSection';
 import DocumentsSection from '@/features/home/organisms/DocumentsSection';
@@ -26,6 +27,7 @@ const HomeTemplate = () => {
       <AppSection />
       <FaqSection />
       <FinalCtaSection />
+      <RevealObserver />
     </div>
   );
 };

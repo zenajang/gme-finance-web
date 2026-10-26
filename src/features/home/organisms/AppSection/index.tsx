@@ -66,7 +66,9 @@ const AppSection = () => {
         title="Use the GME App to manage your loan"
         description="Check your loan, view information, send inquiries, and access bank statement services in one place."
       />
-      <div className="grid grid-cols-[230px_minmax(0,1fr)] items-start gap-[52px] max-lg:grid-cols-[190px_minmax(0,1fr)] max-lg:gap-8 max-md:grid-cols-1">
+      <div
+        data-reveal
+        className="grid grid-cols-[230px_minmax(0,1fr)] items-start gap-[52px] max-lg:grid-cols-[190px_minmax(0,1fr)] max-lg:gap-8 max-md:grid-cols-1">
         <div className="flex justify-center">
           <Image
             src="/images/home/app-screen.png"

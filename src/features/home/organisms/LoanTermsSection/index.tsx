@@ -28,7 +28,7 @@ const CELL = 'border-b border-line p-4 text-left align-top max-md:block';
 const LoanTermsSection = () => {
   return (
     <Section id="loan-product-information" tone="gray">
-      <SectionHead eyebrow="Loan Terms" />
+      <SectionHead eyebrow="Loan Terms" hasReveal={false} />
       <div className="max-w-[960px] rounded-xl border border-[#dfe2e7] bg-white p-[34px] leading-[1.55] text-[#17191d] max-md:p-[22px]">
         <h2 className="mb-2 text-[34px] leading-[1.55] font-bold tracking-[-0.025em] text-ink max-md:text-[28px]">
           Loan Product Information

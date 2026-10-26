@@ -8,7 +8,7 @@ const HeroSection = () => {
       className="relative flex h-[760px] items-center overflow-hidden pb-7 before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(90deg,rgba(255,255,255,.94)_0%,rgba(255,255,255,.86)_42%,rgba(255,255,255,.38)_72%,rgba(255,255,255,.16)_100%)] max-lg:before:bg-[linear-gradient(180deg,rgba(255,255,255,.82)_0%,rgba(255,255,255,.7)_55%,rgba(255,255,255,.55)_100%)] max-lg:h-auto max-lg:pt-33 max-lg:pb-16 max-md:pt-28 max-md:pb-12"
     >
       <Container className="relative grid grid-cols-[minmax(0,1fr)_minmax(300px,430px)] items-center gap-12 pt-[38px] pb-[22px] max-lg:grid-cols-1 max-lg:gap-[38px]">
-        <div className="max-w-[680px]">
+        <div data-reveal className="max-w-[680px]">
           <span className="mb-[22px] inline-flex items-center gap-[9px] text-[12.5px] font-bold tracking-[0.12em] text-brand uppercase before:inline-block before:h-0.5 before:w-5 before:bg-brand">
             GME FINANCE
           </span>
@@ -25,7 +25,7 @@ const HeroSection = () => {
             <ApplyLoanButton />
           </div>
         </div>
-        <div className="w-full max-w-[760px] justify-self-center max-lg:justify-self-start">
+        <div data-reveal className="w-full max-w-[760px] justify-self-center max-lg:justify-self-start">
           <video
             className="block h-auto w-full origin-right object-contain lg:scale-[1.13]"
             autoPlay

@@ -5,11 +5,13 @@ interface SectionHeadProps {
   eyebrow: ReactNode;
   title?: ReactNode;
   description?: ReactNode;
+  // 스크롤 등장 효과. 시안에서 대출 상품 정보 섹션만 없다
+  hasReveal?: boolean;
 }
 
-const SectionHead = ({ eyebrow, title, description }: SectionHeadProps) => {
+const SectionHead = ({ eyebrow, title, description, hasReveal = true }: SectionHeadProps) => {
   return (
-    <div className="mb-[34px] max-w-[760px]">
+    <div data-reveal={hasReveal ? '' : undefined} className="mb-[34px] max-w-[760px]">
       <Eyebrow>{eyebrow}</Eyebrow>
       {title && (
         <h2 className="mt-3 max-w-[720px] text-[clamp(28px,3vw,40px)] leading-[1.16] font-bold tracking-[-0.035em] text-ink">

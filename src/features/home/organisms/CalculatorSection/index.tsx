@@ -33,6 +33,7 @@ const CalculatorSection = () => {
       <SectionHead eyebrow="Loan Calculator" title="Estimate your monthly payment" />
       <div
         role="group"
+        data-reveal
         aria-label="Loan repayment calculator"
         className="max-w-[820px] rounded-xl border border-[#dde0e5] bg-white p-8 tabular-nums backdrop-blur-[3px] max-lg:max-w-none max-md:p-[22px]"
       >
