@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import Container from '@/features/home/atoms/Container';
 
 interface SectionProps {
-  id: string;
+  id?: string;
   tone: 'white' | 'gray';
   // 섹션마다 위아래 여백이 다른 경우 덮어쓴다
   paddingClassName?: string;

@@ -3,6 +3,7 @@ import CalculatorSection from '@/features/home/organisms/CalculatorSection';
 import DocumentsSection from '@/features/home/organisms/DocumentsSection';
 import EligibilitySection from '@/features/home/organisms/EligibilitySection';
 import FaqSection from '@/features/home/organisms/FaqSection';
+import FinalCtaSection from '@/features/home/organisms/FinalCtaSection';
 import HeroSection from '@/features/home/organisms/HeroSection';
 import HowToApplySection from '@/features/home/organisms/HowToApplySection';
 import LoanTermsSection from '@/features/home/organisms/LoanTermsSection';
@@ -24,6 +25,7 @@ const HomeTemplate = () => {
       <WhyChooseSection />
       <AppSection />
       <FaqSection />
+      <FinalCtaSection />
     </div>
   );
 };
