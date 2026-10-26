@@ -6,7 +6,7 @@ interface ButtonProps {
 }
 
 // 외부 링크 CTA 버튼 (새 탭)
-export default function Button({ href, children }: ButtonProps) {
+const Button = ({ href, children }: ButtonProps) => {
   return (
     <a
       href={href}
@@ -17,4 +17,6 @@ export default function Button({ href, children }: ButtonProps) {
       {children}
     </a>
   );
-}
+};
+
+export default Button;

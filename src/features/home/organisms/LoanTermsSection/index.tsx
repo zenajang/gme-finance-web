@@ -25,7 +25,7 @@ const TERMS = [
 
 const CELL = 'border-b border-line p-4 text-left align-top max-sm:block';
 
-export default function LoanTermsSection() {
+const LoanTermsSection = () => {
   return (
     <Section id="loan-product-information" tone="gray">
       <SectionHead eyebrow="Loan Terms" />
@@ -67,4 +67,6 @@ export default function LoanTermsSection() {
       </div>
     </Section>
   );
-}
+};
+
+export default LoanTermsSection;

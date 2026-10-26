@@ -2,7 +2,7 @@ import Button from '@/features/home/atoms/Button';
 import Container from '@/features/home/atoms/Container';
 import { APPLY_LOAN_URL } from '@/features/home/constants';
 
-export default function HeroSection() {
+const HeroSection = () => {
   return (
     <section
       id="home"
@@ -41,4 +41,6 @@ export default function HeroSection() {
       </Container>
     </section>
   );
-}
+};
+
+export default HeroSection;

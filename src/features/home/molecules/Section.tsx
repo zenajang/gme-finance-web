@@ -13,7 +13,7 @@ const TONE_CLASS = {
   gray: 'before:bg-[rgba(246,247,249,.76)]',
 } as const;
 
-export default function Section({ id, tone, children }: SectionProps) {
+const Section = ({ id, tone, children }: SectionProps) => {
   return (
     <section
       id={id}
@@ -22,4 +22,6 @@ export default function Section({ id, tone, children }: SectionProps) {
       <Container className="relative">{children}</Container>
     </section>
   );
-}
+};
+
+export default Section;

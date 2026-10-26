@@ -5,10 +5,12 @@ interface SectionHeadProps {
   eyebrow: ReactNode;
 }
 
-export default function SectionHead({ eyebrow }: SectionHeadProps) {
+const SectionHead = ({ eyebrow }: SectionHeadProps) => {
   return (
     <div className="mb-[34px] max-w-[760px]">
       <Eyebrow>{eyebrow}</Eyebrow>
     </div>
   );
-}
+};
+
+export default SectionHead;
