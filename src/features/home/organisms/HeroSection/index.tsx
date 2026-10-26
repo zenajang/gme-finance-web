@@ -1,6 +1,7 @@
 import Button from '@/features/home/atoms/Button';
 import Container from '@/features/home/atoms/Container';
-import { APPLY_LOAN_URL } from '@/features/home/constants';
+
+const APPLY_LOAN_URL = 'https://gme.channel.io';
 
 const HeroSection = () => {
   return (

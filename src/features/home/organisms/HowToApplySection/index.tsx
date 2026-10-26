@@ -1,6 +1,32 @@
 import Section from '@/features/home/molecules/Section';
 import SectionHead from '@/features/home/molecules/SectionHead';
-import { ACTIVE_APPLY_STEP, APPLY_STEPS } from '@/features/home/constants';
+
+// 신청 단계. 줄바꿈(\n)은 시안의 <br /> 위치
+const APPLY_STEPS = [
+  {
+    title: 'Check Your Eligibility',
+    description:
+      'Complete a short eligibility check based on your visa status, employment, and income. No documents are required at this stage.',
+  },
+  {
+    title: 'Submit Your Enquiry',
+    description:
+      'Provide your contact details and preferred language. This allows our team to review your enquiry and provide appropriate assistance.',
+  },
+  {
+    title: 'Consultation & Review',
+    description:
+      'A GME Finance representative will contact you to confirm your information, explain the loan process, and guide you through the next steps.',
+  },
+  {
+    title: 'Send documents &\nreceive your money',
+    description:
+      'Submit the required documents for assessment. Upon approval, the loan amount will be disbursed to your designated Korean bank account.',
+  },
+] as const;
+
+// 시안에서 강조 표시되는 단계 (0부터)
+const ACTIVE_APPLY_STEP = 2;
 
 const CARD = 'rounded-[14px] border bg-white';
 
