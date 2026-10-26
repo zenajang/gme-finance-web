@@ -1,9 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { usePathname } from 'next/navigation';
-import { getCountryFromPath, getAvailableLanguages, LanguageCode } from '@/i18n/config';
+import { LANGUAGE_LABELS, useLanguageSwitch } from '@/lib/hooks/useLanguageSwitch';
 
 interface LanguageSwitcherProps {
   className?: string;
@@ -12,47 +9,9 @@ interface LanguageSwitcherProps {
   size?: 'normal' | 'compact';
 }
 
-// 언어별 짧은 코드
-const LANG_SHORT: Record<LanguageCode, string> = {
-  en: 'EN',
-  ko: 'KR',
-  vi: 'VI',
-  th: 'TH',
-  fil: 'PH',
-  id: 'ID',
-  km: 'KH',
-  my: 'MM',
-  ne: 'NP',
-  hi: 'IN',
-  ur: 'PK',
-  bn: 'BD',
-  si: 'LK',
-  mn: 'MN',
-  uz: 'UZ',
-  ru: 'RU',
-};
-
 export default function LanguageSwitcher({ className = '', variant = 'desktop', forceVisible = false, size = 'normal' }: LanguageSwitcherProps) {
-  const { i18n } = useTranslation();
-  const pathname = usePathname();
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const country = getCountryFromPath(pathname);
-  const availableLanguages = getAvailableLanguages(country);
-
-  // 현재 언어 인덱스 추적
-  useEffect(() => {
-    const index = availableLanguages.findIndex(lang => lang.code === i18n.language);
-    setActiveIndex(index >= 0 ? index : 0);
-  }, [i18n.language, availableLanguages]);
-
-  const handleLanguageChange = (langCode: LanguageCode, index: number) => {
-    setActiveIndex(index);
-    i18n.changeLanguage(langCode);
-    // 나라별로 선택한 언어 저장
-    const storageKey = `i18nextLng_${country}`;
-    localStorage.setItem(storageKey, langCode);
-  };
+  const { languages: availableLanguages, currentLanguage, changeLanguage } = useLanguageSwitch();
+  const activeIndex = Math.max(0, availableLanguages.findIndex(lang => lang.code === currentLanguage));
 
   // 모바일 버전
   if (variant === 'mobile') {
@@ -69,16 +28,16 @@ export default function LanguageSwitcher({ className = '', variant = 'desktop', 
                 left: `calc(${(100 / availableLanguages.length) * activeIndex}% + 2px)`,
               }}
             />
-            {availableLanguages.map((lang, index) => (
+            {availableLanguages.map((lang) => (
               <button
                 key={lang.code}
-                onClick={() => handleLanguageChange(lang.code, index)}
-                className={`relative z-10 flex-1 ${mobileButtonClass} font-medium text-center transition-colors duration-300 ${i18n.language === lang.code
+                onClick={() => changeLanguage(lang.code)}
+                className={`relative z-10 flex-1 ${mobileButtonClass} font-medium text-center transition-colors duration-300 ${currentLanguage === lang.code
                     ? 'text-gray-800'
                     : 'text-gray-500'
                   }`}
               >
-                {LANG_SHORT[lang.code]}
+                {LANGUAGE_LABELS[lang.code]}
               </button>
             ))}
           </div>
@@ -99,17 +58,17 @@ export default function LanguageSwitcher({ className = '', variant = 'desktop', 
           left: `calc(${(100 / availableLanguages.length) * activeIndex}% + 2px)`,
         }}
       />
-      {availableLanguages.map((lang, index) => (
+      {availableLanguages.map((lang) => (
         <button
           key={lang.code}
-          onClick={() => handleLanguageChange(lang.code, index)}
+          onClick={() => changeLanguage(lang.code)}
           className={`relative z-10 text-center ${desktopButtonClass} font-medium transition-colors duration-300 ${
             forceVisible
-              ? i18n.language === lang.code ? 'text-white' : 'text-gray-600 hover:text-gray-900'
-              : i18n.language === lang.code ? 'text-gray-800' : 'text-white/80 hover:text-white'
+              ? currentLanguage === lang.code ? 'text-white' : 'text-gray-600 hover:text-gray-900'
+              : currentLanguage === lang.code ? 'text-gray-800' : 'text-white/80 hover:text-white'
           }`}
         >
-          {lang.code === 'en' ? <>{LANG_SHORT[lang.code]}&nbsp;</> : <>&nbsp;{LANG_SHORT[lang.code]}</>}
+          {lang.code === 'en' ? <>{LANGUAGE_LABELS[lang.code]}&nbsp;</> : <>&nbsp;{LANGUAGE_LABELS[lang.code]}</>}
         </button>
       ))}
     </div>
