@@ -1,16 +1,16 @@
 'use client'
 
-import IntroductionSection from "@/features/home/components/IntroductionSection";
-import LoanTypesSection from "@/features/home/components/LoanTypesSection";
-import EMICalculatorSection from "@/features/home/sections/EMICalculatorSection";
-import LatestSocials from "@/features/home/sections/LatestSocials";
-import LoanDetailSection from "@/features/home/sections/LoanDetailSection";
-import ProcessStep from "@/features/home/sections/ProcessStep";
-import TeamSection from "@/features/home/sections/TeamSection";
-import CountryBlogSection from "@/features/home/sections/CountryBlogSection";
+import IntroductionSection from "@/features/common/components/IntroductionSection";
+import LoanTypesSection from "@/features/common/components/LoanTypesSection";
+import EMICalculatorSection from "@/features/common/components/EMICalculatorSection";
+import LatestSocials from "@/features/common/components/LatestSocials";
+import LoanDetailSection from "@/features/common/components/LoanDetailSection";
+import ProcessStep from "@/features/common/components/ProcessStep";
+import TeamSection from "@/features/common/components/TeamSection";
+import CountryBlogSection from "@/features/common/components/CountryBlogSection";
 import { getGradient } from "@/constants/colors";
-import GarlandDecoration from "@/features/home/sections/GarlandDecoration";
-import TeamVideoSection from "@/features/home/sections/TeamVideoSection";
+import GarlandDecoration from "@/features/common/components/GarlandDecoration";
+import TeamVideoSection from "@/features/common/components/TeamVideoSection";
 import { useTranslation } from "react-i18next";
 import { COUNTRY_SOCIALS, COUNTRY_TEAMS, COUNTRY_PHONES } from "@/constants/countryPageData";
 
