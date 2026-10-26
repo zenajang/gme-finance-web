@@ -23,6 +23,23 @@
   --font-weight-black: 900;
 }
 
+/* GME Finance 홈 디자인 토큰 (시안 index.html 기준) */
+@theme {
+  --color-brand: #d71920;
+  --color-brand-dark: #af141a;
+  --color-brand-50: #fdf0f0;
+  --color-brand-100: #fadcdd;
+  --color-ink: #15161a;
+  --color-ink-70: #4b4d55;
+  --color-slate: #6b6e76;
+  --color-slate-soft: #9497a1;
+  --color-line: #e3e4e8;
+  --color-line-strong: #d3d4d9;
+  --color-fog: #f5f6f8;
+
+  --container-content: 1200px;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
