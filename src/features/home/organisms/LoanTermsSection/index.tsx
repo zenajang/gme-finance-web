@@ -1,27 +1,6 @@
 import Section from '@/features/home/molecules/Section';
 import SectionHead from '@/features/home/molecules/SectionHead';
-
-const TERMS = [
-  { label: 'Registration information', value: 'Registration No. 2019-금감원-1801' },
-  { label: 'Interest rate', value: 'Up to 20% per annum' },
-  { label: 'Interest calculation', value: 'Interest is charged monthly on the agreed date.' },
-  {
-    label: 'Repayment method',
-    value:
-      'Repayment amounts may vary depending on the loan terms and repayment method stated in the individual loan agreement.',
-  },
-  {
-    label: 'Overdue interest rate',
-    value:
-      'Loan rate + up to 3% per annum, within the legal maximum rate of 20% per annum. Applicable only to contracts renewed from July 7, 2021.',
-  },
-  { label: 'Related costs', value: 'No additional fees or early repayment penalties.' },
-  { label: 'Loan period', value: '3–60 months' },
-  {
-    label: 'Registration verification',
-    value: 'Financial Supervisory Service (registration check) · 02-3145-5114',
-  },
-] as const;
+import { LOAN_TERMS } from '@/features/home/constants';
 
 const CELL = 'border-b border-line p-4 text-left align-top max-sm:block';
 
@@ -41,7 +20,7 @@ const LoanTermsSection = () => {
         </p>
         <table className="w-full border-collapse">
           <tbody>
-            {TERMS.map(({ label, value }) => (
+            {LOAN_TERMS.map(({ label, value }) => (
               <tr key={label}>
                 <th
                   scope="row"
