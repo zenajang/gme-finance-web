@@ -1,3 +1,4 @@
+import EligibilitySection from '@/features/home/organisms/EligibilitySection';
 import HeroSection from '@/features/home/organisms/HeroSection';
 import LoanTermsSection from '@/features/home/organisms/LoanTermsSection';
 import StatsStrip from '@/features/home/organisms/StatsStrip';
@@ -10,6 +11,7 @@ const HomeTemplate = () => {
       <HeroSection />
       <LoanTermsSection />
       <StatsStrip />
+      <EligibilitySection />
     </div>
   );
 };
