@@ -1,7 +1,5 @@
-import Button from '@/features/home/atoms/Button';
+import ApplyLoanButton from '@/features/home/atoms/ApplyLoanButton';
 import Container from '@/features/home/atoms/Container';
-
-const APPLY_LOAN_URL = 'https://gme.channel.io';
 
 const HeroSection = () => {
   return (
@@ -24,7 +22,7 @@ const HeroSection = () => {
             For eligible foreign residents.
           </p>
           <div className="mb-7 flex flex-wrap items-center gap-4">
-            <Button href={APPLY_LOAN_URL}>Apply Loan</Button>
+            <ApplyLoanButton />
           </div>
         </div>
         <div className="w-full max-w-[760px] justify-self-center max-lg:justify-self-start">

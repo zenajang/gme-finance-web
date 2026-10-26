@@ -73,6 +73,9 @@ interface EventProperty {
 type Appearance = "light" | "dark" | "system" | null;
 
 class ChannelService {
+  // boot 성공 여부. 실패(허용 도메인 아님 등) 시 메신저를 열 수 없다
+  isBooted = false;
+
   loadScript() {
     const w = window;
     if (w.ChannelIO) {
@@ -113,11 +116,15 @@ class ChannelService {
   }
 
   boot(option: BootOption, callback?: Callback) {
-    window.ChannelIO?.("boot", option, callback);
+    window.ChannelIO?.("boot", option, ((error, user) => {
+      this.isBooted = !error;
+      callback?.(error, user);
+    }) satisfies Callback);
   }
 
   shutdown() {
     window.ChannelIO?.("shutdown");
+    this.isBooted = false;
   }
 
   showMessenger() {
