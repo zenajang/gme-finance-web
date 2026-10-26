@@ -1,3 +1,4 @@
+import AppSection from '@/features/home/organisms/AppSection';
 import CalculatorSection from '@/features/home/organisms/CalculatorSection';
 import DocumentsSection from '@/features/home/organisms/DocumentsSection';
 import EligibilitySection from '@/features/home/organisms/EligibilitySection';
@@ -20,6 +21,7 @@ const HomeTemplate = () => {
       <DocumentsSection />
       <HowToApplySection />
       <WhyChooseSection />
+      <AppSection />
     </div>
   );
 };
