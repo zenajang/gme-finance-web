@@ -47,3 +47,10 @@ export const STATS = [
   { icon: 'trophy', value: '1M+', label: 'Successful Loan Cases' },
   { icon: 'headset', value: '24/7', label: 'Customer Support' },
 ] as const;
+
+// 신청 필요 서류
+export const REQUIRED_DOCUMENTS = [
+  'Alien Registration Card',
+  'Valid Passport',
+  'Work Contract',
+] as const;
