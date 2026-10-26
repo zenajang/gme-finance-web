@@ -17,7 +17,7 @@ const StatItem = ({ icon, value, label }: StatItemProps) => {
       >
         {icon}
       </span>
-      <strong className="text-[29px] leading-none font-extrabold tracking-[-0.04em] text-[#151922] max-sm:text-[25px]">
+      <strong className="text-[29px] leading-none font-extrabold tracking-[-0.04em] text-[#151922] max-md:text-[25px]">
         {value}
       </strong>
       <span className="mt-[5px] text-xs leading-[1.35] font-medium text-[#606773]">{label}</span>

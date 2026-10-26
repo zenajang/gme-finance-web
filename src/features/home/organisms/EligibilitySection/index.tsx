@@ -23,7 +23,7 @@ const EligibilitySection = () => {
   return (
     <Section id="eligibility" tone="gray">
       <SectionHead eyebrow="Eligibility" title="Visa categories" />
-      <ul className="grid grid-cols-6 gap-3.5 max-lg:grid-cols-4 max-sm:grid-cols-3">
+      <ul className="grid grid-cols-6 gap-3.5 max-lg:grid-cols-4 max-md:grid-cols-3">
         {VISA_CODES.map((code) => (
           <li
             key={code}

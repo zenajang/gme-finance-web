@@ -23,14 +23,14 @@ const TERMS = [
   },
 ] as const;
 
-const CELL = 'border-b border-line p-4 text-left align-top max-sm:block';
+const CELL = 'border-b border-line p-4 text-left align-top max-md:block';
 
 const LoanTermsSection = () => {
   return (
     <Section id="loan-product-information" tone="gray">
       <SectionHead eyebrow="Loan Terms" />
-      <div className="max-w-[960px] rounded-xl border border-[#dfe2e7] bg-white p-[34px] leading-[1.55] text-[#17191d] max-sm:p-[22px]">
-        <h2 className="mb-2 text-[34px] leading-[1.55] font-bold tracking-[-0.025em] text-ink max-sm:text-[28px]">
+      <div className="max-w-[960px] rounded-xl border border-[#dfe2e7] bg-white p-[34px] leading-[1.55] text-[#17191d] max-md:p-[22px]">
+        <h2 className="mb-2 text-[34px] leading-[1.55] font-bold tracking-[-0.025em] text-ink max-md:text-[28px]">
           Loan Product Information
         </h2>
         <p className="mb-7 text-[#5c616b]">Required loan terms and registration information.</p>
@@ -45,11 +45,11 @@ const LoanTermsSection = () => {
               <tr key={label}>
                 <th
                   scope="row"
-                  className={`${CELL} w-[32%] bg-[#f7f8fa] font-bold max-sm:w-auto max-sm:border-b-0 max-sm:pb-1`}
+                  className={`${CELL} w-[32%] bg-[#f7f8fa] font-bold max-md:w-auto max-md:border-b-0 max-md:pb-1`}
                 >
                   {label}
                 </th>
-                <td className={`${CELL} max-sm:pt-1`}>{value}</td>
+                <td className={`${CELL} max-md:pt-1`}>{value}</td>
               </tr>
             ))}
           </tbody>

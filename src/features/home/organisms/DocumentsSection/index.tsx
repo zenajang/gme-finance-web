@@ -12,7 +12,7 @@ const DocumentsSection = () => {
   return (
     <Section id="documents" tone="gray">
       <SectionHead eyebrow="Documents" title="What do you need?" />
-      <ul className="grid max-w-[780px] grid-cols-3 gap-3.5 max-lg:grid-cols-2 max-sm:grid-cols-1">
+      <ul className="grid max-w-[780px] grid-cols-3 gap-3.5 max-lg:grid-cols-2 max-md:grid-cols-1">
         {REQUIRED_DOCUMENTS.map((document) => (
           <li
             key={document}

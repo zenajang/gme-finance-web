@@ -34,11 +34,11 @@ const HowToApplySection = () => {
   return (
     <Section id="how-it-works" tone="white">
       <SectionHead eyebrow="How to Apply" title="Apply in four simple steps" />
-      <ol className="grid grid-cols-4 items-stretch gap-[18px] max-lg:grid-cols-2 max-sm:grid-cols-1">
+      <ol className="grid grid-cols-4 items-stretch gap-[18px] max-lg:grid-cols-2 max-md:grid-cols-1">
         {APPLY_STEPS.map(({ title, description }, index) => (
           <li
             key={title}
-            className={`${CARD} flex min-h-[390px] flex-col border-[#e1e3e7] px-6 pt-7 pb-6 shadow-[0_8px_24px_rgba(17,18,22,.04)] max-lg:min-h-[340px] max-sm:min-h-0`}
+            className={`${CARD} flex min-h-[390px] flex-col border-[#e1e3e7] px-6 pt-7 pb-6 shadow-[0_8px_24px_rgba(17,18,22,.04)] max-lg:min-h-[340px] max-md:min-h-0`}
           >
             <span
               aria-hidden="true"
@@ -50,7 +50,7 @@ const HowToApplySection = () => {
             >
               {String(index + 1).padStart(2, '0')}
             </span>
-            <h3 className="mb-3 min-h-[52px] text-[21px] leading-[1.25] font-[650] tracking-[-0.025em] whitespace-pre-line text-[#17191d] max-sm:min-h-0">
+            <h3 className="mb-3 min-h-[52px] text-[21px] leading-[1.25] font-[650] tracking-[-0.025em] whitespace-pre-line text-[#17191d] max-md:min-h-0">
               {title}
             </h3>
             <p className="mb-5 text-[15px] leading-[1.65] text-[#70747c]">{description}</p>
@@ -58,11 +58,11 @@ const HowToApplySection = () => {
         ))}
       </ol>
       <div
-        className={`${CARD} mt-6 grid grid-cols-[42px_minmax(0,1fr)] items-center gap-4 border-[#dfe2e7] px-6 py-5 shadow-[0_8px_24px_rgba(17,18,22,.035)] max-sm:grid-cols-[36px_1fr] max-sm:p-[18px]`}
+        className={`${CARD} mt-6 grid grid-cols-[42px_minmax(0,1fr)] items-center gap-4 border-[#dfe2e7] px-6 py-5 shadow-[0_8px_24px_rgba(17,18,22,.035)] max-md:grid-cols-[36px_1fr] max-md:p-[18px]`}
       >
         <span
           aria-hidden="true"
-          className="flex size-10 items-center justify-center rounded-full bg-brand-50 text-lg font-black text-brand max-sm:size-[34px]"
+          className="flex size-10 items-center justify-center rounded-full bg-brand-50 text-lg font-black text-brand max-md:size-[34px]"
         >
           ✓
         </span>

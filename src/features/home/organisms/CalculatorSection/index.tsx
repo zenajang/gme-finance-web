@@ -34,7 +34,7 @@ const CalculatorSection = () => {
       <div
         role="group"
         aria-label="Loan repayment calculator"
-        className="max-w-[820px] rounded-xl border border-[#dde0e5] bg-white p-8 tabular-nums backdrop-blur-[3px] max-lg:max-w-none max-sm:p-[22px]"
+        className="max-w-[820px] rounded-xl border border-[#dde0e5] bg-white p-8 tabular-nums backdrop-blur-[3px] max-lg:max-w-none max-md:p-[22px]"
       >
         <div className="mb-[26px]">
           <div className={LABEL_ROW}>
@@ -75,11 +75,11 @@ const CalculatorSection = () => {
         <div aria-live="polite" className="rounded-lg border border-line bg-[#f6f7f9] p-[18px]">
           <div className="flex items-end justify-between gap-5 border-b border-line pb-3.5">
             <strong className="text-[13px]">Estimated monthly payment</strong>
-            <output className="text-[28px] font-bold max-sm:text-[23px]">
+            <output className="text-[28px] font-bold max-md:text-[23px]">
               {won.format(payment)}
             </output>
           </div>
-          <div className="flex justify-between gap-4 pt-3 text-[13px] max-sm:flex-col">
+          <div className="flex justify-between gap-4 pt-3 text-[13px] max-md:flex-col">
             <span>
               Total repayment <strong>{won.format(total)}</strong>
             </span>
