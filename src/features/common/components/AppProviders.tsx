@@ -4,9 +4,11 @@ import { useEffect, type ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import { SWRConfig, useSWRConfig } from 'swr';
 import { createClient } from '@/lib/supabase/client';
+import type { CountryCode, LanguageCode } from '@/i18n/config';
 import I18nProvider from './I18nProvider';
 
 interface AppProvidersProps {
+  initialLanguages: Record<CountryCode, LanguageCode>;
   children: ReactNode;
 }
 
@@ -41,7 +43,7 @@ function RealtimeBlogSync({ enabled }: { enabled: boolean }) {
   return null;
 }
 
-export default function AppProviders({ children }: AppProvidersProps) {
+export default function AppProviders({ initialLanguages, children }: AppProvidersProps) {
   const pathname = usePathname();
   const enableRealtime = Boolean(pathname?.startsWith('/about/blog'));
 
@@ -54,7 +56,7 @@ export default function AppProviders({ children }: AppProvidersProps) {
         focusThrottleInterval: 60 * 1000,
       }}
     >
-      <I18nProvider>
+      <I18nProvider initialLanguages={initialLanguages}>
         <RealtimeBlogSync enabled={enableRealtime} />
         {children}
       </I18nProvider>
