@@ -15,7 +15,7 @@ const DesktopNav = () => {
   const { t } = useTranslation();
 
   return (
-    <nav aria-label="Primary" className="flex items-center gap-[34px] max-lg:hidden">
+    <nav aria-label={t('header.primaryNav')} className="flex items-center gap-[34px] max-lg:hidden">
       {NAV_ITEMS.map(({ key, href }) => {
         if (!href) return <CountriesDropdown key={key} linkClassName={LINK} />;
         const isCurrent = isCurrentPath(pathname, href);

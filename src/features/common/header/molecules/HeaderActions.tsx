@@ -27,7 +27,7 @@ const HeaderActions = ({ isMenuOpen, onToggleMenu }: HeaderActionsProps) => {
         type="button"
         aria-controls="mobile-menu"
         aria-expanded={isMenuOpen}
-        aria-label="Toggle menu"
+        aria-label={t('header.toggleMenu')}
         onClick={onToggleMenu}
         className="flex size-[38px] shrink-0 items-center justify-center rounded-[7px] border border-line bg-white text-ink lg:hidden"
       >

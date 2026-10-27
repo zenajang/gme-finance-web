@@ -608,7 +608,10 @@
     "careers": "Careers",
     "countries": "Countries",
     "notices": "Notices",
-    "login": "Login"
+    "login": "Login",
+    "primaryNav": "Primary",
+    "language": "Language",
+    "toggleMenu": "Toggle menu"
   },
   "landing": {
     "applyLoan": "Apply Loan",

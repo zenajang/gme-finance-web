@@ -423,7 +423,10 @@
     "careers": "채용",
     "countries": "국가별 서비스",
     "notices": "공지사항",
-    "login": "로그인"
+    "login": "로그인",
+    "primaryNav": "주 메뉴",
+    "language": "언어 선택",
+    "toggleMenu": "메뉴 열기/닫기"
   },
   "landing": {
     "applyLoan": "대출 신청",

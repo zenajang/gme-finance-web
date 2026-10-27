@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslation } from 'react-i18next';
 import { LANGUAGE_LABELS, useLanguageSwitch } from '@/lib/hooks/useLanguageSwitch';
 
 interface LanguageSwitchProps {
@@ -8,12 +9,13 @@ interface LanguageSwitchProps {
 
 // 언어 선택 (시안 lang-switch)
 const LanguageSwitch = ({ className = '' }: LanguageSwitchProps) => {
+  const { t } = useTranslation();
   const { languages, currentLanguage, changeLanguage } = useLanguageSwitch();
 
   return (
     <div
       role="group"
-      aria-label="Language"
+      aria-label={t('header.language')}
       className={`inline-flex items-center gap-0.5 rounded-[7px] border border-line bg-fog p-[3px] ${className}`}
     >
       {languages.map(({ code }) => {
