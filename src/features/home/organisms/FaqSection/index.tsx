@@ -1,5 +1,4 @@
-import Section from '@/features/home/molecules/Section';
-import SectionHead from '@/features/home/molecules/SectionHead';
+import { Section, SectionHead } from '@/features/home/molecules';
 
 const FAQS = [
   { question: 'Do I need a guarantor?', answer: 'No. A guarantor is not required.' },

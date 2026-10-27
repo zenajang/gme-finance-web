@@ -1,5 +1,5 @@
 import Container from '@/features/home/atoms/Container';
-import StatItem from '@/features/home/molecules/StatItem';
+import { StatItem } from '@/features/home/molecules';
 
 const STATS = [
   {

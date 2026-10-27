@@ -1,5 +1,4 @@
-import Section from '@/features/home/molecules/Section';
-import SectionHead from '@/features/home/molecules/SectionHead';
+import { Section, SectionHead } from '@/features/home/molecules';
 
 const REASONS = [
   'Trusted Since 2016',

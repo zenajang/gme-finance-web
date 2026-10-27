@@ -1,5 +1,4 @@
-import Section from '@/features/home/molecules/Section';
-import SectionHead from '@/features/home/molecules/SectionHead';
+import { Section, SectionHead } from '@/features/home/molecules';
 
 // 신청 단계. 줄바꿈(\n)은 시안의 <br /> 위치
 const APPLY_STEPS = [

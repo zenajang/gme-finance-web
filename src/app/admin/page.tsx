@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import dynamicImport from 'next/dynamic';
-import '../components/admin/TiptapEditor.css';
+import '@/features/admin/components/TiptapEditor.css';
 import { useSWRConfig } from 'swr';
 import { useTranslation } from 'react-i18next';
 import BlogSection from '@/app/admin/components/BlogSection';
@@ -37,7 +37,7 @@ function EditorLoading() {
 }
 
 // Tiptap editor dynamic import (disable SSR)
-const TiptapEditor = dynamicImport(() => import('@/app/components/admin/TiptapEditor'), {
+const TiptapEditor = dynamicImport(() => import('@/features/admin/components/TiptapEditor'), {
   ssr: false,
   loading: () => <EditorLoading />
 });

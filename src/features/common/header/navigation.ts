@@ -1,4 +1,4 @@
-// 헤더 · 모바일 메뉴 공통 메뉴. href 가 없으면 시안처럼 드롭다운 예정인 비활성 메뉴 (Countries)
+// 헤더 · 모바일 메뉴 공통 메뉴. href 가 없는 Countries 는 나라 목록 드롭다운을 연다
 export const NAV_ITEMS: { label: string; href?: string }[] = [
   { label: 'Home', href: '/' },
   { label: 'Blog', href: '/about/blog' },

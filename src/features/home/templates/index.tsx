@@ -1,15 +1,17 @@
 import RevealObserver from '@/features/home/atoms/RevealObserver';
-import AppSection from '@/features/home/organisms/AppSection';
-import CalculatorSection from '@/features/home/organisms/CalculatorSection';
-import DocumentsSection from '@/features/home/organisms/DocumentsSection';
-import EligibilitySection from '@/features/home/organisms/EligibilitySection';
-import FaqSection from '@/features/home/organisms/FaqSection';
-import FinalCtaSection from '@/features/home/organisms/FinalCtaSection';
-import HeroSection from '@/features/home/organisms/HeroSection';
-import HowToApplySection from '@/features/home/organisms/HowToApplySection';
-import LoanTermsSection from '@/features/home/organisms/LoanTermsSection';
-import StatsStrip from '@/features/home/organisms/StatsStrip';
-import WhyChooseSection from '@/features/home/organisms/WhyChooseSection';
+import {
+  AppSection,
+  CalculatorSection,
+  DocumentsSection,
+  EligibilitySection,
+  FaqSection,
+  FinalCtaSection,
+  HeroSection,
+  HowToApplySection,
+  LoanTermsSection,
+  StatsStrip,
+  WhyChooseSection,
+} from '@/features/home/organisms';
 
 // 홈 섹션 조합. Header · Footer · <main> 은 LayoutWrapper 가 감싼다.
 // 배경: 시안처럼 건물 이미지를 고정하고 흰색 막(.76)을 덮는다.

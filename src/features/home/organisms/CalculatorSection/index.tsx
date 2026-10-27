@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Section from '@/features/home/molecules/Section';
-import SectionHead from '@/features/home/molecules/SectionHead';
+import { Section, SectionHead } from '@/features/home/molecules';
 
 // 연 20% 원리금균등상환, 1,000원 단위 올림. 배포용 EMI 표(3~60개월 × ₩2M~₩30M) 1,682칸과 일치한다.
 const MONTHLY_RATE = 0.2 / 12;

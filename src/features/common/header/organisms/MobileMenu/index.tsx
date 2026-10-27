@@ -2,8 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LOGIN_LINK } from '@/features/common/header/molecules/HeaderActions';
-import LanguageSwitch from '@/features/common/header/molecules/LanguageSwitch';
+import { LOGIN_LINK, LanguageSwitch, MobileCountries } from '@/features/common/header/molecules';
 import { isCurrentPath, NAV_ITEMS } from '@/features/common/header/navigation';
 
 interface MobileMenuProps {
@@ -28,22 +27,7 @@ const MobileMenu = ({ isOpen, isHeaderCompact, onClose }: MobileMenuProps) => {
       } ${isOpen ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-2.5 opacity-0'}`}
     >
       {NAV_ITEMS.map(({ label, href }) => {
-        if (!href) {
-          return (
-            <a
-              key={label}
-              role="link"
-              aria-disabled="true"
-              tabIndex={0}
-              className={`${LINK} flex cursor-pointer items-center gap-[7px] text-ink`}
-            >
-              {label}
-              <svg aria-hidden="true" className="size-[11px] shrink-0 opacity-45" fill="none" viewBox="0 0 24 24">
-                <path d="M6 9l6 6 6-6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" />
-              </svg>
-            </a>
-          );
-        }
+        if (!href) return <MobileCountries key={label} onNavigate={onClose} />;
         const isCurrent = isCurrentPath(pathname, href);
         return (
           <Link

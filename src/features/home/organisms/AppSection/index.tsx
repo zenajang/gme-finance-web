@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
-import Section from '@/features/home/molecules/Section';
-import SectionHead from '@/features/home/molecules/SectionHead';
+import { Section, SectionHead } from '@/features/home/molecules';
 
 // 아이콘 선은 검정, 마지막 요소만 빨강 (시안 아이콘 규칙)
 const FEATURES: { title: string; description: string; icon: ReactNode }[] = [

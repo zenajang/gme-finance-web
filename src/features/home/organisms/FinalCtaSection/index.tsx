@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import ApplyLoanButton from '@/features/home/atoms/ApplyLoanButton';
 import Eyebrow from '@/features/home/atoms/Eyebrow';
-import Section from '@/features/home/molecules/Section';
+import { Section } from '@/features/home/molecules';
 
 const STORE_BADGES = [
   {

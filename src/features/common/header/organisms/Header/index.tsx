@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import DesktopNav from '@/features/common/header/molecules/DesktopNav';
-import HeaderActions from '@/features/common/header/molecules/HeaderActions';
+import { DesktopNav, HeaderActions } from '@/features/common/header/molecules';
 import MobileMenu from '@/features/common/header/organisms/MobileMenu';
 
 const Header = () => {

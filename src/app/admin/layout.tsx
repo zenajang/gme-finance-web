@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-export { default } from "@/app/components/common/SimpleLayout";
+export { default } from "@/features/common/components/SimpleLayout";
 
 export const metadata: Metadata = {
   title: "Admin",

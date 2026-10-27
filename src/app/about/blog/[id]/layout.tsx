@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo";
-export { default } from "@/app/components/common/SimpleLayout";
+export { default } from "@/features/common/components/SimpleLayout";
 
 type BlogLayoutParams = {
   params: { id: string };

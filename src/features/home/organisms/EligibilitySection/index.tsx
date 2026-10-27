@@ -1,6 +1,4 @@
-import Disclaimer from '@/features/home/molecules/Disclaimer';
-import Section from '@/features/home/molecules/Section';
-import SectionHead from '@/features/home/molecules/SectionHead';
+import { Disclaimer, Section, SectionHead } from '@/features/home/molecules';
 
 // 신청 가능 비자 (D · E · F · G · H 순)
 const VISA_CODES = [
