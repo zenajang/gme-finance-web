@@ -1,13 +1,11 @@
-'use client';
-
-import { useTranslation } from 'react-i18next';
+import { getServerT } from '@/i18n/server';
 import { Section, SectionHead } from '@/features/home/molecules';
 
 // 신청 필요 서류. 문구는 landing.documents.items.<key>
 const DOCUMENT_KEYS = ['alienCard', 'passport', 'workContract'] as const;
 
-const DocumentsSection = () => {
-  const { t } = useTranslation();
+const DocumentsSection = async () => {
+  const t = await getServerT('main');
 
   return (
     <Section id="documents" tone="gray">

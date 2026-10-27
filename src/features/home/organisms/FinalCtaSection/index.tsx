@@ -1,11 +1,9 @@
-'use client';
-
-import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import { LinkButton } from '@/features/common/atoms';
 import { Eyebrow } from '@/features/home/atoms';
 import { Section } from '@/features/home/molecules';
-import { CHANNEL_TALK_URL, openChannelTalk } from '@/lib/channelTalk';
+import { getServerT } from '@/i18n/server';
+import { CHANNEL_TALK_URL } from '@/lib/channelTalk';
 
 const STORE_BADGES = [
   {
@@ -22,8 +20,8 @@ const STORE_BADGES = [
   },
 ] as const;
 
-const FinalCtaSection = () => {
-  const { t } = useTranslation();
+const FinalCtaSection = async () => {
+  const t = await getServerT('main');
 
   return (
     <Section tone="white" paddingClassName="py-[68px] max-lg:py-12">
@@ -42,7 +40,7 @@ const FinalCtaSection = () => {
             href={CHANNEL_TALK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={openChannelTalk}
+            data-channel-talk
           >
             {t('landing.applyLoan')}
           </LinkButton>

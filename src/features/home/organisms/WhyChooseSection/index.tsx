@@ -1,13 +1,11 @@
-'use client';
-
-import { useTranslation } from 'react-i18next';
+import { getServerT } from '@/i18n/server';
 import { Section, SectionHead } from '@/features/home/molecules';
 
 // 문구는 landing.whyChoose.reasons.<key>
 const REASON_KEYS = ['trusted', 'support', 'simple', 'noFees', 'visa', 'app'] as const;
 
-const WhyChooseSection = () => {
-  const { t } = useTranslation();
+const WhyChooseSection = async () => {
+  const t = await getServerT('main');
 
   return (
     <Section id="why" tone="gray">

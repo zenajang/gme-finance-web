@@ -1,12 +1,10 @@
-'use client';
-
-import { useTranslation } from 'react-i18next';
 import { LinkButton } from '@/features/common/atoms';
 import { Container } from '@/features/home/atoms';
-import { CHANNEL_TALK_URL, openChannelTalk } from '@/lib/channelTalk';
+import { getServerT } from '@/i18n/server';
+import { CHANNEL_TALK_URL } from '@/lib/channelTalk';
 
-const HeroSection = () => {
-  const { t } = useTranslation();
+const HeroSection = async () => {
+  const t = await getServerT('main');
 
   return (
     <section
@@ -22,7 +20,7 @@ const HeroSection = () => {
             {t('landing.hero.title')}
           </h1>
           <p className="mt-5 mb-2 text-[clamp(1.35rem,2.2vw,2rem)] font-bold tracking-[-0.025em] text-brand max-md:text-[1.2rem]">
-            ₩2,000,000 – ₩30,000,000
+            ₩2,000,000 - ₩30,000,000
           </p>
           <p className="mt-2.5 mb-[34px] max-w-[420px] text-[16.5px] leading-[1.65] text-ink-70">
             {t('landing.hero.subtitle')}
@@ -32,7 +30,7 @@ const HeroSection = () => {
               href={CHANNEL_TALK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={openChannelTalk}
+              data-channel-talk
             >
               {t('landing.applyLoan')}
             </LinkButton>

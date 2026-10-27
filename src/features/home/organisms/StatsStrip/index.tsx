@@ -1,6 +1,4 @@
-'use client';
-
-import { useTranslation } from 'react-i18next';
+import { getServerT } from '@/i18n/server';
 import { Container } from '@/features/home/atoms';
 import { StatItem } from '@/features/home/molecules';
 
@@ -47,8 +45,8 @@ const STATS = [
   },
 ];
 
-const StatsStrip = () => {
-  const { t } = useTranslation();
+const StatsStrip = async () => {
+  const t = await getServerT('main');
 
   return (
     <section aria-label={t('landing.stats.ariaLabel')} className="bg-white py-3.5">

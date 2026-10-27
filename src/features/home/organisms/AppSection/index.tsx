@@ -1,6 +1,4 @@
-'use client';
-
-import { useTranslation } from 'react-i18next';
+import { getServerT } from '@/i18n/server';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { Section, SectionHead } from '@/features/home/molecules';
@@ -55,8 +53,8 @@ const FEATURES: { key: string; icon: ReactNode }[] = [
   },
 ];
 
-const AppSection = () => {
-  const { t } = useTranslation();
+const AppSection = async () => {
+  const t = await getServerT('main');
 
   return (
     <Section id="gme-app" tone="white">
