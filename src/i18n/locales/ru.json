@@ -1,8 +1,5 @@
 {
   "name": "Полное имя",
-  "firstName": "Имя",
-  "lastName": "Фамилия",
-  "nationality": "Гражданство",
   "button": {
     "applyNow": "Подать заявку сейчас",
     "EMICalculator": "Калькулятор EMI",
@@ -23,14 +20,6 @@
     "cis": "CIS"
   },
   "home": {
-    "typesOfLoansTitle": "Виды кредитов",
-    "GMELoan": "GME Кредит",
-    "housingLoan": "Ипотечный кредит",
-    "studentLoan": "Студенческий кредит",
-    "propertyLoan": "Кредит на недвижимость",
-    "vacationLoan": "Кредит на путешествие",
-    "carLoan": "Автокредит",
-    "businessLoan": "Бизнес-кредит",
     "quickLoanApplicationTitle": "Быстрая и простая заявка на кредит",
     "quickLoanApplicationSubTitle": "Процесс подачи в 5 шагов",
     "simpleLoanStep1": "ОФОРМИТЬ ЗАЯВКУ ЧЕРЕЗ ПРИЛОЖЕНИЕ GME",
@@ -42,12 +31,7 @@
     "simpleLoanStep4": "ОДОБРЕНИЕ",
     "simpleLoanStep4Des": "После одобрения будет произведена цифровая подпись контракта",
     "simpleLoanStep5": "ВЫДАЧА СРЕДСТВ",
-    "simpleLoanStep5Des": "После подписания контракта сумма кредита будет зачислена на ваш банковский счёт",
-    "applyLoanAppTitle": "Подайте заявку на кредит через приложение GME",
-    "applyLoanAppSubTitle1": "GME Finance делает процесс подачи заявки простым и удобным. Оформите кредит прямо сейчас!",
-    "applyLoanAppSubTitleByCountry": {
-      "russia": "Кредит до 35 млн KRW"
-    }
+    "simpleLoanStep5Des": "После подписания контракта сумма кредита будет зачислена на ваш банковский счёт"
   },
   "countryPage": {
     "teamTitle": "{{country}} команда",

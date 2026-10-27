@@ -1,8 +1,5 @@
 {
   "name": "Tên",
-  "firstName": "Tên",
-  "lastName": "Họ",
-  "nationality": "Quốc tịch",
   "button": {
     "applyNow": "Đăng ký ngay",
     "EMICalculator": "Máy tính EMI",
@@ -22,14 +19,6 @@
     "vietnam": "Việt Nam"
   },
   "home": {
-    "typesOfLoansTitle": "Các loại hình tài chính",
-    "GMELoan": "Tài chính GME",
-    "housingLoan": "Khoản vay mua nhà",
-    "studentLoan": "Khoản vay mua xe",
-    "propertyLoan": "Khoản vay bất động sản",
-    "vacationLoan": "Khoản vay du lịch",
-    "carLoan": "Khoản vay mua ô tô",
-    "businessLoan": "Khoản vay kinh doanh",
     "quickLoanApplicationTitle": "Đăng ký khoản vay nhanh chóng và dễ dàng",
     "quickLoanApplicationSubTitle": "Quy trình đăng ký 5 bước",
     "simpleLoanStep1": "ĐĂNG KÝ QUA ỨNG DỤNG GME",
@@ -41,12 +30,7 @@
     "simpleLoanStep4": "PHÊ DUYỆT",
     "simpleLoanStep4Des": "Sau khi được phê duyệt, việc ký kết hợp đồng điện tử sẽ được tiến hành",
     "simpleLoanStep5": "GIẢI NGÂN",
-    "simpleLoanStep5Des": "Sau khi ký hợp đồng, số tiền vay sẽ được chuyển vào tài khoản ngân hàng của bạn",
-    "applyLoanAppTitle": "Nộp đơn đăng kí vay qua ứng dụng GME REMIT",
-    "applyLoanAppSubTitle1": "Nhanh chóng, Đơn giản, An toàn với khoản vay tại GME.  Đăng ký ngay!",
-    "applyLoanAppSubTitleByCountry": {
-      "vietnam": "Khoản vay lên đến 35 triệu KRW"
-    }
+    "simpleLoanStep5Des": "Sau khi ký hợp đồng, số tiền vay sẽ được chuyển vào tài khoản ngân hàng của bạn"
   },
   "countryPage": {
     "teamTitle": "Đội ngũ {{country}}",

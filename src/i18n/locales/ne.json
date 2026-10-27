@@ -1,8 +1,5 @@
 {
   "name": "नाम",
-  "firstName": "पहिलो नाम",
-  "lastName": "थर",
-  "nationality": "राष्ट्रियता",
   "button": {
     "applyNow": "अहिले नै आवेदन दिनुहोस्",
     "EMICalculator": "EMI क्याल्कुलेटर",
@@ -22,14 +19,6 @@
     "nepal": "नेपाल"
   },
   "home": {
-    "typesOfLoansTitle": "ऋणका प्रकारहरू",
-    "GMELoan": "GME ऋण",
-    "housingLoan": "आवास ऋण",
-    "studentLoan": "विद्यार्थी ऋण",
-    "propertyLoan": "सम्पत्ति ऋण",
-    "vacationLoan": "छुट्टी ऋण",
-    "carLoan": "कार ऋण",
-    "businessLoan": "व्यापार ऋण",
     "quickLoanApplicationTitle": "छिटो र सजिलो ऋण आवेदन",
     "quickLoanApplicationSubTitle": "५-चरण आवेदन प्रक्रिया",
     "simpleLoanStep1": "GME App मार्फत आवेदन दिनुहोस्",
@@ -41,12 +30,7 @@
     "simpleLoanStep4": "स्वीकृति",
     "simpleLoanStep4Des": "स्वीकृत भएपछि, डिजिटल सम्झौता हस्ताक्षर अगाडि बढाइनेछ।",
     "simpleLoanStep5": "वितरण",
-    "simpleLoanStep5Des": "सम्झौता हस्ताक्षर पछि, ऋण रकम तपाईंको बैंक खातामा जम्मा गरिनेछ",
-    "applyLoanAppTitle": "GME App मार्फत ऋण आवेदन दिनुहोस्",
-    "applyLoanAppSubTitle1": "GME Finance ले GME ऋण आवेदन गर्न सजिलो र सुविधाजनक बनाउँछ। अहिले नै आवेदन दिनुहोस्!",
-    "applyLoanAppSubTitleByCountry": {
-      "nepal": "35 मिलियन सम्म"
-    }
+    "simpleLoanStep5Des": "सम्झौता हस्ताक्षर पछि, ऋण रकम तपाईंको बैंक खातामा जम्मा गरिनेछ"
   },
   "countryPage": {
     "teamTitle": "{{country}} टिम",

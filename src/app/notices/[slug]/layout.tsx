@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { INDEX, NOINDEX, buildPageMetadata } from "@/lib/seo";
 import { INDEXABLE_NOTICE_SLUGS, NOTICES } from "../data";
-export { default } from "@/app/components/common/SimpleLayout";
+export { default } from "@/features/common/components/SimpleLayout";
 
 const INDEXABLE_SLUGS = new Set(INDEXABLE_NOTICE_SLUGS);
 

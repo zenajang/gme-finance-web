@@ -1,5 +1,5 @@
-import type { SocialsItem } from "@/features/home/sections/LatestSocials";
-import type { Teams } from "@/features/home/sections/TeamSection";
+import type { SocialsItem } from "@/features/common/components/LatestSocials";
+import type { Teams } from "@/features/common/components/TeamSection";
 
 export const COUNTRY_SOCIALS: Record<string, SocialsItem[]> = {
   bangladesh: [

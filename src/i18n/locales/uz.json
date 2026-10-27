@@ -1,8 +1,5 @@
 {
   "name": "Name",
-  "firstName": "First Name",
-  "lastName": "Last Name",
-  "nationality": "Nationality",
   "button": {
     "applyNow": "Hozir Ariza Bering",
     "EMICalculator": "EMI Kalkulyator",
@@ -22,14 +19,6 @@
     "uzbekistan": "O‘zbekiston"
   },
   "home": {
-    "typesOfLoansTitle": "Kredit Turlari",
-    "GMELoan": "GME Krediti",
-    "housingLoan": "Uy-joy Krediti",
-    "studentLoan": "Talaba Krediti",
-    "propertyLoan": "Ko‘chmas Mulk Krediti",
-    "vacationLoan": "Ta’til Krediti",
-    "carLoan": "Avtomobil Krediti",
-    "businessLoan": "Biznes Krediti",
     "quickLoanApplicationTitle": "Tez va oson kredit ariza",
     "quickLoanApplicationSubTitle": "5 Bosqichli Ariza Berish Tartibi",
     "simpleLoanStep1": "GME ILOVASI ORQALI ARIZA BERING",
@@ -41,10 +30,7 @@
     "simpleLoanStep4": "TASDIQLASH",
     "simpleLoanStep4Des": "Tasdiqlangandan so‘ng, raqamli shartnoma imzolash jarayoni amalga oshiriladi",
     "simpleLoanStep5": "PUL O‘TKAZISH",
-    "simpleLoanStep5Des": "Shartnoma imzolangandan keyin, kredit summasi bank hisob raqamingizga o‘tkaziladi",
-    "applyLoanAppTitle": "GME iovasi orqali kreditga ariza topshiring",
-    "applyLoanAppSubTitle": "30 million KRW gacha kredit",
-    "applyLoanAppSubTitle1": "GME Finance sizga kreditga ariza berish jarayonini oson va qulay qiladi."
+    "simpleLoanStep5Des": "Shartnoma imzolangandan keyin, kredit summasi bank hisob raqamingizga o‘tkaziladi"
   },
   "countryPage": {
     "teamTitle": "{{country}} jamoa",

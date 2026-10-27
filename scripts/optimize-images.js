@@ -142,6 +142,15 @@ async function optimizeExistingWebp() {
 }
 
 async function main() {
+  // 파일 경로를 넘기면 그 파일만 WebP 로 변환한다 (예: npm run optimize:images -- public/images/a.jpg)
+  const targetFiles = process.argv.slice(2);
+  if (targetFiles.length > 0) {
+    for (const file of targetFiles) {
+      await optimizeImage(path.resolve(file));
+    }
+    return;
+  }
+
   console.log('🖼️  이미지 최적화 시작\n');
   console.log(`📁 폴더: ${IMAGES_DIR}`);
   console.log(`📐 최대 너비: ${MAX_WIDTH}px`);

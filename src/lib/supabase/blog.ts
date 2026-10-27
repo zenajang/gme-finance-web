@@ -49,22 +49,6 @@ export async function fetchPublishedPosts(options?: {
   return data || [];
 }
 
-export async function fetchPublishedPostById(id: string): Promise<BlogPost | null> {
-  const supabase = createClient();
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('id', id)
-    .eq('published', true)
-    .single();
-
-  if (error) {
-    throw error;
-  }
-
-  return data || null;
-}
-
 export async function fetchPublishedPostBySlugOrId(identifier: string): Promise<BlogPost | null> {
   const supabase = createClient();
 

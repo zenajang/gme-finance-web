@@ -1,8 +1,5 @@
 {
   "name": "Name",
-  "firstName": "First Name",
-  "lastName": "Last Name",
-  "nationality": "Nationality",
   "button": {
     "visit": "Visit",
     "seeMore": "Tingnan Pa",
@@ -19,19 +16,12 @@
     "philippines": "Philippines"
   },
   "home": {
-    "typesOfLoansTitle": "Mga Uri ng Loan",
     "simpleLoanStep1Des": "I-download ang GME App sa Google Play Store o App Store Mag-register at i-click ang Apply Loan",
     "simpleLoanStep2": "SUBMISSION OF REQUIREMENTS",
     "simpleLoanStep2Des": "I-fill out ang iyong impormasyon at i-upload ang mga kinakailangang dokumento",
     "simpleLoanStep3Des": "Ive-verify ng aming staff ang iyong mga dokumento at iche-check ang iyong credit standing",
     "simpleLoanStep4Des": "Kapag na-approve ang loan, magpapatuloy sa Digital Contract Signing",
-    "simpleLoanStep5Des": "Pagkatapos ng Contract Signing, ang loan amount ay ide-deposit sa iyong bank account",
-    "applyLoanAppTitle": "Mag-apply ng Loan sa GME App",
-    "applyLoanAppSubTitle": "Loan up to 35 Million KRW",
-    "applyLoanAppSubTitle1": "Ginawang madali at convenient ng GME Finance ang pag-apply ng GME Loan. Mag-apply na!",
-    "applyLoanAppSubTitleByCountry": {
-      "philippines": "Loan up to 35 Million KRW"
-    }
+    "simpleLoanStep5Des": "Pagkatapos ng Contract Signing, ang loan amount ay ide-deposit sa iyong bank account"
   },
   "countryPage": {
     "team": "Team",

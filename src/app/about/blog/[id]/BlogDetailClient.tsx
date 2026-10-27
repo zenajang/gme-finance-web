@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import useSWR from 'swr';
 import Link from 'next/link';
-import '@/app/components/blog/BlogContent.css';
+import '@/features/blog/BlogContent.css';
 import { useTranslation } from 'react-i18next';
 import { fetchPublishedPostBySlugOrId, type BlogPost } from '@/lib/supabase/blog';
 

@@ -1,8 +1,5 @@
 {
   "name": "নাম",
-  "firstName": "নামের প্রথম অংশ",
-  "lastName": "নামের শেষ অংশ",
-  "nationality": "জাতীয়তা",
   "button": {
     "applyNow": "এখনই আবেদন করুন",
     "EMICalculator": "মাসিক কিস্তি (EMI) ক্যালকুলেটর",
@@ -22,14 +19,6 @@
     "bangladesh": "বাংলাদেশ"
   },
   "home": {
-    "typesOfLoansTitle": "লোনের ধরনসমূহ",
-    "GMELoan": "GME লোন",
-    "housingLoan": "হাউজিং লোন",
-    "studentLoan": "শিক্ষা ঋণ",
-    "propertyLoan": "সম্পত্তি ঋণ",
-    "vacationLoan": "ভ্রমণ ঋণ",
-    "carLoan": "কার লোন",
-    "businessLoan": "ব্যবসায় ঋণ",
     "quickLoanApplicationTitle": "দ্রুত ও সহজ লোন আবেদন",
     "quickLoanApplicationSubTitle": "৫ ধাপের আবেদন প্রক্রিয়া",
     "simpleLoanStep1": "GME অ্যাপের মাধ্যমে আবেদন করুন",
@@ -41,12 +30,7 @@
     "simpleLoanStep4": "অনুমোদন",
     "simpleLoanStep4Des": "অনুমোদিত হলে, ডিজিটাল চুক্তি স্বাক্ষরের প্রক্রিয়া শুরু হবে",
     "simpleLoanStep5": "লোন বিতরণ",
-    "simpleLoanStep5Des": "চুক্তি স্বাক্ষরের পর, লোনের অর্থ আপনার ব্যাংক অ্যাকাউন্টে জমা হবে",
-    "applyLoanAppTitle": "GME অ্যাপের মাধ্যমে লোন আবেদন করুন",
-    "applyLoanAppSubTitle1": "GME ফাইন্যান্স লোন আবেদনকে আরও সহজ এবং সুবিধাজনক করেছে। এখনই আবেদন করুন!",
-    "applyLoanAppSubTitleByCountry": {
-      "bangladesh": "২ কোটি ৫০ লক্ষ KRW পর্যন্ত লোন"
-    }
+    "simpleLoanStep5Des": "চুক্তি স্বাক্ষরের পর, লোনের অর্থ আপনার ব্যাংক অ্যাকাউন্টে জমা হবে"
   },
   "countryPage": {
     "team": "টিম",
