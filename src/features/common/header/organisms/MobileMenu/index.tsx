@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import { LOGIN_LINK, LanguageSwitch, MobileCountries } from '@/features/common/header/molecules';
+import { LinkButton } from '@/features/common/atoms';
+import { LanguageSwitch, MobileCountries } from '@/features/common/header/molecules';
 import { isCurrentPath, NAV_ITEMS } from '@/features/common/header/navigation';
 
 interface MobileMenuProps {
@@ -45,13 +46,9 @@ const MobileMenu = ({ isOpen, isHeaderCompact, onClose }: MobileMenuProps) => {
       })}
       <div className="mt-6 flex items-center justify-between gap-3.5">
         <LanguageSwitch />
-        <Link
-          href="/login"
-          onClick={onClose}
-          className={`${LOGIN_LINK} inline-flex items-center justify-center px-[22px] py-[11px] text-sm`}
-        >
+        <LinkButton href="/login" appearance={{ variant: 'outline', size: 'md' }} onClick={onClose}>
           {t('header.login')}
-        </Link>
+        </LinkButton>
       </div>
     </div>
   );

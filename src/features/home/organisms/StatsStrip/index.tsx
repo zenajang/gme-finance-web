@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
-import Container from '@/features/home/atoms/Container';
+import { Container } from '@/features/home/atoms';
 import { StatItem } from '@/features/home/molecules';
 
 const STATS = [

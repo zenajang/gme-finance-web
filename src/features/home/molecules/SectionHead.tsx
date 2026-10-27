@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Eyebrow from '@/features/home/atoms/Eyebrow';
+import { Eyebrow } from '@/features/home/atoms';
 
 interface SectionHeadProps {
   eyebrow: ReactNode;

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Container from '@/features/home/atoms/Container';
+import { Container } from '@/features/home/atoms';
 
 interface SectionProps {
   id?: string;

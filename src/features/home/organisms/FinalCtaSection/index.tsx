@@ -2,9 +2,10 @@
 
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import ApplyLoanButton from '@/features/home/atoms/ApplyLoanButton';
-import Eyebrow from '@/features/home/atoms/Eyebrow';
+import { LinkButton } from '@/features/common/atoms';
+import { Eyebrow } from '@/features/home/atoms';
 import { Section } from '@/features/home/molecules';
+import { CHANNEL_TALK_URL, openChannelTalk } from '@/lib/channelTalk';
 
 const STORE_BADGES = [
   {
@@ -37,7 +38,14 @@ const FinalCtaSection = () => {
           <p className="mb-[18px] max-w-[610px] text-[15px] leading-[1.5] text-[#60646c]">
             {t('landing.finalCta.description')}
           </p>
-          <ApplyLoanButton />
+          <LinkButton
+            href={CHANNEL_TALK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={openChannelTalk}
+          >
+            {t('landing.applyLoan')}
+          </LinkButton>
         </div>
         <div className="flex flex-col justify-center self-stretch border-l border-[#e5e7eb] pl-[30px] max-lg:mt-6 max-lg:border-t max-lg:border-l-0 max-lg:pt-[22px] max-lg:pl-0">
           <p className="mb-3 text-sm leading-[1.2] font-bold">{t('landing.finalCta.downloadApp')}</p>

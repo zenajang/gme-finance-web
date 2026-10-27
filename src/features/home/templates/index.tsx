@@ -1,4 +1,4 @@
-import RevealObserver from '@/features/home/atoms/RevealObserver';
+import { RevealObserver } from '@/features/home/atoms';
 import {
   AppSection,
   CalculatorSection,

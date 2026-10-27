@@ -1,8 +1,9 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
-import ApplyLoanButton from '@/features/home/atoms/ApplyLoanButton';
-import Container from '@/features/home/atoms/Container';
+import { LinkButton } from '@/features/common/atoms';
+import { Container } from '@/features/home/atoms';
+import { CHANNEL_TALK_URL, openChannelTalk } from '@/lib/channelTalk';
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -27,7 +28,14 @@ const HeroSection = () => {
             {t('landing.hero.subtitle')}
           </p>
           <div className="mb-7 flex flex-wrap items-center gap-4">
-            <ApplyLoanButton />
+            <LinkButton
+              href={CHANNEL_TALK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={openChannelTalk}
+            >
+              {t('landing.applyLoan')}
+            </LinkButton>
           </div>
         </div>
         <div data-reveal className="w-full max-w-[760px] justify-self-center max-lg:justify-self-start">
