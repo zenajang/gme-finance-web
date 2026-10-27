@@ -1,10 +1,13 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import Container from '@/features/home/atoms/Container';
 import { StatItem } from '@/features/home/molecules';
 
 const STATS = [
   {
     value: '14+',
-    label: 'Countries Served',
+    labelKey: 'landing.stats.countries',
     icon: (
       <svg viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="8" />
@@ -14,7 +17,7 @@ const STATS = [
   },
   {
     value: '₩600B+',
-    label: 'Loan Released',
+    labelKey: 'landing.stats.loanReleased',
     icon: (
       <svg viewBox="0 0 24 24">
         <path d="M5 19V13M10 19V9M15 19V6M20 19V3" />
@@ -24,7 +27,7 @@ const STATS = [
   },
   {
     value: '1M+',
-    label: 'Successful Loan Cases',
+    labelKey: 'landing.stats.loanCases',
     icon: (
       <svg viewBox="0 0 24 24">
         <path d="M8 4h8v4c0 3-1.8 5-4 5s-4-2-4-5V4Z" />
@@ -34,7 +37,7 @@ const STATS = [
   },
   {
     value: '24/7',
-    label: 'Customer Support',
+    labelKey: 'landing.stats.support',
     icon: (
       <svg viewBox="0 0 24 24">
         <path d="M4 13v-1a8 8 0 0 1 16 0v1" />
@@ -45,11 +48,13 @@ const STATS = [
 ];
 
 const StatsStrip = () => {
+  const { t } = useTranslation();
+
   return (
-    <section aria-label="GME Finance highlights" className="bg-white py-3.5">
+    <section aria-label={t('landing.stats.ariaLabel')} className="bg-white py-3.5">
       <Container className="grid grid-cols-4 gap-2.5 max-lg:grid-cols-2 max-lg:gap-2">
-        {STATS.map(({ value, label, icon }) => (
-          <StatItem key={label} icon={icon} value={value} label={label} />
+        {STATS.map(({ value, labelKey, icon }) => (
+          <StatItem key={labelKey} icon={icon} value={value} label={t(labelKey)} />
         ))}
       </Container>
     </section>

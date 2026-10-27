@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import { LOGIN_LINK, LanguageSwitch, MobileCountries } from '@/features/common/header/molecules';
 import { isCurrentPath, NAV_ITEMS } from '@/features/common/header/navigation';
 
@@ -17,6 +18,7 @@ const LINK =
 // 1024px 미만 전체 화면 메뉴. 헤더 바로 아래에서 위로 살짝 올라오며 나타난다
 const MobileMenu = ({ isOpen, isHeaderCompact, onClose }: MobileMenuProps) => {
   const pathname = usePathname();
+  const { t } = useTranslation();
 
   return (
     <div
@@ -26,18 +28,18 @@ const MobileMenu = ({ isOpen, isHeaderCompact, onClose }: MobileMenuProps) => {
         isHeaderCompact ? 'top-16' : 'top-20'
       } ${isOpen ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-2.5 opacity-0'}`}
     >
-      {NAV_ITEMS.map(({ label, href }) => {
-        if (!href) return <MobileCountries key={label} onNavigate={onClose} />;
+      {NAV_ITEMS.map(({ key, href }) => {
+        if (!href) return <MobileCountries key={key} onNavigate={onClose} />;
         const isCurrent = isCurrentPath(pathname, href);
         return (
           <Link
-            key={label}
+            key={key}
             href={href}
             onClick={onClose}
             aria-current={isCurrent ? 'page' : undefined}
             className={`${LINK} ${isCurrent ? 'text-brand' : 'text-ink'}`}
           >
-            {label}
+            {t(`header.${key}`)}
           </Link>
         );
       })}
@@ -48,7 +50,7 @@ const MobileMenu = ({ isOpen, isHeaderCompact, onClose }: MobileMenuProps) => {
           onClick={onClose}
           className={`${LOGIN_LINK} inline-flex items-center justify-center px-[22px] py-[11px] text-sm`}
         >
-          Login
+          {t('header.login')}
         </Link>
       </div>
     </div>

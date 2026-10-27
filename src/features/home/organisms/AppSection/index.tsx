@@ -1,12 +1,14 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { Section, SectionHead } from '@/features/home/molecules';
 
-// 아이콘 선은 검정, 마지막 요소만 빨강 (시안 아이콘 규칙)
-const FEATURES: { title: string; description: string; icon: ReactNode }[] = [
+// 아이콘 선은 검정, 마지막 요소만 빨강 (시안 아이콘 규칙). 문구는 landing.app.features.<key>.{title,description}
+const FEATURES: { key: string; icon: ReactNode }[] = [
   {
-    title: 'Apply Loan',
-    description: 'Access available loan services in the app.',
+    key: 'apply',
     icon: (
       <svg viewBox="0 0 24 24">
         <path className="fill-white" d="M6 3.5h9l3 3V20.5H6z" />
@@ -17,8 +19,7 @@ const FEATURES: { title: string; description: string; icon: ReactNode }[] = [
     ),
   },
   {
-    title: 'Check My Loan',
-    description: 'Check your loan information in the app.',
+    key: 'checkLoan',
     icon: (
       <svg viewBox="0 0 24 24">
         <rect height="18" rx="2" width="14" x="5" y="3" />
@@ -27,8 +28,7 @@ const FEATURES: { title: string; description: string; icon: ReactNode }[] = [
     ),
   },
   {
-    title: 'Detailed Information',
-    description: 'View detailed loan information.',
+    key: 'details',
     icon: (
       <svg viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="8" />
@@ -37,8 +37,7 @@ const FEATURES: { title: string; description: string; icon: ReactNode }[] = [
     ),
   },
   {
-    title: 'Loan Inquiry',
-    description: 'Send a loan inquiry directly in the app.',
+    key: 'inquiry',
     icon: (
       <svg viewBox="0 0 24 24">
         <path d="M4 5h16v11H9l-5 4V5Z" />
@@ -47,8 +46,7 @@ const FEATURES: { title: string; description: string; icon: ReactNode }[] = [
     ),
   },
   {
-    title: 'Bank Statements',
-    description: 'Access bank statement services.',
+    key: 'statements',
     icon: (
       <svg viewBox="0 0 24 24">
         <path d="M3 9h18L12 4 3 9ZM5 10v7M9 10v7M15 10v7M19 10v7M3 20h18" />
@@ -58,12 +56,14 @@ const FEATURES: { title: string; description: string; icon: ReactNode }[] = [
 ];
 
 const AppSection = () => {
+  const { t } = useTranslation();
+
   return (
     <Section id="gme-app" tone="white">
       <SectionHead
-        eyebrow="GME App"
-        title="Use the GME App to manage your loan"
-        description="Check your loan, view information, send inquiries, and access bank statement services in one place."
+        eyebrow={t('landing.app.eyebrow')}
+        title={t('landing.app.title')}
+        description={t('landing.app.description')}
       />
       <div
         data-reveal
@@ -71,16 +71,16 @@ const AppSection = () => {
         <div className="flex justify-center">
           <Image
             src="/images/home/app-screen.png"
-            alt="GME Finance loan app screen"
+            alt={t('landing.app.imageAlt')}
             width={982}
             height={2048}
             className="h-auto w-full max-w-[205px] max-lg:max-w-[175px] max-md:max-w-[170px]"
           />
         </div>
         <ol className="w-full max-w-[620px] max-md:max-w-none">
-          {FEATURES.map(({ title, description, icon }, index) => (
+          {FEATURES.map(({ key, icon }, index) => (
             <li
-              key={title}
+              key={key}
               className="grid grid-cols-[34px_minmax(0,1fr)] gap-3.5 border-b border-[#dde0e5] py-3.5 first:pt-0"
             >
               <span
@@ -98,9 +98,9 @@ const AppSection = () => {
                   >
                     {icon}
                   </span>
-                  {title}
+                  {t(`landing.app.features.${key}.title`)}
                 </h3>
-                <p className="mt-[3px] text-sm">{description}</p>
+                <p className="mt-[3px] text-sm">{t(`landing.app.features.${key}.description`)}</p>
               </div>
             </li>
           ))}

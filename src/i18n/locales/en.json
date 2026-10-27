@@ -719,5 +719,201 @@
       "save": "Save Notice Text",
       "placeholder": "Enter default notice text for this category..."
     }
+  },
+  "header": {
+    "home": "Home",
+    "blog": "Blog",
+    "careers": "Careers",
+    "countries": "Countries",
+    "notices": "Notices",
+    "login": "Login"
+  },
+  "landing": {
+    "applyLoan": "Apply Loan",
+    "hero": {
+      "title": "Your trusted partner for foreigner loans in South Korea",
+      "subtitle": "For eligible foreign residents."
+    },
+    "loanTerms": {
+      "eyebrow": "Loan Terms",
+      "title": "Loan Product Information",
+      "description": "Required loan terms and registration information.",
+      "productName": "GME Loan",
+      "license": "Licensed lender · Licensed by the Financial Supervisory Service · Registration No. 2019-금감원-1801",
+      "items": {
+        "registration": {
+          "title": "Registration information",
+          "description": "Registration No. 2019-금감원-1801"
+        },
+        "interestRate": {
+          "title": "Interest rate",
+          "description": "Up to 20% per annum"
+        },
+        "interestCalculation": {
+          "title": "Interest calculation",
+          "description": "Interest is charged monthly on the agreed date."
+        },
+        "repaymentMethod": {
+          "title": "Repayment method",
+          "description": "Repayment amounts may vary depending on the loan terms and repayment method stated in the individual loan agreement."
+        },
+        "overdueRate": {
+          "title": "Overdue interest rate",
+          "description": "Loan rate + up to 3% per annum, within the legal maximum rate of 20% per annum. Applicable only to contracts renewed from July 7, 2021."
+        },
+        "relatedCosts": {
+          "title": "Related costs",
+          "description": "No additional fees or early repayment penalties."
+        },
+        "loanPeriod": {
+          "title": "Loan period",
+          "description": "3–60 months"
+        },
+        "registrationCheck": {
+          "title": "Registration verification",
+          "description": "Financial Supervisory Service (registration check) · 02-3145-5114"
+        }
+      },
+      "debtWarning": "Excessive debt can bring great misfortune to you.",
+      "brokerageWarning": "It is illegal to request or receive brokerage fees.",
+      "approvalNotice": "Loan approval and final terms are subject to screening and individual circumstances. Please review the product description and agreement before signing."
+    },
+    "stats": {
+      "ariaLabel": "GME Finance highlights",
+      "countries": "Countries Served",
+      "loanReleased": "Loan Released",
+      "loanCases": "Successful Loan Cases",
+      "support": "Customer Support"
+    },
+    "eligibility": {
+      "eyebrow": "Eligibility",
+      "title": "Visa categories",
+      "disclaimer": "Eligibility is subject to individual review."
+    },
+    "calculator": {
+      "eyebrow": "Loan Calculator",
+      "title": "Estimate your monthly payment",
+      "ariaLabel": "Loan repayment calculator",
+      "amount": "Loan amount",
+      "period": "Repayment period",
+      "months": "{{months}} months",
+      "monthlyPayment": "Estimated monthly payment",
+      "totalRepayment": "Total repayment",
+      "totalInterest": "Total interest",
+      "disclaimer": "Estimate only. Not a loan offer or approval."
+    },
+    "documents": {
+      "eyebrow": "Documents",
+      "title": "What do you need?",
+      "items": {
+        "alienCard": "Alien Registration Card",
+        "passport": "Valid Passport",
+        "workContract": "Work Contract"
+      },
+      "notice": "Additional documents may be requested during review."
+    },
+    "howToApply": {
+      "eyebrow": "How to Apply",
+      "title": "Apply in four simple steps",
+      "steps": {
+        "eligibility": {
+          "title": "Check Your Eligibility",
+          "description": "Complete a short eligibility check based on your visa status, employment, and income. No documents are required at this stage."
+        },
+        "enquiry": {
+          "title": "Submit Your Enquiry",
+          "description": "Provide your contact details and preferred language. This allows our team to review your enquiry and provide appropriate assistance."
+        },
+        "review": {
+          "title": "Consultation & Review",
+          "description": "A GME Finance representative will contact you to confirm your information, explain the loan process, and guide you through the next steps."
+        },
+        "disbursement": {
+          "title": "Send documents &\nreceive your money",
+          "description": "Submit the required documents for assessment. Upon approval, the loan amount will be disbursed to your designated Korean bank account."
+        }
+      },
+      "continueTitle": "Continue Your Application with Ease",
+      "continueDescription": "Information submitted through this website can be used to continue your application through the GME app or with assistance from our team, reducing the need to provide the same information again."
+    },
+    "whyChoose": {
+      "eyebrow": "Why Choose GME Finance?",
+      "title": "Simple, transparent & reliable.",
+      "reasons": {
+        "trusted": "Trusted Since 2016",
+        "support": "24/7 Support in Your Language",
+        "simple": "Simple Application Process",
+        "noFees": "Zero Processing & Early Repayment Fees",
+        "visa": "Support for Eligible Visa Holders",
+        "app": "Easy Application via GME App"
+      },
+      "disclaimer": "Loan approval, amount, rate and eligibility are subject to individual screening and applicable terms."
+    },
+    "app": {
+      "eyebrow": "GME App",
+      "title": "Use the GME App to manage your loan",
+      "description": "Check your loan, view information, send inquiries, and access bank statement services in one place.",
+      "imageAlt": "GME Finance loan app screen",
+      "features": {
+        "apply": {
+          "title": "Apply Loan",
+          "description": "Access available loan services in the app."
+        },
+        "checkLoan": {
+          "title": "Check My Loan",
+          "description": "Check your loan information in the app."
+        },
+        "details": {
+          "title": "Detailed Information",
+          "description": "View detailed loan information."
+        },
+        "inquiry": {
+          "title": "Loan Inquiry",
+          "description": "Send a loan inquiry directly in the app."
+        },
+        "statements": {
+          "title": "Bank Statements",
+          "description": "Access bank statement services."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Common questions",
+      "items": {
+        "guarantor": {
+          "question": "Do I need a guarantor?",
+          "answer": "No. A guarantor is not required."
+        },
+        "existingLoan": {
+          "question": "Can I apply if I have an existing loan?",
+          "answer": "Applications are assessed individually based on eligibility and the applicant’s financial circumstances."
+        },
+        "approval": {
+          "question": "Does applying guarantee loan approval?",
+          "answer": "No. All applications are subject to individual assessment and approval."
+        },
+        "earlyRepayment": {
+          "question": "Can I repay my loan early?",
+          "answer": "Yes. There is no early repayment penalty."
+        },
+        "visaExpiry": {
+          "question": "Can I apply if my visa will expire soon?",
+          "answer": "Eligibility depends on your visa status, remaining period of stay, and individual assessment."
+        },
+        "privacy": {
+          "question": "How is my personal information protected?",
+          "answer": "Personal information is handled in accordance with applicable Korean laws, including the Personal Information Protection Act (PIPA)."
+        }
+      }
+    },
+    "finalCta": {
+      "eyebrow": "Get Started",
+      "title": "Apply Loan Now",
+      "description": "Talk to GME Finance through Channel Talk to start your loan inquiry.",
+      "downloadApp": "Download the GME App",
+      "appStoreAlt": "Download on the App Store",
+      "googlePlayAlt": "Get it on Google Play"
+    }
   }
 }

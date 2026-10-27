@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { COUNTRIES } from '@/constants/countries';
 import { getCountryPath } from '@/lib/utils/country';
 
@@ -12,6 +13,7 @@ interface MobileCountriesProps {
 
 // 모바일 메뉴 Countries: 누르면 아래로 나라 목록이 펼쳐진다
 const MobileCountries = ({ onNavigate }: MobileCountriesProps) => {
+  const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -23,7 +25,7 @@ const MobileCountries = ({ onNavigate }: MobileCountriesProps) => {
         onClick={() => setIsExpanded((isExpandedNow) => !isExpandedNow)}
         className="flex w-full cursor-pointer items-center gap-[7px] px-1 py-4 text-left text-base font-semibold text-ink transition-colors duration-200 ease-gme hover:text-brand"
       >
-        Countries
+        {t('header.countries')}
         <svg
           aria-hidden="true"
           className={`size-[11px] shrink-0 transition duration-250 ease-gme ${isExpanded ? 'rotate-180 opacity-100' : 'opacity-45'}`}

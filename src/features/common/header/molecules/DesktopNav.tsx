@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import CountriesDropdown from '@/features/common/header/molecules/CountriesDropdown';
 import { isCurrentPath, NAV_ITEMS } from '@/features/common/header/navigation';
 
@@ -11,20 +12,21 @@ const LINK =
 
 const DesktopNav = () => {
   const pathname = usePathname();
+  const { t } = useTranslation();
 
   return (
     <nav aria-label="Primary" className="flex items-center gap-[34px] max-lg:hidden">
-      {NAV_ITEMS.map(({ label, href }) => {
-        if (!href) return <CountriesDropdown key={label} linkClassName={LINK} />;
+      {NAV_ITEMS.map(({ key, href }) => {
+        if (!href) return <CountriesDropdown key={key} linkClassName={LINK} />;
         const isCurrent = isCurrentPath(pathname, href);
         return (
           <Link
-            key={label}
+            key={key}
             href={href}
             aria-current={isCurrent ? 'page' : undefined}
             className={`${LINK} ${isCurrent ? 'text-brand after:right-0' : 'text-ink-70 after:right-full'}`}
           >
-            {label}
+            {t(`header.${key}`)}
           </Link>
         );
       })}

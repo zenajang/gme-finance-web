@@ -1,20 +1,24 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Section, SectionHead } from '@/features/home/molecules';
 
-// 신청 필요 서류
-const REQUIRED_DOCUMENTS = [
-  'Alien Registration Card',
-  'Valid Passport',
-  'Work Contract',
-] as const;
+// 신청 필요 서류. 문구는 landing.documents.items.<key>
+const DOCUMENT_KEYS = ['alienCard', 'passport', 'workContract'] as const;
 
 const DocumentsSection = () => {
+  const { t } = useTranslation();
+
   return (
     <Section id="documents" tone="gray">
-      <SectionHead eyebrow="Documents" title="What do you need?" />
+      <SectionHead
+        eyebrow={t('landing.documents.eyebrow')}
+        title={t('landing.documents.title')}
+      />
       <ul className="grid max-w-[780px] grid-cols-3 gap-3.5 max-lg:grid-cols-2 max-md:grid-cols-1">
-        {REQUIRED_DOCUMENTS.map((document) => (
+        {DOCUMENT_KEYS.map((key) => (
           <li
-            key={document}
+            key={key}
             data-reveal
             className="flex items-center gap-3.5 rounded-[10px] border border-line bg-white px-5 py-[18px] transition duration-200 ease-gme hover:border-line-strong hover:shadow-[0_10px_24px_rgba(17,18,22,.09)]"
           >
@@ -32,7 +36,9 @@ const DocumentsSection = () => {
                 />
               </svg>
             </span>
-            <span className="text-[14.5px] font-semibold">{document}</span>
+            <span className="text-[14.5px] font-semibold">
+              {t(`landing.documents.items.${key}`)}
+            </span>
           </li>
         ))}
       </ul>
@@ -41,7 +47,7 @@ const DocumentsSection = () => {
           <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.6" />
           <path d="M12 11v5.3M12 8.2v.1" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
         </svg>
-        <p className="text-sm text-ink-70">Additional documents may be requested during review.</p>
+        <p className="text-sm text-ink-70">{t('landing.documents.notice')}</p>
       </div>
     </Section>
   );

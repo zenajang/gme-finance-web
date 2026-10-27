@@ -1,3 +1,6 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Disclaimer, Section, SectionHead } from '@/features/home/molecules';
 
 // 신청 가능 비자 (D · E · F · G · H 순)
@@ -18,9 +21,14 @@ const VISA_CODES = [
 ] as const;
 
 const EligibilitySection = () => {
+  const { t } = useTranslation();
+
   return (
     <Section id="eligibility" tone="gray">
-      <SectionHead eyebrow="Eligibility" title="Visa categories" />
+      <SectionHead
+        eyebrow={t('landing.eligibility.eyebrow')}
+        title={t('landing.eligibility.title')}
+      />
       <ul className="grid grid-cols-6 gap-3.5 max-lg:grid-cols-4 max-md:grid-cols-3">
         {VISA_CODES.map((code) => (
           <li
@@ -32,7 +40,7 @@ const EligibilitySection = () => {
           </li>
         ))}
       </ul>
-      <Disclaimer>Eligibility is subject to individual review.</Disclaimer>
+      <Disclaimer>{t('landing.eligibility.disclaimer')}</Disclaimer>
     </Section>
   );
 };

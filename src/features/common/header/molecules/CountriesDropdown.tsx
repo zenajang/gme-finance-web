@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { COUNTRIES } from '@/constants/countries';
 import { useClickOutside } from '@/lib/hooks/useClickOutside';
 import { getCountryPath } from '@/lib/utils/country';
@@ -16,6 +17,7 @@ const ROW_COUNT = Math.ceil(COUNTRIES.length / 2);
 
 // 헤더 Countries 메뉴: 누르면 나라 목록 패널이 열린다 (web-gmeremit 국가 드롭다운과 같은 UI)
 const CountriesDropdown = ({ linkClassName }: CountriesDropdownProps) => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -42,7 +44,7 @@ const CountriesDropdown = ({ linkClassName }: CountriesDropdownProps) => {
           isOpen ? 'text-brand after:right-0' : 'text-ink-70 after:right-full'
         }`}
       >
-        Countries
+        {t('header.countries')}
         <svg
           aria-hidden="true"
           className={`size-[11px] shrink-0 transition duration-250 ease-gme group-hover:opacity-100 ${

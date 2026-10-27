@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import LanguageSwitch from '@/features/common/header/molecules/LanguageSwitch';
 
 interface HeaderActionsProps {
@@ -14,11 +15,13 @@ export const LOGIN_LINK =
 
 // 헤더 오른쪽: 언어 선택 · 로그인 (768px 이상) + 모바일 메뉴 버튼 (1024px 미만)
 const HeaderActions = ({ isMenuOpen, onToggleMenu }: HeaderActionsProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex shrink-0 items-center gap-3">
       <LanguageSwitch className="max-md:hidden" />
       <Link href="/login" className={`${LOGIN_LINK} px-[17px] py-[9px] text-[13.5px] max-md:hidden`}>
-        Login
+        {t('header.login')}
       </Link>
       <button
         type="button"

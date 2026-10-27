@@ -520,5 +520,201 @@
       "save": "공시 문구 저장",
       "placeholder": "이 카테고리의 기본 공시 문구를 입력하세요..."
     }
+  },
+  "header": {
+    "home": "홈",
+    "blog": "블로그",
+    "careers": "채용",
+    "countries": "국가별 서비스",
+    "notices": "공지사항",
+    "login": "로그인"
+  },
+  "landing": {
+    "applyLoan": "대출 신청",
+    "hero": {
+      "title": "한국 거주 외국인을 위한 믿을 수 있는 대출 파트너",
+      "subtitle": "대출 자격 요건을 충족하는 국내 거주 외국인 대상"
+    },
+    "loanTerms": {
+      "eyebrow": "대출 조건",
+      "title": "대출 상품 안내",
+      "description": "대출 조건 및 등록 정보 안내",
+      "productName": "GME 대출",
+      "license": "등록 대부업체 · 금융감독원 등록번호 2019-금감원-1801",
+      "items": {
+        "registration": {
+          "title": "등록 정보",
+          "description": "등록번호 2019-금감원-1801"
+        },
+        "interestRate": {
+          "title": "대출 금리",
+          "description": "연 최대 20%"
+        },
+        "interestCalculation": {
+          "title": "이자 계산 방법",
+          "description": "약정된 날짜에 매월 이자가 부과됩니다."
+        },
+        "repaymentMethod": {
+          "title": "상환 방법",
+          "description": "월 상환금은 개별 대출 계약의 조건 및 상환 방식에 따라 달라질 수 있습니다."
+        },
+        "overdueRate": {
+          "title": "연체 이자율",
+          "description": "약정 대출 금리에 연 최대 3%p 가산(법정 최고금리 연 20% 이내). 2021년 7월 7일 이후 갱신된 계약에 한해 적용됩니다."
+        },
+        "relatedCosts": {
+          "title": "부대비용",
+          "description": "추가 수수료 및 중도상환수수료 없음"
+        },
+        "loanPeriod": {
+          "title": "대출 기간",
+          "description": "3~60개월"
+        },
+        "registrationCheck": {
+          "title": "등록 정보 확인",
+          "description": "금융감독원(등록 확인) · 02-3145-5114"
+        }
+      },
+      "debtWarning": "과도한 빚은 당신에게 큰 불행을 안겨줄 수 있습니다.",
+      "brokerageWarning": "중개수수료를 요구하거나 받는 것은 불법입니다.",
+      "approvalNotice": "대출 승인 및 최종 조건은 심사 결과와 개인별 상황에 따라 달라집니다. 계약 전 상품설명서와 계약 내용을 반드시 확인하시기 바랍니다."
+    },
+    "stats": {
+      "ariaLabel": "GME Finance 주요 실적",
+      "countries": "서비스 제공 국가",
+      "loanReleased": "누적 대출 실행액",
+      "loanCases": "누적 대출 건수",
+      "support": "고객 지원"
+    },
+    "eligibility": {
+      "eyebrow": "대출 자격",
+      "title": "대상 비자 유형",
+      "disclaimer": "대출 가능 여부는 개별 심사 결과에 따라 결정됩니다."
+    },
+    "calculator": {
+      "eyebrow": "대출 계산기",
+      "title": "예상 월 상환액 확인",
+      "ariaLabel": "대출 상환 계산기",
+      "amount": "대출 금액",
+      "period": "상환 기간",
+      "months": "{{months}}개월",
+      "monthlyPayment": "예상 월 상환액",
+      "totalRepayment": "총 상환액",
+      "totalInterest": "총 이자",
+      "disclaimer": "본 결과는 예상 금액이며 대출 제안 또는 승인을 의미하지 않습니다."
+    },
+    "documents": {
+      "eyebrow": "필요 서류",
+      "title": "필요한 서류",
+      "items": {
+        "alienCard": "외국인등록증",
+        "passport": "유효한 여권",
+        "workContract": "근로계약서"
+      },
+      "notice": "심사 과정에서 추가 서류를 요청할 수 있습니다."
+    },
+    "howToApply": {
+      "eyebrow": "신청 방법",
+      "title": "간편한 4단계 대출 신청",
+      "steps": {
+        "eligibility": {
+          "title": "신청 자격 확인",
+          "description": "비자 유형, 재직 상태 및 소득을 기준으로 기본 자격을 확인합니다. 이 단계에서는 서류 제출이 필요하지 않습니다."
+        },
+        "enquiry": {
+          "title": "대출 상담 신청",
+          "description": "연락처와 상담 희망 언어를 알려주시면 담당자가 문의 내용을 확인하고 안내해 드립니다."
+        },
+        "review": {
+          "title": "상담 및 심사",
+          "description": "GME Finance 담당자가 고객 정보를 확인하고 대출 절차 및 다음 단계를 안내해 드립니다."
+        },
+        "disbursement": {
+          "title": "서류 제출 및\n대출금 수령",
+          "description": "심사에 필요한 서류를 제출해 주세요. 승인 후 대출금은 지정한 국내 은행 계좌로 지급됩니다."
+        }
+      },
+      "continueTitle": "간편하게 신청 이어가기",
+      "continueDescription": "웹사이트에 입력한 정보는 GME 앱 또는 담당자의 안내를 통해 신청을 이어가는 데 활용될 수 있어 같은 정보를 다시 입력하는 번거로움을 줄일 수 있습니다."
+    },
+    "whyChoose": {
+      "eyebrow": "GME Finance를 선택하는 이유",
+      "title": "간편하고 투명한 믿을 수 있는 서비스",
+      "reasons": {
+        "trusted": "2016년부터 이어온 신뢰",
+        "support": "연중무휴 다국어 지원",
+        "simple": "간편한 신청 절차",
+        "noFees": "취급수수료 및 중도상환수수료 없음",
+        "visa": "대상 비자 소지자 지원",
+        "app": "GME 앱으로 간편하게 신청"
+      },
+      "disclaimer": "대출 승인 여부, 한도, 금리 및 신청 자격은 개별 심사와 적용 조건에 따라 달라집니다."
+    },
+    "app": {
+      "eyebrow": "GME 앱",
+      "title": "GME 앱으로 대출 관리하기",
+      "description": "GME 앱에서 대출 조회, 정보 확인, 문의 및 은행 거래내역서 서비스를 이용할 수 있습니다.",
+      "imageAlt": "GME Finance 대출 앱 화면",
+      "features": {
+        "apply": {
+          "title": "대출 신청",
+          "description": "앱에서 이용 가능한 대출 서비스를 확인하세요."
+        },
+        "checkLoan": {
+          "title": "내 대출 조회",
+          "description": "앱에서 대출 정보를 확인하세요."
+        },
+        "details": {
+          "title": "상세 정보",
+          "description": "대출 상세 정보를 확인하세요."
+        },
+        "inquiry": {
+          "title": "대출 문의",
+          "description": "앱에서 직접 대출 상담을 신청하세요."
+        },
+        "statements": {
+          "title": "은행 거래내역서",
+          "description": "은행 거래내역서 서비스를 이용하세요."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "자주 묻는 질문",
+      "title": "자주 묻는 질문",
+      "items": {
+        "guarantor": {
+          "question": "보증인이 필요한가요?",
+          "answer": "아니요. 보증인은 필요하지 않습니다."
+        },
+        "existingLoan": {
+          "question": "기존 대출이 있어도 신청할 수 있나요?",
+          "answer": "신청 자격 및 신청자의 재정 상황을 고려하여 개별적으로 심사합니다."
+        },
+        "approval": {
+          "question": "신청하면 대출이 반드시 승인되나요?",
+          "answer": "아니요. 모든 신청은 개별 심사를 거쳐 승인 여부가 결정됩니다."
+        },
+        "earlyRepayment": {
+          "question": "대출금을 조기에 상환할 수 있나요?",
+          "answer": "네. 중도상환수수료는 없습니다."
+        },
+        "visaExpiry": {
+          "question": "비자 만료일이 얼마 남지 않아도 신청할 수 있나요?",
+          "answer": "비자 유형, 잔여 체류 기간 및 개별 심사 결과에 따라 달라집니다."
+        },
+        "privacy": {
+          "question": "개인정보는 어떻게 보호되나요?",
+          "answer": "개인정보는 개인정보 보호법 등 관련 국내 법령에 따라 처리됩니다."
+        }
+      }
+    },
+    "finalCta": {
+      "eyebrow": "지금 시작하기",
+      "title": "지금 대출 신청하기",
+      "description": "채널톡에서 GME Finance와 대출 상담을 시작하세요.",
+      "downloadApp": "GME 앱 다운로드",
+      "appStoreAlt": "App Store에서 다운로드",
+      "googlePlayAlt": "Google Play에서 다운로드"
+    }
   }
 }
