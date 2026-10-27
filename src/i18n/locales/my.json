@@ -1,8 +1,5 @@
 {
   "name": "အမည်",
-  "firstName": "ကိုယ်ပိုင်အမည်",
-  "lastName": "မျိုးရိုးအမည်",
-  "nationality": "နိုင်ငံသားအရည်အချင်း",
   "button": {
     "applyNow": "အခုပဲ လျှောက်ထားလိုက်ပါ",
     "EMICalculator": "ချေးငွေ ပမာဏ နှင့် ကာလ တွက်ရန်",
@@ -22,14 +19,6 @@
     "myanmar": "မြန်မာ"
   },
   "home": {
-    "typesOfLoansTitle": "ချေးငွေ အမျိုးအစား",
-    "GMELoan": "GME ချေးငွေ",
-    "housingLoan": "အိမ် ခြံ / မြေ ချေးငွေ",
-    "studentLoan": "ကျောင်းသား ချေးငွေ",
-    "propertyLoan": "ပိုင်ဆိုင်မှု ချေးငွေ",
-    "vacationLoan": "အားလပ်ရက် ချေးငွေ",
-    "carLoan": "ကား ချေးငွေ",
-    "businessLoan": "စီးပွားရေး ချေးငွေ",
     "quickLoanApplicationTitle": "မြန်ဆန်လွယ်ကူသော ချေးငွေလျှောက်ထားမှု",
     "quickLoanApplicationSubTitle": "အဆင့် ၅ ဆင့် လျှောက်ထားမှု လုပ်ငန်းစဥ်",
     "simpleLoanStep1": " GME APP ကနေ လျှောက်ထားလိုက်ပါ",
@@ -41,10 +30,7 @@
     "simpleLoanStep4": "အတည်ပြုခြင်း",
     "simpleLoanStep4Des": "စစ်ဆေး အတည်ပြုပြီးနောက် ဒီဂျစ်တယ်စာချုပ် ချုပ်ဆိုခြင်း",
     "simpleLoanStep5": "ချေးငွေထုတ်ပေးခြင်း",
-    "simpleLoanStep5Des": "စာချုပ်ချုပ်ဆိုပြီးနောက် ချေးငွေကို ကာစတန်မာရဲ့ ဘဏ်အကောင့်သို့ ထည့်သွင်းပေးခြင်း",
-    "applyLoanAppTitle": "GME APP ကနေ ချေးငွေ လျှောက်ထားလိုက်ပါ",
-    "applyLoanAppSubTitle": "ချေးငွေပမာဏ ဝမ်သိန်း ၃၀၀ အထိ",
-    "applyLoanAppSubTitle1": "GME Finance မှ လွယ်ကူလျင်မြန်သော ချေးငွေလျှောက်ထားမှု အခုပဲ လျှောက်ထားလိုက်ပါ!"
+    "simpleLoanStep5Des": "စာချုပ်ချုပ်ဆိုပြီးနောက် ချေးငွေကို ကာစတန်မာရဲ့ ဘဏ်အကောင့်သို့ ထည့်သွင်းပေးခြင်း"
   },
   "countryPage": {
     "teamTitle": "{{country}} တာဝန်ခံများ",

@@ -9,11 +9,5 @@
     "button": {
       "viewAll": "सभी पोस्ट देखें"
     }
-  },
-  "home": {
-    "applyLoanAppSubTitle": "Loan up to 35 Million KRW",
-    "applyLoanAppSubTitleByCountry": {
-      "india": "Loan up to 35 Million KRW"
-    }
   }
 }

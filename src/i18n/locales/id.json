@@ -1,8 +1,5 @@
 {
   "name": "Nama",
-  "firstName": "Nama Depan",
-  "lastName": "Nama Belakang",
-  "nationality": "Kewarganegaraan",
   "button": {
     "applyNow": "Ajukan Sekarang",
     "EMICalculator": "Kalkulator Angsuran",
@@ -22,14 +19,6 @@
     "indonesia": "Indonesia"
   },
   "home": {
-    "typesOfLoansTitle": "Jenis Pinjaman",
-    "GMELoan": "Pinjaman GME",
-    "housingLoan": "Pinjaman Perumahan",
-    "studentLoan": "Pinjaman Pelajar",
-    "propertyLoan": "Pinjaman Properti",
-    "vacationLoan": "Pinjaman Liburan",
-    "carLoan": "Pinjaman Kendaraan",
-    "businessLoan": "Pinjaman Usaha",
     "quickLoanApplicationTitle": "Pengajuan Pinjaman Cepat dan Mudah",
     "quickLoanApplicationSubTitle": "Proses Pengajuan dalam 5 Langkah",
     "simpleLoanStep1": "AJUKAN MELALUI APLIKASI GME",
@@ -41,12 +30,7 @@
     "simpleLoanStep4": "PERSETUJUAN",
     "simpleLoanStep4Des": "Setelah disetujui, Anda akan diminta menanda tangani kontrak digital",
     "simpleLoanStep5": "PENCAIRAN DANA",
-    "simpleLoanStep5Des": "Setelah penandatanganan kontrak, dana pinjaman akan ditransfer ke rekening bank Anda",
-    "applyLoanAppTitle": "Ajukan Pinjaman melalui Aplikasi GME",
-    "applyLoanAppSubTitle1": "Pengajuan pinjaman mudah dan nyaman dengan GME Finance. Ajukan Sekarang!",
-    "applyLoanAppSubTitleByCountry": {
-      "indonesia": "Pinjaman hingga 35 Juta KRW"
-    }
+    "simpleLoanStep5Des": "Setelah penandatanganan kontrak, dana pinjaman akan ditransfer ke rekening bank Anda"
   },
   "countryPage": {
     "team": "Tim",
