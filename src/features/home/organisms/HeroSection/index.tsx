@@ -46,6 +46,7 @@ const HeroSection = () => {
             loop
             playsInline
             preload="auto"
+            poster="/images/home/hero-poster.webp"
           >
             <source src="/images/home/hero.mp4" type="video/mp4" />
           </video>
