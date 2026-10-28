@@ -17,7 +17,7 @@ import {
 // 배경: 시안처럼 건물 이미지를 고정하고 흰색 막(.76)을 덮는다.
 const HomeTemplate = () => {
   return (
-    <div className="bg-fog bg-[linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),url(/images/home/background.png)] bg-cover bg-fixed bg-center bg-no-repeat">
+    <div className="bg-fog bg-[linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),url(/images/home/background.webp)] bg-cover bg-fixed bg-center bg-no-repeat">
       <HeroSection />
       <LoanTermsSection />
       <StatsStrip />
