@@ -56,7 +56,7 @@ const FinalCtaSection = async () => {
                 rel="noopener noreferrer"
                 className="flex rounded-lg transition duration-[180ms] ease-[ease] hover:-translate-y-0.5 hover:opacity-95"
               >
-                <Image src={src} alt={t(altKey)} width={width} height={67} className="h-10 w-auto" />
+                <Image src={src} alt={t(altKey)} width={width} height={67} className="h-10 w-auto" loading="eager" />
               </a>
             ))}
           </div>
