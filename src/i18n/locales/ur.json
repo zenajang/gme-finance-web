@@ -1,8 +1,5 @@
 {
   "name": "نام",
-  "firstName": "پہلا نام",
-  "lastName": "آخری نام",
-  "nationality": "قومیت",
   "button": {
     "applyNow": "ابھی اپلائی کریں",
     "EMICalculator": "EMI کیلکولیٹر",
@@ -22,14 +19,6 @@
     "pakistan": "پاکستان"
   },
   "home": {
-    "typesOfLoansTitle": "Types of Loans",
-    "GMELoan": "GME LOAN",
-    "housingLoan": "Housing Loan",
-    "studentLoan": "Student Loan",
-    "propertyLoan": "Property Loan",
-    "vacationLoan": "Vacation Loan",
-    "carLoan": "Car Loan",
-    "businessLoan": "Business Loan",
     "quickLoanApplicationTitle": "فوری اور آسان قرض کی درخواست",
     "quickLoanApplicationSubTitle": "5 قدمی درخواست کا عمل",
     "simpleLoanStep1": "APPLY THROUGH GME APP",
@@ -41,12 +30,7 @@
     "simpleLoanStep4": "منظوری ",
     "simpleLoanStep4Des": "ایک بار منظور ہونے کے بعد، ڈیجیٹل کنٹریکٹ پر دستخط کیے جائیں گے",
     "simpleLoanStep5": "تقسیمات",
-    "simpleLoanStep5Des": "معاہدے پر دستخط کرنے کے بعد، قرض کی رقم آپ کے بینک اکاؤنٹ میں جمع کر دی جائے گی۔",
-    "applyLoanAppTitle": "GME ایپ کے ذریعے قرض کا اطلاق کریں۔",
-    "applyLoanAppSubTitle1": "GME Finance لون کے لیے درخواست دینا آسان اور سہل بناتا ہے۔ ابھی درخواست دیں!",
-    "applyLoanAppSubTitleByCountry": {
-      "pakistan": "35 ملین KRW تک کا قرض"
-    }
+    "simpleLoanStep5Des": "معاہدے پر دستخط کرنے کے بعد، قرض کی رقم آپ کے بینک اکاؤنٹ میں جمع کر دی جائے گی۔"
   },
   "countryPage": {
     "teamTitle": "{{country}} ٹیم ",

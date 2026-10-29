@@ -1,72 +1,7 @@
 {
   "name": "Name",
-  "firstName": "First Name",
-  "lastName": "Last Name",
-  "nationality": "Nationality",
-  "visaType": "Visa Type",
-  "selectVisaType": "Select your visa type",
-  "other": "Other",
-  "phoneNumber": "Phone Number",
-  "phoneNumberPlaceholder": "010-1234-5678",
-  "privacyConsent": "I agree to the collection and use of my personal information",
-  "privacyPolicyTitle": "Personal Information Collection and Use Agreement",
-  "privacyPolicyIntro": "GME Finance collects and uses personal information as follows for loan consultation services:",
-  "privacyPolicyItem1Title": "1. Items of Personal Information Collected",
-  "privacyPolicyItem1Content": "Name, nationality, visa type, email address, phone number, consultation message",
-  "privacyPolicyItem2Title": "2. Purpose of Collection and Use",
-  "privacyPolicyItem2Content1": "Loan consultation and eligibility assessment",
-  "privacyPolicyItem2Content2": "Response to inquiries and customer communication",
-  "privacyPolicyItem2Content3": "Information provision regarding loan products and services",
-  "privacyPolicyItem3Title": "3. Retention and Use Period",
-  "privacyPolicyItem3Content": "Personal information will be destroyed immediately after the consultation is completed. However, if retention is required by relevant laws, it will be retained for the period specified by law.",
-  "privacyPolicyItem4Title": "4. Right to Refuse Consent",
-  "privacyPolicyItem4Content": "You have the right to refuse consent to the collection and use of personal information. However, if you refuse consent, loan consultation services may be restricted.",
   "daily": "Daily",
-  "dongdaemunBranch": "Dongdaemun Branch",
-  "ansanBranch": "Ansan Branch",
-  "bupyeongBranch": "Bupyeong Branch",
-  "songuriBranch": "Songu-ri Branch",
-  "mongoliaBranch": "Mongolia Town Branch",
-  "hwaseongBranch": "Hwaseong Branch",
-  "suwonBranch": "Suwon Branch",
-  "daerimBranch": "Daerim Branch",
-  "itaewonBranch": "Itaewon Branch",
-  "daeguBranch": "Daegu Branch",
-  "gimhaeBranch": "Gimhae Branch",
-  "gwangjuBranch": "Gwangju Branch",
-  "hours": "Hours",
-  "branch": {
-    "ansanAddress": "1st floor, 6, Damunhwa-gil, Danwon-gu, Ansan-si, Gyeonggi-do",
-    "bupyeongAddress": "Bupyeong History Shopping Mall, 16 Gwangjang-ro, Bupyeong-gu, Incheon",
-    "dongdaemunAddress": "315, Jong-ro Jongno-gu, Seoul (Dongdaemun Station – Exit 3)",
-    "songuriAddress": "91, Solmoru-ro, Soheul-eup, Pocheon-si, Gyeonggi-do, Korea (Next to Nonghyup Bank)",
-    "mongoliaAddress": "Mongol Town 3rd floor, 12, Eulji-ro 44-gil, Jung-gu, Seoul",
-    "hwaseongAddress": "1st floor, 1109-3 3.1manse-ro, Hyangnam-eup, Hwaseong-si, Gyeonggi-do",
-    "suwonAddress": "2-10, Maesan-ro, Paldal-gu, Suwon-si, Gyeonggi-do",
-    "daerimAddress": "1st floor, 134 Dorim-ro, Yeongdeungpo-gu, Seoul",
-    "itaewonAddress": "Itaewon-ro, Yongsan-gu, Seoul",
-    "daeguAddress": "1st floor, 64, Seongseo-ro 69-gil, Dalseo-gu, Daegu",
-    "gimhaeAddress": "84, Garak-ro, Gimhae-si, Gyeongsangnam-do (Opposite to Top Mart)",
-    "gwangjuAddress": "7-2, Gwangsan-ro, Gwangsan-gu, Gwangju"
-  },
   "home": {
-    "mainTitle": "Your trusted partner for foreigner loans in South Korea",
-    "GMELoan": "GME LOAN",
-    "typesOfLoansTitle": "Types of Loans",
-    "housingLoan": "Housing Loan",
-    "studentLoan": "Student Loan",
-    "propertyLoan": "Property Loan",
-    "vacationLoan": "Vacation Loan",
-    "carLoan": "Car Loan",
-    "businessLoan": "Business Loan",
-    "newServiceDes1": "Experience the future of foreigner loans",
-    "newServiceDes3": "Apply with ease using the GME app",
-    "newServiceStep1": "Paperless Loan Application",
-    "newServiceStep1Des": "Everything is done digitally – apply for a loan now!",
-    "newServiceStep2": "Real-time loan status checking",
-    "newServiceStep2Des": "Track the status of your loan application",
-    "newServiceStep3": "Real-time loan balance checking",
-    "newServiceStep3Des": "Convenient and transparent access to your information",
     "quickLoanApplicationTitle": "Quick and Easy Loan Application",
     "quickLoanApplicationSubTitle": "5-Step application process",
     "simpleLoanStep1": "APPLY THROUGH GME\u00A0APP",
@@ -78,54 +13,7 @@
     "simpleLoanStep4": "APPROVAL",
     "simpleLoanStep4Des": "Once approved, we will send you the digital contract for signing.",
     "simpleLoanStep5": "DISBURSEMENT",
-    "simpleLoanStep5Des": "After signing, the loan amount will be deposited to your bank account.",
-    "finacialPrioritySubTitle1": "Skip the paperwork!",
-    "finacialPrioritySubTitle2": "GME makes it simple for foreigners to apply for loans online in minutes",
-    "finacialPriority1": "No paperwork,",
-    "finacialPriority1br": "no hassle",
-    "finacialPriority2": "Skip the long wait,",
-    "finacialPriority2br": "get your loan instantly",
-    "finacialPriority3": "Peace of mind, guaranteed!",
-    "finacialPriority3br": "We prioritize data privacy, so you can focus on your financial goals",
-    "finacialPriority4": "Easy borrowing,",
-    "finacialPriorit4br":"zero stress",
-    "finacialPriority5": "Cash when you need it ",
-    "finacialPriority5br": "—24/7 ",
-    "applyLoanOnlineStep1": "Download and install the GME app",
-    "applyLoanOnlineStep2": "Available on Google Play Store and App Store",
-    "applyLoanOnlineStep3": "Register and submit the necessary requirements",
-    "applyLoanOnlineStep4": "After successful registration, you can now apply for a loan online",
-    "applyLoanAppTitle": "Loan Consultation Made Easy",
-    "applyLoanAppSubTitle": "Loan up to 30 Million KRW",
-    "applyLoanAppSubTitleByCountry": {
-      "bangladesh": "Loan up to 35 Million KRW",
-      "india": "Loan up to 35 Million KRW",
-      "indonesia": "Loan up to 35 Million KRW",
-      "mongolia": "Loan up to 35 Million KRW",
-      "nepal": "Loan up to 35 Million KRW",
-      "pakistan": "Loan up to 35 Million KRW",
-      "philippines": "Loan up to 35 Million KRW",
-      "russia": "Loan up to 35 Million KRW",
-      "thailand": "Loan up to 35 Million KRW",
-      "vietnam": "Loan up to 35 Million KRW"
-    },
-    "applyLoanAppSubTitle1": "Leave your contact details and we’ll reach out to you soon.",
-    "findBranchSubtitle": "Visit the nearest GME Finance branch for a counsultation",
-    "heroPills": {
-      "countries": "14+ Countries",
-      "secure": "Secure Application",
-      "fast": "Fast Approval"
-    },
-    "heroStats": {
-      "countriesValue": "14+",
-      "countriesLabel": "Countries Served",
-      "loanValue": "₩500B+",
-      "loanLabel": "Loan Released",
-      "customersValue": "1M+",
-      "customersLabel": "Successful Loan Cases",
-      "supportValue": "24/7",
-      "supportLabel": "Customer Support"
-    }
+    "simpleLoanStep5Des": "After signing, the loan amount will be deposited to your bank account."
   },
   "notices": {
     "page": {
@@ -251,38 +139,43 @@
     "hotline": "Hotline"
   },
   "email": "Email",
-  "emailPlaceholder": "Enter your email",
-  "message": "Message",
-  "messagePlaceholder": "Enter your message",
-  "contactSuccess": "Your inquiry has been submitted successfully. We will contact you soon.",
-  "contactError": "Failed to submit. Please try again.",
-  "submitting": "Submitting...",
   "footer": {
-    "companyName": "Company Name: GME Finance Co., Ltd.",
-    "brandName": "Brand Name: GME Finance",
-    "registrationNo": "Registration No: 2019-FSS-1801",
-    "ceo": "CEO: Sung Jong-hwa",
-    "businessNo": "Business Registration No: 646-88-01104",
-    "address": "Address: Room 202, 203, 204, Building B, 150 Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul (Dangsan-dong 1-ga, Idea Factory Dangsan) (Postal Code: 07292)",
-    "phone": "Phone (Branch): 02-765-5555",
-    "loanRate": "Loan Interest Rate:",
+    "label": {
+      "companyName": "Company Name:",
+      "brandName": "Brand Name:",
+      "registrationNo": "Registration No:",
+      "ceo": "CEO:",
+      "businessNo": "Business Registration No:",
+      "address": "Address:",
+      "phone": "Phone (Branch):"
+    },
+    "companyName": "GME Finance Co., Ltd.",
+    "brandName": "GME Finance",
+    "registrationNo": "2019-금감원-1801",
+    "ceo": "Sung Jong-hwa",
+    "businessNo": "646-88-01104",
+    "address": "Rooms 202, 203, 204, 205 and 206, Building B, 150 Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul (Dangsan-dong 1-ga, Idea Factory Dangsan)",
+    "phone": "02-765-5555",
+    "loanRate": "Interest rate:",
     "loanRateValue": "Up to 20% per annum",
     "overdueRate": "Overdue Interest Rate:",
     "overdueRateValue": "Loan rate + up to 3% per annum (within legal maximum rate of 20%). Applicable only to contracts renewed from July 7, 2021.",
     "loanPeriod": "Loan Period:",
-    "loanPeriodValue": "4 to 60 months",
+    "loanPeriodValue": "3 to 60 months",
     "noFees": "No additional fees or early repayment penalties. Interest is charged monthly on the agreed date. Repayment amounts may vary depending on loan terms and repayment method (e.g., for a 1 million KRW loan at 20% annual rate over 12 months with equal principal and interest payments, total repayment is 1,111,614 KRW). Loan approval may be restricted for those with public information, credit assessment data, or default records. Consumers have the right to receive sufficient explanation from financial sales providers. Please read the product description and terms before signing the contract. If scheduled payments are overdue, you may be required to repay all principal and interest before the contract expires.",
-    "creditWarning": "Taking out a loan or borrowing beyond your repayment capacity may lower your credit rating and personal credit score. A decrease in personal credit score may result in disadvantages in financial transactions.",
+    "creditWarning": "Taking out a loan may lower your personal credit score, which may restrict other financial transactions.",
     "debtWarning": "Excessive debt can bring great misfortune to you.",
-    "illegalFees": "It is illegal to charge brokerage fees separately from interest.",
+    "illegalFees": "It is illegal to request or receive brokerage fees.",
     "termsOfUse": "Terms of Use",
-    "lendingTerms": "Company Terms",
+    "lendingTerms": "Lending Company Terms",
     "productChanges": "Product/Related Change Notice",
     "privacyPolicy": "Privacy Policy",
     "creditInfoSystem": "Credit Information System",
     "customerRights": "Customer Rights Guide",
     "thirdPartyDisclosure": "Third Party Disclosure & Outsourcing Status",
-    "loanProductInfo": "Loan Product Information"
+    "loanProductInfo": "Loan Product Information",
+    "fssContact": "Registration authority: Financial Supervisory Service · Registration check: 02-3145-5114.",
+    "remitNote": "GME Remit provides product introduction and referral only."
   },
   "country": {
     "bangladesh": "Bangladesh",
@@ -707,6 +600,205 @@
       "subtitle": "Auto-fill text by category",
       "save": "Save Notice Text",
       "placeholder": "Enter default notice text for this category..."
+    }
+  },
+  "header": {
+    "home": "Home",
+    "blog": "Blog",
+    "careers": "Careers",
+    "countries": "Countries",
+    "notices": "Notices",
+    "login": "Login",
+    "primaryNav": "Primary",
+    "language": "Language",
+    "toggleMenu": "Toggle menu"
+  },
+  "landing": {
+    "applyLoan": "Apply Loan",
+    "hero": {
+      "title": "Your trusted partner for foreigner loans in South Korea",
+      "subtitle": "For eligible foreign residents."
+    },
+    "loanTerms": {
+      "eyebrow": "Loan Terms",
+      "title": "Loan Product Information",
+      "description": "Required loan terms and registration information.",
+      "productName": "GME Loan",
+      "license": "Licensed lender · Licensed by the Financial Supervisory Service · Registration No. 2019-금감원-1801",
+      "items": {
+        "registration": {
+          "title": "Registration information",
+          "description": "Registration No. 2019-금감원-1801"
+        },
+        "interestRate": {
+          "title": "Interest rate",
+          "description": "Up to 20% per annum"
+        },
+        "interestCalculation": {
+          "title": "Interest calculation",
+          "description": "Interest is charged monthly on the agreed date."
+        },
+        "repaymentMethod": {
+          "title": "Repayment method",
+          "description": "Repayment amounts may vary depending on the loan terms and repayment method stated in the individual loan agreement."
+        },
+        "overdueRate": {
+          "title": "Overdue interest rate",
+          "description": "Loan rate + up to 3% per annum, within the legal maximum rate of 20% per annum. Applicable only to contracts renewed from July 7, 2021."
+        },
+        "relatedCosts": {
+          "title": "Related costs",
+          "description": "No additional fees or early repayment penalties."
+        },
+        "loanPeriod": {
+          "title": "Loan period",
+          "description": "3–60 months"
+        },
+        "registrationCheck": {
+          "title": "Registration verification",
+          "description": "Financial Supervisory Service (registration check) · 02-3145-5114"
+        }
+      },
+      "debtWarning": "Excessive debt can bring great misfortune to you.",
+      "brokerageWarning": "It is illegal to request or receive brokerage fees.",
+      "approvalNotice": "Loan approval and final terms are subject to screening and individual circumstances. Please review the product description and agreement before signing."
+    },
+    "stats": {
+      "ariaLabel": "GME Finance highlights",
+      "countries": "Countries Served",
+      "loanReleased": "Loan Released",
+      "loanCases": "Successful Loan Cases",
+      "support": "Customer Support"
+    },
+    "eligibility": {
+      "eyebrow": "Eligibility",
+      "title": "Visa categories",
+      "disclaimer": "Eligibility is subject to individual review."
+    },
+    "calculator": {
+      "eyebrow": "Loan Calculator",
+      "title": "Estimate your monthly payment",
+      "ariaLabel": "Loan repayment calculator",
+      "amount": "Loan amount",
+      "period": "Repayment period",
+      "months": "{{months}} months",
+      "monthlyPayment": "Estimated monthly payment",
+      "totalRepayment": "Total repayment",
+      "totalInterest": "Total interest",
+      "disclaimer": "Estimate only. Not a loan offer or approval."
+    },
+    "documents": {
+      "eyebrow": "Documents",
+      "title": "What do you need?",
+      "items": {
+        "alienCard": "Alien Registration Card",
+        "passport": "Valid Passport",
+        "workContract": "Work Contract"
+      },
+      "notice": "Additional documents may be requested during review."
+    },
+    "howToApply": {
+      "eyebrow": "How to Apply",
+      "title": "Apply in four simple steps",
+      "steps": {
+        "eligibility": {
+          "title": "Check Your Eligibility",
+          "description": "Complete a short eligibility check based on your visa status, employment, and income. No documents are required at this stage."
+        },
+        "enquiry": {
+          "title": "Submit Your Enquiry",
+          "description": "Provide your contact details and preferred language. This allows our team to review your enquiry and provide appropriate assistance."
+        },
+        "review": {
+          "title": "Consultation & Review",
+          "description": "A GME Finance representative will contact you to confirm your information, explain the loan process, and guide you through the next steps."
+        },
+        "disbursement": {
+          "title": "Send documents &\nreceive your money",
+          "description": "Submit the required documents for assessment. Upon approval, the loan amount will be disbursed to your designated Korean bank account."
+        }
+      },
+      "continueTitle": "Continue Your Application with Ease",
+      "continueDescription": "Information submitted through this website can be used to continue your application through the GME app or with assistance from our team, reducing the need to provide the same information again."
+    },
+    "whyChoose": {
+      "eyebrow": "Why Choose GME Finance?",
+      "title": "Simple, transparent & reliable.",
+      "reasons": {
+        "trusted": "Trusted Since 2016",
+        "support": "24/7 Support in Your Language",
+        "simple": "Simple Application Process",
+        "noFees": "Zero Processing & Early Repayment Fees",
+        "visa": "Support for Eligible Visa Holders",
+        "app": "Easy Application via GME App"
+      },
+      "disclaimer": "Loan approval, amount, rate and eligibility are subject to individual screening and applicable terms."
+    },
+    "app": {
+      "eyebrow": "GME App",
+      "title": "Use the GME App to manage your loan",
+      "description": "Check your loan, view information, send inquiries, and access bank statement services in one place.",
+      "imageAlt": "GME Finance loan app screen",
+      "features": {
+        "apply": {
+          "title": "Apply Loan",
+          "description": "Access available loan services in the app."
+        },
+        "checkLoan": {
+          "title": "Check My Loan",
+          "description": "Check your loan information in the app."
+        },
+        "details": {
+          "title": "Detailed Information",
+          "description": "View detailed loan information."
+        },
+        "inquiry": {
+          "title": "Loan Inquiry",
+          "description": "Send a loan inquiry directly in the app."
+        },
+        "statements": {
+          "title": "Bank Statements",
+          "description": "Access bank statement services."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Common questions",
+      "items": {
+        "guarantor": {
+          "question": "Do I need a guarantor?",
+          "answer": "No. A guarantor is not required."
+        },
+        "existingLoan": {
+          "question": "Can I apply if I have an existing loan?",
+          "answer": "Applications are assessed individually based on eligibility and the applicant’s financial circumstances."
+        },
+        "approval": {
+          "question": "Does applying guarantee loan approval?",
+          "answer": "No. All applications are subject to individual assessment and approval."
+        },
+        "earlyRepayment": {
+          "question": "Can I repay my loan early?",
+          "answer": "Yes. There is no early repayment penalty."
+        },
+        "visaExpiry": {
+          "question": "Can I apply if my visa will expire soon?",
+          "answer": "Eligibility depends on your visa status, remaining period of stay, and individual assessment."
+        },
+        "privacy": {
+          "question": "How is my personal information protected?",
+          "answer": "Personal information is handled in accordance with applicable Korean laws, including the Personal Information Protection Act (PIPA)."
+        }
+      }
+    },
+    "finalCta": {
+      "eyebrow": "Get Started",
+      "title": "Apply Loan Now",
+      "description": "Talk to GME Finance through Channel Talk to start your loan inquiry.",
+      "downloadApp": "Download the GME App",
+      "appStoreAlt": "Download on the App Store",
+      "googlePlayAlt": "Get it on Google Play"
     }
   }
 }

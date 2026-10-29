@@ -1,5 +1,5 @@
 import { buildPageMetadata } from "@/lib/seo";
-export { default } from "@/app/components/common/SimpleLayout";
+export { default } from "@/features/common/components/SimpleLayout";
 
 export const metadata = buildPageMetadata({
   title: "Careers",

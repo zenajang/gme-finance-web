@@ -1,8 +1,5 @@
 {
   "name": "නම",
-  "firstName": "මුල් නාමය",
-  "lastName": "වාසගම",
-  "nationality": "ජාතිකත්වය",
   "button": {
     "applyNow": "Apply Now",
     "EMICalculator": "EMI Calculator",
@@ -22,13 +19,6 @@
     "sri lanka": "ශ්‍රී ලංකා"
   },
   "home": {
-    "typesOfLoansTitle": "ඔබට පහසුවෙන් ලබා ගත හැකි ණ‍ය වර්ග",
-    "housingLoan": "නිවාස ණය පහසුකම්",
-    "studentLoan": "ශිෂ්‍යය ණය පහසුකම්",
-    "propertyLoan": "දේපළ ණය පහසුකම්",
-    "vacationLoan": "නිවාඩු ණය පහසුකම්",
-    "carLoan": "වාහන ණය පහසුකම්",
-    "businessLoan": "ව්‍යාපාර ණය පහසුකම්",
     "quickLoanApplicationTitle": "ඉක්මන් සහ පහසු ණය අයදුම්පත",
     "quickLoanApplicationSubTitle": "පියවර 05කින්",
     "simpleLoanStep1": "GME APP එක හරහා අයදුම් කරන්න",
@@ -40,10 +30,7 @@
     "simpleLoanStep4": "අනුමැතිය",
     "simpleLoanStep4Des": "අනුමත වූ පසු, ඩිජිටල් ගිවිසුම් අත්සන් කිරීම සිදු කෙරේ.",
     "simpleLoanStep5": "ගෙවීම්",
-    "simpleLoanStep5Des": "කොන්ත්‍රාත්තුව අත්සන් කිරීමෙන් පසු, ණය මුදල ඔබේ බැංකු ගිණුමට බැර කෙරේ.",
-    "applyLoanAppTitle": "GME APP එක හරහා අයදුම් කරන්න",
-    "applyLoanAppSubTitle": "උපරිම ණය මුදල මාන් 3,000 දක්වා",
-    "applyLoanAppSubTitle1": "GME Finance ණය අයදුම් කිරීම පහසු සහ වේගවත් කරයි. දැන්ම අයදුම් කරන්න!"
+    "simpleLoanStep5Des": "කොන්ත්‍රාත්තුව අත්සන් කිරීමෙන් පසු, ණය මුදල ඔබේ බැංකු ගිණුමට බැර කෙරේ."
   },
   "countryPage": {
     "teamTitle": "{{country}} කණ්ඩායම",

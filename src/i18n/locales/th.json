@@ -1,8 +1,5 @@
 {
   "name": "ชื่อ",
-  "firstName": "ชื่อจริง",
-  "lastName": "นามสกุล",
-  "nationality": "สัญชาติ",
   "button": {
     "applyNow": "สมัครเลย",
     "EMICalculator": "คำนวณผ่าน EMI(ผ่อนรายเดือน)",
@@ -22,14 +19,6 @@
     "thailand": "ประเทศไทย"
   },
   "home": {
-    "typesOfLoansTitle": "ประเภทของสินเชื่อ",
-    "GMELoan": "สินเชื่อ GME",
-    "housingLoan": "สินเชื่อที่อยู่อาศัย",
-    "studentLoan": "สินเชื่อนักเรียน",
-    "propertyLoan": "สินเชื่อเพื่อซื้อทรัพย์สิน",
-    "vacationLoan": "สินเชื่อท่องเที่ยว / พักผ่อน",
-    "carLoan": "สินเชื่อรถยนต์",
-    "businessLoan": "สินเชื่อธุรกิจ",
     "quickLoanApplicationTitle": "สมัครสินเชื่อง่ายและรวดเร็ว",
     "quickLoanApplicationSubTitle": "ขั้นตอนการสมัคร 5 ขั้นตอน",
     "simpleLoanStep1": "สมัครผ่านแอป GME",
@@ -41,12 +30,7 @@
     "simpleLoanStep4": "การอนุมัติ",
     "simpleLoanStep4Des": "เมื่อได้รับการอนุมัติ การเซ็นสัญญากู้แบบดิจิทัลจะดำเนินการต่อไป",
     "simpleLoanStep5": "ได้รับยอด",
-    "simpleLoanStep5Des": "หลังจากเซ็นสัญญากู้ จำนวนเงินกู้จะถูกโอนเข้าบัญชีธนาคารของคุณ",
-    "applyLoanAppTitle": "สมัครสินเชื่อผ่านแอป GME",
-    "applyLoanAppSubTitle1": "GME Finance ทำให้การสมัครสินเชื่อ GME ของคุณ ง่ายและสะดวก สมัครเลย!",
-    "applyLoanAppSubTitleByCountry": {
-      "thailand": "สูงสุดที่ 35 ล้านวอน"
-    }
+    "simpleLoanStep5Des": "หลังจากเซ็นสัญญากู้ จำนวนเงินกู้จะถูกโอนเข้าบัญชีธนาคารของคุณ"
   },
   "countryPage": {
     "teamTitle": "ทีม{{country}}",

@@ -1,6 +1,6 @@
 'use client';
 
-import LanguageSwitcher from '@/app/components/common/LanguageSwitcher';
+import LanguageSwitcher from '@/features/common/components/LanguageSwitcher';
 
 interface AdminHeaderProps {
   userEmail?: string | null;

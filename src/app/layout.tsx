@@ -2,16 +2,17 @@ import type { Metadata, Viewport } from "next";
 import '@radix-ui/themes/styles.css';
 import "./globals.css";
 import { Theme } from "@radix-ui/themes";
-import PageLoadingSpinner from "./components/common/PageLoadingSpinner";
-import LayoutWrapper from "./components/common/LayoutWrapper";
-import AppProviders from "./components/common/AppProviders";
-import ImageLoadGuard from "./components/common/ImageLoadGuard";
-import ServiceWorkerRegistrar from "./components/common/ServiceWorkerRegistrar";
+import PageLoadingSpinner from "@/features/common/components/PageLoadingSpinner";
+import LayoutWrapper from "@/features/common/components/LayoutWrapper";
+import AppProviders from "@/features/common/components/AppProviders";
+import ImageLoadGuard from "@/features/common/components/ImageLoadGuard";
+import ServiceWorkerRegistrar from "@/features/common/components/ServiceWorkerRegistrar";
 import { Inter } from "next/font/google";
 import en from "@/i18n/locales/en.json";
-import GoogleAnalytics from "./components/google-analytics/GoogleAnalytics";
-import Metricool from "./components/metricool/Metricool";
-import ChannelTalk from "./components/channel-talk/ChannelTalk";
+import { getPageLanguages } from "@/i18n/server";
+import GoogleAnalytics from "@/features/common/components/google-analytics/GoogleAnalytics";
+import Metricool from "@/features/common/components/metricool/Metricool";
+import ChannelTalk from "@/features/common/components/channel-talk/ChannelTalk";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -70,6 +71,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialLanguages = await getPageLanguages();
   const footer = en.footer;
   const companyName = stripLabel(footer.companyName);
   const address = stripLabel(footer.address);
@@ -111,7 +113,7 @@ export default async function RootLayout({
         <Theme appearance="light" accentColor="indigo" radius="large">
           <ImageLoadGuard />
           <ServiceWorkerRegistrar />
-          <AppProviders>
+          <AppProviders initialLanguages={initialLanguages}>
             <PageLoadingSpinner />
             <LayoutWrapper>{children}</LayoutWrapper>
           </AppProviders>

@@ -104,3 +104,14 @@ export function getDefaultLanguage(country: CountryCode): LanguageCode {
   // 나라 페이지는 현지어(두번째)가 기본, 없으면 첫번째
   return languages[1] || languages[0];
 }
+
+// 언어 저장 키. localStorage 와 쿠키가 같은 이름을 쓴다
+export function getLanguageStorageKey(country: CountryCode): string {
+  return `i18nextLng_${country}`;
+}
+
+// 저장된 값이 그 페이지에서 쓸 수 있는 언어면 그대로, 아니면 기본 언어
+export function resolvePageLanguage(country: CountryCode, saved?: string | null): LanguageCode {
+  const languages = PAGE_LANGUAGES[country] || PAGE_LANGUAGES.main;
+  return languages.find((code) => code === saved) ?? getDefaultLanguage(country);
+}
