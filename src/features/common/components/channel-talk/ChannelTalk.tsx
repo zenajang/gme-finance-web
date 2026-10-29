@@ -1,39 +1,31 @@
 "use client";
 
 import { useEffect } from "react";
-import { openChannelTalk } from "@/lib/channelTalk";
-import ChannelService from "./ChannelService";
+import { bootChannelTalk, CHANNEL_TALK_SCRIPT_URL, openChannelTalk } from "@/lib/channelTalk";
 
-const PLUGIN_KEY = "24dc2dfd-3ed1-4953-b395-a2255ed41dae";
 const INTERACTION_EVENTS = ["mousemove", "scroll", "keypress", "touchstart", "click"] as const;
 
 export default function ChannelTalk() {
   useEffect(() => {
-    let loaded = false;
+    // 스크립트 파일만 미리 받아 둔다. 실행과 boot(쿠키 · API 요청)는 첫 조작 때 한다
+    const prefetch = document.createElement("link");
+    prefetch.rel = "prefetch";
+    prefetch.as = "script";
+    prefetch.href = CHANNEL_TALK_SCRIPT_URL;
+    document.head.append(prefetch);
 
-    const load = () => {
-      if (loaded) return;
-      loaded = true;
-
-      INTERACTION_EVENTS.forEach((event) =>
-        window.removeEventListener(event, load)
-      );
-
-      ChannelService.loadScript();
-      ChannelService.boot({ pluginKey: PLUGIN_KEY }, () => {
-        ChannelService.showChannelButton();
-      });
+    const boot = () => {
+      INTERACTION_EVENTS.forEach((event) => window.removeEventListener(event, boot));
+      bootChannelTalk();
     };
 
     INTERACTION_EVENTS.forEach((event) =>
-      window.addEventListener(event, load, { once: true, passive: true })
+      window.addEventListener(event, boot, { once: true, passive: true })
     );
 
     return () => {
-      INTERACTION_EVENTS.forEach((event) =>
-        window.removeEventListener(event, load)
-      );
-      ChannelService.shutdown();
+      INTERACTION_EVENTS.forEach((event) => window.removeEventListener(event, boot));
+      prefetch.remove();
     };
   }, []);
 

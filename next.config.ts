@@ -19,6 +19,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // 언어 쿠키를 읽는 동적 페이지는 메타데이터를 body 로 스트리밍한다.
+  // 목록에 없는 크롤러(Googlebot, Daum 등)도 head 에서 읽도록 모든 요청에 head 로 보낸다
+  htmlLimitedBots: /.*/,
   // Skip static generation for pages with Supabase
   experimental: {},
   // Generate build ID that doesn't fail on missing env vars
