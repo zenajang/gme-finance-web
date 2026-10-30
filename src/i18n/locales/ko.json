@@ -455,7 +455,7 @@
         },
         "repaymentMethod": {
           "title": "상환 방법",
-          "description": "월 상환금은 개별 대출 계약의 조건 및 상환 방식에 따라 달라질 수 있습니다."
+          "description": "원리금균등분할상환"
         },
         "overdueRate": {
           "title": "연체 이자율",
