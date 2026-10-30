@@ -640,7 +640,7 @@
         },
         "repaymentMethod": {
           "title": "Repayment method",
-          "description": "Repayment amounts may vary depending on the loan terms and repayment method stated in the individual loan agreement."
+          "description": "Equal principal and interest payments"
         },
         "overdueRate": {
           "title": "Overdue interest rate",
