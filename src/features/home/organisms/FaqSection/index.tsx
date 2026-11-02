@@ -1,4 +1,6 @@
-import { getServerT } from '@/i18n/server';
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Section, SectionHead } from '@/features/home/molecules';
 
 // 문구는 landing.faq.items.<key>.{question,answer}
@@ -13,8 +15,8 @@ const FAQ_KEYS = [
 
 // 네이티브 details 로 아코디언 구현. 같은 name 이라 하나를 열면 나머지는 닫힌다 (시안 동작).
 // 펼침 애니메이션은 ::details-content 를 지원하는 브라우저에서만 동작하고, 나머지는 바로 열린다.
-const FaqSection = async () => {
-  const t = await getServerT('main');
+const FaqSection = () => {
+  const { t } = useTranslation();
 
   return (
     <Section id="faq" tone="gray">
