@@ -1,4 +1,6 @@
-import { getServerT } from '@/i18n/server';
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Disclaimer, Section, SectionHead } from '@/features/home/molecules';
 
 // 신청 가능 비자 (D · E · F · G · H 순)
@@ -18,8 +20,8 @@ const VISA_CODES = [
   'H-2',
 ] as const;
 
-const EligibilitySection = async () => {
-  const t = await getServerT('main');
+const EligibilitySection = () => {
+  const { t } = useTranslation();
 
   return (
     <Section id="eligibility" tone="gray">

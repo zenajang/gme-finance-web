@@ -1,4 +1,6 @@
-import { getServerT } from '@/i18n/server';
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Section, SectionHead } from '@/features/home/molecules';
 
 // 신청 단계. 문구는 landing.howToApply.steps.<key>.{title,description}, 제목의 \n 은 시안의 <br /> 위치
@@ -9,8 +11,8 @@ const ACTIVE_APPLY_STEP = 2;
 
 const CARD = 'rounded-[14px] border bg-white';
 
-const HowToApplySection = async () => {
-  const t = await getServerT('main');
+const HowToApplySection = () => {
+  const { t } = useTranslation();
 
   return (
     <Section id="how-it-works" tone="white">

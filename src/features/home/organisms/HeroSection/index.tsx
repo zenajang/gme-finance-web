@@ -1,10 +1,12 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { LinkButton } from '@/features/common/atoms';
 import { Container } from '@/features/home/atoms';
-import { getServerT } from '@/i18n/server';
 import { CHANNEL_TALK_URL } from '@/lib/channelTalk';
 
-const HeroSection = async () => {
-  const t = await getServerT('main');
+const HeroSection = () => {
+  const { t } = useTranslation();
 
   return (
     <section

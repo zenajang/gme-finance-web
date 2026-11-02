@@ -1,4 +1,6 @@
-import { getServerT } from '@/i18n/server';
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Section, SectionHead } from '@/features/home/molecules';
 
 // 표 행 순서. 문구는 landing.loanTerms.items.<key>.{title,description}
@@ -15,8 +17,8 @@ const TERM_KEYS = [
 
 const CELL = 'border-b border-line p-4 text-left align-top max-md:block';
 
-const LoanTermsSection = async () => {
-  const t = await getServerT('main');
+const LoanTermsSection = () => {
+  const { t } = useTranslation();
 
   return (
     <Section id="loan-product-information" tone="gray">

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import useSWR from 'swr';
 import Link from 'next/link';
@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic';
 
 type FilterCategory = 'all' | 'blog' | 'customer_feedback';
 
-export default function BlogPage() {
+function BlogContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { t, i18n } = useTranslation();
@@ -461,3 +461,12 @@ export default function BlogPage() {
     </div>
   );
 } 
+
+// useSearchParams 는 정적 생성 시 Suspense 경계가 필요하다
+export default function BlogPage() {
+  return (
+    <Suspense>
+      <BlogContent />
+    </Suspense>
+  );
+}

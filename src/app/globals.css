@@ -510,3 +510,8 @@ select {
 .animate-progress-bar {
   animation: progress-bar 4s linear forwards;
 }
+
+/* 저장된 언어를 적용하는 동안 본문을 숨긴다 (src/i18n/languagePendingScript.ts) */
+html[data-language-pending] body {
+  visibility: hidden;
+}
